@@ -27,13 +27,11 @@ test('P10 E11: 6000개 자체 다운로드→같은 파일 UI 미리보기 (quot
     text = await readFile((await download.path())!, 'utf8')
   await download.delete()
   expect(JSON.parse(text).data.tasks).toEqual(tasks)
-  await page
-    .locator('#backup-file')
-    .setInputFiles({
-      name: 'self-backup.json',
-      mimeType: 'application/json',
-      buffer: Buffer.from(text),
-    })
+  await page.locator('#backup-file').setInputFiles({
+    name: 'self-backup.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(text),
+  })
   const phase = process.env.BETA_PHASE || 'after'
   await page.screenshot({ path: `docs/screenshots/v1.2/${phase}/backup-6000.png` })
   await info.attach('backup-size', {
@@ -57,13 +55,62 @@ test('P10 E11: 6000개 자체 다운로드→같은 파일 UI 미리보기 (quot
   ).toBeVisible()
   if (phase !== 'before') {
     // Legacy padded v1.1 exports remain accepted under the explicitly increased bound.
-    await page
-      .locator('#backup-file')
-      .setInputFiles({
-        name: 'legacy-padded.json',
-        mimeType: 'application/json',
-        buffer: Buffer.from(JSON.stringify(createBackup({ version: 1, tasks }), null, 2)),
-      })
+    await page.locator('#backup-file').setInputFiles({
+      name: 'legacy-padded.json',
+      mimeType: 'application/json',
+      buffer: Buffer.from(JSON.stringify(createBackup({ version: 1, tasks }), null, 2)),
+    })
     await expect(page.getByRole('heading', { name: '복원 미리보기' })).toBeVisible()
   }
+})
+
+test('E11: UTF-8 파일 정확한 한도와 1byte 초과, 선택만으로 저장하지 않음', async ({ page }) => {
+  await page.goto('./')
+  await page.locator('.sidebar .app-menu summary').click()
+  await page.locator('.sidebar').getByRole('button', { name: '백업·복원', exact: true }).click()
+  const json = JSON.stringify(createBackup({ version: 1, tasks: [] })),
+    exact = json + ' '.repeat(MAX_BACKUP_BYTES - Buffer.byteLength(json))
+  await page
+    .locator('#backup-file')
+    .setInputFiles({
+      name: 'at-limit.json',
+      mimeType: 'application/json',
+      buffer: Buffer.from(exact),
+    })
+  await expect(page.getByRole('heading', { name: '복원 미리보기' })).toBeVisible()
+  await page
+    .locator('#backup-file')
+    .setInputFiles({
+      name: 'over-limit.json',
+      mimeType: 'application/json',
+      buffer: Buffer.from(exact + ' '),
+    })
+  await expect(page.getByRole('dialog').getByRole('alert')).toContainText('10MiB 이하')
+  expect(await page.evaluate(() => localStorage.getItem('focusday:v1'))).toBeNull()
+})
+
+test('E11: 초과 자체 백업은 다운로드 성공으로 표시하지 않음·원본 보존', async ({ page }) => {
+  const raw = JSON.stringify({
+    version: 1,
+    tasks: Array.from({ length: 20000 }, (_, i) =>
+      createTask('가'.repeat(200), 'all', '2026-10-02', '2026-10-02T00:00:00.000Z', `large-${i}`),
+    ),
+  })
+  await page.addInitScript((raw) => {
+    const get = Storage.prototype.getItem
+    Storage.prototype.getItem = function (key) {
+      return key === 'focusday:v1' ? raw : get.call(this, key)
+    }
+  }, raw)
+  await page.goto('./')
+  await page.locator('.sidebar .app-menu summary').click()
+  await page.locator('.sidebar').getByRole('button', { name: '백업·복원', exact: true }).click()
+  let downloads = 0
+  page.on('download', () => downloads++)
+  await page.getByRole('button', { name: 'JSON 백업 다운로드', exact: true }).click()
+  await expect(page.getByRole('alert')).toContainText(
+    '다운로드하지 않았고 목록은 그대로 유지했습니다',
+  )
+  expect(downloads).toBe(0)
+  expect(await page.evaluate(() => localStorage.getItem('focusday:v1'))).toBe(raw)
 })

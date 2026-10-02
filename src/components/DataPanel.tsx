@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ChangeEvent } from 'react'
 import {
   dataCounts,
+  BACKUP_LIMIT_LABEL,
   MAX_BACKUP_BYTES,
   parseBackup,
   prepareRestore,
@@ -66,7 +67,7 @@ export function DataPanel({
     setRestored(false)
     if (file.size > MAX_BACKUP_BYTES) {
       setReading(false)
-      setError('5MiB 이하의 백업 파일을 다시 선택해 주세요.')
+      setError(`${BACKUP_LIMIT_LABEL} 이하의 백업 파일을 다시 선택해 주세요.`)
       return
     }
     setReading(true)
@@ -137,12 +138,17 @@ export function DataPanel({
             <p className="field-hint">
               완료·예시와 모든 속성을 포함합니다. 저장 실패 중의 변경도 포함됩니다.
             </p>
+            <p className="field-hint">
+              백업·가져오기 최대 {BACKUP_LIMIT_LABEL}. 초과 시 내보내기를 중단하며 목록은
+              유지됩니다.
+            </p>
             {exportButton}
           </section>
           <section className="data-section" aria-labelledby="import-heading">
             <h3 id="import-heading">백업 파일 가져오기</h3>
             <p className="field-hint">
-              Focusday 정식 JSON 백업 · 최대 5MiB. 선택만으로 목록은 바뀌지 않습니다.
+              Focusday 정식 JSON 백업 · 최대 {BACKUP_LIMIT_LABEL}. 선택만으로 목록은 바뀌지
+              않습니다.
             </p>
             <label htmlFor="backup-file" className="file-label">
               백업 파일 선택 / 다시 선택

@@ -5,13 +5,13 @@ import { chromium, expect } from '@playwright/test'
 const url = new URL(process.argv[2] || 'https://gsj118.github.io/focusday/')
 const evidenceDir = process.env.SMOKE_OUTPUT_DIR
   ? `${process.env.SMOKE_OUTPUT_DIR}/evidence`
-  : 'docs/evidence/v1.1'
+  : 'docs/evidence/v1.2'
 const screenshotDir = process.env.SMOKE_OUTPUT_DIR
   ? `${process.env.SMOKE_OUTPUT_DIR}/screenshots`
-  : 'docs/screenshots/v1.1'
+  : 'docs/screenshots/v1.2'
 assert.equal(url.protocol, 'https:')
 const report = {
-  appVersion: '1.1.0',
+  appVersion: '1.2.0',
   url: url.href,
   checkedAt: new Date().toISOString(),
   deployedSourceCommit: process.env.LIVE_HEAD_SHA || null,
@@ -135,19 +135,29 @@ try {
       const box = await page.getByRole('dialog').boundingBox()
       assert(box.x >= 0 && box.x + box.width <= width)
       await page.screenshot({ path: `${screenshotDir}/live-${name}-editor.png` })
+      const editorOriginal = await readTasks()
+      await page.getByLabel('분류 선택').fill('조합 초안')
+      await page.getByLabel('분류 선택').dispatchEvent('compositionstart')
+      await page.keyboard.press('Enter')
+      await expect(page.getByRole('dialog')).toBeVisible()
+      assert.deepEqual(await readTasks(), editorOriginal)
+      await page.getByLabel('분류 선택').dispatchEvent('compositionend')
       await page.keyboard.press('Escape')
       await nav.getByRole('button', { name: /전체/ }).click()
       await page.getByRole('checkbox', { name: '주말 장보기 완료', exact: true }).click()
       const beforeExport = await readTasks()
       const menu = page.locator(name === 'mobile' ? '.mobile-menu .app-menu' : '.sidebar .app-menu')
       await menu.locator('summary').click()
-      await expect(menu.getByText('Focusday 1.1.0', { exact: true })).toBeVisible()
+      await expect(menu.getByText('Focusday 1.2.0', { exact: true })).toBeVisible()
       await menu.getByRole('button', { name: '백업·복원', exact: true }).click()
       const downloadedPromise = page.waitForEvent('download')
       await page.getByRole('button', { name: 'JSON 백업 다운로드', exact: true }).click()
       const downloaded = await downloadedPromise
       assert.match(downloaded.suggestedFilename(), /^focusday-backup-\d{4}-\d{2}-\d{2}\.json$/)
-      const backup = JSON.parse(await readFile(await downloaded.path(), 'utf8'))
+      const backupText = await readFile(await downloaded.path(), 'utf8')
+      const backup = JSON.parse(backupText)
+      assert.equal(backupText, JSON.stringify(backup))
+      assert(Buffer.byteLength(backupText) <= 10 * 1024 * 1024)
       await downloaded.delete()
       assert.equal(backup.format, 'focusday-backup')
       assert.equal(backup.formatVersion, 1)
@@ -228,7 +238,9 @@ try {
           '삭제 취소',
           '예시',
           '가로 넘침/편집기',
-          '앱 버전 1.1.0',
+          '앱 버전 1.2.0',
+          '편집 조합 이벤트 Enter 무저장 (OS IME 제외)',
+          'compact UTF-8 전체 백업, 10MiB 이내',
           'JSON 백업 모든 속성·완료·예시 보존',
           '복원 미리보기·id 합치기·저장',
           '오늘 계획·어제 이어가기 id/기한 유지',
@@ -240,6 +252,76 @@ try {
     } finally {
       await context.close()
     }
+  }
+  const largeContext = await browser.newContext({
+    viewport: { width: 1440, height: 900 },
+    timezoneId: 'Asia/Seoul',
+    locale: 'ko-KR',
+  })
+  try {
+    const tasks = Array.from({ length: 6000 }, (_, i) => ({
+      id: `live-size-${i}`,
+      title: '가'.repeat(200),
+      createdAt: '2026-10-02T00:00:00.000Z',
+      updatedAt: '2026-10-02T00:00:00.000Z',
+      dueDate: null,
+      focusDate: null,
+      category: null,
+      completedAt: null,
+      priority: 'none',
+      isDemo: false,
+    }))
+    await largeContext.addInitScript(
+      (raw) => {
+        const get = Storage.prototype.getItem
+        Storage.prototype.getItem = function (key) {
+          return key === 'focusday:v1' ? raw : get.call(this, key)
+        }
+      },
+      JSON.stringify({ version: 1, tasks }),
+    )
+    const largePage = await largeContext.newPage()
+    const errors = []
+    largePage.on('pageerror', (error) => errors.push(error.message))
+    await largePage.goto(url.href, { waitUntil: 'networkidle' })
+    await largePage.locator('.sidebar summary').click()
+    await largePage
+      .locator('.sidebar')
+      .getByRole('button', { name: '백업·복원', exact: true })
+      .click()
+    const pending = largePage.waitForEvent('download')
+    await largePage.getByRole('button', { name: 'JSON 백업 다운로드', exact: true }).click()
+    const file = await pending,
+      text = await readFile(await file.path(), 'utf8')
+    await file.delete()
+    assert.deepEqual(JSON.parse(text).data.tasks, tasks)
+    assert(Buffer.byteLength(text) <= 10 * 1024 * 1024)
+    await largePage
+      .locator('#backup-file')
+      .setInputFiles({
+        name: 'self-backup-6000.json',
+        mimeType: 'application/json',
+        buffer: Buffer.from(text),
+      })
+    await expect(largePage.getByRole('heading', { name: '복원 미리보기' })).toBeVisible()
+    await expect(
+      largePage.getByText('백업 전체 6000개 · 미완료 6000개 · 완료 0개', { exact: true }),
+    ).toBeVisible()
+    await largePage.screenshot({ path: `${screenshotDir}/live-backup-6000.png` })
+    assert.deepEqual(errors, [])
+    report.backupBoundary = {
+      taskCount: 6000,
+      bytes: Buffer.byteLength(text),
+      status: 'PASS',
+      storageQuotaTested: false,
+      rendered6000List: false,
+      method: 'Isolated read port + actual live UI download/re-import preview; no apply',
+    }
+    console.log(
+      'public 6000-task download/re-import preview: PASS (quota/list performance excluded)',
+    )
+  } finally {
+    await largeContext.close()
   }
   report.status = 'PASS'
 } catch (error) {

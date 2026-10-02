@@ -1,7 +1,8 @@
 import type { AppData, Task } from './domain'
 import { isAppData, isTimestamp } from './storage'
 
-export const MAX_BACKUP_BYTES = 5 * 1024 * 1024
+export const MAX_BACKUP_BYTES = 10 * 1024 * 1024
+export const BACKUP_LIMIT_LABEL = '10MiB'
 export type Backup = {
   format: 'focusday-backup'
   formatVersion: 1
@@ -12,12 +13,24 @@ export type RestoreMode = 'merge' | 'replace'
 export function createBackup(data: AppData, now = new Date().toISOString()): Backup {
   return { format: 'focusday-backup', formatVersion: 1, exportedAt: now, data }
 }
+// Every file offered as a restorable backup uses the import bound, without dropping tasks.
+export function serializeBackup(data: AppData, now = new Date().toISOString()) {
+  const content = JSON.stringify(createBackup(data, now))
+  const byteSize = new TextEncoder().encode(content).byteLength
+  if (byteSize > MAX_BACKUP_BYTES)
+    return {
+      ok: false as const,
+      reason: `전체 백업이 ${(byteSize / 1024 / 1024).toFixed(2)}MiB로 ${BACKUP_LIMIT_LABEL} 한도를 넘습니다. 다운로드하지 않았고 목록은 그대로 유지했습니다. 항목을 일부 빼서 백업하지 않습니다.`,
+      byteSize,
+    }
+  return { ok: true as const, content, byteSize }
+}
 export function parseBackup(
   text: string,
   byteSize = new TextEncoder().encode(text).byteLength,
 ): { ok: true; backup: Backup } | { ok: false; reason: string } {
   if (byteSize > MAX_BACKUP_BYTES)
-    return { ok: false, reason: '5MiB 이하의 백업 파일을 선택해 주세요.' }
+    return { ok: false, reason: `${BACKUP_LIMIT_LABEL} 이하의 백업 파일을 선택해 주세요.` }
   let value: unknown
   try {
     value = JSON.parse(text)

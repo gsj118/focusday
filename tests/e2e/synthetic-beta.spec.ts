@@ -1,7 +1,7 @@
-import { test, expect, type Page, type TestInfo } from '@playwright/test'
+import { test, expect, type Page, type TestInfo, type Locator } from '@playwright/test'
 import { readFile } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
-import { createBackup, MAX_BACKUP_BYTES } from '../../src/backup'
+import { createBackup } from '../../src/backup'
 import { createTask, type Task } from '../../src/domain'
 
 const day = '2026-10-02'
@@ -59,6 +59,13 @@ async function all(page: Page) {
     })
     .getByRole('button', { name: /전체/ })
     .click()
+}
+async function tabTo(page: Page, target: Locator) {
+  for (let i = 0; i < 60; i++) {
+    if (await target.evaluate((el) => el === document.activeElement)) break
+    await page.keyboard.press('Tab')
+  }
+  await expect(target).toBeFocused()
 }
 async function manage(page: Page) {
   const menu = page.locator(
@@ -132,7 +139,8 @@ async function check(
 test.beforeEach(async ({ page }) => {
   await page.clock.install({ time: new Date('2026-10-02T10:00:00+09:00') })
 })
-test.afterEach(async ({}, info) => {
+test.afterEach(async ({ page }, info) => {
+  void page
   await info.attach('synthetic-cases', {
     body: Buffer.from(JSON.stringify(results.get(info.title) || [])),
     contentType: 'application/json',
@@ -267,7 +275,7 @@ test('P03 키보드: 입력→Tab 편집→textarea Enter→취소→계획·백
     'N 입력→Enter, Tab으로 편집, textarea Enter와 Escape, 계획/데이터 trap',
     'textarea Enter 줄바꿈만; Tab/ShiftTab/Escape 의미와 호출 focus 유지',
     async () => {
-      await page.keyboard.press('n')
+      await tabTo(page, page.getByLabel('새 할 일 제목'))
       await page.keyboard.type('Keyboard beta')
       await page.keyboard.press('Enter')
       await page.keyboard.press('Tab')
@@ -284,7 +292,7 @@ test('P03 키보드: 입력→Tab 편집→textarea Enter→취소→계획·백
       await expect(
         page.getByRole('button', { name: 'Keyboard beta 편집', exact: true }),
       ).toBeFocused()
-      await page.getByRole('button', { name: '오늘 계획하기', exact: true }).focus()
+      await tabTo(page, page.getByRole('button', { name: '오늘 계획하기', exact: true }))
       await page.keyboard.press('Space')
       const close = page.getByRole('button', { name: '오늘 계획하기 닫기' })
       await expect(close).toBeFocused()
@@ -295,33 +303,12 @@ test('P03 키보드: 입력→Tab 편집→textarea Enter→취소→계획·백
       await page.keyboard.press('Tab')
       await expect(close).toBeFocused()
       await page.keyboard.press('Escape')
-      // Reach the auxiliary menu with Tab from a known navigation point.
-      await page
-        .getByRole('navigation', { name: '할 일 보기', exact: true })
-        .getByRole('button', { name: /전체/ })
-        .focus()
-      for (
-        let i = 0;
-        i < 5 &&
-        !(await page.locator('.sidebar summary').evaluate((el) => el === document.activeElement));
-        i++
-      )
-        await page.keyboard.press('Tab')
-      await expect(page.locator('.sidebar summary')).toBeFocused()
+      await tabTo(page, page.locator('.sidebar summary'))
       await page.keyboard.press('Enter')
-      for (
-        let i = 0;
-        i < 4 &&
-        !(await page
-          .locator('.sidebar')
-          .getByRole('button', { name: '백업·복원', exact: true })
-          .evaluate((el) => el === document.activeElement));
-        i++
-      )
-        await page.keyboard.press('Tab')
-      await expect(
+      await tabTo(
+        page,
         page.locator('.sidebar').getByRole('button', { name: '백업·복원', exact: true }),
-      ).toBeFocused()
+      )
       await page.keyboard.press('Enter')
       await page.keyboard.press('Shift+Tab')
       await expect(page.locator('#backup-file')).toBeFocused()
@@ -797,9 +784,15 @@ test('P12 경계 입력: 공백·조합→편집 조합 Enter→검색', async (
       await page.keyboard.press('Enter')
       await expect(page.getByRole('dialog', { name: '할 일 편집' })).toBeVisible()
       expect(await stored(page)).toEqual(before)
+      await page.screenshot({ path: `${shotDir}/P12-composition-kept.png` })
       await category.dispatchEvent('compositionend')
+      await page.keyboard.press('Enter')
+      await expect(page.getByRole('dialog', { name: '할 일 편집' })).toBeVisible()
+      expect(await stored(page)).toEqual(before)
       await page.clock.runFor(100)
-      await page.keyboard.press('Escape')
+      await page.keyboard.press('Enter')
+      expect((await stored(page))[0].category).toBe('조합 초안')
+      await expect(page.getByRole('dialog')).toHaveCount(0)
     },
   )
 })

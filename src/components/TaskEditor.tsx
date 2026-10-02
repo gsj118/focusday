@@ -27,6 +27,8 @@ export function TaskEditor({ task, today, onSave, onClose, onDelete }: Props) {
     category: task.category,
   })
   const [error, setError] = useState('')
+  const composing = useRef(false)
+  const lastCompositionEnd = useRef(0)
   useLayoutEffect(() => {
     const el = dialog.current!
     el.showModal()
@@ -47,6 +49,16 @@ export function TaskEditor({ task, today, onSave, onClose, onDelete }: Props) {
         if (e.target === e.currentTarget) onClose()
       }}
       onKeyDown={(e) => {
+        if (
+          e.key === 'Enter' &&
+          (composing.current ||
+            e.nativeEvent.isComposing ||
+            e.keyCode === 229 ||
+            Date.now() - lastCompositionEnd.current < 80)
+        ) {
+          e.preventDefault()
+          return
+        }
         if (e.key !== 'Tab') return
         const controls = [
           ...e.currentTarget.querySelectorAll<HTMLElement>(
@@ -68,8 +80,16 @@ export function TaskEditor({ task, today, onSave, onClose, onDelete }: Props) {
       <form
         className="editor-content"
         noValidate
+        onCompositionStartCapture={() => {
+          composing.current = true
+        }}
+        onCompositionEndCapture={() => {
+          composing.current = false
+          lastCompositionEnd.current = Date.now()
+        }}
         onSubmit={(e) => {
           e.preventDefault()
+          if (composing.current) return
           const invalid =
             validateTitle(draft.title) ||
             (draft.dueDate !== null && !isDate(draft.dueDate) ? '유효한 기한을 선택해 주세요.' : '')

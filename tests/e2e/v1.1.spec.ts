@@ -313,7 +313,7 @@ for (const [label, content, message] of invalidFiles)
     await expect(page.getByRole('dialog').getByRole('alert')).toHaveCount(0)
   })
 
-test('5MiB 초과·파일 선택 취소와 미리보기 취소는 목록/저장 상태 불변', async ({ page }) => {
+test('10MiB 초과·파일 선택 취소와 미리보기 취소는 목록/저장 상태 불변', async ({ page }) => {
   const raw = rawData([task('기존')])
   await seed(page, raw)
   await page.goto('./')
@@ -324,7 +324,7 @@ test('5MiB 초과·파일 선택 취소와 미리보기 취소는 목록/저장 
     mimeType: 'application/json',
     buffer: Buffer.alloc(MAX_BACKUP_BYTES + 1, 32),
   })
-  await expect(page.getByRole('dialog').getByRole('alert')).toContainText('5MiB 이하')
+  await expect(page.getByRole('dialog').getByRole('alert')).toContainText('10MiB 이하')
   await input.setInputFiles(file([task('가져올 일')]))
   await expect(page.getByRole('heading', { name: '복원 미리보기' })).toBeVisible()
   await input.setInputFiles([])

@@ -64,10 +64,10 @@ describe('백업 검증과 순수 복원 준비', () => {
       parseBackup(JSON.stringify(createBackup({ version: 1, tasks: [make('x'), make('x')] }))).ok,
     ).toBe(false)
   })
-  it('5MiB 제한은 문자 수가 아닌 UTF-8 byte 크기', () => {
+  it('10MiB 제한은 문자 수가 아닌 UTF-8 byte 크기', () => {
     expect(parseBackup('{}', MAX_BACKUP_BYTES + 1)).toMatchObject({
       ok: false,
-      reason: expect.stringContaining('5MiB'),
+      reason: expect.stringContaining('10MiB'),
     })
     const oversized = JSON.stringify(createBackup({ version: 1, tasks: [] })).replace(
       'focusday-backup',
@@ -75,7 +75,7 @@ describe('백업 검증과 순수 복원 준비', () => {
     )
     expect(parseBackup(oversized)).toMatchObject({
       ok: false,
-      reason: expect.stringContaining('5MiB'),
+      reason: expect.stringContaining('10MiB'),
     })
   })
   it('id 기준 합치기·현재 내용 보존·다른 id 같은 제목 추가·충돌 수·입력 불변', () => {

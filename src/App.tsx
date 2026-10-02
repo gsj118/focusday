@@ -19,7 +19,7 @@ import {
   type View,
 } from './domain'
 import { loadData, saveData, type LoadResult } from './storage'
-import { createBackup, prepareRestore, type RestoreMode } from './backup'
+import { serializeBackup, prepareRestore, type RestoreMode } from './backup'
 import { downloadJSON } from './download'
 import { useToday } from './useToday'
 import { useVisualViewport } from './useVisualViewport'
@@ -196,13 +196,12 @@ export default function App() {
   }
   function exportBackup() {
     try {
-      downloadJSON(
-        JSON.stringify(createBackup(current.current), null, 2),
-        `focusday-backup-${today}.json`,
-      )
+      const serialized = serializeBackup(current.current)
+      if (!serialized.ok) return serialized
+      downloadJSON(serialized.content, `focusday-backup-${today}.json`)
       return {
         ok: true,
-        reason: `전체 ${current.current.tasks.length}개 백업 파일 다운로드를 시작했습니다.`,
+        reason: `전체 ${current.current.tasks.length}개 백업 파일 다운로드를 시작했습니다. (${(serialized.byteSize / 1024 / 1024).toFixed(2)}MiB)`,
       }
     } catch {
       return { ok: false, reason: '백업 파일을 만들지 못했습니다. 다시 시도해 주세요.' }
@@ -335,7 +334,7 @@ export default function App() {
           백업·복원
         </button>
         <hr />
-        <strong>Focusday 1.1.0</strong>
+        <strong>Focusday 1.2.0</strong>
         <p>
           계정 없이 이 브라우저에 저장합니다. JSON 파일로 직접 백업할 수 있습니다. 자동 서버
           백업·기기 간 동기화는 제공하지 않습니다.
