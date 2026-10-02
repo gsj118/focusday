@@ -1,0 +1,4 @@
+* text=auto
+*.png binary
+docs/references/* -text
+docs/ai-prompts/01-implementation.md -text
