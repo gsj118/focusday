@@ -1,0 +1,164 @@
+import assert from 'node:assert/strict'
+import { mkdir, writeFile } from 'node:fs/promises'
+import { chromium, expect } from '@playwright/test'
+
+const url = new URL(process.argv[2] || 'https://gsj118.github.io/focusday/')
+assert.equal(url.protocol, 'https:')
+const report = {
+  url: url.href,
+  checkedAt: new Date().toISOString(),
+  deployedSourceCommit: process.env.LIVE_HEAD_SHA || null,
+  platform: process.platform,
+  browser: null,
+  assets: [],
+  screens: [],
+  status: 'RUNNING',
+}
+await mkdir('docs/evidence', { recursive: true })
+await mkdir('docs/screenshots', { recursive: true })
+const browser = await chromium.launch({
+  channel: process.env.PW_CHANNEL || 'chrome',
+  args: ['--force-device-scale-factor=1'],
+})
+report.browser = browser.version()
+try {
+  for (const [name, width, height] of [
+    ['desktop', 1440, 900],
+    ['mobile', 390, 844],
+  ]) {
+    const context = await browser.newContext({
+      viewport: { width, height },
+      deviceScaleFactor: 1,
+      locale: 'ko-KR',
+      timezoneId: 'Asia/Seoul',
+      isMobile: name === 'mobile',
+      hasTouch: name === 'mobile',
+    })
+    try {
+      const page = await context.newPage()
+      const failures = []
+      page.on('pageerror', (error) => failures.push(error.message))
+      page.on('requestfailed', (request) => failures.push(request.url()))
+      page.on('response', (response) => {
+        if (response.status() >= 400) failures.push(`${response.status()} ${response.url()}`)
+      })
+      const response = await page.goto(url.href, { waitUntil: 'networkidle' })
+      assert.equal(response.status(), 200)
+      await expect(page).toHaveTitle(/Focusday/)
+      await expect(page.getByLabel('새 할 일 제목')).toBeVisible()
+      assert.equal(await page.evaluate(() => localStorage.length), 0)
+
+      if (name === 'desktop') {
+        const html = await response.text()
+        const paths = [...html.matchAll(/(?:src|href)="([^"]+)"/g)]
+          .map((match) => match[1])
+          .filter((path) => /\.(js|css|svg)(?:\?|$)/.test(path))
+        assert(paths.some((path) => path.includes('.js')))
+        assert(paths.some((path) => path.includes('.css')))
+        assert(paths.some((path) => path.includes('favicon')))
+        for (const path of paths) {
+          const assetURL = new URL(path, url)
+          assert.equal(assetURL.origin, url.origin)
+          assert(assetURL.pathname.startsWith(url.pathname))
+          const asset = await context.request.get(assetURL.href)
+          assert.equal(asset.status(), 200)
+          assert((await asset.body()).length > 0)
+          assert(!asset.headers()['content-type']?.includes('text/html'))
+          report.assets.push({ url: assetURL.href, status: asset.status() })
+        }
+      }
+
+      const title = `공개 배포 검증 ${name}`
+      const renamed = `${title} 수정`
+      const input = page.getByLabel('새 할 일 제목')
+      await input.fill(title)
+      await input.press('Enter')
+      await expect(page.getByText('저장됨', { exact: true })).toBeVisible()
+      await page.getByRole('button', { name: `${title} 편집`, exact: true }).click()
+      await page.getByLabel('제목', { exact: true }).fill(renamed)
+      await page.getByLabel('기한', { exact: true }).fill('2099-12-31')
+      await page.getByLabel('우선순위').selectOption('high')
+      await page.getByLabel('분류 선택').fill('배포 확인')
+      await page.getByRole('button', { name: '저장', exact: true }).click()
+      await page.reload({ waitUntil: 'networkidle' })
+      const readTasks = () =>
+        page.evaluate(() => JSON.parse(localStorage.getItem('focusday:v1')).tasks)
+      let tasks = await readTasks()
+      assert.equal(tasks.length, 1)
+      assert.equal(tasks[0].title, renamed)
+      assert.equal(tasks[0].dueDate, '2099-12-31')
+      assert.equal(tasks[0].priority, 'high')
+      assert.equal(tasks[0].category, '배포 확인')
+      assert(tasks[0].focusDate)
+      await page.getByRole('button', { name: `${renamed} 오늘에서 빼기`, exact: true }).click()
+      await expect(page.getByRole('button', { name: `${renamed} 편집`, exact: true })).toHaveCount(
+        0,
+      )
+      const nav = page.getByRole('navigation', {
+        name: name === 'mobile' ? '모바일 보기' : '할 일 보기',
+        exact: true,
+      })
+      await nav.getByRole('button', { name: /전체/ }).click()
+      await page.getByRole('button', { name: `${renamed} 오늘에 추가`, exact: true }).click()
+      assert.equal((await readTasks())[0].dueDate, '2099-12-31')
+      await nav.getByRole('button', { name: /오늘/ }).click()
+      await page.getByRole('checkbox', { name: `${renamed} 완료`, exact: true }).click()
+      await page.getByRole('button', { name: '실행 취소', exact: true }).click()
+      assert.equal((await readTasks())[0].completedAt, null)
+      await page.getByRole('button', { name: `${renamed} 편집`, exact: true }).click()
+      await page.getByRole('button', { name: '삭제', exact: true }).click()
+      assert.equal((await readTasks()).length, 0)
+      await page.getByRole('button', { name: '실행 취소', exact: true }).click()
+      tasks = await readTasks()
+      assert.equal(tasks[0].title, renamed)
+      assert.equal(tasks[0].dueDate, '2099-12-31')
+      await page.getByRole('button', { name: `${renamed} 편집`, exact: true }).click()
+      await page.getByRole('button', { name: '삭제', exact: true }).click()
+      await page.reload({ waitUntil: 'networkidle' })
+      assert.equal((await readTasks()).length, 0)
+      await page.getByRole('button', { name: '예시로 둘러보기', exact: true }).last().click()
+      assert.equal((await readTasks()).length, 5)
+      assert.equal(
+        await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+        true,
+      )
+      await page.screenshot({ path: `docs/screenshots/live-${name}.png`, fullPage: true })
+      await page.getByRole('button', { name: '발표 자료 최종 확인 편집', exact: true }).click()
+      await expect(page.getByRole('dialog')).toBeVisible()
+      const box = await page.getByRole('dialog').boundingBox()
+      assert(box.x >= 0 && box.x + box.width <= width)
+      await page.screenshot({ path: `docs/screenshots/live-${name}-editor.png`, fullPage: true })
+      assert.deepEqual(failures, [])
+      report.screens.push({
+        name,
+        viewport: { width, height },
+        isMobile: name === 'mobile',
+        checks: [
+          'HTML/자산',
+          '첫 빈 화면',
+          '생성',
+          '속성 편집',
+          '새로고침 저장',
+          '오늘/전체',
+          '완료 취소',
+          '삭제 취소',
+          '예시',
+          '가로 넘침/편집기',
+          '실행 오류 없음',
+        ],
+        status: 'PASS',
+      })
+      console.log(`${name} ${width}×${height}: PASS`)
+    } finally {
+      await context.close()
+    }
+  }
+  report.status = 'PASS'
+} catch (error) {
+  report.status = 'FAIL'
+  report.error = String(error)
+  throw error
+} finally {
+  await browser.close()
+  await writeFile('docs/evidence/live-deployment.json', `${JSON.stringify(report, null, 2)}\n`)
+}

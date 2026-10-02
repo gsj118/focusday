@@ -18,7 +18,7 @@
 
 검토 질문: 키보드로 편집을 닫으면 원래 행으로 돌아가는가? 첫/끝 Tab이 모달에 머무는가? 행이 사라져도 포커스가 유지되는가? 실제 상태별 글자 대비와 입력 이름이 있는가? 수행하지 않은 테스트나 공개 배포를 성공으로 적는가?
 
-결과: 첫 브라우저 검증에서 Escape 후 포커스 유실 발견. requestAnimationFrame 의존을 DOM 갱신 후 useLayoutEffect 복구로 수정. native dialog의 Tab 경계에 명시적인 경계 처리 추가. 완료 복원 시에도 인접 항목/입력창으로 복귀. README 상단을 제품→실제 화면→시연 상태/실행→차별점 순서로 구성. 실제 OS IME·휴대폰·Safari/Firefox·사용자 연구·GitHub Actions 실행은 미실행으로 구분.
+결과: 첫 브라우저 검증에서 Escape 후 포커스 유실 발견. requestAnimationFrame 의존을 DOM 갱신 후 useLayoutEffect 복구로 수정. native dialog의 Tab 경계에 명시적인 경계 처리 추가. 완료 복원 시에도 인접 항목/입력창으로 복귀. README 상단을 제품→실제 화면→시연 상태/실행→차별점 순서로 구성. 실제 OS IME·휴대폰·Safari/Firefox·사용자 연구는 미실행으로 구분. GitHub Actions는 후속 생성 요청 뒤 실제 실행·통과했으며 공개 주소 검증 후 시연 링크를 반영했다.
 
 ## 테스트 도구 자체의 수정
 

@@ -1,5 +1,5 @@
 name: Publish Focusday to Pages
-# Deployment is explicit until the assignment repository is confirmed.
+# Run manually to publish a verified main revision.
 on:
   workflow_dispatch:
 permissions:

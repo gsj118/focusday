@@ -14,21 +14,26 @@
 
 ## 실행한 명령과 결과
 
-| 명령                                                        | 실제 결과                                                                   |
-| ----------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `pnpm install --store-dir .pnpm-store`                      | PASS: 공개 패키지 실제 설치, 호환 peer 범위와 Node 요구 확인, lockfile 생성 |
-| `node node_modules/typescript/bin/tsc --noEmit`             | PASS: 타입 오류 없음                                                        |
-| `node node_modules/eslint/bin/eslint.js .`                  | PASS: 린트 오류 없음                                                        |
-| `node node_modules/vitest/vitest.mjs run`                   | PASS: 2 파일, 25 테스트                                                     |
-| `node scripts/test-date-zones.mjs` / `pnpm test:dates`      | PASS: 서울·뉴욕에서 도메인 테스트 각각 15개, DST 23/25시간 자정 포함        |
-| `pnpm check`                                                | PASS: 타입·lint·단위·서울/뉴욕 시간대·production build 실행                 |
-| `node node_modules/vite/bin/vite.js build`                  | PASS: 실제 production HTML·JS·CSS 생성                                      |
-| `node node_modules/@playwright/test/cli.js test`            | PASS: production 앱에서 E2E 25개                                            |
-| `VITE_BASE_PATH=/focusday-test/` build + 해당 baseURL의 E2E | PASS: 하위 경로 production 앱에서 같은 E2E 25개                             |
+| 명령                                                        | 실제 결과                                                                                                               |
+| ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `pnpm install --store-dir .pnpm-store`                      | PASS: 공개 패키지 실제 설치, 호환 peer 범위와 Node 요구 확인, lockfile 생성                                             |
+| `node node_modules/typescript/bin/tsc --noEmit`             | PASS: 타입 오류 없음                                                                                                    |
+| `node node_modules/eslint/bin/eslint.js .`                  | PASS: 린트 오류 없음                                                                                                    |
+| `node node_modules/vitest/vitest.mjs run`                   | PASS: 2 파일, 25 테스트                                                                                                 |
+| `node scripts/test-date-zones.mjs` / `pnpm test:dates`      | PASS: 서울·뉴욕에서 도메인 테스트 각각 15개, DST 23/25시간 자정 포함                                                    |
+| `pnpm check`                                                | PASS: 타입·lint·단위·서울/뉴욕 시간대·production build 실행                                                             |
+| `node node_modules/vite/bin/vite.js build`                  | PASS: 실제 production HTML·JS·CSS 생성                                                                                  |
+| `node node_modules/@playwright/test/cli.js test`            | PASS: production 앱에서 E2E 25개                                                                                        |
+| `VITE_BASE_PATH=/focusday-test/` build + 해당 baseURL의 E2E | PASS: 하위 경로 production 앱에서 같은 E2E 25개                                                                         |
+| GitHub CI `pnpm check` + Chromium E2E                       | PASS: 원격 Linux에서 전체 검사와 E2E 25개, [실행 기록](https://github.com/gsj118/focusday/actions/runs/36953822839)     |
+| GitHub Pages `/focusday/` 검증·배포                         | PASS: 전체 검사·해당 경로 E2E 25개·Pages 배포, [실행 기록](https://github.com/gsj118/focusday/actions/runs/36953844998) |
+| `node scripts/check-deployment.mjs`                         | PASS: 실제 공개 URL에서 Chrome 데스크톱·모바일 핵심 동작 및 자산 HTTP 200                                               |
 
 bundled pnpm 실행 경로를 통해 npm registry 조회·설치와 pnpm scripts를 수행했다. 네트워크 제한 환경에서는 registry 요청이 실패해 네트워크 접근 가능한 권한 환경에서 설치했다. GitHub 인증도 같은 방식으로 재확인했으며 정상이다.
 
 최종 E2E 결과의 간결한 원본 기반 요약: [로컬 루트 경로](evidence/root-e2e.json), [Pages 하위 경로](evidence/pages-e2e.json). 전체 trace와 임시 보고서는 `test-results/`에 생성하고 Git에서 제외한다. 시간은 테스트 환경 실행값으로 실제 성능 보장을 뜻하지 않는다.
+
+공개 주소는 [https://gsj118.github.io/focusday/](https://gsj118.github.io/focusday/)다. 2026-10-02 11:06 KST에 실제 Chrome 134로 확인한 [공개 검증 결과](evidence/live-deployment.json)에 URL·브라우저 버전·자산 상태·화면별 조작을 기록했다. 첫 빈 화면, 생성, 제목·기한·우선순위·분류 편집, 새로고침 저장, 오늘/전체와 기한 독립, 완료/삭제 취소, 예시, 편집기 경계를 데스크톱 1440×900과 touch/isMobile 390×844에서 모두 통과했다. 요청 실패·4xx·pageerror는 없었다. [공개 데스크톱](screenshots/live-desktop.png) · [공개 모바일](screenshots/live-mobile.png) · [공개 모바일 편집](screenshots/live-mobile-editor.png).
 
 ## 기능별 기대 결과와 실제 결과
 
@@ -82,13 +87,12 @@ bundled pnpm 실행 경로를 통해 npm registry 조회·설치와 pnpm scripts
 
 ## 미실행과 남은 제한
 
-| 항목                                                     | 상태    | 이유·한계                                                                                                            |
-| -------------------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------- |
-| 실제 스마트폰의 Chrome/Safari·실제 가상 키보드·safe-area | NOT_RUN | 물리 기기 검증을 수행하지 않았다. touch와 좁아진 viewport는 브라우저 에뮬레이션이며 실기기 동등성을 주장하지 않는다. |
-| OS 한글 IME 실제 조합키 입력                             | NOT_RUN | 사용한 E2E는 composition 이벤트 수준이다. 네이티브 OS 조합 입력의 실사용 확인을 별도로 수행하지 않았다.              |
-| Firefox / Safari / 최신 Chrome                           | NOT_RUN | 실제 검증은 설치된 Chrome 134에 한정. 해당 추가 환경의 브라우저를 설치·실행하지 않았다.                              |
-| 스크린 리더·전체 WCAG 적합성 평가                        | NOT_RUN | 자동 이름/색과 키보드 검증은 전체 수동 보조기술 평가를 대체하지 않는다.                                              |
-| 실제 사용자 인터뷰·과업 테스트·성능 벤치마크             | NOT_RUN | 이번 제작은 명세 기반 프로토타입 검증. 200개 기본 조작 결과를 일반 성능 보장으로 사용하지 않는다.                    |
-| GitHub push·Pages 실배포·원격 Actions                    | NOT_RUN | 인증은 정상이나 대상 과제 remote가 미지정. 새 공개 저장소는 임의로 만들지 않았다.                                    |
+| 항목                                                     | 상태    | 이유·한계                                                                                                                                          |
+| -------------------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 실제 스마트폰의 Chrome/Safari·실제 가상 키보드·safe-area | NOT_RUN | 물리 기기 검증을 수행하지 않았다. touch와 좁아진 viewport는 브라우저 에뮬레이션이며 실기기 동등성을 주장하지 않는다.                               |
+| OS 한글 IME 실제 조합키 입력                             | NOT_RUN | 사용한 E2E는 composition 이벤트 수준이다. 네이티브 OS 조합 입력의 실사용 확인을 별도로 수행하지 않았다.                                            |
+| Firefox / Safari / 최신 Google Chrome                    | NOT_RUN | Windows와 공개 사이트는 설치된 Chrome 134, 원격 CI는 Playwright Chromium으로 확인. 별도 Firefox/Safari/최신 Google Chrome 제품 검증은 하지 않았다. |
+| 스크린 리더·전체 WCAG 적합성 평가                        | NOT_RUN | 자동 이름/색과 키보드 검증은 전체 수동 보조기술 평가를 대체하지 않는다.                                                                            |
+| 실제 사용자 인터뷰·과업 테스트·성능 벤치마크             | NOT_RUN | 이번 제작은 명세 기반 프로토타입 검증. 200개 기본 조작 결과를 일반 성능 보장으로 사용하지 않는다.                                                  |
 
 서버 백업·기기 간 동기화·다중 탭 편집 보장은 없다. 사이트 데이터 삭제로 데이터가 사라질 수 있다. 삭제 취소는 최근 한 건의 알림 표시 중에만 제공하며 새 행동/새로고침이 복구를 교체·종료한다. 현재 검증 범위 안에 남은 재현 가능한 기능 실패는 발견하지 못했다.

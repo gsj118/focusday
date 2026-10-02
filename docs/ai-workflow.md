@@ -6,6 +6,7 @@
 
 - [최초 제작 지시](ai-prompts/01-implementation.md): 사용자가 실행을 명시적으로 요청한 첨부 명세. 원본 그대로 보존.
 - [현재 사용자 실행 요청](ai-prompts/00-user-request.md): 현재 폴더 개발·검증·README 순서·커밋·조건부 push 요구.
+- [공개 저장소 생성 후속 요청](ai-prompts/03-publication-request.md): 저장소 선택을 맡긴 후 실제 계정 확인·생성·push·Pages 배포·공개 주소 검증.
 - [자체 검토 기록](ai-prompts/02-review-notes.md): 별도 대화가 있었던 것처럼 만든 프롬프트가 아니라, 이 세션에서 실제 수행한 검토와 결과.
 
 ## 연결 과정
@@ -28,4 +29,4 @@
 
 ## AI 판단의 한계
 
-자동 생성 코드는 TypeScript·lint·규칙 테스트·실제 Chrome으로 검증하고 결함을 수정했으나 전체 보안 감사·WCAG 적합성 평가·실제 사용자 연구를 대체하지 않는다. 명세에는 없는 외부 계정·백업 기능을 약속하지 않는다. 남은 환경과 배포 조건은 [검증](validation.md)과 [제출 준비](deployment.md)에 명시한다.
+자동 생성 코드는 TypeScript·lint·규칙 테스트·실제 Chrome·원격 Chromium으로 검증하고 결함을 수정했으나 전체 보안 감사·WCAG 적합성 평가·실제 사용자 연구를 대체하지 않는다. 명세에는 없는 외부 계정·백업 기능을 약속하지 않는다. 남은 환경과 실제 배포 결과는 [검증](validation.md)과 [제출·배포](deployment.md)에 명시한다.

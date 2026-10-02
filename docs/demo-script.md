@@ -1,6 +1,6 @@
 # 2~3분 시연
 
-Node 24 / pnpm 11.19.0. 먼저 `pnpm install --frozen-lockfile`, `pnpm build`, `pnpm preview`. `http://127.0.0.1:4173`에서 실행한다. 예시 데이터는 선택적으로 추가하며 기존 개인 데이터가 있는 브라우저는 초기화하지 않는다.
+[공개 Focusday](https://gsj118.github.io/focusday/)에서 바로 시연할 수 있다. 로컬은 Node 24 / pnpm 11.19.0에서 `pnpm install --frozen-lockfile`, `pnpm build`, `pnpm preview` 후 `http://127.0.0.1:4173`을 연다. 예시 데이터는 선택적으로 추가하며 기존 개인 데이터가 있는 브라우저는 초기화하지 않는다.
 
 | 시간      | 행동                                                 | 설명                                                                      |
 | --------- | ---------------------------------------------------- | ------------------------------------------------------------------------- |
@@ -15,4 +15,4 @@ Node 24 / pnpm 11.19.0. 먼저 `pnpm install --frozen-lockfile`, `pnpm build`, `
 
 키보드 시연은 N → 입력 Enter → Tab으로 체크박스/제목 이동 → 제목 Enter → 편집 저장 → Space 완료 → Tab으로 실행 취소를 수행한다. Escape는 편집 초안을 버린다. 실행 취소는 최근 한 건, 8초이며 hover/포커스 동안 만료가 멈춘다.
 
-공개 GitHub 시연은 대상 저장소 연결·인증·push가 완료된 뒤 가능하다. 현재는 로컬 README와 커밋을 사용한다.
+[GitHub README](https://github.com/gsj118/focusday)에서 공개 시연 링크, 실제 데스크톱/모바일 화면, 설계 결정·AI 활용·검증 문서와 작업별 커밋을 확인할 수 있다. 공개 사이트와 로컬 사이트의 할 일은 각각의 브라우저 origin에 저장된다.

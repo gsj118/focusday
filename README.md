@@ -2,9 +2,9 @@
 
 **생각난 일은 빠르게 담고, 오늘 할 일만 선명하게.** 계정 없이 사용하는 개인용 할 일 관리 앱입니다.
 
-![Focusday 실제 데스크톱 오늘 화면](docs/screenshots/desktop.png)
+![Focusday 공개 사이트의 실제 데스크톱 오늘 화면](docs/screenshots/live-desktop.png)
 
-**공개 시연:** 아직 게시되지 않았습니다. GitHub 인증은 정상이며 대상 과제 저장소를 지정해야 합니다. **로컬 시연:** `pnpm build` → `pnpm preview` → [http://127.0.0.1:4173](http://127.0.0.1:4173). 실제 Chrome에서 이 production 앱을 검증했습니다.
+**[Focusday 바로 사용하기](https://gsj118.github.io/focusday/)** · [GitHub 저장소](https://github.com/gsj118/focusday). 공개 주소의 데스크톱·모바일 핵심 동작과 자산 로딩을 실제 Chrome에서 확인했습니다. **로컬 시연:** `pnpm build` → `pnpm preview` → [http://127.0.0.1:4173](http://127.0.0.1:4173).
 
 Node.js 24와 pnpm 11.19.0에서 프로젝트 폴더를 열고 실행하세요.
 
@@ -23,11 +23,11 @@ pnpm dev
 
 ## 화면과 사용 흐름
 
-| 모바일 오늘 화면                                                                       | 모바일 상세 편집                                                                                           |
-| -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| <img src="docs/screenshots/mobile.png" alt="390px에서 실행한 오늘 화면" width="300" /> | <img src="docs/screenshots/mobile-editor.png" alt="390px에서 실행한 상세 편집 bottom sheet" width="300" /> |
+| 모바일 오늘 화면                                                                               | 모바일 상세 편집                                                                                                   |
+| ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| <img src="docs/screenshots/live-mobile.png" alt="공개 사이트의 390px 오늘 화면" width="300" /> | <img src="docs/screenshots/live-mobile-editor.png" alt="공개 사이트의 390px 상세 편집 bottom sheet" width="300" /> |
 
-모두 실제 production 앱에서 촬영했습니다. 모바일 이미지는 브라우저 에뮬레이션입니다. [데스크톱 편집](docs/screenshots/desktop-editor.png), [1366px 화면](docs/screenshots/layout-1366.png), [320px 화면](docs/screenshots/layout-320.png)도 확인할 수 있습니다.
+대표·모바일 이미지는 실제 공개 사이트에서 촬영했습니다. 모바일은 브라우저 에뮬레이션입니다. [공개 사이트 데스크톱 편집](docs/screenshots/live-desktop-editor.png), 로컬 production의 [1366px 화면](docs/screenshots/layout-1366.png), [320px 화면](docs/screenshots/layout-320.png)도 확인할 수 있습니다.
 
 1. 오늘에서 제목을 적고 Enter 또는 **추가**를 누릅니다. 전체에서 작성하면 오늘에는 자동으로 담기지 않습니다.
 2. 전체에서 **오늘에 추가**로 집중할 일을 고릅니다. 기한은 그대로 유지됩니다.
@@ -73,6 +73,8 @@ E2E는 먼저 production build가 있어야 합니다. 실행 중인 preview를 
 | TypeScript·ESLint·production build       | PASS                                             |
 | 도메인·저장 단위 테스트                  | 25개 PASS (서울·뉴욕 날짜 테스트도 별도 통과)    |
 | 실제 Chrome E2E                          | 25개 PASS ([검증 기록](docs/validation.md))      |
+| GitHub CI / Pages 빌드·배포              | PASS: 각각 Chromium E2E 25개 통과 후 배포        |
+| 공개 시연 주소                           | PASS: 실제 자산·데스크톱/모바일 핵심 동작        |
 | 1440×900 / 1366×768 / 390×844 / 320×740  | 목록·편집기·긴 제목·가로 넘침 PASS               |
 | 한글 IME                                 | composition 이벤트 검증 PASS, 실제 OS IME 미실행 |
 | 실제 스마트폰·Safari·Firefox·사용자 연구 | NOT_RUN                                          |
@@ -115,6 +117,6 @@ AI는 제공 리서치의 해석 → 설계 선택 → 코드 작성 → 저장/
 
 ## GitHub 제출·배포
 
-로컬 Git에 실제 완료 작업별 커밋을 남겼습니다. 대상 remote가 없어 push·공개 배포는 실행하지 않았습니다. 새 공개 저장소를 임의로 만들지 않았습니다.
+실제 완료 작업별 커밋을 [gsj118/focusday](https://github.com/gsj118/focusday)에 push했습니다. GitHub CI와 Pages 배포가 모두 성공했고 공개 사이트를 직접 검증했습니다. [CI 실행 기록](https://github.com/gsj118/focusday/actions/runs/36953822839) · [Pages 배포 기록](https://github.com/gsj118/focusday/actions/runs/36953844998) · [공개 사이트 검증 결과](docs/evidence/live-deployment.json).
 
-CI와 수동 GitHub Pages workflow를 포함합니다. 기본 자산 경로는 상대 경로이며 Pages workflow는 실제 저장소의 `base_path`를 사용합니다. [배포 준비와 필요한 정보](docs/deployment.md)를 참고하세요. 배포 후 실제 페이지·자산 로딩이 확인되면 위 공개 시연에 검증된 URL을 추가할 수 있습니다.
+CI는 main push/PR에서 실행됩니다. Pages는 수동 workflow로 검증 후 배포하며 실제 저장소의 `/focusday/` 경로를 사용합니다. [배포 결과와 재배포 안내](docs/deployment.md)에 명령과 증거를 기록했습니다. 공개 사이트 검증은 `node scripts/check-deployment.mjs`로 재실행할 수 있습니다.
