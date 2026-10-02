@@ -1,0 +1,108 @@
+{
+  "appVersion": "1.1.0",
+  "retrievedAt": "2026-10-02T03:59:01.1582545Z",
+  "repository": "gsj118/focusday",
+  "releaseTag": "v1.1.0",
+  "releaseSourceCommit": "e29397ec3b7c3e0340a275c11ae257a6359aed81",
+  "runs": [
+    {
+      "conclusion": "success",
+      "createdAt": "2026-10-02T03:48:40Z",
+      "databaseId": 36961788691,
+      "headBranch": "main",
+      "headSha": "e29397ec3b7c3e0340a275c11ae257a6359aed81",
+      "jobs": [
+        {
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-02T03:48:43Z",
+          "completedAt": "2026-10-02T03:50:26Z",
+          "url": "https://github.com/gsj118/focusday/actions/runs/36961788691/job/110696856853"
+        }
+      ],
+      "name": "Verify Focusday",
+      "status": "completed",
+      "updatedAt": "2026-10-02T03:50:27Z",
+      "url": "https://github.com/gsj118/focusday/actions/runs/36961788691",
+      "e2eEvidence": "verify\tRun pnpm test:e2e\t2026-10-02T03:50:23.2338574Z   55 passed (50.4s)"
+    },
+    {
+      "conclusion": "failure",
+      "createdAt": "2026-10-02T03:48:40Z",
+      "databaseId": 36961789411,
+      "headBranch": "v1.1.0",
+      "headSha": "e29397ec3b7c3e0340a275c11ae257a6359aed81",
+      "jobs": [
+        {
+          "name": "build",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-02T03:48:44Z",
+          "completedAt": "2026-10-02T03:50:20Z",
+          "url": "https://github.com/gsj118/focusday/actions/runs/36961789411/job/110696862926"
+        },
+        {
+          "name": "deploy",
+          "status": "completed",
+          "conclusion": "failure",
+          "startedAt": "2026-10-02T03:50:21Z",
+          "completedAt": "2026-10-02T03:50:22Z",
+          "url": "https://github.com/gsj118/focusday/actions/runs/36961789411/job/110697224674"
+        }
+      ],
+      "name": "Publish Focusday to Pages",
+      "status": "completed",
+      "updatedAt": "2026-10-02T03:50:23Z",
+      "url": "https://github.com/gsj118/focusday/actions/runs/36961789411",
+      "e2eEvidence": "build\tRun pnpm test:e2e\t2026-10-02T03:50:17.3448368Z   55 passed (47.8s)"
+    },
+    {
+      "conclusion": "success",
+      "createdAt": "2026-10-02T03:55:33Z",
+      "databaseId": 36962290813,
+      "headBranch": "main",
+      "headSha": "e29397ec3b7c3e0340a275c11ae257a6359aed81",
+      "jobs": [
+        {
+          "name": "build",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-02T03:55:37Z",
+          "completedAt": "2026-10-02T03:57:06Z",
+          "url": "https://github.com/gsj118/focusday/actions/runs/36962290813/job/110698379006"
+        },
+        {
+          "name": "deploy",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-02T03:57:10Z",
+          "completedAt": "2026-10-02T03:57:21Z",
+          "url": "https://github.com/gsj118/focusday/actions/runs/36962290813/job/110698710891"
+        }
+      ],
+      "name": "Publish Focusday to Pages",
+      "status": "completed",
+      "updatedAt": "2026-10-02T03:57:21Z",
+      "url": "https://github.com/gsj118/focusday/actions/runs/36962290813",
+      "e2eEvidence": "build\tRun pnpm test:e2e\t2026-10-02T03:57:04.4291643Z   55 passed (41.1s)"
+    }
+  ],
+  "deniedDeployAnnotations": [
+    {
+      "annotation_level": "failure",
+      "message": "Tag \"v1.1.0\" is not allowed to deploy to github-pages due to environment protection rules."
+    },
+    {
+      "annotation_level": "failure",
+      "message": "The deployment was rejected or didn't satisfy other protection rules."
+    }
+  ],
+  "observedPagesPolicy": [
+    {
+      "name": "main",
+      "type": "branch"
+    }
+  ],
+  "resolution": "Redeployed the same commit via the allowed main branch using the existing workflow; tag and environment protection rules unchanged."
+}

@@ -8,7 +8,17 @@ v1.1 작업 커밋을 main에 정상 push하고 수동 Pages workflow를 별도�
 
 첫 v1.1 배포 소스는 `fb5d3e5d87cd7aa5dc6f79661e1e8f7f3141b908`이다. 공개 URL의 실제 Chrome 데스크톱·모바일에서 버전 1.1.0, CRUD·복구·새로고침, 백업 속성/완료/예시 보존, 미리보기/id 합치기, 계획과 어제 이어가기의 id·기한 유지, HTML·JS·CSS·favicon HTTP 200과 실행 오류 0을 확인했다. [공개 검증 원본](evidence/v1.1/live-deployment.json).
 
-출시 태그 [v1.1.0](https://github.com/gsj118/focusday/tree/v1.1.0)은 위 검증된 앱 소스에 최종 공개 화면·검증 문서를 보완한 커밋을 가리킨다. 태그와 main을 정상 push하고 같은 출시 revision을 기존 수동 workflow로 게시한다. 태그를 덮어쓰거나 Git identity/기존 이력을 변경하지 않는다. 실제 v1.1 작업 단위는 baseline 보존, 순수 규칙, 패널/UX, production 비교·검증 문서, 공개 출시 증거다.
+출시 태그 [v1.1.0](https://github.com/gsj118/focusday/tree/v1.1.0)은 `e29397ec3b7c3e0340a275c11ae257a6359aed81`을 가리킨다. 위 검증된 앱 소스에 최종 공개 화면·검증 문서를 보완한 커밋이며, 태그와 main을 정상 push했다. 해당 커밋의 [출시 CI](https://github.com/gsj118/focusday/actions/runs/36961788691)도 성공했다. 실제 v1.1 작업 단위는 baseline 보존, 순수 규칙, 패널/UX, production 비교·검증 문서, 공개 출시 증거, 배포 환경 진단·재검증 기록이다.
+
+## 출시 태그 배포 제한과 해결
+
+`v1.1.0` ref로 실행한 [Pages workflow](https://github.com/gsj118/focusday/actions/runs/36961789411)는 타입·lint·단위·시간대·production build와 E2E **55개**를 통과한 뒤 deploy job에서 실패했다. 실제 annotation은 `Tag "v1.1.0" is not allowed to deploy to github-pages due to environment protection rules.`였다. 환경 API에서 허용된 정책은 `main` branch 한 개로 확인됐다.
+
+태그와 환경 정책을 유지하고, **동일한 `e29397e` 커밋의 main**을 기존 수동 workflow로 배포했다. [허용된 main 재실행](https://github.com/gsj118/focusday/actions/runs/36962290813)의 전체 검사·E2E **55개**와 build/deploy가 모두 성공했다. [실제 상태·오류·정책·재실행 증거](evidence/v1.1/release-deployment.json). 태그 직접 배포를 성공으로 기록하지 않으며 force push·태그 이동·보호 규칙 변경은 하지 않았다.
+
+이후 공개 주소의 Chrome 데스크톱·모바일 조작을 다시 실행해 모두 PASS, 자산 HTTP 200, 실행 오류 0을 확인했다. [출시 커밋 공개 재검증](evidence/v1.1/release-public.json)은 실제 시각·브라우저·소스 커밋을 기록한다. 반복 촬영 파일은 `test-results/release-smoke/`에 두고 기존 공개 대표 화면은 유지한다.
+
+이 배포 진단 기록은 출시 태그 이후 main의 문서 커밋으로 보존한다. 앱 소스는 태그와 동일하다. 앞으로도 배포 ref는 `main`을 사용하며 배포 뒤 공개 주소를 확인한다.
 
 ## 확인된 제출물
 

@@ -23,6 +23,10 @@ Windows NT 10.0.26200 / PowerShell 7.6.5 / Node 24.19.0 / pnpm 11.19.0. React 19
 
 배포 성공 뒤 Chrome 134의 격리 desktop 1440×900 / touch/isMobile 390×844 context로 공개 주소를 조작했다. 실제 버전 1.1.0, HTML/JS/CSS/favicon 200, 첫 빈 화면, 생성·편집·새로고침 저장·집중·완료/삭제 취소, 완료/예시 전체 백업 JSON과 무변경, id 합치기 preview/적용, 어제 안내·계획·같은 id/기한 이어가기와 reload가 모두 PASS다. requestfailed·4xx·pageerror는 0. [공개 검증 JSON](evidence/v1.1/live-deployment.json) · [공개 계획](screenshots/v1.1/live-desktop-plan.png) · [공개 모바일 복원](screenshots/v1.1/live-mobile-restore.png). 태그·push·수동 배포 관계는 [deployment.md](deployment.md)에 있다.
 
+출시 커밋 `e29397e`의 CI는 성공했다. 태그 ref의 Pages 실행은 검사/E2E 55개 통과 후 main만 허용하는 환경 정책 때문에 deploy에서 실패했다. 태그·정책을 그대로 두고 같은 커밋의 main으로 재실행해 검사/E2E 55개와 build/deploy 성공을 확인했다. 이 배포 실패는 기능 검사 실패와 구분한다. [실제 오류·정책·재실행 결과](evidence/v1.1/release-deployment.json).
+
+허용된 경로로 출시 커밋을 게시한 뒤 공개 Chrome 데스크톱·모바일 검사를 다시 실행해 동일한 핵심 동작·백업/합치기·계획/이어가기와 자산 200, 오류 0을 확인했다. [출시 공개 재검증](evidence/v1.1/release-public.json).
+
 ## 새 기능별 기대와 실제
 
 | 확인한 행동                               | 기대                                                                  | 실제 결과                                                       | 상태              |

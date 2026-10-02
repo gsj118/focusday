@@ -11,3 +11,7 @@ duration은 자동화된 과업의 실행 시간이며 앱 성능 벤치마크�
 위 루트의 live/GitHub 기록은 **v1.0**이다. 최신 v1.1은 별도 [루트 E2E 55개](v1.1/root-e2e.json), [Pages E2E 55개](v1.1/pages-e2e.json), [업데이트 전 baseline 재실행](v1.1/baseline-v1.0.json)으로 구분한다. 공개 배포 도구도 이제 `v1.1/`에 저장해 과거 결과를 덮어쓰지 않는다. 앱/source/tag와 실제 배포 확인 상태는 [배포 문서](../deployment.md)에 연결된다.
 
 [v1.1 GitHub Actions](v1.1/github-actions.json)는 실제 성공 상태와 각각 55 passed 원격 로그를 추출했다. [v1.1 공개 사이트](v1.1/live-deployment.json)는 실제 버전·자산·CRUD·계획·어제 이어가기·백업/합치기의 desktop/mobile PASS다. 해당 source commit과 시각을 명시하며 공개 화면은 `screenshots/v1.1/live-*.png`에 보존한다.
+
+[v1.1 출시 배포](v1.1/release-deployment.json)는 출시 커밋의 CI 성공, 태그 ref의 환경 정책 거부, 동일 커밋 main 재실행의 검사·배포 성공을 실제 API/로그로 구분한다. 태그와 환경 정책은 변경하지 않았다.
+
+[출시 커밋 공개 재검증](v1.1/release-public.json)은 위 main 배포 뒤 실제 Chrome 데스크톱·모바일에서 같은 스크립트를 다시 실행한 PASS 결과다. 반복 촬영은 Git에서 제외한 `test-results/release-smoke/`에 두고 공개 대표 화면 파일을 유지했다.
