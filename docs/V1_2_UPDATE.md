@@ -37,6 +37,8 @@ SB-01은 사용자 전체 데이터를 파일로 보존해도 다시 가져올 �
 
 현재 루트 production 전체 71개, 단위 46개, 서울/뉴욕 날짜 각각 22개, 타입·lint·build가 통과했다. [루트 원본 요약](evidence/v1.2/root-final.json) · [순수 데이터 재검증](evidence/v1.2/backup-boundary-after.json). 53개 항목별 기대/행동/근거와 12개 관점은 [Synthetic Beta](SYNTHETIC_BETA_V1_2.md)에 연결한다. 원격·Pages 최종 확인은 [배포 기록](deployment.md)에 분리한다.
 
+GitHub CI와 Pages build/deploy도 각각 Chromium71개·단위46·시간대각22·production build가 실제 통과했다. 공개 Chrome desktop/mobile의 앱1.2.0·자산200·핵심 조작·계획·백업·조합 Enter와 별도 6000개 전체 다운로드/재선택이 PASS다. [원격 증거](evidence/v1.2/github-actions.json) · [공개 실행 증거](evidence/v1.2/live-deployment.json) · [공개 백업 화면](screenshots/v1.2/live-backup-6000.png).
+
 ## 실제 변경 전후 화면
 
 화면은 격리 context의 **합성 테스트 데이터로 촬영한 실제 앱**이다. AI 이미지·목업이 아니다. 디자인 전면 교체는 하지 않았다.

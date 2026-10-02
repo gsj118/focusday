@@ -21,3 +21,5 @@ duration은 자동화된 과업의 실행 시간이며 앱 성능 벤치마크�
 [v1.1 baseline 보존](../versions/v1.1.0/index.md), [개선 전 관점 기록](v1.2/synthetic-before.json), [기존55+재현/보완 실행](v1.2/baseline-and-reproduction.json), [6000개 순수 실패](v1.2/backup-boundary-before.json)를 따로 보존한다. 평가 도구 오류는 제품 결함과 구분한다.
 
 최종 [루트71개](v1.2/root-final.json)·[Pages71개](v1.2/pages-final.json)·[데이터 경계](v1.2/backup-boundary-after.json)와 [수정 전53 Case](v1.2/cases-before.json)·[수정 후53 Case](v1.2/cases-after.json)를 연결한다. source/시각/fixture/실제 assertion 또는 raw hash를 포함하며, 태그 이후 문서와 실제 공개 확인은 [deployment](../deployment.md)에 기록한다.
+
+[v1.2 GitHub Actions](v1.2/github-actions.json)는 source39af791의 CI와 Pages 성공 상태·job 및 단위46/시간대각22/Chromium71의 실제 로그다. [v1.2 공개 검증](v1.2/live-deployment.json)은 같은 배포 소스의 앱1.2.0·desktop/mobile·자산200·핵심/계획/복원·조합 Enter·6000개 전체 다운로드/preview PASS를 기록한다. 과거 v1.0/v1.1 공개 자료는 보존한다. 출시 문서 커밋의 반복 실행은 `test-results/release-smoke/`에 분리한다.

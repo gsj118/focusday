@@ -1,12 +1,22 @@
 # Focusday GitHub 제출과 Pages 배포 결과
 
-## v1.2 로컬 완료와 게시 절차
+## v1.2 실제 GitHub·공개 배포 결과
 
 시작 main `7ff35e7` / v1.1.0 tag `e29397e`를 유지했다. 앱 1.2.0 구현 커밋은 `a52bb7aaa30c3780a429a2d0761dc928e2029353`이다. 자체 백업 크기와 상세 composition Enter 두 P1을 수정했고 저장 key/schema는 그대로다.
 
 로컬 타입·lint·단위46·서울/뉴욕각22·production build·루트 Chrome71개·실제 `/focusday/` Chrome71개를 통과했다. [53개 Case](SYNTHETIC_BETA_CASES_V1_2.md)와 [12개 관점/범위](SYNTHETIC_BETA_V1_2.md)를 연결한다. v1.1 결과를 현재 검증으로 재사용하지 않는다.
 
-배포는 기존 환경이 허용하는 **main**의 수동 workflow를 사용한다. 기존 v1.0/v1.1 태그·identity·환경 보호 규칙은 변경하지 않는다. CI/Pages 실행 및 공개 Chrome의 버전·자산·입력·계획·모바일·백업·6000개 자체 미리보기 확인의 실제 완료 결과는 게시 후 이 절에 보완한다. push 시도만으로 배포 완료라고 기록하지 않는다.
+작업별 커밋을 기존 `gsj118/focusday`의 main에 정상 push했다. 첫 v1.2 배포 소스는 `39af79111a617896b52795e8d4ee920df98f578a`다. [CI](https://github.com/gsj118/focusday/actions/runs/36986748185)와 [Pages build/deploy](https://github.com/gsj118/focusday/actions/runs/36986758881)가 모두 **success**다. 각각 실제 원격 로그의 단위46·서울/뉴욕각22·production build·Chromium E2E **71 passed**를 확인했다. [API 상태·job·정확한 PASS 로그](evidence/v1.2/github-actions.json).
+
+2026-10-02 18:00 KST 공개 URL에서 실제 Chrome134의 격리된 1440×900 데스크톱·390×844 touch 모바일을 조작했다. 앱1.2.0·생성/상세/저장/새로고침·완료/삭제 undo·예시·계획/어제 이어가기 id·기한·JSON 전체 속성/완료/예시·복원 합치기·편집 composition Enter 무저장을 확인했다. HTML·JS·CSS·favicon HTTP200, 실행 오류0, 모두 PASS다. [공개 실행 원본](evidence/v1.2/live-deployment.json).
+
+별도 격리 read port context의 6000개 항목도 공개 앱에서 실제 다운로드→같은 파일 선택→6000개 미리보기 PASS, UTF-8 **4,877,007 bytes**였다. id 길이가 로컬 fixture와 달라 bytes도 다르다. 전체 task 필드를 비교했으며 6000개 목록 렌더링·실제 저장 quota·복원 적용을 실행했다고 주장하지 않는다. [공개 백업 화면](screenshots/v1.2/live-backup-6000.png).
+
+[공개 대표 desktop](screenshots/v1.2/live-desktop.png) · [mobile](screenshots/v1.2/live-mobile.png) · [모바일 계획](screenshots/v1.2/live-mobile-plan.png) · [모바일 복원](screenshots/v1.2/live-mobile-restore.png). 실제 앱의 합성 테스트 데이터이며 목업이 아니다.
+
+출시 [v1.2.0](https://github.com/gsj118/focusday/tree/v1.2.0)은 공개 결과·화면·문서를 보완한 최종 릴리스 커밋을 가리킨다. main과 태그를 정상 push하며 같은 main을 다시 배포한다. 첫 공개 증거의 source39af791 및 구현a52bb7a와 출시 태그 사이의 앱 소스·public·package·lockfile·Vite 설정은 동일하고, 후속 차이는 공개 증거·문서다. 반복 공개 확인은 `test-results/release-smoke/`에 저장해 위 첫 실제 증거를 덮어쓰지 않는다. 최신 실행은 [CI 목록](https://github.com/gsj118/focusday/actions/workflows/ci.yml) · [Pages 목록](https://github.com/gsj118/focusday/actions/workflows/pages.yml)에서 소스 SHA와 함께 확인할 수 있다.
+
+배포는 기존 환경이 허용하는 **main**의 수동 workflow를 사용한다. 기존 v1.0/v1.1 태그·identity·remote·환경 보호 규칙은 변경하지 않는다. 평가/보존·실제 결함 구현·53개 검증 문서·공개 출시 증거를 실제 완료 단위로 커밋했다. push 시도만으로 성공을 기록하지 않는다.
 
 ## v1.1 확인 결과
 

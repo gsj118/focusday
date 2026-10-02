@@ -49,3 +49,5 @@ Chrome 134.0.6998.36 / Windows / Asia/Seoul / ko-KR. fixture Clock은 2026-10-02
 수정 전 [53 Case](evidence/v1.2/cases-before.json)는 51 PASS/2 FAIL(SB-01/E11, SB-02/B05), 수정 후 [53 Case](evidence/v1.2/cases-after.json)는 실행한 지원 조건에서 53 PASS다. 물리 기기·OS IME·native 확대·스크린 리더/전체WCAG는 NOT_RUN이며 이 숫자에 포함하지 않는다. [53개 행동 표](SYNTHETIC_BETA_CASES_V1_2.md)에서 원문 과업과 자세한 근거를 찾을 수 있다.
 
 단위46·서울/뉴욕각22·루트 production71·실제 Pages 경로71가 통과했다. F01은 직접 focus API 없이 Tab으로 핵심 입력/편집/계획/백업에 진입하는 P03 보완도 실행했다. [Pages 전체 결과](evidence/v1.2/pages-final.json)는 구현 commit a52bb7a의 실제 source/시각·개별 결과를 기록한다. [한계·오류·검증](validation.md) · [전후 화면/변경](V1_2_UPDATE.md).
+
+GitHub CI와 Pages도 실제 build/deploy success, 각각 원격 Chromium71개·단위46·시간대각22 PASS를 확인했다. 공개 사이트의 Chrome desktop/mobile 핵심 동작과 6000개 전체 다운로드/재선택도 PASS다. [원격 로그](evidence/v1.2/github-actions.json) · [공개 조작](evidence/v1.2/live-deployment.json) · [source/tag/main 관계](deployment.md). 공개 검증 역시 합성 데이터·격리 context이며 사람 평가/OS IME/대량 quota 결과가 아니다.

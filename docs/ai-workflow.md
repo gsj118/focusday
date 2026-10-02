@@ -51,3 +51,5 @@
 6000개 pure-data 크기 문제를 byte 단위로 재현하고 실제 UI 다운로드/다시 선택의 실패도 보존했다. 상세 분류 compositionstart+Enter의 의도하지 않은 저장도 raw hash와 모달 종료로 재현했다. 두 P1을 수정한 뒤 단위46·시간대각22·루트/Pages 각각71 E2E를 실행했다. 53개 Case의 원문 행동/기대와 실제 시각·환경·fixture·저장 assertion·근거를 매핑했다.
 
 가상 관점의 버튼 발견/검색 혼동은 AI walkthrough 가설로 남겼다. 한도를 넘는 자체 데이터 전체의 파일 보존, 물리기기/OS IME/native 확대/스크린 리더·전체WCAG 미실행도 명시했다. 자동화 시간을 사람의 과업 시간이나 독립 평가 점수로 사용하지 않았다. [Synthetic Beta](SYNTHETIC_BETA_V1_2.md) · [실제 변경](V1_2_UPDATE.md) · [검증](validation.md).
+
+정상 인증·기존 저장소 push 권한을 확인한 뒤 완료 작업을 정상 push했다. 실제 CI/Pages 원격 검사와 build/deploy 성공을 확인하고, 공개 Chrome desktop/mobile 및 6000개 파일 재선택도 실행했다. 그 결과로 README의 공개 대표 화면·링크·출시 문서를 확정했다. [원격/공개 증거와 출시 관계](deployment.md). 기존 환경 보호 규칙·Git identity·remote·태그는 유지했다.

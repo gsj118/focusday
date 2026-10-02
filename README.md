@@ -2,9 +2,9 @@
 
 **생각난 일은 빠르게 담고, 오늘 할 일만 선명하게.** 계정 없이 사용하는 개인용 할 일 관리 앱입니다.
 
-![실제 Focusday v1.2 production 데스크톱 화면 — 합성 예시 데이터](docs/screenshots/v1.2/after/desktop.png)
+![실제 공개 Focusday v1.2 데스크톱 화면 — 합성 예시 데이터](docs/screenshots/v1.2/live-desktop.png)
 
-**[Focusday 바로 사용하기](https://gsj118.github.io/focusday/)** · [GitHub 저장소](https://github.com/gsj118/focusday). 위 화면은 로컬 v1.2 production 앱입니다. 공개 v1.2 검증은 배포 뒤 기록합니다. **로컬 시연:** `pnpm build` → `pnpm preview` → [http://127.0.0.1:4173](http://127.0.0.1:4173).
+**[Focusday 바로 사용하기 · v1.2.0](https://gsj118.github.io/focusday/)** · [GitHub 저장소](https://github.com/gsj118/focusday). 2026-10-02 공개 Chrome 데스크톱·모바일·백업 검증 PASS. [실제 배포 결과](docs/deployment.md). **로컬 시연:** `pnpm build` → `pnpm preview` → [http://127.0.0.1:4173](http://127.0.0.1:4173).
 
 Node.js 24 / pnpm 11.19.0에서 실행하세요.
 
@@ -30,9 +30,9 @@ pnpm dev
 4. 체크박스로 완료하고 **실행 취소** 또는 전체의 완료 영역에서 복원합니다.
 5. **예시 및 앱 정보 → 백업·복원**에서 전체 JSON을 다운로드합니다. 파일 선택은 미리보기만 보여줍니다. 기본 합치기는 현재의 중복 id를 유지하며 전체 교체는 별도 확인을 거칩니다.
 
-| 모바일 계획                                                                                                                | 모바일 복원 미리보기                                                                                                              |
-| -------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| <img src="docs/screenshots/v1.2/after/plan-mobile.png" alt="390×844 실제 production 계획 패널, 합성 데이터" width="300" /> | <img src="docs/screenshots/v1.2/after/restore-mobile.png" alt="390×844 실제 production 복원 미리보기, 합성 데이터" width="300" /> |
+| 모바일 계획                                                                                                         | 모바일 복원 미리보기                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| <img src="docs/screenshots/v1.2/live-mobile-plan.png" alt="390×844 실제 공개 계획 패널, 합성 데이터" width="300" /> | <img src="docs/screenshots/v1.2/live-mobile-restore.png" alt="390×844 실제 공개 복원 미리보기, 합성 데이터" width="300" /> |
 
 실제 앱을 격리 context의 합성 데이터로 촬영했습니다. 모바일은 Chrome 에뮬레이션이며 AI 이미지/목업이 아닙니다. [320px 계획](docs/screenshots/v1.2/after/plan-320.png) · [3분 시연](docs/demo-script.md).
 
@@ -76,8 +76,10 @@ Remove-Item Env:PW_CHANNEL
 | 12개 관점 / 53개 명세 Case                 | 실제 세션+기존 UI 근거, 변경 전 51 PASS/2 FAIL → 지원 조건에서 53 PASS         |
 | 네 viewport·touch·390×480·200% 동등 reflow | 명시한 에뮬레이션 조건에서 PASS                                                |
 | 백업 경계                                  | 6000개 자체 UI 다운로드/미리보기·7000개 순수 round trip·10MiB±1·초과 다운로드0 |
+| GitHub CI / Pages 원격 검사                | 모두 성공, 각각 단위46·시간대각22·production build·Chromium E2E71 PASS         |
+| 공개 사이트 desktop/mobile / 6000개 백업   | 버전1.2.0·핵심 조작·자산200·오류0·자체 다운로드/재선택 PASS                    |
 
-[실제 결과·환경·미실행 이유](docs/validation.md) · [루트 원본](docs/evidence/v1.2/root-final.json) · [Pages 원본](docs/evidence/v1.2/pages-final.json). 공개 CI/배포의 실제 완료 결과는 [배포 문서](docs/deployment.md)에 별도로 기록합니다.
+[실제 결과·환경·미실행 이유](docs/validation.md) · [루트 원본](docs/evidence/v1.2/root-final.json) · [Pages 원본](docs/evidence/v1.2/pages-final.json) · [원격 CI/배포 증거](docs/evidence/v1.2/github-actions.json) · [공개 Chrome 증거](docs/evidence/v1.2/live-deployment.json).
 
 ## 데이터와 제한
 
@@ -102,6 +104,6 @@ React 19.3.0 + TypeScript 5.9.3 + Vite 8.3.2 + 일반 CSS. 설치 버전은 lock
 | -------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | [v1.0.0](https://github.com/gsj118/focusday/tree/v1.0.0) | 빠른 입력·오늘/전체·기한/집중·저장 보호·undo. [당시 문서·증거](docs/versions/v1.0.0/index.md)                               |
 | [v1.1.0](https://github.com/gsj118/focusday/tree/v1.1.0) | 계획·어제 이어가기·백업/복원. [변경 기록](docs/V1_1_UPDATE.md) · [이번 기준 보존](docs/versions/v1.1.0/index.md)            |
-| v1.2.0                                                   | Synthetic Beta로 자체 백업/편집 조합 Enter 보완. [53개 검사](docs/SYNTHETIC_BETA_CASES_V1_2.md) · [CHANGELOG](CHANGELOG.md) |
+| [v1.2.0](https://github.com/gsj118/focusday/tree/v1.2.0) | Synthetic Beta로 자체 백업/편집 조합 Enter 보완. [53개 검사](docs/SYNTHETIC_BETA_CASES_V1_2.md) · [CHANGELOG](CHANGELOG.md) |
 
 기존 태그·이력을 유지하고 실제 작업별 커밋을 남깁니다. CI는 main push/PR, Pages는 **main의 수동 workflow**입니다. `node scripts/check-deployment.mjs`는 공개 버전·자산·데스크톱/모바일·입력/계획/백업과 6000개 자체 미리보기를 검사하며 새 증거/화면을 `docs/evidence/v1.2/`, `docs/screenshots/v1.2/`에 저장합니다. [배포와 재검증](docs/deployment.md).

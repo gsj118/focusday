@@ -14,18 +14,21 @@ Chrome locale ko-KR, timezone Asia/Seoul. 1440×900, 1366×768, 390×844, 320×7
 
 ## 실행 결과
 
-| 실행                                  | 실제 결과/근거                                                                                           |
-| ------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| 변경 전 기존 pnpm check               | 타입·lint·단위 42개·서울/뉴욕 각각 22개·production build PASS                                            |
-| 변경 전 기존 Chrome E2E               | 기존 55개 PASS. 추가 평가/재현은 [58개 실행](evidence/v1.2/baseline-and-reproduction.json)에 분리        |
-| 12개 관점 개선 전 연결 세션           | 12개 스크립트 종료, helper의 실제 실패는 별도. [원본 관찰](evidence/v1.2/synthetic-before.json)          |
-| 수정 전 자체 백업                     | 순수 padded 5,531,044 bytes와 실제 UI 다운로드/재선택 FAIL; compact 4,847,007 bytes는 기존 5MiB 안에 듦  |
-| 수정 후 pnpm check                    | 타입·lint·단위 **46개**·서울/뉴욕 각 **22개**·production build PASS                                      |
-| 루트 production 전체 E2E              | **71개 PASS**, fail/skip/flaky 0, exit0. [원본 요약](evidence/v1.2/root-final.json)                      |
-| Tab만 사용하는 P03 보완 재확인        | 1개 PASS. [실제 키보드 재확인](evidence/v1.2/keyboard-only-recheck.json)                                 |
-| 실제 /focusday/ base build + 전체 E2E | **71개 PASS**, fail/skip/flaky 0, exit0. [Pages 경로 요약](evidence/v1.2/pages-final.json)               |
-| 53개 명세 Case 매핑                   | 개선 전 지원 범위 51 PASS/2 FAIL → 개선 후 53 PASS. [전체 항목](SYNTHETIC_BETA_CASES_V1_2.md)            |
-| 데이터 경계 재검증                    | 6000개 padded/compact 허용, 7000개 전체 필드 round trip, 정확히10MiB/1byte초과, 초과 내보내기0·원본 보존 |
+| 실행                                  | 실제 결과/근거                                                                                                       |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| 변경 전 기존 pnpm check               | 타입·lint·단위 42개·서울/뉴욕 각각 22개·production build PASS                                                        |
+| 변경 전 기존 Chrome E2E               | 기존 55개 PASS. 추가 평가/재현은 [58개 실행](evidence/v1.2/baseline-and-reproduction.json)에 분리                    |
+| 12개 관점 개선 전 연결 세션           | 12개 스크립트 종료, helper의 실제 실패는 별도. [원본 관찰](evidence/v1.2/synthetic-before.json)                      |
+| 수정 전 자체 백업                     | 순수 padded 5,531,044 bytes와 실제 UI 다운로드/재선택 FAIL; compact 4,847,007 bytes는 기존 5MiB 안에 듦              |
+| 수정 후 pnpm check                    | 타입·lint·단위 **46개**·서울/뉴욕 각 **22개**·production build PASS                                                  |
+| 루트 production 전체 E2E              | **71개 PASS**, fail/skip/flaky 0, exit0. [원본 요약](evidence/v1.2/root-final.json)                                  |
+| Tab만 사용하는 P03 보완 재확인        | 1개 PASS. [실제 키보드 재확인](evidence/v1.2/keyboard-only-recheck.json)                                             |
+| 실제 /focusday/ base build + 전체 E2E | **71개 PASS**, fail/skip/flaky 0, exit0. [Pages 경로 요약](evidence/v1.2/pages-final.json)                           |
+| 53개 명세 Case 매핑                   | 개선 전 지원 범위 51 PASS/2 FAIL → 개선 후 53 PASS. [전체 항목](SYNTHETIC_BETA_CASES_V1_2.md)                        |
+| 데이터 경계 재검증                    | 6000개 padded/compact 허용, 7000개 전체 필드 round trip, 정확히10MiB/1byte초과, 초과 내보내기0·원본 보존             |
+| GitHub CI / Pages build/deploy        | 모두 success. 각각 타입·lint·단위46·시간대각22·build·Chromium71 PASS. [원격 로그](evidence/v1.2/github-actions.json) |
+| 공개 Chrome desktop/mobile            | 앱1.2.0·자산200·핵심/계획/복원·조합 Enter·실행 오류0 PASS. [원본](evidence/v1.2/live-deployment.json)                |
+| 공개 6000개 자체 백업 재선택          | 실제 전체 다운로드·task 비교·같은 파일 preview PASS, 4,877,007bytes. read port이며 quota/목록/적용 검사는 제외       |
 
 71개는 기존 55개 회귀 + 관점별 연결 세션 12개 + 백업 크기 UI 3개 + 상세 경계 1개다. 53개는 명세의 Case ID이며 테스트 개수와 다르다. 자동화 duration을 사용자 과업 시간/앱 성능/만족도 지표로 사용하지 않는다. 원격 CI/공개 완료 결과는 [deployment.md](deployment.md)에 따로 기록한다.
 
@@ -42,6 +45,8 @@ Chrome locale ko-KR, timezone Asia/Seoul. 1440×900, 1366×768, 390×844, 320×7
 PNG는 실제 production 앱의 합성 테스트 데이터다. 백업 전후, 조합 Enter 후 모달 유지, 모바일 preview, 320px과 reflow를 직접 시각 검토하고 geometry/44px target/scroll/focus도 검사했다.
 
 [백업 실패 전](screenshots/v1.2/before/backup-6000.png) · [성공 후](screenshots/v1.2/after/backup-6000.png) · [편집 유지](screenshots/v1.2/after/P12-composition-kept.png) · [모바일](screenshots/v1.2/after/restore-mobile.png) · [320px](screenshots/v1.2/after/restore-320.png) · [200% 동등 reflow](screenshots/v1.2/after/P11-reflow.png).
+
+배포 뒤 촬영한 [실제 공개 desktop](screenshots/v1.2/live-desktop.png) · [공개 모바일 복원](screenshots/v1.2/live-mobile-restore.png) · [공개 6000개](screenshots/v1.2/live-backup-6000.png)도 직접 시각 검토했다. 원격 Playwright Chromium은 로컬 Chrome134와 다른 환경이며 둘의 결과를 구분한다.
 
 ## 미실행·범위 제한
 
