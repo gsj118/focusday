@@ -1,10 +1,14 @@
 # Focusday v1.1 GitHub 제출과 Pages 배포 결과
 
-## v1.1 현재 확인 상태
+## v1.1 확인 결과
 
 기준은 `bb8f852`의 `v1.0.0` 태그다. 기존 문서/화면/증거를 보존하고 앱 1.1.0을 구현했다. 저장 키 `focusday:v1`과 `version:1`은 변경하지 않았다. 로컬 타입·lint·단위 42개·서울/뉴욕 각각 날짜 22개·production build·루트/Pages `/focusday/` Chrome E2E 각각 55개가 통과했다.
 
-현재 v1.1 커밋과 문서는 로컬에서 완료했으며, 원격 push·CI·수동 Pages 재배포·실제 공개 주소 검증 후 최종 출시 태그를 남긴다. 공개 URL은 그대로 유지한다. push만으로 Pages 배포 완료라고 기록하지 않는다.
+v1.1 작업 커밋을 main에 정상 push하고 수동 Pages workflow를 별도로 실행했다. [CI](https://github.com/gsj118/focusday/actions/runs/36961036184)와 [Pages](https://github.com/gsj118/focusday/actions/runs/36961036551)가 모두 성공했으며 실제 로그에서 각각 E2E **55 passed**를 확인했다. [원격 증거](evidence/v1.1/github-actions.json).
+
+첫 v1.1 배포 소스는 `fb5d3e5d87cd7aa5dc6f79661e1e8f7f3141b908`이다. 공개 URL의 실제 Chrome 데스크톱·모바일에서 버전 1.1.0, CRUD·복구·새로고침, 백업 속성/완료/예시 보존, 미리보기/id 합치기, 계획과 어제 이어가기의 id·기한 유지, HTML·JS·CSS·favicon HTTP 200과 실행 오류 0을 확인했다. [공개 검증 원본](evidence/v1.1/live-deployment.json).
+
+출시 태그 [v1.1.0](https://github.com/gsj118/focusday/tree/v1.1.0)은 위 검증된 앱 소스에 최종 공개 화면·검증 문서를 보완한 커밋을 가리킨다. 태그와 main을 정상 push하고 같은 출시 revision을 기존 수동 workflow로 게시한다. 태그를 덮어쓰거나 Git identity/기존 이력을 변경하지 않는다. 실제 v1.1 작업 단위는 baseline 보존, 순수 규칙, 패널/UX, production 비교·검증 문서, 공개 출시 증거다.
 
 ## 확인된 제출물
 

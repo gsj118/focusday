@@ -19,7 +19,9 @@ Windows NT 10.0.26200 / PowerShell 7.6.5 / Node 24.19.0 / pnpm 11.19.0. React 19
 
 최종 결과의 fail/skip/flaky는 각각 0이다. [baseline 재실행](evidence/v1.1/baseline-v1.0.json) · [루트 55개](evidence/v1.1/root-e2e.json) · [Pages 55개](evidence/v1.1/pages-e2e.json). 각 보고서는 실제 Playwright JSON의 stats·각 테스트 status/duration을 추출했다. duration은 자동화 실행값이며 사용자 과업 시간/성능 지표가 아니다. 원본 JSON과 trace는 `test-results/`에 생성하고 Git에서 제외한다.
 
-현재 공개 URL은 [Focusday](https://gsj118.github.io/focusday/)다. v1.1 원격 CI·수동 Pages 재배포·실제 주소 검증은 최종 제출 단계에서 수행하며 [deployment.md](deployment.md)에 확인 결과를 기록한다.
+실제 공개 URL은 [Focusday v1.1](https://gsj118.github.io/focusday/)다. 원격 Linux [CI](https://github.com/gsj118/focusday/actions/runs/36961036184)와 [Pages 빌드·배포](https://github.com/gsj118/focusday/actions/runs/36961036551)에서 타입·lint·단위·시간대·build와 Chromium E2E 각각 **55개 통과**를 실제 로그로 확인했다. [원격 결과](evidence/v1.1/github-actions.json).
+
+배포 성공 뒤 Chrome 134의 격리 desktop 1440×900 / touch/isMobile 390×844 context로 공개 주소를 조작했다. 실제 버전 1.1.0, HTML/JS/CSS/favicon 200, 첫 빈 화면, 생성·편집·새로고침 저장·집중·완료/삭제 취소, 완료/예시 전체 백업 JSON과 무변경, id 합치기 preview/적용, 어제 안내·계획·같은 id/기한 이어가기와 reload가 모두 PASS다. requestfailed·4xx·pageerror는 0. [공개 검증 JSON](evidence/v1.1/live-deployment.json) · [공개 계획](screenshots/v1.1/live-desktop-plan.png) · [공개 모바일 복원](screenshots/v1.1/live-mobile-restore.png). 태그·push·수동 배포 관계는 [deployment.md](deployment.md)에 있다.
 
 ## 새 기능별 기대와 실제
 

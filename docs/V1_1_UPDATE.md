@@ -52,7 +52,7 @@ v1.0에서 확인한 구조는 전체 목록의 개별 집중 버튼, 지난 foc
 | 모바일 390×844    | [bottom sheet](screenshots/v1.1/plan-mobile.png) | [복원](screenshots/v1.1/restore-mobile.png)        |
 | 320×740           | [작은 계획 화면](screenshots/v1.1/plan-320.png)  | [작은 복원 화면](screenshots/v1.1/restore-320.png) |
 
-로컬 production의 fixture 날짜 2026-10-02 화면이며 AI 이미지나 목업이 아니다. 공개 사이트의 새 화면과 결과는 배포 확인 뒤 별도 v1.1 증거로 연결한다. v1.0 파일은 덮어쓰지 않았다.
+위 표는 로컬 production의 fixture 날짜 2026-10-02 화면이며 AI 이미지나 목업이 아니다. 공개 사이트도 배포 후 실제 Chrome으로 검증했다: [공개 데스크톱 계획](screenshots/v1.1/live-desktop-plan.png) · [공개 모바일 계획](screenshots/v1.1/live-mobile-plan.png) · [공개 모바일 복원](screenshots/v1.1/live-mobile-restore.png) · [실제 결과](evidence/v1.1/live-deployment.json). v1.0 파일은 덮어쓰지 않았다.
 
 ## 한계와 버전 기록
 
