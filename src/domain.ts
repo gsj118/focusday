@@ -14,7 +14,12 @@ export type Task = {
 }
 export type AppData = { version: 1; tasks: Task[] }
 export type TaskDraft = Pick<Task, 'title' | 'dueDate' | 'focusDate' | 'priority' | 'category'>
-export const priorityLabels: Record<Priority, string> = { none: '없음', low: '낮음', medium: '보통', high: '높음' }
+export const priorityLabels: Record<Priority, string> = {
+  none: '없음',
+  low: '낮음',
+  medium: '보통',
+  high: '높음',
+}
 const ranks: Record<Priority, number> = { none: 0, low: 1, medium: 2, high: 3 }
 
 export function localDate(date = new Date()): string {
@@ -61,45 +66,90 @@ export function validateTitle(title: string): string | null {
   if (title.trim().length > 200) return '제목은 200자까지 입력할 수 있습니다.'
   return null
 }
-export function createTask(title: string, view: View, today: string, now = new Date().toISOString(), id: string = crypto.randomUUID()): Task {
+export function createTask(
+  title: string,
+  view: View,
+  today: string,
+  now = new Date().toISOString(),
+  id: string = crypto.randomUUID(),
+): Task {
   const error = validateTitle(title)
   if (error) throw new Error(error)
-  return { id, title: title.trim(), createdAt: now, updatedAt: now, dueDate: null, focusDate: view === 'today' ? today : null, priority: 'none', category: null, completedAt: null, isDemo: false }
+  return {
+    id,
+    title: title.trim(),
+    createdAt: now,
+    updatedAt: now,
+    dueDate: null,
+    focusDate: view === 'today' ? today : null,
+    priority: 'none',
+    category: null,
+    completedAt: null,
+    isDemo: false,
+  }
 }
 export function isToday(task: Task, today: string): boolean {
-  return !task.completedAt && (task.focusDate === today || (isDate(task.dueDate) && task.dueDate <= today))
+  return (
+    !task.completedAt &&
+    (task.focusDate === today || (isDate(task.dueDate) && task.dueDate <= today))
+  )
 }
 export function isOverdue(task: Task, today: string): boolean {
   return !task.completedAt && isDate(task.dueDate) && task.dueDate < today
 }
 const tie = (a: Task, b: Task) => a.id.localeCompare(b.id)
-const baseSort = (a: Task, b: Task) => ranks[b.priority] - ranks[a.priority] || a.createdAt.localeCompare(b.createdAt) || tie(a, b)
+const baseSort = (a: Task, b: Task) =>
+  ranks[b.priority] - ranks[a.priority] || a.createdAt.localeCompare(b.createdAt) || tie(a, b)
 export function selectTasks(tasks: Task[], view: View, today: string, query = ''): Task[] {
   const q = query.trim().toLocaleLowerCase()
-  const filtered = tasks.filter(t => !t.completedAt && (view === 'all' || isToday(t, today)) && matches(t, q))
-  if (view === 'today') return filtered.sort((a, b) => {
-    const ao = isOverdue(a, today), bo = isOverdue(b, today)
-    return Number(bo) - Number(ao) || (ao && bo ? a.dueDate!.localeCompare(b.dueDate!) : 0) || baseSort(a, b)
-  })
-  const group = (t: Task) => isToday(t, today) ? 0 : t.dueDate && t.dueDate > today ? 1 : 2
+  const filtered = tasks.filter(
+    (t) => !t.completedAt && (view === 'all' || isToday(t, today)) && matches(t, q),
+  )
+  if (view === 'today')
+    return filtered.sort((a, b) => {
+      const ao = isOverdue(a, today),
+        bo = isOverdue(b, today)
+      return (
+        Number(bo) - Number(ao) ||
+        (ao && bo ? a.dueDate!.localeCompare(b.dueDate!) : 0) ||
+        baseSort(a, b)
+      )
+    })
+  const group = (t: Task) => (isToday(t, today) ? 0 : t.dueDate && t.dueDate > today ? 1 : 2)
   return filtered.sort((a, b) => group(a) - group(b) || baseSort(a, b))
 }
 export function matches(task: Task, query: string): boolean {
-  return `${task.title}\n${task.category ?? ''}`.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase())
+  return `${task.title}\n${task.category ?? ''}`
+    .toLocaleLowerCase()
+    .includes(query.trim().toLocaleLowerCase())
 }
 export function selectCompleted(tasks: Task[], query = ''): Task[] {
-  return tasks.filter(t => t.completedAt && matches(t, query)).sort((a, b) => b.completedAt!.localeCompare(a.completedAt!) || tie(a, b))
+  return tasks
+    .filter((t) => t.completedAt && matches(t, query))
+    .sort((a, b) => b.completedAt!.localeCompare(a.completedAt!) || tie(a, b))
 }
 export function updateTask(task: Task, draft: TaskDraft, now = new Date().toISOString()): Task {
   const error = validateTitle(draft.title)
   if (error) throw new Error(error)
-  if (draft.dueDate !== null && !isDate(draft.dueDate)) throw new Error('유효한 기한을 선택해 주세요.')
-  return { ...task, ...draft, title: draft.title.trim(), category: draft.category?.trim().slice(0, 24) || null, updatedAt: now }
+  if (draft.dueDate !== null && !isDate(draft.dueDate))
+    throw new Error('유효한 기한을 선택해 주세요.')
+  return {
+    ...task,
+    ...draft,
+    title: draft.title.trim(),
+    category: draft.category?.trim().slice(0, 24) || null,
+    updatedAt: now,
+  }
 }
 export type UndoAction = { token: number; kind: 'complete' | 'delete'; task: Task }
 export function applyUndo(tasks: Task[], undo: UndoAction): Task[] {
-  if (undo.kind === 'delete') return tasks.some(t => t.id === undo.task.id) ? tasks : [...tasks, undo.task]
-  return tasks.map(t => t.id === undo.task.id ? { ...t, completedAt: undo.task.completedAt, updatedAt: new Date().toISOString() } : t)
+  if (undo.kind === 'delete')
+    return tasks.some((t) => t.id === undo.task.id) ? tasks : [...tasks, undo.task]
+  return tasks.map((t) =>
+    t.id === undo.task.id
+      ? { ...t, completedAt: undo.task.completedAt, updatedAt: new Date().toISOString() }
+      : t,
+  )
 }
 export function demoTasks(today: string): Task[] {
   const rows: [string, string | null, string | null, Priority, string][] = [
@@ -109,10 +159,17 @@ export function demoTasks(today: string): Task[] {
     ['카드 명세서 확인', addDays(today, 3), null, 'medium', '개인'],
     ['주말 장보기', null, null, 'low', '생활'],
   ]
-  return rows.map(([title, dueDate, focusDate, priority, category]) => ({ ...createTask(title, 'all', today), dueDate, focusDate, priority, category, isDemo: true }))
+  return rows.map(([title, dueDate, focusDate, priority, category]) => ({
+    ...createTask(title, 'all', today),
+    dueDate,
+    focusDate,
+    priority,
+    category,
+    isDemo: true,
+  }))
 }
 export function appendDemo(tasks: Task[], today: string): Task[] {
-  return tasks.some(t => t.isDemo) ? tasks : [...tasks, ...demoTasks(today)]
+  return tasks.some((t) => t.isDemo) ? tasks : [...tasks, ...demoTasks(today)]
 }
 export function dueLabel(key: string, today: string): string {
   if (key < today) return `기한 초과 · ${daysBetween(key, today)}일 지남`

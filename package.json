@@ -12,10 +12,13 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test": "vitest run",
+    "test:dates": "node scripts/test-date-zones.mjs",
     "test:e2e": "playwright test",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1 --port 4173",
-    "check": "pnpm typecheck && pnpm lint && pnpm test && pnpm build"
+    "check": "pnpm typecheck && pnpm lint && pnpm test && pnpm test:dates && pnpm build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "react": "19.3.0",
@@ -30,6 +33,7 @@
     "@vitejs/plugin-react": "6.1.1",
     "eslint": "^10.11.0",
     "globals": "^16.0.0",
+    "prettier": "^3.9.9",
     "typescript": "5.9.3",
     "typescript-eslint": "^8.0.0",
     "vite": "8.3.2",

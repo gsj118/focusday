@@ -1,0 +1,8 @@
+node_modules
+dist
+.pnpm-store
+test-results
+playwright-report
+pnpm-lock.yaml
+docs/references
+docs/ai-prompts/01-implementation.md
