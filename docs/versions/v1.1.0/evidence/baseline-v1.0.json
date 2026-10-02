@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "commit": "bb8f8525bdbede7ed045752ea89aecefb7c04c03",
+  "baseURL": "http://127.0.0.1:4173/",
+  "browser": "Chrome 134.0.6998.36",
+  "stats": {
+    "startTime": "2026-10-02T02:51:53.133Z",
+    "duration": 52197.994,
+    "expected": 25,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "checks": {
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "unitPassed": 25,
+    "seoulDomainPassed": 15,
+    "newYorkDomainPassed": 15,
+    "productionBuild": "PASS"
+  }
+}

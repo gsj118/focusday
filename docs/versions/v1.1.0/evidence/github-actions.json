@@ -1,0 +1,59 @@
+{
+  "appVersion": "1.1.0",
+  "retrievedAt": "2026-10-02T03:42:07.9997551Z",
+  "repository": "gsj118/focusday",
+  "runs": [
+    {
+      "databaseId": 36961036184,
+      "name": "Verify Focusday",
+      "url": "https://github.com/gsj118/focusday/actions/runs/36961036184",
+      "headSha": "fb5d3e5d87cd7aa5dc6f79661e1e8f7f3141b908",
+      "status": "completed",
+      "conclusion": "success",
+      "createdAt": "2026-10-02T03:38:11Z",
+      "updatedAt": "2026-10-02T03:39:26Z",
+      "e2ePassed": 55,
+      "e2eEvidence": "verify\tRun pnpm test:e2e\t2026-10-02T03:39:23.7741775Z   55 passed (33.5s)",
+      "jobs": [
+        {
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-02T03:38:14Z",
+          "completedAt": "2026-10-02T03:39:26Z",
+          "url": "https://github.com/gsj118/focusday/actions/runs/36961036184/job/110694549756"
+        }
+      ]
+    },
+    {
+      "databaseId": 36961036551,
+      "name": "Publish Focusday to Pages",
+      "url": "https://github.com/gsj118/focusday/actions/runs/36961036551",
+      "headSha": "fb5d3e5d87cd7aa5dc6f79661e1e8f7f3141b908",
+      "status": "completed",
+      "conclusion": "success",
+      "createdAt": "2026-10-02T03:38:12Z",
+      "updatedAt": "2026-10-02T03:39:58Z",
+      "e2ePassed": 55,
+      "e2eEvidence": "build\tRun pnpm test:e2e\t2026-10-02T03:39:41.0044670Z   55 passed (39.3s)",
+      "jobs": [
+        {
+          "name": "build",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-02T03:38:15Z",
+          "completedAt": "2026-10-02T03:39:44Z",
+          "url": "https://github.com/gsj118/focusday/actions/runs/36961036551/job/110694554229"
+        },
+        {
+          "name": "deploy",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-02T03:39:48Z",
+          "completedAt": "2026-10-02T03:39:57Z",
+          "url": "https://github.com/gsj118/focusday/actions/runs/36961036551/job/110694884132"
+        }
+      ]
+    }
+  ]
+}

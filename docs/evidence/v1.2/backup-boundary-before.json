@@ -1,0 +1,19 @@
+{
+  "caseId": "E11",
+  "issueId": "SB-01",
+  "sourceCommit": "7ff35e73632fdb43f1452722c553da95a79e19d7",
+  "checkedAt": "2026-10-02T07:50:54.167Z",
+  "evidenceKind": "pure data; no storage quota or UI performance claim",
+  "fixture": "6000 beta-N ids, 200 Korean 가 title, valid fixed timestamps, null optional fields, priority none, isDemo false",
+  "taskCount": 6000,
+  "paddedBytes": 5531044,
+  "compactBytes": 4847007,
+  "paddedResult": {
+    "ok": false,
+    "reason": "5MiB 이하의 백업 파일을 선택해 주세요."
+  },
+  "compactResult": {
+    "ok": true
+  },
+  "status": "FAIL"
+}

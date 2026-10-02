@@ -9,6 +9,7 @@ export default defineConfig({
   expect: { timeout: 5000 },
   fullyParallel: false,
   workers: 1,
+  outputDir: 'test-results/artifacts',
   reporter: [['list'], ['json', { outputFile: 'test-results/results.json' }]],
   use: {
     baseURL,

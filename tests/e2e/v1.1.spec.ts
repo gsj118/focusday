@@ -614,7 +614,10 @@ for (const [width, height] of [
         .first()
         .evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),
     ).toBeGreaterThanOrEqual(13)
-    await page.screenshot({ path: `docs/screenshots/v1.1/today-${label}.png`, fullPage: false })
+    await page.screenshot({
+      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.2'}/today-${label}.png`,
+      fullPage: false,
+    })
     await page.getByRole('button', { name: '오늘 계획하기', exact: true }).click()
     const dialog = page.getByRole('dialog')
     const assertBounds = async () => {
@@ -625,7 +628,10 @@ for (const [width, height] of [
       expect(box.y + box.height).toBeLessThanOrEqual(height)
     }
     await assertBounds()
-    await page.screenshot({ path: `docs/screenshots/v1.1/plan-${label}.png`, fullPage: false })
+    await page.screenshot({
+      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.2'}/plan-${label}.png`,
+      fullPage: false,
+    })
     await dialog
       .getByRole('button', { name: '어제 시작한 글 이어쓰기 집중하기', exact: true })
       .click()
@@ -646,7 +652,10 @@ for (const [width, height] of [
     await expect(page.getByRole('heading', { name: '복원 미리보기' })).toBeVisible()
     await assertBounds()
     await page.getByRole('button', { name: '합치기 적용', exact: true }).scrollIntoViewIfNeeded()
-    await page.screenshot({ path: `docs/screenshots/v1.1/restore-${label}.png`, fullPage: false })
+    await page.screenshot({
+      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.2'}/restore-${label}.png`,
+      fullPage: false,
+    })
     const target = (await page
       .getByRole('button', { name: '합치기 적용', exact: true })
       .boundingBox())!

@@ -410,7 +410,7 @@ for (const [width, height] of [
       ).toBeGreaterThanOrEqual(44)
     }
     await page.screenshot({
-      path: `docs/screenshots/v1.1/${width === 1440 ? 'desktop' : width === 390 ? 'mobile' : `layout-${width}`}.png`,
+      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.2'}/${width === 1440 ? 'desktop' : width === 390 ? 'mobile' : `layout-${width}`}.png`,
       fullPage: true,
     })
     await page.getByRole('button', { name: '발표 자료 최종 확인 편집', exact: true }).click()
@@ -422,7 +422,7 @@ for (const [width, height] of [
     expect(box.x).toBeGreaterThanOrEqual(0)
     expect(box.x + box.width).toBeLessThanOrEqual(width)
     await page.screenshot({
-      path: `docs/screenshots/v1.1/${width === 1440 ? 'desktop-editor' : width === 390 ? 'mobile-editor' : `editor-${width}`}.png`,
+      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.2'}/${width === 1440 ? 'desktop-editor' : width === 390 ? 'mobile-editor' : `editor-${width}`}.png`,
       fullPage: true,
     })
     await page.getByLabel('제목', { exact: true }).fill('긴한글제목'.repeat(40))

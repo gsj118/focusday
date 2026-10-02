@@ -8,3 +8,5 @@ docs/references
 docs/ai-prompts/01-implementation.md
 docs/ai-prompts/04-v1.1-implementation.md
 docs/versions/v1.0.0/*.snapshot.md
+docs/versions/v1.1.0/*.snapshot.md
+docs/ai-prompts/06-v1.2-synthetic-beta.md
