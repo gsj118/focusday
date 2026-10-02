@@ -79,16 +79,18 @@ test('속성 저장·새로고침 유지·미래 기한과 오늘 독립·기한
     priority: 'high',
     category: '업무',
   })
-  await page.getByRole('button', { name: '내일 발표 오늘에서 빼기', exact: true }).click()
+  await page.getByRole('button', { name: '내일 발표 집중 해제', exact: true }).click()
   await expect(page.getByRole('button', { name: '내일 발표 편집', exact: true })).toHaveCount(0)
   await all(page)
-  await page.getByRole('button', { name: '내일 발표 오늘에 추가', exact: true }).click()
+  await page.getByRole('button', { name: '내일 발표 집중하기', exact: true }).click()
   expect((await readTasks(page))[0].dueDate).toBe('2026-10-03')
   await page.getByRole('button', { name: '내일 발표 편집', exact: true }).click()
   await page.getByLabel('기한', { exact: true }).fill(today)
   await page.getByRole('button', { name: '저장', exact: true }).click()
-  await page.getByRole('button', { name: '내일 발표 오늘에서 빼기', exact: true }).click()
-  await expect(page.getByText('기한 때문에 오늘에도 표시됩니다.', { exact: true })).toBeVisible()
+  await page.getByRole('button', { name: '내일 발표 집중 해제', exact: true }).click()
+  await expect(
+    page.getByText('집중은 해제했습니다. 기한 때문에 오늘에도 표시됩니다.', { exact: true }),
+  ).toBeVisible()
   await page.getByRole('button', { name: '기한 편집', exact: true }).click()
   await expect(page.getByRole('dialog')).toBeVisible()
   await page.getByRole('button', { name: '해제', exact: true }).click()
@@ -408,7 +410,7 @@ for (const [width, height] of [
       ).toBeGreaterThanOrEqual(44)
     }
     await page.screenshot({
-      path: `docs/screenshots/${width === 1440 ? 'desktop' : width === 390 ? 'mobile' : `layout-${width}`}.png`,
+      path: `docs/screenshots/v1.1/${width === 1440 ? 'desktop' : width === 390 ? 'mobile' : `layout-${width}`}.png`,
       fullPage: true,
     })
     await page.getByRole('button', { name: '발표 자료 최종 확인 편집', exact: true }).click()
@@ -420,7 +422,7 @@ for (const [width, height] of [
     expect(box.x).toBeGreaterThanOrEqual(0)
     expect(box.x + box.width).toBeLessThanOrEqual(width)
     await page.screenshot({
-      path: `docs/screenshots/${width === 1440 ? 'desktop-editor' : width === 390 ? 'mobile-editor' : `editor-${width}`}.png`,
+      path: `docs/screenshots/v1.1/${width === 1440 ? 'desktop-editor' : width === 390 ? 'mobile-editor' : `editor-${width}`}.png`,
       fullPage: true,
     })
     await page.getByLabel('제목', { exact: true }).fill('긴한글제목'.repeat(40))

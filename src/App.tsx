@@ -8,6 +8,8 @@ import {
   isToday,
   selectCompleted,
   selectTasks,
+  todaySummary,
+  yesterdayTasks,
   updateTask,
   validateTitle,
   type AppData,
@@ -17,12 +19,16 @@ import {
   type View,
 } from './domain'
 import { loadData, saveData, type LoadResult } from './storage'
+import { createBackup, prepareRestore, type RestoreMode } from './backup'
+import { downloadJSON } from './download'
 import { useToday } from './useToday'
 import { useVisualViewport } from './useVisualViewport'
 import { Icon } from './components/Icon'
 import { TaskEditor } from './components/TaskEditor'
 import { TaskRow } from './components/TaskRow'
 import { UndoToast } from './components/UndoToast'
+import { PlanPanel } from './components/PlanPanel'
+import { DataPanel } from './components/DataPanel'
 
 export default function App() {
   const [initial] = useState(() => loadData())
@@ -37,6 +43,7 @@ export default function App() {
   const [inputError, setInputError] = useState('')
   const [query, setQuery] = useState('')
   const [editing, setEditing] = useState<Task | null>(null)
+  const [panel, setPanel] = useState<'plan' | 'data' | null>(null)
   const [undo, setUndo] = useState<UndoAction | null>(null)
   const undoToken = useRef(0)
   const [completedOpen, setCompletedOpen] = useState(false)
@@ -56,6 +63,8 @@ export default function App() {
   const active = selectTasks(data.tasks, view, today, query)
   const completed = selectCompleted(data.tasks, query)
   const todayCount = data.tasks.filter((t) => isToday(t, today)).length
+  const summary = todaySummary(data.tasks, today)
+  const yesterdayCount = yesterdayTasks(data.tasks, today).length
   const allCount = data.tasks.filter((t) => !t.completedAt).length
   const searchCount = active.length + (view === 'all' ? completed.length : 0)
 
@@ -107,7 +116,7 @@ export default function App() {
     )
     if (task.completedAt) setNotice({ text: '미완료로 복원했습니다.' })
   }
-  function toggleFocus(task: Task) {
+  function toggleFocus(task: Task, fromPlan = false) {
     const removing = task.focusDate === today
     change((tasks) =>
       tasks.map((t) =>
@@ -117,14 +126,14 @@ export default function App() {
       ),
     )
     if (removing && task.dueDate && task.dueDate <= today)
-      setNotice({ text: '기한 때문에 오늘에도 표시됩니다.', taskId: task.id })
+      setNotice({ text: '집중은 해제했습니다. 기한 때문에 오늘에도 표시됩니다.', taskId: task.id })
     else {
       setNotice({
         text: removing
-          ? '오늘 집중에서 뺐습니다. 전체에는 남아 있습니다.'
-          : '기한을 바꾸지 않고 오늘에 추가했습니다.',
+          ? '집중을 해제했습니다. 전체에는 남아 있습니다.'
+          : '기한을 바꾸지 않고 오늘 집중으로 선택했습니다.',
       })
-      if (removing && view === 'today') focusAfterRemoval(task)
+      if (removing && view === 'today' && !fromPlan) focusAfterRemoval(task)
     }
   }
   function saveEditor(draft: TaskDraft) {
@@ -136,7 +145,7 @@ export default function App() {
       draft.dueDate &&
       draft.dueDate <= today
     )
-      setNotice({ text: '기한 때문에 오늘에도 표시됩니다.', taskId: task.id })
+      setNotice({ text: '집중은 해제했습니다. 기한 때문에 오늘에도 표시됩니다.', taskId: task.id })
     closeEditor()
   }
   function retry() {
@@ -162,12 +171,64 @@ export default function App() {
     persist(next)
   }
   function downloadRaw() {
-    const url = URL.createObjectURL(new Blob([raw ?? ''], { type: 'application/json' }))
-    const a = document.createElement('a')
-    a.href = url
-    a.download = 'focusday-original.json'
-    a.click()
-    setTimeout(() => URL.revokeObjectURL(url), 1000)
+    downloadJSON(raw ?? '', 'focusday-original.json')
+  }
+  function openPanel(kind: 'plan' | 'data', origin: HTMLElement) {
+    if (editing || confirmReset) return
+    const menu = origin.closest('details')
+    returnFocus.current = menu?.querySelector('summary') || origin
+    if (menu) menu.open = false
+    setNotice(null)
+    setPanel(kind)
+  }
+  function closePanel() {
+    pendingFocus.current = returnFocus.current || 'input'
+    setPanel(null)
+  }
+  function addExamples() {
+    const next = appendDemo(current.current.tasks, today)
+    if (next === current.current.tasks) {
+      setNotice({ text: '예시가 이미 추가되어 있습니다.' })
+      return
+    }
+    change(() => next)
+    setNotice({ text: '예시 5개를 추가했습니다.' })
+  }
+  function exportBackup() {
+    try {
+      downloadJSON(
+        JSON.stringify(createBackup(current.current), null, 2),
+        `focusday-backup-${today}.json`,
+      )
+      return {
+        ok: true,
+        reason: `전체 ${current.current.tasks.length}개 백업 파일 다운로드를 시작했습니다.`,
+      }
+    } catch {
+      return { ok: false, reason: '백업 파일을 만들지 못했습니다. 다시 시도해 주세요.' }
+    }
+  }
+  function restoreBackup(incoming: AppData, mode: RestoreMode) {
+    if (guard !== 'ready')
+      return { ok: false, reason: '저장 보호 중입니다. 기존 원본 복구 절차를 먼저 진행해 주세요.' }
+    const next = prepareRestore(current.current, incoming, mode).data
+    const result = saveData(next)
+    if (!result.ok)
+      return {
+        ok: false,
+        reason:
+          '복원 저장에 실패했습니다. 적용 전 목록과 저장 원본을 유지했습니다. 다시 시도하거나 취소해 주세요.',
+      }
+    current.current = next
+    setData(next)
+    setSaveStatus('saved')
+    setUndo(null)
+    setEditing(null)
+    setQuery('')
+    setInputError('')
+    setCompletedOpen(false)
+    setNotice({ text: `복원 완료: 전체 ${next.tasks.length}개를 저장했습니다.` })
+    return { ok: true, reason: '' }
   }
   useEffect(() => {
     if (!confirmReset) return
@@ -177,7 +238,7 @@ export default function App() {
   }, [confirmReset])
   useLayoutEffect(() => {
     const target = pendingFocus.current
-    if (!target || editing) return
+    if (!target || editing || panel) return
     pendingFocus.current = null
     if (target === 'completed') {
       completedSummary.current?.focus()
@@ -186,7 +247,7 @@ export default function App() {
     }
     if (target !== 'input' && target.isConnected) target.focus()
     else focusInput()
-  }, [editing, data, view, completedOpen])
+  }, [editing, panel, data, view, completedOpen])
   useEffect(() => {
     const keyboard = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement
@@ -198,6 +259,7 @@ export default function App() {
         e.metaKey ||
         e.shiftKey ||
         editing ||
+        panel ||
         confirmReset ||
         target.closest('input, textarea, select, [contenteditable="true"]')
       )
@@ -213,7 +275,7 @@ export default function App() {
     }
     window.addEventListener('keydown', keyboard)
     return () => window.removeEventListener('keydown', keyboard)
-  }, [editing, confirmReset])
+  }, [editing, panel, confirmReset])
 
   const nav = (mobile = false) => (
     <nav
@@ -251,13 +313,7 @@ export default function App() {
       <div className="menu-content">
         <strong>가볍게 시작해 보세요</strong>
         <p>예시는 직접 선택할 때만 추가됩니다.</p>
-        <button
-          className="secondary-button"
-          onClick={() => {
-            change((tasks) => appendDemo(tasks, today))
-            setNotice({ text: '예시 5개를 추가했습니다. 기존 예시는 중복 추가하지 않습니다.' })
-          }}
-        >
+        <button className="secondary-button" onClick={addExamples}>
           예시로 둘러보기
         </button>
         <button
@@ -272,8 +328,18 @@ export default function App() {
           예시 데이터 제거
         </button>
         <hr />
-        <strong>Focusday 1.0</strong>
-        <p>계정 없이 이 브라우저에 저장합니다. 서버 백업·기기 간 동기화는 제공하지 않습니다.</p>
+        <button
+          className="secondary-button"
+          onClick={(event) => openPanel('data', event.currentTarget)}
+        >
+          백업·복원
+        </button>
+        <hr />
+        <strong>Focusday 1.1.0</strong>
+        <p>
+          계정 없이 이 브라우저에 저장합니다. JSON 파일로 직접 백업할 수 있습니다. 자동 서버
+          백업·기기 간 동기화는 제공하지 않습니다.
+        </p>
         <p className="field-hint">
           N 새 입력 · / 검색
           <br />
@@ -394,6 +460,28 @@ export default function App() {
             )}
           </div>
         </header>
+        {view === 'today' && (
+          <section className="today-planning" aria-label="오늘 집중 요약">
+            <div>
+              <p>
+                직접 집중으로 고른 <strong>{summary.focused}개</strong> · 기한으로 표시된{' '}
+                <strong>{summary.dueOnly}개</strong>
+              </p>
+              {yesterdayCount > 0 && (
+                <p className="yesterday-note">
+                  어제 마치지 못한 일 {yesterdayCount}개 · 계획에서 이어갈 일을 골라보세요.
+                </p>
+              )}
+            </div>
+            <button
+              className="secondary-button"
+              onClick={(event) => openPanel('plan', event.currentTarget)}
+            >
+              <Icon name="sun" size={18} />
+              오늘 계획하기
+            </button>
+          </section>
+        )}
         <div className="mobile-menu">{menu}</div>
         {guard !== 'ready' && (
           <section className="storage-banner" role="alert">
@@ -495,7 +583,7 @@ export default function App() {
           <span id="quick-hint">
             {view === 'today'
               ? '새 할 일은 오늘에 담깁니다'
-              : '먼저 담고, 필요할 때 오늘에 추가하세요'}
+              : '먼저 담고, 필요할 때 집중하기로 골라보세요'}
           </span>
           <span className="enter-hint">
             Enter로 추가 <kbd>↵</kbd>
@@ -564,10 +652,7 @@ export default function App() {
                     {data.tasks.length === 0 ? '첫 할 일 추가' : '+ 새 할 일'}
                   </button>
                   {data.tasks.length === 0 ? (
-                    <button
-                      className="text-button"
-                      onClick={() => change((tasks) => appendDemo(tasks, today))}
-                    >
+                    <button className="text-button" onClick={addExamples}>
                       예시로 둘러보기 <Icon name="arrow" size={15} />
                     </button>
                   ) : (
@@ -620,6 +705,31 @@ export default function App() {
         </footer>
       </main>
       {nav(true)}
+      {panel === 'plan' && (
+        <PlanPanel
+          tasks={data.tasks}
+          today={today}
+          guard={guard}
+          saveError={saveStatus === 'error'}
+          onFocus={(task) => toggleFocus(task, true)}
+          onRetry={retry}
+          onClose={closePanel}
+          onAll={() => {
+            setView('all')
+            closePanel()
+          }}
+        />
+      )}
+      {panel === 'data' && (
+        <DataPanel
+          data={data}
+          guard={guard}
+          saveError={saveStatus === 'error'}
+          onExport={exportBackup}
+          onRestore={restoreBackup}
+          onClose={closePanel}
+        />
+      )}
       {editing && (
         <TaskEditor
           key={editing.id}

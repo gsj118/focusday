@@ -119,11 +119,12 @@ export function TaskEditor({ task, today, onSave, onClose, onDelete }: Props) {
               <Icon name="sun" />
             </span>
             <span>
-              <strong>오늘에 집중</strong>
-              <small>기한과 별개로 오늘 할 일에 담아요</small>
+              <strong>오늘 집중</strong>
+              <small>집중하기 / 집중 해제는 기한을 바꾸지 않아요.</small>
             </span>
             <input
               type="checkbox"
+              aria-label={draft.focusDate === today ? '집중 해제' : '집중하기'}
               checked={draft.focusDate === today}
               onChange={(e) => setDraft({ ...draft, focusDate: e.target.checked ? today : null })}
             />
