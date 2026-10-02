@@ -1,0 +1,68 @@
+{
+  "url": "https://gsj118.github.io/focusday/",
+  "checkedAt": "2026-10-02T02:06:36.382Z",
+  "deployedSourceCommit": "6a31e6755fd9c6eb30682d79d32757c3a0f7fb80",
+  "platform": "win32",
+  "browser": "134.0.6998.36",
+  "assets": [
+    {
+      "url": "https://gsj118.github.io/focusday/favicon.svg",
+      "status": 200
+    },
+    {
+      "url": "https://gsj118.github.io/focusday/assets/index-CJgZrQB2.js",
+      "status": 200
+    },
+    {
+      "url": "https://gsj118.github.io/focusday/assets/index-CQMxMjc7.css",
+      "status": 200
+    }
+  ],
+  "screens": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "isMobile": false,
+      "checks": [
+        "HTML/자산",
+        "첫 빈 화면",
+        "생성",
+        "속성 편집",
+        "새로고침 저장",
+        "오늘/전체",
+        "완료 취소",
+        "삭제 취소",
+        "예시",
+        "가로 넘침/편집기",
+        "실행 오류 없음"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "isMobile": true,
+      "checks": [
+        "HTML/자산",
+        "첫 빈 화면",
+        "생성",
+        "속성 편집",
+        "새로고침 저장",
+        "오늘/전체",
+        "완료 취소",
+        "삭제 취소",
+        "예시",
+        "가로 넘침/편집기",
+        "실행 오류 없음"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS"
+}
