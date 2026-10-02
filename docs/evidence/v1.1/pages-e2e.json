@@ -1,0 +1,565 @@
+{
+  "version": "1.1.0",
+  "baseURL": "http://127.0.0.1:4180/focusday/",
+  "browser": "Chrome 134.0.6998.36",
+  "stats": {
+    "startTime": "2026-10-02T03:26:47.952Z",
+    "duration": 107548.141,
+    "expected": 55,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "최초 빈 상태·오늘/전체 생성 기본값·연속 입력·키별 저장",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2090
+        }
+      ]
+    },
+    {
+      "title": "속성 저장·새로고침 유지·미래 기한과 오늘 독립·기한에 의한 잔류 안내",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 3238
+        }
+      ]
+    },
+    {
+      "title": "빈 제목·200자 한글·공백 없는 제목·한글 IME 조합 이벤트",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2298
+        }
+      ]
+    },
+    {
+      "title": "완료·실행 취소·다른 항목 편집 보존·완료 목록 복원",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2319
+        }
+      ]
+    },
+    {
+      "title": "삭제 취소는 원래 id·날짜·우선순위·분류·완료·예시 상태를 복원",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1869
+        }
+      ]
+    },
+    {
+      "title": "최근 행동만 실행 취소·이전 타이머 격리·hover/키보드에서 만료 정지",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1853
+        }
+      ]
+    },
+    {
+      "title": "자정 전환 시 집중만 만료·기한 초과 표시·전체 보존",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1378
+        }
+      ]
+    },
+    {
+      "title": "focus에서 날짜 갱신·연말 경계",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1116
+        }
+      ]
+    },
+    {
+      "title": "visibilitychange에서 날짜 갱신·연말 경계",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1166
+        }
+      ]
+    },
+    {
+      "title": "쓰기 실패 시 메모리 유지·지속 경고·실제 성공한 재시도",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1359
+        }
+      ]
+    },
+    {
+      "title": "손상 원본 자동 덮어쓰기 차단: {broken",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2240
+        }
+      ]
+    },
+    {
+      "title": "손상 원본 자동 덮어쓰기 차단: {\"version\":2,\"tasks\":[]}",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2171
+        }
+      ]
+    },
+    {
+      "title": "손상 원본 자동 덮어쓰기 차단: {\"version\":1,\"tasks\":[{}]}",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2191
+        }
+      ]
+    },
+    {
+      "title": "읽기 실패는 쓰기를 보호하고 재시도 때 기존 항목과 메모리 항목 합침",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1264
+        }
+      ]
+    },
+    {
+      "title": "localStorage 접근 자체 실패도 빈 값으로 덮어쓰지 않는다",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1335
+        }
+      ]
+    },
+    {
+      "title": "예시 선택·중복 방지·검색 현재 보기·완료 검색·예시 제거 사용자 보존",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2307
+        }
+      ]
+    },
+    {
+      "title": "200개 기본 검색·편집·완료·스크롤",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2039
+        }
+      ]
+    },
+    {
+      "title": "키보드 추가→편집→저장→완료→실행 취소, dialog trap·Escape·포커스 복귀",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2011
+        }
+      ]
+    },
+    {
+      "title": "화면 1440×900·overflow·편집·스크린샷",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2205
+        }
+      ]
+    },
+    {
+      "title": "화면 1366×768·overflow·편집·스크린샷",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2145
+        }
+      ]
+    },
+    {
+      "title": "화면 390×844·overflow·편집·스크린샷",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2327
+        }
+      ]
+    },
+    {
+      "title": "화면 320×740·overflow·편집·스크린샷",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2040
+        }
+      ]
+    },
+    {
+      "title": "reduced-motion·실제 토큰 대비·production 자산 응답",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1204
+        }
+      ]
+    },
+    {
+      "title": "모바일 터치·작은 가시 영역 편집·알림과 하단 탐색 분리",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2040
+        }
+      ]
+    },
+    {
+      "title": "실제 렌더링 색·hover·포커스·접근 가능한 입력과 버튼 이름",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1639
+        }
+      ]
+    },
+    {
+      "title": "v1 데이터 그대로 로드·계획 그룹·사실 이유·중복 제외·집중 중·이어가기 id/기한 보존",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1422
+        }
+      ]
+    },
+    {
+      "title": "요약 합계·집중 해제 기한 잔류·완료 후 즉시 일치",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1499
+        }
+      ]
+    },
+    {
+      "title": "후보 없음·전체 경로·N 단축키 차단·Escape와 양방향 Tab 경계",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1653
+        }
+      ]
+    },
+    {
+      "title": "열린 계획 패널의 자정·월말 어제 상태·자동 이월 없음",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1408
+        }
+      ]
+    },
+    {
+      "title": "계획 focus 연말 갱신·이어가기",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1318
+        }
+      ]
+    },
+    {
+      "title": "계획 visibilitychange 연말 갱신·이어가기",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1305
+        }
+      ]
+    },
+    {
+      "title": "전체 JSON 백업 round trip·저장 쓰기 없음·Object URL 정리",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1759
+        }
+      ]
+    },
+    {
+      "title": "저장 실패 중 메모리 전체 백업·저장 원본 불변",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1706
+        }
+      ]
+    },
+    {
+      "title": "파일 검증 손상 JSON·원본/상태 유지·재선택",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1537
+        }
+      ]
+    },
+    {
+      "title": "파일 검증 raw 저장 원본·원본/상태 유지·재선택",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1524
+        }
+      ]
+    },
+    {
+      "title": "파일 검증 백업 버전·원본/상태 유지·재선택",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1480
+        }
+      ]
+    },
+    {
+      "title": "파일 검증 데이터 버전·원본/상태 유지·재선택",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1440
+        }
+      ]
+    },
+    {
+      "title": "파일 검증 중복 id·원본/상태 유지·재선택",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1489
+        }
+      ]
+    },
+    {
+      "title": "파일 검증 잘못된 날짜·원본/상태 유지·재선택",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1499
+        }
+      ]
+    },
+    {
+      "title": "파일 검증 제목 길이·원본/상태 유지·재선택",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1405
+        }
+      ]
+    },
+    {
+      "title": "5MiB 초과·파일 선택 취소와 미리보기 취소는 목록/저장 상태 불변",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2844
+        }
+      ]
+    },
+    {
+      "title": "합치기 미리보기·현재 중복 보존·다른 id 같은 제목·1회 저장·검색/완료 갱신",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2141
+        }
+      ]
+    },
+    {
+      "title": "전체 교체 확인·취소·교체 전 백업·빈 백업으로 명시적 교체",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2051
+        }
+      ]
+    },
+    {
+      "title": "복원 merge 쓰기 실패 원본/메모리/상태 유지·재시도·오래된 실행 취소 정리",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1885
+        }
+      ]
+    },
+    {
+      "title": "복원 replace 쓰기 실패 원본/메모리/상태 유지·재시도·오래된 실행 취소 정리",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2075
+        }
+      ]
+    },
+    {
+      "title": "저장 보호 blocked는 복원으로 우회하지 않음",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1397
+        }
+      ]
+    },
+    {
+      "title": "저장 보호 unavailable는 복원으로 우회하지 않음",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1472
+        }
+      ]
+    },
+    {
+      "title": "정확한 예시 재추가 피드백·중복 때 저장 없음·사용자 보존",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1521
+        }
+      ]
+    },
+    {
+      "title": "늦은 파일 읽기가 다음 선택과 닫힌 패널을 덮어쓰지 않음",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1634
+        }
+      ]
+    },
+    {
+      "title": "데이터 패널 키보드·Tab trap·Escape와 호출 메뉴 포커스 복귀",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1400
+        }
+      ]
+    },
+    {
+      "title": "새 모바일 패널 touch·작아진 가시 영역·복원 조작",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2772
+        }
+      ]
+    },
+    {
+      "title": "v1.1 1440×900 계획·복원 미리보기·긴 제목·메타·하단 UI",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2981
+        }
+      ]
+    },
+    {
+      "title": "v1.1 1366×768 계획·복원 미리보기·긴 제목·메타·하단 UI",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2959
+        }
+      ]
+    },
+    {
+      "title": "v1.1 390×844 계획·복원 미리보기·긴 제목·메타·하단 UI",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2686
+        }
+      ]
+    },
+    {
+      "title": "v1.1 320×740 계획·복원 미리보기·긴 제목·메타·하단 UI",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2645
+        }
+      ]
+    }
+  ]
+}

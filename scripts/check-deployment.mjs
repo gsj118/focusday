@@ -1,10 +1,17 @@
 import assert from 'node:assert/strict'
-import { mkdir, writeFile } from 'node:fs/promises'
+import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { chromium, expect } from '@playwright/test'
 
 const url = new URL(process.argv[2] || 'https://gsj118.github.io/focusday/')
+const evidenceDir = process.env.SMOKE_OUTPUT_DIR
+  ? `${process.env.SMOKE_OUTPUT_DIR}/evidence`
+  : 'docs/evidence/v1.1'
+const screenshotDir = process.env.SMOKE_OUTPUT_DIR
+  ? `${process.env.SMOKE_OUTPUT_DIR}/screenshots`
+  : 'docs/screenshots/v1.1'
 assert.equal(url.protocol, 'https:')
 const report = {
+  appVersion: '1.1.0',
   url: url.href,
   checkedAt: new Date().toISOString(),
   deployedSourceCommit: process.env.LIVE_HEAD_SHA || null,
@@ -14,8 +21,8 @@ const report = {
   screens: [],
   status: 'RUNNING',
 }
-await mkdir('docs/evidence', { recursive: true })
-await mkdir('docs/screenshots', { recursive: true })
+await mkdir(evidenceDir, { recursive: true })
+await mkdir(screenshotDir, { recursive: true })
 const browser = await chromium.launch({
   channel: process.env.PW_CHANNEL || 'chrome',
   args: ['--force-device-scale-factor=1'],
@@ -90,7 +97,7 @@ try {
       assert.equal(tasks[0].priority, 'high')
       assert.equal(tasks[0].category, '배포 확인')
       assert(tasks[0].focusDate)
-      await page.getByRole('button', { name: `${renamed} 오늘에서 빼기`, exact: true }).click()
+      await page.getByRole('button', { name: `${renamed} 집중 해제`, exact: true }).click()
       await expect(page.getByRole('button', { name: `${renamed} 편집`, exact: true })).toHaveCount(
         0,
       )
@@ -99,7 +106,7 @@ try {
         exact: true,
       })
       await nav.getByRole('button', { name: /전체/ }).click()
-      await page.getByRole('button', { name: `${renamed} 오늘에 추가`, exact: true }).click()
+      await page.getByRole('button', { name: `${renamed} 집중하기`, exact: true }).click()
       assert.equal((await readTasks())[0].dueDate, '2099-12-31')
       await nav.getByRole('button', { name: /오늘/ }).click()
       await page.getByRole('checkbox', { name: `${renamed} 완료`, exact: true }).click()
@@ -122,12 +129,89 @@ try {
         await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
         true,
       )
-      await page.screenshot({ path: `docs/screenshots/live-${name}.png`, fullPage: true })
+      await page.screenshot({ path: `${screenshotDir}/live-${name}.png` })
       await page.getByRole('button', { name: '발표 자료 최종 확인 편집', exact: true }).click()
       await expect(page.getByRole('dialog')).toBeVisible()
       const box = await page.getByRole('dialog').boundingBox()
       assert(box.x >= 0 && box.x + box.width <= width)
-      await page.screenshot({ path: `docs/screenshots/live-${name}-editor.png`, fullPage: true })
+      await page.screenshot({ path: `${screenshotDir}/live-${name}-editor.png` })
+      await page.keyboard.press('Escape')
+      await nav.getByRole('button', { name: /전체/ }).click()
+      await page.getByRole('checkbox', { name: '주말 장보기 완료', exact: true }).click()
+      const beforeExport = await readTasks()
+      const menu = page.locator(name === 'mobile' ? '.mobile-menu .app-menu' : '.sidebar .app-menu')
+      await menu.locator('summary').click()
+      await expect(menu.getByText('Focusday 1.1.0', { exact: true })).toBeVisible()
+      await menu.getByRole('button', { name: '백업·복원', exact: true }).click()
+      const downloadedPromise = page.waitForEvent('download')
+      await page.getByRole('button', { name: 'JSON 백업 다운로드', exact: true }).click()
+      const downloaded = await downloadedPromise
+      assert.match(downloaded.suggestedFilename(), /^focusday-backup-\d{4}-\d{2}-\d{2}\.json$/)
+      const backup = JSON.parse(await readFile(await downloaded.path(), 'utf8'))
+      await downloaded.delete()
+      assert.equal(backup.format, 'focusday-backup')
+      assert.equal(backup.formatVersion, 1)
+      assert.deepEqual(backup.data.tasks, beforeExport)
+      assert.deepEqual(await readTasks(), beforeExport)
+      const dates = await page.evaluate(() => {
+        const day = (date) =>
+          `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+        const today = new Date(),
+          yesterday = new Date(today)
+        yesterday.setDate(yesterday.getDate() - 1)
+        return { today: day(today), yesterday: day(yesterday) }
+      })
+      const continuedTask = {
+        id: `live-yesterday-${name}`,
+        title: '어제 시작한 일 이어가기',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        dueDate: '2099-12-31',
+        focusDate: dates.yesterday,
+        priority: 'medium',
+        category: '개인',
+        completedAt: null,
+        isDemo: false,
+      }
+      await page.getByLabel('백업 파일 선택 / 다시 선택').setInputFiles({
+        name: 'focusday-backup.json',
+        mimeType: 'application/json',
+        buffer: Buffer.from(
+          JSON.stringify({
+            ...backup,
+            data: { version: 1, tasks: [...beforeExport, continuedTask] },
+          }),
+        ),
+      })
+      await expect(page.locator('.merge-summary')).toContainText('추가 1개 · 중복 id 유지 5개')
+      await page.getByRole('button', { name: '합치기 적용', exact: true }).scrollIntoViewIfNeeded()
+      await page.screenshot({ path: `${screenshotDir}/live-${name}-restore.png` })
+      await page.getByRole('button', { name: '합치기 적용', exact: true }).click()
+      await expect(page.getByRole('heading', { name: '복원 완료', exact: true })).toBeVisible()
+      assert.deepEqual(await readTasks(), [...beforeExport, continuedTask])
+      await page.getByRole('button', { name: '목록으로 돌아가기', exact: true }).click()
+      await nav.getByRole('button', { name: /오늘/ }).click()
+      await expect(page.locator('.yesterday-note')).toContainText('어제 마치지 못한 일 1개')
+      await page.screenshot({ path: `${screenshotDir}/live-${name}.png` })
+      await page.getByRole('button', { name: '오늘 계획하기', exact: true }).click()
+      await expect(
+        page.getByRole('dialog').getByText('어제 시작한 일 이어가기', { exact: true }),
+      ).toBeVisible()
+      await page.screenshot({ path: `${screenshotDir}/live-${name}-plan.png` })
+      await page
+        .getByRole('button', { name: '어제 시작한 일 이어가기 집중하기', exact: true })
+        .click()
+      const carried = (await readTasks()).find((task) => task.id === continuedTask.id)
+      assert.equal(carried.focusDate, dates.today)
+      assert.equal(carried.dueDate, continuedTask.dueDate)
+      assert.equal(carried.id, continuedTask.id)
+      assert.equal((await readTasks()).length, 6)
+      await page.keyboard.press('Escape')
+      await page.reload({ waitUntil: 'networkidle' })
+      assert.equal(
+        (await readTasks()).find((task) => task.id === continuedTask.id).focusDate,
+        dates.today,
+      )
       assert.deepEqual(failures, [])
       report.screens.push({
         name,
@@ -144,6 +228,10 @@ try {
           '삭제 취소',
           '예시',
           '가로 넘침/편집기',
+          '앱 버전 1.1.0',
+          'JSON 백업 모든 속성·완료·예시 보존',
+          '복원 미리보기·id 합치기·저장',
+          '오늘 계획·어제 이어가기 id/기한 유지',
           '실행 오류 없음',
         ],
         status: 'PASS',
@@ -160,5 +248,5 @@ try {
   throw error
 } finally {
   await browser.close()
-  await writeFile('docs/evidence/live-deployment.json', `${JSON.stringify(report, null, 2)}\n`)
+  await writeFile(`${evidenceDir}/live-deployment.json`, `${JSON.stringify(report, null, 2)}\n`)
 }
