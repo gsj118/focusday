@@ -4,7 +4,12 @@ for (const zone of ['Asia/Seoul', 'America/New_York']) {
   process.stdout.write(`\nCalendar tests in ${zone}\n`)
   const result = spawnSync(
     process.execPath,
-    ['node_modules/vitest/vitest.mjs', 'run', 'tests/unit/domain.test.ts'],
+    [
+      'node_modules/vitest/vitest.mjs',
+      'run',
+      'tests/unit/domain.test.ts',
+      'tests/unit/planning.test.ts',
+    ],
     {
       env: { ...process.env, TZ: zone },
       stdio: 'inherit',

@@ -9,7 +9,7 @@ export type LoadResult = {
   reason: string
 }
 const empty = (): AppData => ({ version: 1, tasks: [] })
-const timestamp = (v: unknown) =>
+export const isTimestamp = (v: unknown) =>
   typeof v === 'string' &&
   /^\d{4}-\d\d-\d\dT(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:\.\d{1,3})?Z$/.test(v) &&
   isDate(v.slice(0, 10)) &&
@@ -23,8 +23,8 @@ function isTask(v: unknown): v is Task {
     typeof t.title === 'string' &&
     !validateTitle(t.title) &&
     t.title === t.title.trim() &&
-    timestamp(t.createdAt) &&
-    timestamp(t.updatedAt) &&
+    isTimestamp(t.createdAt) &&
+    isTimestamp(t.updatedAt) &&
     (t.dueDate === null || isDate(t.dueDate)) &&
     (t.focusDate === null || isDate(t.focusDate)) &&
     ['none', 'low', 'medium', 'high'].includes(t.priority as string) &&
@@ -33,7 +33,7 @@ function isTask(v: unknown): v is Task {
         t.category.trim() === t.category &&
         t.category.length > 0 &&
         t.category.length <= 24)) &&
-    (t.completedAt === null || timestamp(t.completedAt)) &&
+    (t.completedAt === null || isTimestamp(t.completedAt)) &&
     typeof t.isDemo === 'boolean'
   )
 }

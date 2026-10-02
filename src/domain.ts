@@ -128,6 +128,48 @@ export function selectCompleted(tasks: Task[], query = ''): Task[] {
     .filter((t) => t.completedAt && matches(t, query))
     .sort((a, b) => b.completedAt!.localeCompare(a.completedAt!) || tie(a, b))
 }
+export const planGroupLabels = {
+  overdue: '기한 초과',
+  dueToday: '오늘 기한',
+  yesterday: '어제 선택한 일',
+  high: '높은 우선순위',
+} as const
+export type PlanGroup = keyof typeof planGroupLabels
+export type PlanCandidate = { task: Task; group: PlanGroup; reasons: string[] }
+export function yesterdayTasks(tasks: Task[], today: string): Task[] {
+  const yesterday = addDays(today, -1)
+  return tasks.filter((task) => task.completedAt === null && task.focusDate === yesterday)
+}
+export function planCandidates(tasks: Task[], today: string): PlanCandidate[] {
+  const yesterday = addDays(today, -1)
+  const groups = Object.keys(planGroupLabels) as PlanGroup[]
+  return tasks
+    .filter((task) => task.completedAt === null)
+    .flatMap((task): PlanCandidate[] => {
+      const matches: PlanGroup[] = []
+      if (isOverdue(task, today)) matches.push('overdue')
+      if (task.dueDate === today) matches.push('dueToday')
+      if (task.focusDate === yesterday) matches.push('yesterday')
+      if (task.priority === 'high') matches.push('high')
+      return matches.length
+        ? [{ task, group: matches[0], reasons: matches.map((group) => planGroupLabels[group]) }]
+        : []
+    })
+    .sort(
+      (a, b) =>
+        groups.indexOf(a.group) - groups.indexOf(b.group) ||
+        (a.group === 'overdue' ? a.task.dueDate!.localeCompare(b.task.dueDate!) : 0) ||
+        baseSort(a.task, b.task),
+    )
+}
+export function todaySummary(tasks: Task[], today: string) {
+  const unfinished = tasks.filter((task) => task.completedAt === null)
+  const focused = unfinished.filter((task) => task.focusDate === today).length
+  const dueOnly = unfinished.filter(
+    (task) => isDate(task.dueDate) && task.dueDate <= today && task.focusDate !== today,
+  ).length
+  return { focused, dueOnly, total: focused + dueOnly }
+}
 export function updateTask(task: Task, draft: TaskDraft, now = new Date().toISOString()): Task {
   const error = validateTitle(draft.title)
   if (error) throw new Error(error)
