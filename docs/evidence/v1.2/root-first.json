@@ -1,0 +1,1279 @@
+{
+  "stats": {
+    "startTime": "2026-10-02T08:18:05.091Z",
+    "duration": 91326.14499999999,
+    "expected": 70,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "file": "app.spec.ts",
+      "title": "최초 빈 상태·오늘/전체 생성 기본값·연속 입력·키별 저장",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:05.846Z",
+      "duration": 679,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "속성 저장·새로고침 유지·미래 기한과 오늘 독립·기한에 의한 잔류 안내",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:06.740Z",
+      "duration": 1146,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "빈 제목·200자 한글·공백 없는 제목·한글 IME 조합 이벤트",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:07.896Z",
+      "duration": 784,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "완료·실행 취소·다른 항목 편집 보존·완료 목록 복원",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:08.689Z",
+      "duration": 835,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "삭제 취소는 원래 id·날짜·우선순위·분류·완료·예시 상태를 복원",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:09.534Z",
+      "duration": 774,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "최근 행동만 실행 취소·이전 타이머 격리·hover/키보드에서 만료 정지",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:10.317Z",
+      "duration": 608,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "자정 전환 시 집중만 만료·기한 초과 표시·전체 보존",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:10.933Z",
+      "duration": 414,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "focus에서 날짜 갱신·연말 경계",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:11.356Z",
+      "duration": 367,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "visibilitychange에서 날짜 갱신·연말 경계",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:11.732Z",
+      "duration": 356,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "쓰기 실패 시 메모리 유지·지속 경고·실제 성공한 재시도",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:12.097Z",
+      "duration": 477,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "손상 원본 자동 덮어쓰기 차단: {broken",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:12.581Z",
+      "duration": 853,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "손상 원본 자동 덮어쓰기 차단: {\"version\":2,\"tasks\":[]}",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:13.442Z",
+      "duration": 733,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "손상 원본 자동 덮어쓰기 차단: {\"version\":1,\"tasks\":[{}]}",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:14.182Z",
+      "duration": 762,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "읽기 실패는 쓰기를 보호하고 재시도 때 기존 항목과 메모리 항목 합침",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:14.951Z",
+      "duration": 425,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "localStorage 접근 자체 실패도 빈 값으로 덮어쓰지 않는다",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:15.383Z",
+      "duration": 409,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "예시 선택·중복 방지·검색 현재 보기·완료 검색·예시 제거 사용자 보존",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:15.799Z",
+      "duration": 847,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "200개 기본 검색·편집·완료·스크롤",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:16.654Z",
+      "duration": 874,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "키보드 추가→편집→저장→완료→실행 취소, dialog trap·Escape·포커스 복귀",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:17.535Z",
+      "duration": 744,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "화면 1440×900·overflow·편집·스크린샷",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:18.287Z",
+      "duration": 1019,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "화면 1366×768·overflow·편집·스크린샷",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:19.313Z",
+      "duration": 1022,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "화면 390×844·overflow·편집·스크린샷",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:20.344Z",
+      "duration": 1037,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "화면 320×740·overflow·편집·스크린샷",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:21.389Z",
+      "duration": 1043,
+      "error": null
+    },
+    {
+      "file": "app.spec.ts",
+      "title": "reduced-motion·실제 토큰 대비·production 자산 응답",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:22.440Z",
+      "duration": 435,
+      "error": null
+    },
+    {
+      "file": "backup-size.spec.ts",
+      "title": "P10 E11: 6000개 자체 다운로드→같은 파일 UI 미리보기 (quota/목록 성능 제외)",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:22.891Z",
+      "duration": 1855,
+      "error": null
+    },
+    {
+      "file": "backup-size.spec.ts",
+      "title": "E11: UTF-8 파일 정확한 한도와 1byte 초과, 선택만으로 저장하지 않음",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:24.753Z",
+      "duration": 2169,
+      "error": null
+    },
+    {
+      "file": "backup-size.spec.ts",
+      "title": "E11: 초과 자체 백업은 다운로드 성공으로 표시하지 않음·원본 보존",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:26.929Z",
+      "duration": 1431,
+      "error": null
+    },
+    {
+      "file": "details-boundaries.spec.ts",
+      "title": "B03/B05/B06/B07: 네 우선순위·날짜·분류 경계·Enter/Space 실제 저장",
+      "ok": false,
+      "status": "timedOut",
+      "startTime": "2026-10-02T08:18:28.383Z",
+      "duration": 30321,
+      "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+    },
+    {
+      "file": "mobile-accessibility.spec.ts",
+      "title": "모바일 터치·작은 가시 영역 편집·알림과 하단 탐색 분리",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:18:59.512Z",
+      "duration": 1029,
+      "error": null
+    },
+    {
+      "file": "mobile-accessibility.spec.ts",
+      "title": "실제 렌더링 색·hover·포커스·접근 가능한 입력과 버튼 이름",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:00.743Z",
+      "duration": 766,
+      "error": null
+    },
+    {
+      "file": "synthetic-beta.spec.ts",
+      "title": "P01 처음 사용: 빈 안내→Enter→편집·취소→완료 복구",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:01.538Z",
+      "duration": 836,
+      "error": null
+    },
+    {
+      "file": "synthetic-beta.spec.ts",
+      "title": "P02 빠른 기록: 전체 5개→버튼 비교→빈/길이/중복 복구",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:02.382Z",
+      "duration": 1063,
+      "error": null
+    },
+    {
+      "file": "synthetic-beta.spec.ts",
+      "title": "P03 키보드: 입력→Tab 편집→textarea Enter→취소→계획·백업",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:03.454Z",
+      "duration": 1039,
+      "error": null
+    },
+    {
+      "file": "synthetic-beta.spec.ts",
+      "title": "P04 모바일 touch: 입력 Enter→편집→완료 영역 복원→계획",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:04.501Z",
+      "duration": 1784,
+      "error": null
+    },
+    {
+      "file": "synthetic-beta.spec.ts",
+      "title": "P05 320px: 긴 제목·분류 저장→계획/복원→취소",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:06.294Z",
+      "duration": 1104,
+      "error": null
+    },
+    {
+      "file": "synthetic-beta.spec.ts",
+      "title": "P06 가시 영역 390×480: 입력→상세→복원 오류·재선택",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:07.406Z",
+      "duration": 943,
+      "error": null
+    },
+    {
+      "file": "synthetic-beta.spec.ts",
+      "title": "P07 기한/집중: 어제→이어가기→집중 해제→미래 기한",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:08.358Z",
+      "duration": 732,
+      "error": null
+    },
+    {
+      "file": "synthetic-beta.spec.ts",
+      "title": "P08 많은 일: 50→검색/후보→오늘, 후보 없음 복구",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:09.098Z",
+      "duration": 776,
+      "error": null
+    },
+    {
+      "file": "synthetic-beta.spec.ts",
+      "title": "P09 실수 복구: 삭제 취소→완료/편집→예시 재추가/제거",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:09.882Z",
+      "duration": 1173,
+      "error": null
+    },
+    {
+      "file": "synthetic-beta.spec.ts",
+      "title": "P10 보존: 다운로드→빈 context 복원→재백업→교체 취소",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:11.062Z",
+      "duration": 1897,
+      "error": null
+    },
+    {
+      "file": "synthetic-beta.spec.ts",
+      "title": "P11 시각/확대: 200% reflow 동등 조건→reduced motion→오류 복구",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:12.966Z",
+      "duration": 1101,
+      "error": null
+    },
+    {
+      "file": "synthetic-beta.spec.ts",
+      "title": "P12 경계 입력: 공백·조합→편집 조합 Enter→검색",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:14.075Z",
+      "duration": 865,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "v1 데이터 그대로 로드·계획 그룹·사실 이유·중복 제외·집중 중·이어가기 id/기한 보존",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:14.973Z",
+      "duration": 500,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "요약 합계·집중 해제 기한 잔류·완료 후 즉시 일치",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:15.480Z",
+      "duration": 475,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "후보 없음·전체 경로·N 단축키 차단·Escape와 양방향 Tab 경계",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:15.963Z",
+      "duration": 489,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "열린 계획 패널의 자정·월말 어제 상태·자동 이월 없음",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:16.460Z",
+      "duration": 444,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "계획 focus 연말 갱신·이어가기",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:16.911Z",
+      "duration": 446,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "계획 visibilitychange 연말 갱신·이어가기",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:17.364Z",
+      "duration": 458,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "전체 JSON 백업 round trip·저장 쓰기 없음·Object URL 정리",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:17.829Z",
+      "duration": 606,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "저장 실패 중 메모리 전체 백업·저장 원본 불변",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:18.443Z",
+      "duration": 621,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "파일 검증 손상 JSON·원본/상태 유지·재선택",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:19.071Z",
+      "duration": 502,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "파일 검증 raw 저장 원본·원본/상태 유지·재선택",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:19.580Z",
+      "duration": 504,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "파일 검증 백업 버전·원본/상태 유지·재선택",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:20.093Z",
+      "duration": 507,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "파일 검증 데이터 버전·원본/상태 유지·재선택",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:20.608Z",
+      "duration": 511,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "파일 검증 중복 id·원본/상태 유지·재선택",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:21.127Z",
+      "duration": 522,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "파일 검증 잘못된 날짜·원본/상태 유지·재선택",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:21.656Z",
+      "duration": 501,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "파일 검증 제목 길이·원본/상태 유지·재선택",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:22.165Z",
+      "duration": 497,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "10MiB 초과·파일 선택 취소와 미리보기 취소는 목록/저장 상태 불변",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:22.670Z",
+      "duration": 1362,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "합치기 미리보기·현재 중복 보존·다른 id 같은 제목·1회 저장·검색/완료 갱신",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:24.040Z",
+      "duration": 778,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "전체 교체 확인·취소·교체 전 백업·빈 백업으로 명시적 교체",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:24.826Z",
+      "duration": 887,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "복원 merge 쓰기 실패 원본/메모리/상태 유지·재시도·오래된 실행 취소 정리",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:25.720Z",
+      "duration": 846,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "복원 replace 쓰기 실패 원본/메모리/상태 유지·재시도·오래된 실행 취소 정리",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:26.575Z",
+      "duration": 929,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "저장 보호 blocked는 복원으로 우회하지 않음",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:27.511Z",
+      "duration": 465,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "저장 보호 unavailable는 복원으로 우회하지 않음",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:27.985Z",
+      "duration": 486,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "정확한 예시 재추가 피드백·중복 때 저장 없음·사용자 보존",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:28.479Z",
+      "duration": 574,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "늦은 파일 읽기가 다음 선택과 닫힌 패널을 덮어쓰지 않음",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:29.060Z",
+      "duration": 613,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "데이터 패널 키보드·Tab trap·Escape와 호출 메뉴 포커스 복귀",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:29.680Z",
+      "duration": 540,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "새 모바일 패널 touch·작아진 가시 영역·복원 조작",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:30.228Z",
+      "duration": 1102,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "v1.1 1440×900 계획·복원 미리보기·긴 제목·메타·하단 UI",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:31.339Z",
+      "duration": 1194,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "v1.1 1366×768 계획·복원 미리보기·긴 제목·메타·하단 UI",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:32.540Z",
+      "duration": 1180,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "v1.1 390×844 계획·복원 미리보기·긴 제목·메타·하단 UI",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:33.728Z",
+      "duration": 1111,
+      "error": null
+    },
+    {
+      "file": "v1.1.spec.ts",
+      "title": "v1.1 320×740 계획·복원 미리보기·긴 제목·메타·하단 UI",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:19:34.849Z",
+      "duration": 1072,
+      "error": null
+    }
+  ],
+  "observations": [
+    {
+      "caseIds": ["A01", "A02", "B01"],
+      "personaId": "P01",
+      "phase": "after",
+      "sourceCommit": "8660477 with uncommitted SB-01/SB-02 fixes; source recorded by subsequent implementation commit",
+      "checkedAt": "2026-10-02T08:19:01.768Z",
+      "environment": {
+        "browser": "134.0.6998.36",
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "timezone": "Asia/Seoul",
+        "fixtureClock": "2026-10-02T10:00:00+09:00",
+        "mobile": false
+      },
+      "fixture": "empty, UI creation",
+      "steps": "빈 안내에서 제목 Enter, 행 제목을 눌러 편집",
+      "expected": "1개, 정확한 title/오늘 focus/null due; 편집 제목 focus",
+      "initial": {
+        "rawBytes": 0,
+        "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "taskCount": 0
+      },
+      "evidenceKind": "actual Chrome UI with assertions; synthetic data/clock; no human study",
+      "test": "P01 처음 사용: 빈 안내→Enter→편집·취소→완료 복구",
+      "status": "PASS",
+      "actual": "All stated UI/data assertions passed",
+      "final": {
+        "rawBytes": 292,
+        "rawSHA256": "fd24b0917a7ce5111985d00211ce4cdb90e317ad855ec44852b265959b236316",
+        "taskCount": 1
+      }
+    },
+    {
+      "caseIds": ["B02", "D01"],
+      "personaId": "P01",
+      "phase": "after",
+      "sourceCommit": "8660477 with uncommitted SB-01/SB-02 fixes; source recorded by subsequent implementation commit",
+      "checkedAt": "2026-10-02T08:19:02.039Z",
+      "environment": {
+        "browser": "134.0.6998.36",
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "timezone": "Asia/Seoul",
+        "fixtureClock": "2026-10-02T10:00:00+09:00",
+        "mobile": false
+      },
+      "fixture": "one UI task",
+      "steps": "여러 초안 변경 후 취소, 완료→실행 취소→reload",
+      "expected": "초안/취소는 원본 불변, 완료 취소는 원래 속성 보존",
+      "initial": {
+        "rawBytes": 292,
+        "rawSHA256": "fd24b0917a7ce5111985d00211ce4cdb90e317ad855ec44852b265959b236316",
+        "taskCount": 1
+      },
+      "evidenceKind": "actual Chrome UI with assertions; synthetic data/clock; no human study",
+      "test": "P01 처음 사용: 빈 안내→Enter→편집·취소→완료 복구",
+      "status": "PASS",
+      "actual": "All stated UI/data assertions passed",
+      "final": {
+        "rawBytes": 292,
+        "rawSHA256": "002abf9a2772f5a9e27ca0ad9cb9493f2fb1a56e02a2bd3849b4b40082f15118",
+        "taskCount": 1
+      }
+    },
+    {
+      "caseIds": ["A03", "A04", "A05"],
+      "personaId": "P02",
+      "phase": "after",
+      "sourceCommit": "8660477 with uncommitted SB-01/SB-02 fixes; source recorded by subsequent implementation commit",
+      "checkedAt": "2026-10-02T08:19:02.657Z",
+      "environment": {
+        "browser": "134.0.6998.36",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "timezone": "Asia/Seoul",
+        "fixtureClock": "2026-10-02T10:00:00+09:00",
+        "mobile": false
+      },
+      "fixture": "empty, 5 UI titles",
+      "steps": "전체에서 주말 장보기 등 5개 연속 Enter, 버튼 1개, reload",
+      "expected": "각 1개, 기본값 동일, 입력 초기화/focus, reload 유지",
+      "initial": {
+        "rawBytes": 0,
+        "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "taskCount": 0
+      },
+      "evidenceKind": "actual Chrome UI with assertions; synthetic data/clock; no human study",
+      "test": "P02 빠른 기록: 전체 5개→버튼 비교→빈/길이/중복 복구",
+      "status": "PASS",
+      "actual": "All stated UI/data assertions passed",
+      "final": {
+        "rawBytes": 1514,
+        "rawSHA256": "705118ca95a9a40c7f3163ff86ea9c44db465de6ce230f381c900d60400553b5",
+        "taskCount": 6
+      }
+    },
+    {
+      "caseIds": ["A06", "A08", "A09"],
+      "personaId": "P02",
+      "phase": "after",
+      "sourceCommit": "8660477 with uncommitted SB-01/SB-02 fixes; source recorded by subsequent implementation commit",
+      "checkedAt": "2026-10-02T08:19:02.968Z",
+      "environment": {
+        "browser": "134.0.6998.36",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "timezone": "Asia/Seoul",
+        "fixtureClock": "2026-10-02T10:00:00+09:00",
+        "mobile": false
+      },
+      "fixture": "six UI tasks",
+      "steps": "빈/공백 Enter·추가, 199/200/201자, 빠른 연속 Enter와 의도적 같은 제목",
+      "expected": "빈 항목 없음, maxLength200, 의도적 같은 제목 id 다름",
+      "initial": {
+        "rawBytes": 1514,
+        "rawSHA256": "705118ca95a9a40c7f3163ff86ea9c44db465de6ce230f381c900d60400553b5",
+        "taskCount": 6
+      },
+      "evidenceKind": "actual Chrome UI with assertions; synthetic data/clock; no human study",
+      "test": "P02 빠른 기록: 전체 5개→버튼 비교→빈/길이/중복 복구",
+      "status": "PASS",
+      "actual": "All stated UI/data assertions passed",
+      "final": {
+        "rawBytes": 4552,
+        "rawSHA256": "122b75e2b8ce5cdffe78720573745746757acf71d1be6bd04821910e97149e46",
+        "taskCount": 11
+      }
+    },
+    {
+      "caseIds": ["B04", "F01", "F02"],
+      "personaId": "P03",
+      "phase": "after",
+      "sourceCommit": "8660477 with uncommitted SB-01/SB-02 fixes; source recorded by subsequent implementation commit",
+      "checkedAt": "2026-10-02T08:19:03.670Z",
+      "environment": {
+        "browser": "134.0.6998.36",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "timezone": "Asia/Seoul",
+        "fixtureClock": "2026-10-02T10:00:00+09:00",
+        "mobile": false
+      },
+      "fixture": "empty UI task, keyboard traversal",
+      "steps": "N 입력→Enter, Tab으로 편집, textarea Enter와 Escape, 계획/데이터 trap",
+      "expected": "textarea Enter 줄바꿈만; Tab/ShiftTab/Escape 의미와 호출 focus 유지",
+      "initial": {
+        "rawBytes": 0,
+        "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "taskCount": 0
+      },
+      "evidenceKind": "actual Chrome UI with assertions; synthetic data/clock; no human study",
+      "test": "P03 키보드: 입력→Tab 편집→textarea Enter→취소→계획·백업",
+      "status": "PASS",
+      "actual": "All stated UI/data assertions passed",
+      "final": {
+        "rawBytes": 279,
+        "rawSHA256": "fa3940fc79c131e70adec2ccfacdc40cbcbb3bf3a54b804183d14eae2c7bcd55",
+        "taskCount": 1
+      }
+    },
+    {
+      "caseIds": ["B02"],
+      "personaId": "P03",
+      "phase": "after",
+      "sourceCommit": "8660477 with uncommitted SB-01/SB-02 fixes; source recorded by subsequent implementation commit",
+      "checkedAt": "2026-10-02T08:19:04.231Z",
+      "environment": {
+        "browser": "134.0.6998.36",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "timezone": "Asia/Seoul",
+        "fixtureClock": "2026-10-02T10:00:00+09:00",
+        "mobile": false
+      },
+      "fixture": "keyboard UI task",
+      "steps": "다시 편집 후 닫기, backdrop 클릭 취소",
+      "expected": "두 경로 모두 원본 불변",
+      "initial": {
+        "rawBytes": 279,
+        "rawSHA256": "fa3940fc79c131e70adec2ccfacdc40cbcbb3bf3a54b804183d14eae2c7bcd55",
+        "taskCount": 1
+      },
+      "evidenceKind": "actual Chrome UI with assertions; synthetic data/clock; no human study",
+      "test": "P03 키보드: 입력→Tab 편집→textarea Enter→취소→계획·백업",
+      "status": "PASS",
+      "actual": "All stated UI/data assertions passed",
+      "final": {
+        "rawBytes": 279,
+        "rawSHA256": "fa3940fc79c131e70adec2ccfacdc40cbcbb3bf3a54b804183d14eae2c7bcd55",
+        "taskCount": 1
+      }
+    },
+    {
+      "caseIds": ["A12", "F04", "D02"],
+      "personaId": "P04",
+      "phase": "after",
+      "sourceCommit": "8660477 with uncommitted SB-01/SB-02 fixes; source recorded by subsequent implementation commit",
+      "checkedAt": "2026-10-02T08:19:04.804Z",
+      "environment": {
+        "browser": "134.0.6998.36",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "timezone": "Asia/Seoul",
+        "fixtureClock": "2026-10-02T10:00:00+09:00",
+        "mobile": true
+      },
+      "fixture": "empty, touch with automation Enter; no OS keyboard",
+      "steps": "터치 입력, Enter→상세 저장→완료→전체 검색/완료 복원",
+      "expected": "1개 기본값, 44px 목표, 검색 중 완료/복원 일치",
+      "initial": {
+        "rawBytes": 0,
+        "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "taskCount": 0
+      },
+      "evidenceKind": "actual Chrome UI with assertions; synthetic data/clock; no human study",
+      "test": "P04 모바일 touch: 입력 Enter→편집→완료 영역 복원→계획",
+      "status": "PASS",
+      "actual": "All stated UI/data assertions passed",
+      "final": {
+        "rawBytes": 289,
+        "rawSHA256": "43fccd5344ec34d45ff8903453f70a1b75e65492806c08771bcf226a70596286",
+        "taskCount": 1
+      }
+    },
+    {
+      "caseIds": ["E03"],
+      "personaId": "P04",
+      "phase": "after",
+      "sourceCommit": "8660477 with uncommitted SB-01/SB-02 fixes; source recorded by subsequent implementation commit",
+      "checkedAt": "2026-10-02T08:19:05.621Z",
+      "environment": {
+        "browser": "134.0.6998.36",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "timezone": "Asia/Seoul",
+        "fixtureClock": "2026-10-02T10:00:00+09:00",
+        "mobile": true
+      },
+      "fixture": "one mobile task",
+      "steps": "유효 파일 미리보기→취소→같은 파일 재선택",
+      "expected": "목록/저장 원본 그대로, 파일명/수/기본 합치기 표시",
+      "initial": {
+        "rawBytes": 289,
+        "rawSHA256": "43fccd5344ec34d45ff8903453f70a1b75e65492806c08771bcf226a70596286",
+        "taskCount": 1
+      },
+      "evidenceKind": "actual Chrome UI with assertions; synthetic data/clock; no human study",
+      "test": "P04 모바일 touch: 입력 Enter→편집→완료 영역 복원→계획",
+      "status": "PASS",
+      "actual": "All stated UI/data assertions passed",
+      "final": {
+        "rawBytes": 289,
+        "rawSHA256": "43fccd5344ec34d45ff8903453f70a1b75e65492806c08771bcf226a70596286",
+        "taskCount": 1
+      }
+    },
+    {
+      "caseIds": ["B07", "F03"],
+      "personaId": "P05",
+      "phase": "after",
+      "sourceCommit": "8660477 with uncommitted SB-01/SB-02 fixes; source recorded by subsequent implementation commit",
+      "checkedAt": "2026-10-02T08:19:06.527Z",
+      "environment": {
+        "browser": "134.0.6998.36",
+        "viewport": {
+          "width": 320,
+          "height": 740
+        },
+        "timezone": "Asia/Seoul",
+        "fixtureClock": "2026-10-02T10:00:00+09:00",
+        "mobile": false
+      },
+      "fixture": "UI 200-char title and 24-char category",
+      "steps": "긴 제목 추가→네 우선순위/분류 경계→저장→긴 파일명 미리보기",
+      "expected": "maxLength24/trim/null, 모든 컨트롤 접근/가로 넘침 없음",
+      "initial": {
+        "rawBytes": 0,
+        "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "taskCount": 0
+      },
+      "evidenceKind": "actual Chrome UI with assertions; synthetic data/clock; no human study",
+      "test": "P05 320px: 긴 제목·분류 저장→계획/복원→취소",
+      "status": "PASS",
+      "actual": "All stated UI/data assertions passed",
+      "final": {
+        "rawBytes": 936,
+        "rawSHA256": "57484df5a560f20ffcde7a72f7db964fb4b6a72c436b67c0a46155f3a038dc95",
+        "taskCount": 1
+      }
+    },
+    {
+      "caseIds": ["B07"],
+      "personaId": "P05",
+      "phase": "after",
+      "sourceCommit": "8660477 with uncommitted SB-01/SB-02 fixes; source recorded by subsequent implementation commit",
+      "checkedAt": "2026-10-02T08:19:07.209Z",
+      "environment": {
+        "browser": "134.0.6998.36",
+        "viewport": {
+          "width": 320,
+          "height": 740
+        },
+        "timezone": "Asia/Seoul",
+        "fixtureClock": "2026-10-02T10:00:00+09:00",
+        "mobile": false
+      },
+      "fixture": "long UI task",
+      "steps": "분류 공백만 저장→분류 없음 확인",
+      "expected": "선택 필드가 null로 저장됨",
+      "initial": {
+        "rawBytes": 936,
+        "rawSHA256": "57484df5a560f20ffcde7a72f7db964fb4b6a72c436b67c0a46155f3a038dc95",
+        "taskCount": 1
+      },
+      "evidenceKind": "actual Chrome UI with assertions; synthetic data/clock; no human study",
+      "test": "P05 320px: 긴 제목·분류 저장→계획/복원→취소",
+      "status": "PASS",
+      "actual": "All stated UI/data assertions passed",
+      "final": {
+        "rawBytes": 866,
+        "rawSHA256": "16a8f3ad30495930cd92d6e1183a0b3043a65d48bad14ee07b54b12338b117c9",
+        "taskCount": 1
+      }
+    },
+    {
+      "caseIds": ["B08", "F05"],
+      "personaId": "P06",
+      "phase": "after",
+      "sourceCommit": "8660477 with uncommitted SB-01/SB-02 fixes; source recorded by subsequent implementation commit",
+      "checkedAt": "2026-10-02T08:19:07.620Z",
+      "environment": {
+        "browser": "134.0.6998.36",
+        "viewport": {
+          "width": 390,
+          "height": 480
+        },
+        "timezone": "Asia/Seoul",
+        "fixtureClock": "2026-10-02T10:00:00+09:00",
+        "mobile": false
+      },
+      "fixture": "UI task, reduced viewport (not physical keyboard)",
+      "steps": "입력→상세 분류 저장→손상 파일 오류→정상 미리보기",
+      "expected": "입력/저장/오류/적용에 스크롤로 접근, 원본 무변경",
+      "initial": {
+        "rawBytes": 0,
+        "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "taskCount": 0
+      },
+      "evidenceKind": "actual Chrome UI with assertions; synthetic data/clock; no human study",
+      "test": "P06 가시 영역 390×480: 입력→상세→복원 오류·재선택",
+      "status": "PASS",
+      "actual": "All stated UI/data assertions passed",
+      "final": {
+        "rawBytes": 290,
+        "rawSHA256": "a1c62154d0be671b85860690166d4a0b0d6e6540c8535e292de3bc0071b01578",
+        "taskCount": 1
+      }
+    },
+    {
+      "caseIds": ["C02", "C03", "C04", "C05", "C06"],
+      "personaId": "P07",
+      "phase": "after",
+      "sourceCommit": "8660477 with uncommitted SB-01/SB-02 fixes; source recorded by subsequent implementation commit",
+      "checkedAt": "2026-10-02T08:19:08.577Z",
+      "environment": {
+        "browser": "134.0.6998.36",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "timezone": "Asia/Seoul",
+        "fixtureClock": "2026-10-02T10:00:00+09:00",
+        "mobile": false
+      },
+      "fixture": "yesterday-overlap-v1",
+      "steps": "어제2개 확인→겹침 집중/해제→미래 이어가기/해제",
+      "expected": "자동 이월 없음, id/due/created 보존, 요약과 기한 잔류 정확",
+      "initial": {
+        "rawBytes": 959,
+        "rawSHA256": "a3a59bf6f66fcfe64ab3e11c748a060454d8c6e9be613a703b87a411b9aadd03",
+        "taskCount": 4
+      },
+      "evidenceKind": "actual Chrome UI with assertions; synthetic data/clock; no human study",
+      "test": "P07 기한/집중: 어제→이어가기→집중 해제→미래 기한",
+      "status": "PASS",
+      "actual": "All stated UI/data assertions passed",
+      "final": {
+        "rawBytes": 943,
+        "rawSHA256": "23722e6bdfca38d34f6072a8ee05d7458c6c85955ec40e77b1b6b75f3e5473a7",
+        "taskCount": 4
+      }
+    },
+    {
+      "caseIds": ["C01", "C08", "C09", "C10"],
+      "personaId": "P08",
+      "phase": "after",
+      "sourceCommit": "8660477 with uncommitted SB-01/SB-02 fixes; source recorded by subsequent implementation commit",
+      "checkedAt": "2026-10-02T08:19:09.312Z",
+      "environment": {
+        "browser": "134.0.6998.36",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "timezone": "Asia/Seoul",
+        "fixtureClock": "2026-10-02T10:00:00+09:00",
+        "mobile": false
+      },
+      "fixture": "50-task fixture; 200-task regression separately",
+      "steps": "오늘 검색 중 계획 열기/선택/닫기→검색 해제→전체 분류 검색/없음",
+      "expected": "계획은 검색과 독립, 오늘/전체 검색 범위/숫자 표시; 데이터 안 사라짐",
+      "initial": {
+        "rawBytes": 10863,
+        "rawSHA256": "89c3bc692df8567cae4c1c6acf206ada9d4e6970b95595f8004edbd6ab529886",
+        "taskCount": 50
+      },
+      "evidenceKind": "actual Chrome UI with assertions; synthetic data/clock; no human study",
+      "test": "P08 많은 일: 50→검색/후보→오늘, 후보 없음 복구",
+      "status": "PASS",
+      "actual": "All stated UI/data assertions passed",
+      "final": {
+        "rawBytes": 10871,
+        "rawSHA256": "cd5c061241ec6866f41ddac804bfbb8aaa2c4b1bca46939c1e60c7f0f88e62bd",
+        "taskCount": 50
+      }
+    },
+    {
+      "caseIds": ["D03", "D05", "D06"],
+      "personaId": "P09",
+      "phase": "after",
+      "sourceCommit": "8660477 with uncommitted SB-01/SB-02 fixes; source recorded by subsequent implementation commit",
+      "checkedAt": "2026-10-02T08:19:10.135Z",
+      "environment": {
+        "browser": "134.0.6998.36",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "timezone": "Asia/Seoul",
+        "fixtureClock": "2026-10-02T10:00:00+09:00",
+        "mobile": false
+      },
+      "fixture": "UI user task mixed with optional demos",
+      "steps": "삭제/undo→완료→다른 제목 편집→undo→예시 재추가/제거",
+      "expected": "삭제 전체 복원, 완료 undo 다른 속성 유지, 예시 중복/사용자 보존",
+      "initial": {
+        "rawBytes": 282,
+        "rawSHA256": "1c178e4af35fe51cbfde8a4d4f1bab40d3b8ad4406226abf234841197aca302c",
+        "taskCount": 1
+      },
+      "evidenceKind": "actual Chrome UI with assertions; synthetic data/clock; no human study",
+      "test": "P09 실수 복구: 삭제 취소→완료/편집→예시 재추가/제거",
+      "status": "PASS",
+      "actual": "All stated UI/data assertions passed",
+      "final": {
+        "rawBytes": 279,
+        "rawSHA256": "f78f9c353d7545c177cf461f1c4df63dc54a7b726ff0931b1058de137dd4d716",
+        "taskCount": 1
+      }
+    },
+    {
+      "caseIds": ["E01", "E02", "E05"],
+      "personaId": "P10",
+      "phase": "after",
+      "sourceCommit": "8660477 with uncommitted SB-01/SB-02 fixes; source recorded by subsequent implementation commit",
+      "checkedAt": "2026-10-02T08:19:11.699Z",
+      "environment": {
+        "browser": "134.0.6998.36",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "timezone": "Asia/Seoul",
+        "fixtureClock": "2026-10-02T10:00:00+09:00",
+        "mobile": false
+      },
+      "fixture": "UI-created complete wrapper; separate empty context",
+      "steps": "실제 다운로드→빈 환경 파일 UI 합치기→재백업 비교→교체 전 백업/취소",
+      "expected": "전체 task 필드 round trip 일치, 확인/취소 원본 불변",
+      "initial": {
+        "rawBytes": 297,
+        "rawSHA256": "6727ce211ae3caca086b45f631b45763b5f9e3c0512bb947e9be8ff60ce3a854",
+        "taskCount": 1
+      },
+      "evidenceKind": "actual Chrome UI with assertions; synthetic data/clock; no human study",
+      "test": "P10 보존: 다운로드→빈 context 복원→재백업→교체 취소",
+      "status": "PASS",
+      "actual": "All stated UI/data assertions passed",
+      "final": {
+        "rawBytes": 297,
+        "rawSHA256": "6727ce211ae3caca086b45f631b45763b5f9e3c0512bb947e9be8ff60ce3a854",
+        "taskCount": 1
+      }
+    },
+    {
+      "caseIds": ["F06", "A06"],
+      "personaId": "P11",
+      "phase": "after",
+      "sourceCommit": "8660477 with uncommitted SB-01/SB-02 fixes; source recorded by subsequent implementation commit",
+      "checkedAt": "2026-10-02T08:19:13.270Z",
+      "environment": {
+        "browser": "134.0.6998.36",
+        "viewport": {
+          "width": 720,
+          "height": 450
+        },
+        "timezone": "Asia/Seoul",
+        "fixtureClock": "2026-10-02T10:00:00+09:00",
+        "mobile": false
+      },
+      "fixture": "720x450 CSS / scale2: 1440x900 at 200% equivalent reflow; not native browser zoom",
+      "steps": "축소 layout에서 빈 오류→입력→편집 focus/이름/텍스트 상태→취소",
+      "expected": "가로 넘침 없음, 오류 연결과 focus ring, motion 제거, 상태 텍스트 존재",
+      "initial": {
+        "rawBytes": 0,
+        "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "taskCount": 0
+      },
+      "evidenceKind": "actual Chrome UI with assertions; synthetic data/clock; no human study",
+      "test": "P11 시각/확대: 200% reflow 동등 조건→reduced motion→오류 복구",
+      "status": "PASS",
+      "actual": "All stated UI/data assertions passed",
+      "final": {
+        "rawBytes": 279,
+        "rawSHA256": "9006a0cc51d33bbd9789d65a751910dff3f108853e26a3e2a0b466f20197360f",
+        "taskCount": 1
+      }
+    },
+    {
+      "caseIds": ["A07", "A10", "A11"],
+      "personaId": "P12",
+      "phase": "after",
+      "sourceCommit": "8660477 with uncommitted SB-01/SB-02 fixes; source recorded by subsequent implementation commit",
+      "checkedAt": "2026-10-02T08:19:14.291Z",
+      "environment": {
+        "browser": "134.0.6998.36",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "timezone": "Asia/Seoul",
+        "fixtureClock": "2026-10-02T10:00:00+09:00",
+        "mobile": false
+      },
+      "fixture": "UI Korean/English/emoji title; composition events, not OS IME",
+      "steps": "앞뒤 공백 제목, quick 조합 Enter, 완료 후 제출, 입력 N / Escape와 검색 Enter",
+      "expected": "trim/내부 문자 보존, 조합 중 생성0, 검색 Enter 생성 없음",
+      "initial": {
+        "rawBytes": 0,
+        "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "taskCount": 0
+      },
+      "evidenceKind": "actual Chrome UI with assertions; synthetic data/clock; no human study",
+      "test": "P12 경계 입력: 공백·조합→편집 조합 Enter→검색",
+      "status": "PASS",
+      "actual": "All stated UI/data assertions passed",
+      "final": {
+        "rawBytes": 289,
+        "rawSHA256": "bc81df30e0c075d17c6f8d75922faeadf2dcb7efc57ddcd698932ac137c01be7",
+        "taskCount": 1
+      }
+    },
+    {
+      "caseIds": ["B05"],
+      "personaId": "P12",
+      "phase": "after",
+      "sourceCommit": "8660477 with uncommitted SB-01/SB-02 fixes; source recorded by subsequent implementation commit",
+      "checkedAt": "2026-10-02T08:19:14.585Z",
+      "environment": {
+        "browser": "134.0.6998.36",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "timezone": "Asia/Seoul",
+        "fixtureClock": "2026-10-02T10:00:00+09:00",
+        "mobile": false
+      },
+      "fixture": "one UI task, category composition event + actual Enter",
+      "steps": "상세 분류에서 한글 조합 중 Enter",
+      "expected": "편집 유지, 저장 원본 무변경; 조합 확정 Enter가 저장 아님",
+      "initial": {
+        "rawBytes": 289,
+        "rawSHA256": "bc81df30e0c075d17c6f8d75922faeadf2dcb7efc57ddcd698932ac137c01be7",
+        "taskCount": 1
+      },
+      "evidenceKind": "actual Chrome UI with assertions; synthetic data/clock; no human study",
+      "test": "P12 경계 입력: 공백·조합→편집 조합 Enter→검색",
+      "status": "PASS",
+      "actual": "All stated UI/data assertions passed",
+      "final": {
+        "rawBytes": 300,
+        "rawSHA256": "d673bab9ea6cf7ae3c21439902ad6edf292ddb6c4b0daad37541997ded27dfef",
+        "taskCount": 1
+      }
+    }
+  ],
+  "dataEvidence": [
+    {
+      "caseId": "E11",
+      "phase": "after",
+      "checkedAt": "2026-10-02T08:18:24.107Z",
+      "taskCount": 6000,
+      "bytes": 4847007,
+      "limitBytes": 10485760,
+      "quotaTested": false,
+      "rendered6000List": false,
+      "status": "PASS"
+    }
+  ],
+  "note": "Synthetic before sessions may finish while recording failed assertions. Feature results use observations, not session completion count. Duration is automation time."
+}

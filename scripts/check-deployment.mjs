@@ -296,13 +296,11 @@ try {
     await file.delete()
     assert.deepEqual(JSON.parse(text).data.tasks, tasks)
     assert(Buffer.byteLength(text) <= 10 * 1024 * 1024)
-    await largePage
-      .locator('#backup-file')
-      .setInputFiles({
-        name: 'self-backup-6000.json',
-        mimeType: 'application/json',
-        buffer: Buffer.from(text),
-      })
+    await largePage.locator('#backup-file').setInputFiles({
+      name: 'self-backup-6000.json',
+      mimeType: 'application/json',
+      buffer: Buffer.from(text),
+    })
     await expect(largePage.getByRole('heading', { name: '복원 미리보기' })).toBeVisible()
     await expect(
       largePage.getByText('백업 전체 6000개 · 미완료 6000개 · 완료 0개', { exact: true }),

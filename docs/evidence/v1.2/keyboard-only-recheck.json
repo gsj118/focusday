@@ -1,0 +1,93 @@
+{
+  "stats": {
+    "startTime": "2026-10-02T08:29:20.858Z",
+    "duration": 2444.351,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "file": "synthetic-beta.spec.ts",
+      "title": "P03 키보드: 입력→Tab 편집→textarea Enter→취소→계획·백업",
+      "ok": true,
+      "status": "passed",
+      "startTime": "2026-10-02T08:29:21.276Z",
+      "duration": 1461,
+      "error": null
+    }
+  ],
+  "observations": [
+    {
+      "caseIds": ["B04", "F01", "F02"],
+      "personaId": "P03",
+      "phase": "after",
+      "sourceCommit": "working-tree",
+      "checkedAt": "2026-10-02T08:29:21.769Z",
+      "environment": {
+        "browser": "134.0.6998.36",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "timezone": "Asia/Seoul",
+        "fixtureClock": "2026-10-02T10:00:00+09:00",
+        "mobile": false
+      },
+      "fixture": "empty UI task, keyboard traversal",
+      "steps": "N 입력→Enter, Tab으로 편집, textarea Enter와 Escape, 계획/데이터 trap",
+      "expected": "textarea Enter 줄바꿈만; Tab/ShiftTab/Escape 의미와 호출 focus 유지",
+      "initial": {
+        "rawBytes": 0,
+        "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "taskCount": 0
+      },
+      "evidenceKind": "actual Chrome UI with assertions; synthetic data/clock; no human study",
+      "test": "P03 키보드: 입력→Tab 편집→textarea Enter→취소→계획·백업",
+      "status": "PASS",
+      "actual": "All stated UI/data assertions passed",
+      "final": {
+        "rawBytes": 279,
+        "rawSHA256": "38c73394e03082b558f782e6deeb9be441f9e690b706603fad712cba1c175dd7",
+        "taskCount": 1
+      }
+    },
+    {
+      "caseIds": ["B02"],
+      "personaId": "P03",
+      "phase": "after",
+      "sourceCommit": "working-tree",
+      "checkedAt": "2026-10-02T08:29:22.665Z",
+      "environment": {
+        "browser": "134.0.6998.36",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "timezone": "Asia/Seoul",
+        "fixtureClock": "2026-10-02T10:00:00+09:00",
+        "mobile": false
+      },
+      "fixture": "keyboard UI task",
+      "steps": "다시 편집 후 닫기, backdrop 클릭 취소",
+      "expected": "두 경로 모두 원본 불변",
+      "initial": {
+        "rawBytes": 279,
+        "rawSHA256": "38c73394e03082b558f782e6deeb9be441f9e690b706603fad712cba1c175dd7",
+        "taskCount": 1
+      },
+      "evidenceKind": "actual Chrome UI with assertions; synthetic data/clock; no human study",
+      "test": "P03 키보드: 입력→Tab 편집→textarea Enter→취소→계획·백업",
+      "status": "PASS",
+      "actual": "All stated UI/data assertions passed",
+      "final": {
+        "rawBytes": 279,
+        "rawSHA256": "38c73394e03082b558f782e6deeb9be441f9e690b706603fad712cba1c175dd7",
+        "taskCount": 1
+      }
+    }
+  ],
+  "dataEvidence": [],
+  "note": "Synthetic before sessions may finish while recording failed assertions. Feature results use observations, not session completion count. Duration is automation time."
+}

@@ -43,3 +43,9 @@ Chrome 134.0.6998.36 / Windows / Asia/Seoul / ko-KR. fixture Clock은 2026-10-02
 | AI walkthrough 가설  | 검색 중 계획 선택 뒤 필터 때문에 항목이 안 보이면 사라졌다고 생각할 수 있음 | 실제 검색 지우기 경로와 범위 표시는 존재함. 사람의 이해도는 미측정; 미변경                |
 
 수정·최종 판정은 [v1.2 업데이트 기록](V1_2_UPDATE.md)에 이어 기록한다. 실제 휴대폰·OS 키보드/IME·native 확대·스크린 리더·전체 WCAG·사용자 연구는 별도 미실행으로 구분한다.
+
+## 최종 지원 조건의 결과
+
+수정 전 [53 Case](evidence/v1.2/cases-before.json)는 51 PASS/2 FAIL(SB-01/E11, SB-02/B05), 수정 후 [53 Case](evidence/v1.2/cases-after.json)는 실행한 지원 조건에서 53 PASS다. 물리 기기·OS IME·native 확대·스크린 리더/전체WCAG는 NOT_RUN이며 이 숫자에 포함하지 않는다. [53개 행동 표](SYNTHETIC_BETA_CASES_V1_2.md)에서 원문 과업과 자세한 근거를 찾을 수 있다.
+
+단위46·서울/뉴욕각22·루트 production71·실제 Pages 경로71가 통과했다. F01은 직접 focus API 없이 Tab으로 핵심 입력/편집/계획/백업에 진입하는 P03 보완도 실행했다. [Pages 전체 결과](evidence/v1.2/pages-final.json)는 구현 commit a52bb7a의 실제 source/시각·개별 결과를 기록한다. [한계·오류·검증](validation.md) · [전후 화면/변경](V1_2_UPDATE.md).

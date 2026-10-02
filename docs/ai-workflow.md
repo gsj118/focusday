@@ -41,3 +41,13 @@
 ## AI 판단의 한계
 
 자동 생성 코드는 TypeScript·lint·규칙 테스트·실제 Chrome·원격 Chromium으로 검증하고 결함을 수정했으나 전체 보안 감사·WCAG 적합성 평가·실제 사용자 연구를 대체하지 않는다. 명세에는 없는 외부 계정·백업 기능을 약속하지 않는다. 남은 환경과 실제 배포 결과는 [검증](validation.md)과 [제출·배포](deployment.md)에 명시한다.
+
+## v1.2 Synthetic Beta 실제 작업
+
+[v1.2 실행 명세 원문](ai-prompts/06-v1.2-synthetic-beta.md)과 [실제 요청](ai-prompts/07-v1.2-user-request.md)을 적용했다. 같은 세션이 12개 목표·기기·제약 관점을 분리해 실제 Chrome 조작과 기존 E2E 재실행으로 평가했다. 별도 모델·subagent·실제 참여자·인터뷰·발화·만족도·사람의 과업 시간은 없었다.
+
+시작 main7ff35e7과 기존 tag/source 관계를 확인하고 문서/화면/증거를 보존했다. 기존 단위42·시간대각22·E2E55 baseline을 실행하고, 새로운 세션 helper는 초기 실패를 기록한 채 계속했다. 따라서 스크립트12개 종료를 모두 기능PASS로 취급하지 않았다. 스크립트 selector/updatedAt 기대/disabled 해제 오류는 앱 결함과 분리해 원본·보완 재실행을 남겼다.
+
+6000개 pure-data 크기 문제를 byte 단위로 재현하고 실제 UI 다운로드/다시 선택의 실패도 보존했다. 상세 분류 compositionstart+Enter의 의도하지 않은 저장도 raw hash와 모달 종료로 재현했다. 두 P1을 수정한 뒤 단위46·시간대각22·루트/Pages 각각71 E2E를 실행했다. 53개 Case의 원문 행동/기대와 실제 시각·환경·fixture·저장 assertion·근거를 매핑했다.
+
+가상 관점의 버튼 발견/검색 혼동은 AI walkthrough 가설로 남겼다. 한도를 넘는 자체 데이터 전체의 파일 보존, 물리기기/OS IME/native 확대/스크린 리더·전체WCAG 미실행도 명시했다. 자동화 시간을 사람의 과업 시간이나 독립 평가 점수로 사용하지 않았다. [Synthetic Beta](SYNTHETIC_BETA_V1_2.md) · [실제 변경](V1_2_UPDATE.md) · [검증](validation.md).

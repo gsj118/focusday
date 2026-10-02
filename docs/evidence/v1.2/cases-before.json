@@ -1,0 +1,2861 @@
+{
+  "definition": "53 spec cases with scoped actual automated evidence; NOT_RUN physical/human conditions are stated per case, not inferred PASS",
+  "phase": "before",
+  "sourceCommit": "7ff35e73632fdb43f1452722c553da95a79e19d7",
+  "generatedAt": "2026-10-02T08:26:42.568Z",
+  "counts": {
+    "PASS": 51,
+    "FAIL": 2,
+    "INCONCLUSIVE": 0,
+    "NOT_RUN": 0
+  },
+  "cases": [
+    {
+      "caseId": "A01",
+      "action": "빈 앱에 진입하고 입력 시작",
+      "expected": "시작 안내, 입력 이름/placeholder, 입력 가능한 상태가 명확하다.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P01"],
+      "fixture": ["empty, UI creation"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1366,
+            "height": 768
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T08:04:35.376Z"],
+      "steps": ["빈 안내에서 제목 Enter, 행 제목을 눌러 편집"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 0,
+            "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "taskCount": 0
+          },
+          "final": {
+            "rawBytes": 292,
+            "rawSHA256": "f62e0f8eb560494d0f1b59fb0bdd18921e26b6f5e471de649cbb448fdda62165",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "A02",
+      "action": "오늘에서 “자료구조 과제 제출”을 입력하고 Enter 1회",
+      "expected": "항목 1개만 생성, 제목 정확, focusDate=오늘, dueDate=null, 오늘/전체 숫자 갱신.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P01"],
+      "fixture": ["empty, UI creation"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1366,
+            "height": 768
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T08:04:35.376Z"],
+      "steps": ["빈 안내에서 제목 Enter, 행 제목을 눌러 편집"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 0,
+            "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "taskCount": 0
+          },
+          "final": {
+            "rawBytes": 292,
+            "rawSHA256": "f62e0f8eb560494d0f1b59fb0bdd18921e26b6f5e471de649cbb448fdda62165",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "A03",
+      "action": "전체에서 “주말 장보기”를 입력하고 Enter",
+      "expected": "항목 1개 생성, focusDate=null, 기한 없음. 오늘에 자동 배정하지 않는다.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P02"],
+      "fixture": ["empty, 5 UI titles"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:39.249Z"],
+      "steps": ["전체에서 주말 장보기 등 5개 연속 Enter, 버튼 1개, reload"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 0,
+            "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "taskCount": 0
+          },
+          "final": {
+            "rawBytes": 1514,
+            "rawSHA256": "3740f280a2d138fd12bfc6954e7c92551ab7956a646595b6f43674b280be90e1",
+            "taskCount": 6
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "A04",
+      "action": "5개 제목을 연속으로 입력하고 각각 Enter",
+      "expected": "이전 제목이 남지 않고 입력 포커스가 유지되며, 각 제출이 1개씩 생성된다. 새로고침 후 유지.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P02"],
+      "fixture": ["empty, 5 UI titles"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:39.249Z"],
+      "steps": ["전체에서 주말 장보기 등 5개 연속 Enter, 버튼 1개, reload"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 0,
+            "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "taskCount": 0
+          },
+          "final": {
+            "rawBytes": 1514,
+            "rawSHA256": "3740f280a2d138fd12bfc6954e7c92551ab7956a646595b6f43674b280be90e1",
+            "taskCount": 6
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "A05",
+      "action": "같은 조건에서 추가 버튼과 Enter를 각각 사용",
+      "expected": "두 경로의 생성 규칙·기본값·피드백이 같다. 서로 다른 항목의 id·시각은 같을 필요 없다.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P02"],
+      "fixture": ["empty, 5 UI titles"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:39.249Z"],
+      "steps": ["전체에서 주말 장보기 등 5개 연속 Enter, 버튼 1개, reload"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 0,
+            "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "taskCount": 0
+          },
+          "final": {
+            "rawBytes": 1514,
+            "rawSHA256": "3740f280a2d138fd12bfc6954e7c92551ab7956a646595b6f43674b280be90e1",
+            "taskCount": 6
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "A06",
+      "action": "빈 문자열/공백만 입력한 뒤 Enter와 추가",
+      "expected": "빈 항목을 만들지 않는다. 안내와 포커스가 합리적이며 복구 후 정상 입력된다.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P02", "P11"],
+      "fixture": [
+        "six UI tasks",
+        "720x450 CSS / scale2: 1440x900 at 200% equivalent reflow; not native browser zoom"
+      ],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        },
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 720,
+            "height": 450
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:39.617Z", "2026-10-02T07:59:49.737Z"],
+      "steps": [
+        "빈/공백 Enter·추가, 199/200/201자, 빠른 연속 Enter와 의도적 같은 제목",
+        "축소 layout에서 빈 오류→입력→편집 focus/이름/텍스트 상태→취소"
+      ],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 1514,
+            "rawSHA256": "3740f280a2d138fd12bfc6954e7c92551ab7956a646595b6f43674b280be90e1",
+            "taskCount": 6
+          },
+          "final": {
+            "rawBytes": 4552,
+            "rawSHA256": "44e35b1eff6ede9ee906766eb8badc9d40509213273f6330e263ef261a84e47c",
+            "taskCount": 11
+          },
+          "screenshot": null
+        },
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 0,
+            "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "taskCount": 0
+          },
+          "final": {
+            "rawBytes": 279,
+            "rawSHA256": "dab89c46180a8ba412a328075ed6204c6a045ab94ceb0b986aa88667f2648851",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "A07",
+      "action": "앞뒤 공백이 있는 제목 제출",
+      "expected": "명세에 맞게 공백 정리, 내부 글자·띄어쓰기 보존, 저장/검색 결과 일치.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P12"],
+      "fixture": ["UI Korean/English/emoji title; composition events, not OS IME"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:50.808Z"],
+      "steps": ["앞뒤 공백 제목, quick 조합 Enter, 완료 후 제출, 입력 N / Escape와 검색 Enter"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 0,
+            "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "taskCount": 0
+          },
+          "final": {
+            "rawBytes": 289,
+            "rawSHA256": "893317f9e585e1e314caa7de2fada356f8a0f1584052b1fe292afe5843a79787",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "A08",
+      "action": "199자·200자·201자 입력/붙여넣기",
+      "expected": "한도를 넘는 데이터가 저장되지 않는다. 입력 차단·정리·오류 방식이 실제 UI와 문서에 일치한다.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P02"],
+      "fixture": ["six UI tasks"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:39.617Z"],
+      "steps": ["빈/공백 Enter·추가, 199/200/201자, 빠른 연속 Enter와 의도적 같은 제목"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 1514,
+            "rawSHA256": "3740f280a2d138fd12bfc6954e7c92551ab7956a646595b6f43674b280be90e1",
+            "taskCount": 6
+          },
+          "final": {
+            "rawBytes": 4552,
+            "rawSHA256": "44e35b1eff6ede9ee906766eb8badc9d40509213273f6330e263ef261a84e47c",
+            "taskCount": 11
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "A09",
+      "action": "제출 직후 Enter를 다시 누르거나 빠르게 추가/Enter",
+      "expected": "처리 완료된 같은 입력의 중복 제출·빈 항목을 방지한다. 같은 제목을 새로 입력한 의도적 별도 항목은 허용한다.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P02"],
+      "fixture": ["six UI tasks"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:39.617Z"],
+      "steps": ["빈/공백 Enter·추가, 199/200/201자, 빠른 연속 Enter와 의도적 같은 제목"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 1514,
+            "rawSHA256": "3740f280a2d138fd12bfc6954e7c92551ab7956a646595b6f43674b280be90e1",
+            "taskCount": 6
+          },
+          "final": {
+            "rawBytes": 4552,
+            "rawSHA256": "44e35b1eff6ede9ee906766eb8badc9d40509213273f6330e263ef261a84e47c",
+            "taskCount": 11
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "A10",
+      "action": "한글 조합 중 Enter, 조합 완료 후 제출",
+      "expected": "조합 확정 Enter로 의도하지 않은 추가가 발생하지 않는다. 완료 후 정상 제출은 1회만 처리된다. OS IME 미실행은 별도 표기.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P12"],
+      "fixture": ["UI Korean/English/emoji title; composition events, not OS IME"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:50.808Z"],
+      "steps": ["앞뒤 공백 제목, quick 조합 Enter, 완료 후 제출, 입력 N / Escape와 검색 Enter"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 0,
+            "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "taskCount": 0
+          },
+          "final": {
+            "rawBytes": 289,
+            "rawSHA256": "893317f9e585e1e314caa7de2fada356f8a0f1584052b1fe292afe5843a79787",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "composition events; actual OS IME NOT_RUN"
+    },
+    {
+      "caseId": "A11",
+      "action": "제목 입력 중 N·/·Escape, 검색 중 Enter",
+      "expected": "전역 단축키가 입력을 가로채지 않는다. 검색 Enter가 새 항목을 생성하지 않는다.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P12"],
+      "fixture": ["UI Korean/English/emoji title; composition events, not OS IME"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:50.808Z"],
+      "steps": ["앞뒤 공백 제목, quick 조합 Enter, 완료 후 제출, 입력 N / Escape와 검색 Enter"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 0,
+            "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "taskCount": 0
+          },
+          "final": {
+            "rawBytes": 289,
+            "rawSHA256": "893317f9e585e1e314caa7de2fada356f8a0f1584052b1fe292afe5843a79787",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "A12",
+      "action": "모바일 입력의 Enter/완료/이동 조건",
+      "expected": "지원되는 실제/에뮬레이션 조건에서 결과 확인. 가상 키보드를 직접 쓰지 않았다면 실제 기기 검증으로 기록하지 않는다.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P04"],
+      "fixture": ["empty, touch with automation Enter; no OS keyboard"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": true
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:41.426Z"],
+      "steps": ["터치 입력, Enter→상세 저장→완료→전체 검색/완료 복원"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 0,
+            "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "taskCount": 0
+          },
+          "final": {
+            "rawBytes": 289,
+            "rawSHA256": "afa867b107cee0635d88d6796f67c43a114ff858f5d5601764d40864bba27a31",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "touch/isMobile and automation Enter; physical virtual keyboard NOT_RUN"
+    },
+    {
+      "caseId": "B01",
+      "action": "제목을 눌러 상세 편집 열기",
+      "expected": "현재 값 정확, 제목에 초기 포커스, 읽기/편집 관계 명확.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P01"],
+      "fixture": ["empty, UI creation"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1366,
+            "height": 768
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T08:04:35.376Z"],
+      "steps": ["빈 안내에서 제목 Enter, 행 제목을 눌러 편집"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 0,
+            "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "taskCount": 0
+          },
+          "final": {
+            "rawBytes": 292,
+            "rawSHA256": "f62e0f8eb560494d0f1b59fb0bdd18921e26b6f5e471de649cbb448fdda62165",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "B02",
+      "action": "초안 여러 필드 수정 → 취소/Escape/닫기",
+      "expected": "저장된 항목·id·속성·저장 원본이 변경되지 않는다. 호출 위치로 포커스 복귀. 배경 클릭 닫기의 정책도 확인.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P01", "P03"],
+      "fixture": ["one UI task", "keyboard UI task"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1366,
+            "height": 768
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        },
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T08:04:35.648Z", "2026-10-02T07:59:40.864Z"],
+      "steps": [
+        "여러 초안 변경 후 취소, 완료→실행 취소→reload",
+        "다시 편집 후 닫기, backdrop 클릭 취소"
+      ],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 292,
+            "rawSHA256": "f62e0f8eb560494d0f1b59fb0bdd18921e26b6f5e471de649cbb448fdda62165",
+            "taskCount": 1
+          },
+          "final": {
+            "rawBytes": 292,
+            "rawSHA256": "b3bd0c00c8f2d9e16be583937b6fcff5b66d571781e9c5337dd4fc7d9c49720b",
+            "taskCount": 1
+          },
+          "screenshot": null
+        },
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 279,
+            "rawSHA256": "f9611e192bcc3aa72193fcb01e4e4f32dcecbabf1e454baf7cb11fd044b772f0",
+            "taskCount": 1
+          },
+          "final": {
+            "rawBytes": 279,
+            "rawSHA256": "f9611e192bcc3aa72193fcb01e4e4f32dcecbabf1e454baf7cb11fd044b772f0",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "B03",
+      "action": "제목·기한·우선순위·분류 수정 후 저장",
+      "expected": "적용값·정렬·표시가 일치, id와 createdAt 유지, updatedAt 규칙 준수, reload 유지.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P12"],
+      "fixture": [
+        "Named test setup: UI-created tasks or isolated Task schema/Clock/Storage fixtures in tests/e2e"
+      ],
+      "environment": [
+        {
+          "browser": "Chrome 134.0.6998.36",
+          "timezone": "Asia/Seoul",
+          "viewport": "See named test; default 1440x900, geometry/touch cases have explicit viewport",
+          "fixtureClock": "2026-10-02 plus controlled boundary clocks"
+        }
+      ],
+      "executionTimes": ["2026-10-02T08:04:09.398Z"],
+      "steps": ["속성 저장·새로고침 유지·미래 기한과 오늘 독립·기한에 의한 잔류 안내"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "속성 저장·새로고침 유지·미래 기한과 오늘 독립·기한에 의한 잔류 안내"
+        }
+      ],
+      "evidence": [
+        {
+          "file": "app.spec.ts",
+          "test": "속성 저장·새로고침 유지·미래 기한과 오늘 독립·기한에 의한 잔류 안내",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:09.398Z",
+          "duration": 1128
+        }
+      ],
+      "proofFiles": ["docs/evidence/v1.2/baseline-and-reproduction.json"],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "B04",
+      "action": "상세 제목 textarea에서 Enter",
+      "expected": "현재 명세의 줄바꿈과 제출 동작을 구분한다. 빠른 입력과 같게 무조건 저장하도록 바꾸지 않는다.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P03"],
+      "fixture": ["empty UI task, keyboard traversal"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:40.307Z"],
+      "steps": ["N 입력→Enter, Tab으로 편집, textarea Enter와 Escape, 계획/데이터 trap"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 0,
+            "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "taskCount": 0
+          },
+          "final": {
+            "rawBytes": 279,
+            "rawSHA256": "f9611e192bcc3aa72193fcb01e4e4f32dcecbabf1e454baf7cb11fd044b772f0",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "B05",
+      "action": "날짜/분류 필드·저장 버튼에서 Enter/Space",
+      "expected": "포커스된 컨트롤의 의미에 맞는 동작. 원치 않는 삭제·중복 저장·조합 중 제출 없음.",
+      "phase": "before",
+      "status": "FAIL",
+      "personas": ["P12"],
+      "fixture": ["one UI task, category composition event + actual Enter"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:51.108Z"],
+      "steps": ["상세 분류에서 한글 조합 중 Enter"],
+      "actual": [
+        {
+          "status": "FAIL",
+          "actual": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: '할 일 편집' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog', { name: '할 일 편집' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: '할 일 편집' })\u001b[22m\n",
+          "initial": {
+            "rawBytes": 289,
+            "rawSHA256": "893317f9e585e1e314caa7de2fada356f8a0f1584052b1fe292afe5843a79787",
+            "taskCount": 1
+          },
+          "final": {
+            "rawBytes": 300,
+            "rawSHA256": "18c2184581029a96d3bee0ed8a9054ab0e3278c35c639fcba012259da4d1956d",
+            "taskCount": 1
+          },
+          "screenshot": "docs/screenshots/v1.2/before/P12-B05-failure.png"
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": "SB-02",
+      "scope": "composition events + actual keyboard Enter; OS IME NOT_RUN"
+    },
+    {
+      "caseId": "B06",
+      "action": "미래/오늘/과거 기한, 기한 해제, 잘못된 날짜 조건",
+      "expected": "유효한 날짜만 저장, 해제는 null, 오늘 목록·기한 초과 표시가 규칙과 일치.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P12"],
+      "fixture": [
+        "Named test setup: UI-created tasks or isolated Task schema/Clock/Storage fixtures in tests/e2e"
+      ],
+      "environment": [
+        {
+          "browser": "Chrome 134.0.6998.36",
+          "timezone": "Asia/Seoul",
+          "viewport": "See named test; default 1440x900, geometry/touch cases have explicit viewport",
+          "fixtureClock": "2026-10-02 plus controlled boundary clocks"
+        }
+      ],
+      "executionTimes": ["2026-10-02T08:04:09.398Z"],
+      "steps": ["속성 저장·새로고침 유지·미래 기한과 오늘 독립·기한에 의한 잔류 안내"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "속성 저장·새로고침 유지·미래 기한과 오늘 독립·기한에 의한 잔류 안내"
+        }
+      ],
+      "evidence": [
+        {
+          "file": "app.spec.ts",
+          "test": "속성 저장·새로고침 유지·미래 기한과 오늘 독립·기한에 의한 잔류 안내",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:09.398Z",
+          "duration": 1128
+        }
+      ],
+      "proofFiles": ["docs/evidence/v1.2/baseline-and-reproduction.json"],
+      "issueId": null,
+      "scope": "native date sanitation and valid date UI; calendar validators separately tested"
+    },
+    {
+      "caseId": "B07",
+      "action": "분류 없음·24자·초과·공백만, 우선순위 네 종류",
+      "expected": "표시·저장·검색·정렬 일치. “선택 사항”을 필수처럼 보이지 않게 한다.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P05"],
+      "fixture": ["long UI task"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 320,
+            "height": 740
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:43.719Z"],
+      "steps": ["분류 공백만 저장→분류 없음 확인"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 936,
+            "rawSHA256": "1d72651b4584cc9ebe2e691d805d8bfd492c3324a36fbe3feda2e5e67125a37d",
+            "taskCount": 1
+          },
+          "final": {
+            "rawBytes": 866,
+            "rawSHA256": "6e3b4f22b5779ef5f78da59653e57f1c17c74e68687114f9941bf756571bda60",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "B08",
+      "action": "날짜 입력이나 상세 패널을 열고 좁은 화면에서 저장/취소",
+      "expected": "입력·오류·하단 버튼에 접근 가능, 가로 넘침/겹침 없음, 저장 실패 안내를 놓치지 않는다.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P06"],
+      "fixture": ["UI task, reduced viewport (not physical keyboard)"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 390,
+            "height": 480
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:44.143Z"],
+      "steps": ["입력→상세 분류 저장→손상 파일 오류→정상 미리보기"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 0,
+            "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "taskCount": 0
+          },
+          "final": {
+            "rawBytes": 290,
+            "rawSHA256": "d5499330d9de57975c3112f89f6d11ca6c2f5163e40e135466c9c01fedf2cfc5",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "C01",
+      "action": "기한 초과/오늘 기한/어제/높음 후보 패널 열기",
+      "expected": "그룹 순서·기존 정렬·실제 이유 정확, 중첩 조건 항목은 한 번만 표시.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P08"],
+      "fixture": ["50-task fixture; 200-task regression separately"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:45.663Z"],
+      "steps": ["오늘 검색 중 계획 열기/선택/닫기→검색 해제→전체 분류 검색/없음"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 10863,
+            "rawSHA256": "89c3bc692df8567cae4c1c6acf206ada9d4e6970b95595f8004edbd6ab529886",
+            "taskCount": 50
+          },
+          "final": {
+            "rawBytes": 10871,
+            "rawSHA256": "79319fbe7c11c48be60aa5c160554af788d5fd153360aa1b3393f3e85b51323d",
+            "taskCount": 50
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [
+        {
+          "file": "v1.1.spec.ts",
+          "test": "v1 데이터 그대로 로드·계획 그룹·사실 이유·중복 제외·집중 중·이어가기 id/기한 보존",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:36.752Z",
+          "duration": 551
+        }
+      ],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "C02",
+      "action": "후보의 집중하기/집중 해제를 연속 사용",
+      "expected": "즉시 상태 반영, 기한·id·제목 유지, 집중 상태와 버튼 의미 일치, 횟수에 따라 목록 중복 없음.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P07"],
+      "fixture": ["yesterday-overlap-v1"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T08:04:36.205Z"],
+      "steps": ["어제2개 확인→겹침 집중/해제→미래 이어가기/해제"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 959,
+            "rawSHA256": "a3a59bf6f66fcfe64ab3e11c748a060454d8c6e9be613a703b87a411b9aadd03",
+            "taskCount": 4
+          },
+          "final": {
+            "rawBytes": 943,
+            "rawSHA256": "0703aea9c9b285d0eaa725e662075d63d813474a84efdc05d7469d3857afc1dd",
+            "taskCount": 4
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "C03",
+      "action": "오늘/과거 기한 항목 집중 해제",
+      "expected": "오늘에 남는 이유가 표시되고 기한 편집 경로가 있다. 직접 집중/기한 표시 수가 중복 없이 갱신.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P07"],
+      "fixture": ["yesterday-overlap-v1"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T08:04:36.205Z"],
+      "steps": ["어제2개 확인→겹침 집중/해제→미래 이어가기/해제"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 959,
+            "rawSHA256": "a3a59bf6f66fcfe64ab3e11c748a060454d8c6e9be613a703b87a411b9aadd03",
+            "taskCount": 4
+          },
+          "final": {
+            "rawBytes": 943,
+            "rawSHA256": "0703aea9c9b285d0eaa725e662075d63d813474a84efdc05d7469d3857afc1dd",
+            "taskCount": 4
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "C04",
+      "action": "미래 기한 항목을 오늘 집중으로 선택 후 해제",
+      "expected": "오늘 포함/제외 정확, 전체에서 보존. 기한이 오늘로 바뀌지 않는다.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P07"],
+      "fixture": ["yesterday-overlap-v1"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T08:04:36.205Z"],
+      "steps": ["어제2개 확인→겹침 집중/해제→미래 이어가기/해제"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 959,
+            "rawSHA256": "a3a59bf6f66fcfe64ab3e11c748a060454d8c6e9be613a703b87a411b9aadd03",
+            "taskCount": 4
+          },
+          "final": {
+            "rawBytes": 943,
+            "rawSHA256": "0703aea9c9b285d0eaa725e662075d63d813474a84efdc05d7469d3857afc1dd",
+            "taskCount": 4
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "C05",
+      "action": "어제 미완료/완료/이틀 전 항목을 함께 준비",
+      "expected": "어제 미완료 수 정확, 완료와 이틀 전 항목 제외, 자동 이월/복제 없음.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P07"],
+      "fixture": ["yesterday-overlap-v1"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T08:04:36.205Z"],
+      "steps": ["어제2개 확인→겹침 집중/해제→미래 이어가기/해제"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 959,
+            "rawSHA256": "a3a59bf6f66fcfe64ab3e11c748a060454d8c6e9be613a703b87a411b9aadd03",
+            "taskCount": 4
+          },
+          "final": {
+            "rawBytes": 943,
+            "rawSHA256": "0703aea9c9b285d0eaa725e662075d63d813474a84efdc05d7469d3857afc1dd",
+            "taskCount": 4
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "C06",
+      "action": "어제 항목을 선택해 오늘 이어가기",
+      "expected": "같은 id·기한·createdAt 유지, focusDate만 규칙에 맞게 변경, 안내/후보/목록/요약 즉시 일치.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P07"],
+      "fixture": ["yesterday-overlap-v1"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T08:04:36.205Z"],
+      "steps": ["어제2개 확인→겹침 집중/해제→미래 이어가기/해제"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 959,
+            "rawSHA256": "a3a59bf6f66fcfe64ab3e11c748a060454d8c6e9be613a703b87a411b9aadd03",
+            "taskCount": 4
+          },
+          "final": {
+            "rawBytes": 943,
+            "rawSHA256": "0703aea9c9b285d0eaa725e662075d63d813474a84efdc05d7469d3857afc1dd",
+            "taskCount": 4
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "C07",
+      "action": "계획 패널 열린 상태에서 자정·focus·visibility 변경",
+      "expected": "실제 로컬 날짜 규칙으로 갱신, 오래된 “어제”/피드백 유지하지 않음.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P08"],
+      "fixture": [
+        "Named test setup: UI-created tasks or isolated Task schema/Clock/Storage fixtures in tests/e2e"
+      ],
+      "environment": [
+        {
+          "browser": "Chrome 134.0.6998.36",
+          "timezone": "Asia/Seoul",
+          "viewport": "See named test; default 1440x900, geometry/touch cases have explicit viewport",
+          "fixtureClock": "2026-10-02 plus controlled boundary clocks"
+        }
+      ],
+      "executionTimes": [
+        "2026-10-02T08:04:38.297Z",
+        "2026-10-02T08:04:38.779Z",
+        "2026-10-02T08:04:39.238Z"
+      ],
+      "steps": [
+        "열린 계획 패널의 자정·월말 어제 상태·자동 이월 없음",
+        "계획 focus 연말 갱신·이어가기",
+        "계획 visibilitychange 연말 갱신·이어가기"
+      ],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "열린 계획 패널의 자정·월말 어제 상태·자동 이월 없음"
+        },
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "계획 focus 연말 갱신·이어가기"
+        },
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "계획 visibilitychange 연말 갱신·이어가기"
+        }
+      ],
+      "evidence": [
+        {
+          "file": "v1.1.spec.ts",
+          "test": "열린 계획 패널의 자정·월말 어제 상태·자동 이월 없음",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:38.297Z",
+          "duration": 473
+        },
+        {
+          "file": "v1.1.spec.ts",
+          "test": "계획 focus 연말 갱신·이어가기",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:38.779Z",
+          "duration": 450
+        },
+        {
+          "file": "v1.1.spec.ts",
+          "test": "계획 visibilitychange 연말 갱신·이어가기",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:39.238Z",
+          "duration": 460
+        }
+      ],
+      "proofFiles": ["docs/evidence/v1.2/baseline-and-reproduction.json"],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "C08",
+      "action": "후보 없음 → 전체 이동, 이미 집중 중인 항목 확인",
+      "expected": "빈 상태의 다음 행동 명확, 집중 상태 혼동 없음, 중첩 모달 없음.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P08"],
+      "fixture": ["50-task fixture; 200-task regression separately"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:45.663Z"],
+      "steps": ["오늘 검색 중 계획 열기/선택/닫기→검색 해제→전체 분류 검색/없음"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 10863,
+            "rawSHA256": "89c3bc692df8567cae4c1c6acf206ada9d4e6970b95595f8004edbd6ab529886",
+            "taskCount": 50
+          },
+          "final": {
+            "rawBytes": 10871,
+            "rawSHA256": "79319fbe7c11c48be60aa5c160554af788d5fd153360aa1b3393f3e85b51323d",
+            "taskCount": 50
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [
+        {
+          "file": "v1.1.spec.ts",
+          "test": "후보 없음·전체 경로·N 단축키 차단·Escape와 양방향 Tab 경계",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:37.797Z",
+          "duration": 492
+        }
+      ],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "C09",
+      "action": "제목·분류 검색, 결과 없음, 검색 삭제, 보기 변경",
+      "expected": "검색 범위·오늘/전체·완료 영역이 규칙과 일치하고 전체 숫자와 검색 결과 수를 혼동하지 않게 한다.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P08"],
+      "fixture": ["50-task fixture; 200-task regression separately"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:45.663Z"],
+      "steps": ["오늘 검색 중 계획 열기/선택/닫기→검색 해제→전체 분류 검색/없음"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 10863,
+            "rawSHA256": "89c3bc692df8567cae4c1c6acf206ada9d4e6970b95595f8004edbd6ab529886",
+            "taskCount": 50
+          },
+          "final": {
+            "rawBytes": 10871,
+            "rawSHA256": "79319fbe7c11c48be60aa5c160554af788d5fd153360aa1b3393f3e85b51323d",
+            "taskCount": 50
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "C10",
+      "action": "검색 중 계획 열기/닫기·복원 성공 후 목록 확인",
+      "expected": "필터가 적용되는 범위와 해제 정책이 일관적이다. 항목이 사라진 것으로 오해할 여지를 기록한다.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P08"],
+      "fixture": ["50-task fixture; 200-task regression separately"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:45.663Z"],
+      "steps": ["오늘 검색 중 계획 열기/선택/닫기→검색 해제→전체 분류 검색/없음"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 10863,
+            "rawSHA256": "89c3bc692df8567cae4c1c6acf206ada9d4e6970b95595f8004edbd6ab529886",
+            "taskCount": 50
+          },
+          "final": {
+            "rawBytes": 10871,
+            "rawSHA256": "79319fbe7c11c48be60aa5c160554af788d5fd153360aa1b3393f3e85b51323d",
+            "taskCount": 50
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "D01",
+      "action": "완료 → 실행 취소 → 새로고침",
+      "expected": "원래 id·속성·기한·집중 복원, 목록/요약/완료 수 일치.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P01"],
+      "fixture": ["one UI task"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1366,
+            "height": 768
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T08:04:35.648Z"],
+      "steps": ["여러 초안 변경 후 취소, 완료→실행 취소→reload"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 292,
+            "rawSHA256": "f62e0f8eb560494d0f1b59fb0bdd18921e26b6f5e471de649cbb448fdda62165",
+            "taskCount": 1
+          },
+          "final": {
+            "rawBytes": 292,
+            "rawSHA256": "b3bd0c00c8f2d9e16be583937b6fcff5b66d571781e9c5337dd4fc7d9c49720b",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "D02",
+      "action": "완료 영역에서 복원, 검색 중 완료/복원",
+      "expected": "정상 복귀, 필터/정렬 적용 일치, 다음 키보드 조작 위치 합리적.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P04"],
+      "fixture": ["empty, touch with automation Enter; no OS keyboard"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": true
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:41.426Z"],
+      "steps": ["터치 입력, Enter→상세 저장→완료→전체 검색/완료 복원"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 0,
+            "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "taskCount": 0
+          },
+          "final": {
+            "rawBytes": 289,
+            "rawSHA256": "afa867b107cee0635d88d6796f67c43a114ff858f5d5601764d40864bba27a31",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "D03",
+      "action": "삭제 → 실행 취소",
+      "expected": "삭제 전 전체 속성 복원. 테스트 소유의 격리 데이터만 삭제한다.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P09"],
+      "fixture": ["UI user task mixed with optional demos"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:46.465Z"],
+      "steps": ["삭제/undo→완료→다른 제목 편집→undo→예시 재추가/제거"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 282,
+            "rawSHA256": "3f7d0e8af17cf0c275b79bf525bd40de80a5ffb172ebe4953484b441fa5fdfe7",
+            "taskCount": 1
+          },
+          "final": {
+            "rawBytes": 279,
+            "rawSHA256": "6d52f1f3ec17df49a5761e5020517864ec2c373943d453ad6180ba9e665a0b72",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "D04",
+      "action": "알림 hover/포커스 → 이탈, 연속 다른 완료/삭제",
+      "expected": "문서화된 약 8초·일시정지·최근 한 건 규칙 일치. 이전 타이머가 새 복구를 지우지 않는다.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P09"],
+      "fixture": [
+        "Named test setup: UI-created tasks or isolated Task schema/Clock/Storage fixtures in tests/e2e"
+      ],
+      "environment": [
+        {
+          "browser": "Chrome 134.0.6998.36",
+          "timezone": "Asia/Seoul",
+          "viewport": "See named test; default 1440x900, geometry/touch cases have explicit viewport",
+          "fixtureClock": "2026-10-02 plus controlled boundary clocks"
+        }
+      ],
+      "executionTimes": ["2026-10-02T08:04:13.065Z"],
+      "steps": ["최근 행동만 실행 취소·이전 타이머 격리·hover/키보드에서 만료 정지"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "최근 행동만 실행 취소·이전 타이머 격리·hover/키보드에서 만료 정지"
+        }
+      ],
+      "evidence": [
+        {
+          "file": "app.spec.ts",
+          "test": "최근 행동만 실행 취소·이전 타이머 격리·hover/키보드에서 만료 정지",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:13.065Z",
+          "duration": 618
+        }
+      ],
+      "proofFiles": ["docs/evidence/v1.2/baseline-and-reproduction.json"],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "D05",
+      "action": "편집/계획/복원 이후 오래된 실행 취소 시도",
+      "expected": "현재 규칙에 맞게 정리되며, 복원 성공 후 이전 목록을 되살리지 않는다.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P09"],
+      "fixture": ["UI user task mixed with optional demos"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:46.465Z"],
+      "steps": ["삭제/undo→완료→다른 제목 편집→undo→예시 재추가/제거"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 282,
+            "rawSHA256": "3f7d0e8af17cf0c275b79bf525bd40de80a5ffb172ebe4953484b441fa5fdfe7",
+            "taskCount": 1
+          },
+          "final": {
+            "rawBytes": 279,
+            "rawSHA256": "6d52f1f3ec17df49a5761e5020517864ec2c373943d453ad6180ba9e665a0b72",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [
+        {
+          "file": "v1.1.spec.ts",
+          "test": "복원 merge 쓰기 실패 원본/메모리/상태 유지·재시도·오래된 실행 취소 정리",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:47.185Z",
+          "duration": 854
+        },
+        {
+          "file": "v1.1.spec.ts",
+          "test": "복원 replace 쓰기 실패 원본/메모리/상태 유지·재시도·오래된 실행 취소 정리",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:48.047Z",
+          "duration": 958
+        }
+      ],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "D06",
+      "action": "예시 추가 → 재추가 → 사용자 항목과 함께 예시 제거",
+      "expected": "최초/중복 안내 정확, 중복 추가 없음, 사용자 데이터 보존. 예시 제거의 복구 가능 여부를 추측하지 않는다.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P09"],
+      "fixture": ["UI user task mixed with optional demos"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:46.465Z"],
+      "steps": ["삭제/undo→완료→다른 제목 편집→undo→예시 재추가/제거"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 282,
+            "rawSHA256": "3f7d0e8af17cf0c275b79bf525bd40de80a5ffb172ebe4953484b441fa5fdfe7",
+            "taskCount": 1
+          },
+          "final": {
+            "rawBytes": 279,
+            "rawSHA256": "6d52f1f3ec17df49a5761e5020517864ec2c373943d453ad6180ba9e665a0b72",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "E01",
+      "action": "미완료·완료·예시·모든 속성 포함 백업",
+      "expected": "실제 다운로드 JSON 검증, 올바른 wrapper/version/날짜 파일명, 내보내기로 목록·원본 변경 없음.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P10"],
+      "fixture": ["UI-created complete wrapper; separate empty context"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:48.095Z"],
+      "steps": ["실제 다운로드→빈 환경 파일 UI 합치기→재백업 비교→교체 전 백업/취소"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 297,
+            "rawSHA256": "26fbd0ddd99bca9c7a69f4242ca3426534c18037ecf00676a3b68c4646cd984b",
+            "taskCount": 1
+          },
+          "final": {
+            "rawBytes": 297,
+            "rawSHA256": "26fbd0ddd99bca9c7a69f4242ca3426534c18037ecf00676a3b68c4646cd984b",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [
+        {
+          "file": "v1.1.spec.ts",
+          "test": "전체 JSON 백업 round trip·저장 쓰기 없음·Object URL 정리",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:39.705Z",
+          "duration": 669
+        }
+      ],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "E02",
+      "action": "백업 → 빈 격리 환경 복원 → 재백업 비교",
+      "expected": "데이터 round trip 일치. exportedAt·파일명은 달라도 되지만 task 필드는 보존.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P10"],
+      "fixture": ["UI-created complete wrapper; separate empty context"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:48.095Z"],
+      "steps": ["실제 다운로드→빈 환경 파일 UI 합치기→재백업 비교→교체 전 백업/취소"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 297,
+            "rawSHA256": "26fbd0ddd99bca9c7a69f4242ca3426534c18037ecf00676a3b68c4646cd984b",
+            "taskCount": 1
+          },
+          "final": {
+            "rawBytes": 297,
+            "rawSHA256": "26fbd0ddd99bca9c7a69f4242ca3426534c18037ecf00676a3b68c4646cd984b",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "E03",
+      "action": "파일 선택·미리보기·취소·같은 파일 다시 선택",
+      "expected": "선택/취소만으로 저장하지 않음. 파일명·전체/미완료/완료 수와 적용 방식 명확.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P04"],
+      "fixture": ["one mobile task"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": true
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:42.213Z"],
+      "steps": ["유효 파일 미리보기→취소→같은 파일 재선택"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 289,
+            "rawSHA256": "afa867b107cee0635d88d6796f67c43a114ff858f5d5601764d40864bba27a31",
+            "taskCount": 1
+          },
+          "final": {
+            "rawBytes": 289,
+            "rawSHA256": "afa867b107cee0635d88d6796f67c43a114ff858f5d5601764d40864bba27a31",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [
+        {
+          "file": "v1.1.spec.ts",
+          "test": "5MiB 초과·파일 선택 취소와 미리보기 취소는 목록/저장 상태 불변",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:44.576Z",
+          "duration": 963
+        }
+      ],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "E04",
+      "action": "같은 id 같은/다른 내용, 다른 id 같은 제목 합치기",
+      "expected": "현재 중복 유지, 새 id 추가, 중복/충돌/추가 수 정확, 부분 적용 없음.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P10"],
+      "fixture": [
+        "Named test setup: UI-created tasks or isolated Task schema/Clock/Storage fixtures in tests/e2e"
+      ],
+      "environment": [
+        {
+          "browser": "Chrome 134.0.6998.36",
+          "timezone": "Asia/Seoul",
+          "viewport": "See named test; default 1440x900, geometry/touch cases have explicit viewport",
+          "fixtureClock": "2026-10-02 plus controlled boundary clocks"
+        }
+      ],
+      "executionTimes": ["2026-10-02T08:04:45.547Z"],
+      "steps": ["합치기 미리보기·현재 중복 보존·다른 id 같은 제목·1회 저장·검색/완료 갱신"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "합치기 미리보기·현재 중복 보존·다른 id 같은 제목·1회 저장·검색/완료 갱신"
+        }
+      ],
+      "evidence": [
+        {
+          "file": "v1.1.spec.ts",
+          "test": "합치기 미리보기·현재 중복 보존·다른 id 같은 제목·1회 저장·검색/완료 갱신",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:45.547Z",
+          "duration": 759
+        }
+      ],
+      "proofFiles": ["docs/evidence/v1.2/baseline-and-reproduction.json"],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "E05",
+      "action": "전체 교체 진입 → 교체 전 백업 → 취소/명시적 교체",
+      "expected": "확인 전 무변경, 현재/백업 수와 사라질 데이터 설명, 저장 성공 후에만 적용.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P10"],
+      "fixture": ["UI-created complete wrapper; separate empty context"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:48.095Z"],
+      "steps": ["실제 다운로드→빈 환경 파일 UI 합치기→재백업 비교→교체 전 백업/취소"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 297,
+            "rawSHA256": "26fbd0ddd99bca9c7a69f4242ca3426534c18037ecf00676a3b68c4646cd984b",
+            "taskCount": 1
+          },
+          "final": {
+            "rawBytes": 297,
+            "rawSHA256": "26fbd0ddd99bca9c7a69f4242ca3426534c18037ecf00676a3b68c4646cd984b",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [
+        {
+          "file": "v1.1.spec.ts",
+          "test": "전체 교체 확인·취소·교체 전 백업·빈 백업으로 명시적 교체",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:46.313Z",
+          "duration": 865
+        }
+      ],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "E06",
+      "action": "손상 JSON·다른 형식/버전·중복 id·잘못된 필드/날짜·크기 초과",
+      "expected": "이해 가능한 한국어 오류, 재선택 가능, 목록/메모리/원본·보호 상태 유지.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P10"],
+      "fixture": [
+        "Named test setup: UI-created tasks or isolated Task schema/Clock/Storage fixtures in tests/e2e"
+      ],
+      "environment": [
+        {
+          "browser": "Chrome 134.0.6998.36",
+          "timezone": "Asia/Seoul",
+          "viewport": "See named test; default 1440x900, geometry/touch cases have explicit viewport",
+          "fixtureClock": "2026-10-02 plus controlled boundary clocks"
+        }
+      ],
+      "executionTimes": [
+        "2026-10-02T08:04:40.997Z",
+        "2026-10-02T08:04:41.517Z",
+        "2026-10-02T08:04:42.030Z",
+        "2026-10-02T08:04:42.532Z",
+        "2026-10-02T08:04:43.040Z",
+        "2026-10-02T08:04:43.546Z",
+        "2026-10-02T08:04:44.060Z",
+        "2026-10-02T08:04:44.576Z"
+      ],
+      "steps": [
+        "파일 검증 손상 JSON·원본/상태 유지·재선택",
+        "파일 검증 raw 저장 원본·원본/상태 유지·재선택",
+        "파일 검증 백업 버전·원본/상태 유지·재선택",
+        "파일 검증 데이터 버전·원본/상태 유지·재선택",
+        "파일 검증 중복 id·원본/상태 유지·재선택",
+        "파일 검증 잘못된 날짜·원본/상태 유지·재선택",
+        "파일 검증 제목 길이·원본/상태 유지·재선택",
+        "5MiB 초과·파일 선택 취소와 미리보기 취소는 목록/저장 상태 불변"
+      ],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "파일 검증 손상 JSON·원본/상태 유지·재선택"
+        },
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "파일 검증 raw 저장 원본·원본/상태 유지·재선택"
+        },
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "파일 검증 백업 버전·원본/상태 유지·재선택"
+        },
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "파일 검증 데이터 버전·원본/상태 유지·재선택"
+        },
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "파일 검증 중복 id·원본/상태 유지·재선택"
+        },
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "파일 검증 잘못된 날짜·원본/상태 유지·재선택"
+        },
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "파일 검증 제목 길이·원본/상태 유지·재선택"
+        },
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "5MiB 초과·파일 선택 취소와 미리보기 취소는 목록/저장 상태 불변"
+        }
+      ],
+      "evidence": [
+        {
+          "file": "v1.1.spec.ts",
+          "test": "파일 검증 손상 JSON·원본/상태 유지·재선택",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:40.997Z",
+          "duration": 513
+        },
+        {
+          "file": "v1.1.spec.ts",
+          "test": "파일 검증 raw 저장 원본·원본/상태 유지·재선택",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:41.517Z",
+          "duration": 505
+        },
+        {
+          "file": "v1.1.spec.ts",
+          "test": "파일 검증 백업 버전·원본/상태 유지·재선택",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:42.030Z",
+          "duration": 494
+        },
+        {
+          "file": "v1.1.spec.ts",
+          "test": "파일 검증 데이터 버전·원본/상태 유지·재선택",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:42.532Z",
+          "duration": 499
+        },
+        {
+          "file": "v1.1.spec.ts",
+          "test": "파일 검증 중복 id·원본/상태 유지·재선택",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:43.040Z",
+          "duration": 498
+        },
+        {
+          "file": "v1.1.spec.ts",
+          "test": "파일 검증 잘못된 날짜·원본/상태 유지·재선택",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:43.546Z",
+          "duration": 506
+        },
+        {
+          "file": "v1.1.spec.ts",
+          "test": "파일 검증 제목 길이·원본/상태 유지·재선택",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:44.060Z",
+          "duration": 507
+        },
+        {
+          "file": "v1.1.spec.ts",
+          "test": "5MiB 초과·파일 선택 취소와 미리보기 취소는 목록/저장 상태 불변",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:44.576Z",
+          "duration": 963
+        }
+      ],
+      "proofFiles": ["docs/evidence/v1.2/baseline-and-reproduction.json"],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "E07",
+      "action": "합치기/교체의 실제 쓰기 실패와 재시도",
+      "expected": "실패 시 기존 메모리·원본 유지, 성공 한 번 저장 후 전체 반영, 오래된 undo/편집 정리.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P10"],
+      "fixture": [
+        "Named test setup: UI-created tasks or isolated Task schema/Clock/Storage fixtures in tests/e2e"
+      ],
+      "environment": [
+        {
+          "browser": "Chrome 134.0.6998.36",
+          "timezone": "Asia/Seoul",
+          "viewport": "See named test; default 1440x900, geometry/touch cases have explicit viewport",
+          "fixtureClock": "2026-10-02 plus controlled boundary clocks"
+        }
+      ],
+      "executionTimes": ["2026-10-02T08:04:47.185Z", "2026-10-02T08:04:48.047Z"],
+      "steps": [
+        "복원 merge 쓰기 실패 원본/메모리/상태 유지·재시도·오래된 실행 취소 정리",
+        "복원 replace 쓰기 실패 원본/메모리/상태 유지·재시도·오래된 실행 취소 정리"
+      ],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "복원 merge 쓰기 실패 원본/메모리/상태 유지·재시도·오래된 실행 취소 정리"
+        },
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "복원 replace 쓰기 실패 원본/메모리/상태 유지·재시도·오래된 실행 취소 정리"
+        }
+      ],
+      "evidence": [
+        {
+          "file": "v1.1.spec.ts",
+          "test": "복원 merge 쓰기 실패 원본/메모리/상태 유지·재시도·오래된 실행 취소 정리",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:47.185Z",
+          "duration": 854
+        },
+        {
+          "file": "v1.1.spec.ts",
+          "test": "복원 replace 쓰기 실패 원본/메모리/상태 유지·재시도·오래된 실행 취소 정리",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:48.047Z",
+          "duration": 958
+        }
+      ],
+      "proofFiles": ["docs/evidence/v1.2/baseline-and-reproduction.json"],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "E08",
+      "action": "읽기 실패/접근 불가/손상 저장 원본에서 복원 시도",
+      "expected": "보호 guard 우회 불가. 보호된 원본과 현재 탭 백업을 구분. 초기 빈 값 덮어쓰기 없음.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P10"],
+      "fixture": [
+        "Named test setup: UI-created tasks or isolated Task schema/Clock/Storage fixtures in tests/e2e"
+      ],
+      "environment": [
+        {
+          "browser": "Chrome 134.0.6998.36",
+          "timezone": "Asia/Seoul",
+          "viewport": "See named test; default 1440x900, geometry/touch cases have explicit viewport",
+          "fixtureClock": "2026-10-02 plus controlled boundary clocks"
+        }
+      ],
+      "executionTimes": [
+        "2026-10-02T08:04:15.327Z",
+        "2026-10-02T08:04:16.191Z",
+        "2026-10-02T08:04:17.068Z",
+        "2026-10-02T08:04:17.850Z",
+        "2026-10-02T08:04:18.297Z",
+        "2026-10-02T08:04:49.014Z",
+        "2026-10-02T08:04:49.509Z"
+      ],
+      "steps": [
+        "손상 원본 자동 덮어쓰기 차단: {broken",
+        "손상 원본 자동 덮어쓰기 차단: {\"version\":2,\"tasks\":[]}",
+        "손상 원본 자동 덮어쓰기 차단: {\"version\":1,\"tasks\":[{}]}",
+        "읽기 실패는 쓰기를 보호하고 재시도 때 기존 항목과 메모리 항목 합침",
+        "localStorage 접근 자체 실패도 빈 값으로 덮어쓰지 않는다",
+        "저장 보호 blocked는 복원으로 우회하지 않음",
+        "저장 보호 unavailable는 복원으로 우회하지 않음"
+      ],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "손상 원본 자동 덮어쓰기 차단: {broken"
+        },
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "손상 원본 자동 덮어쓰기 차단: {\"version\":2,\"tasks\":[]}"
+        },
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "손상 원본 자동 덮어쓰기 차단: {\"version\":1,\"tasks\":[{}]}"
+        },
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "읽기 실패는 쓰기를 보호하고 재시도 때 기존 항목과 메모리 항목 합침"
+        },
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "localStorage 접근 자체 실패도 빈 값으로 덮어쓰지 않는다"
+        },
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "저장 보호 blocked는 복원으로 우회하지 않음"
+        },
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "저장 보호 unavailable는 복원으로 우회하지 않음"
+        }
+      ],
+      "evidence": [
+        {
+          "file": "app.spec.ts",
+          "test": "손상 원본 자동 덮어쓰기 차단: {broken",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:15.327Z",
+          "duration": 857
+        },
+        {
+          "file": "app.spec.ts",
+          "test": "손상 원본 자동 덮어쓰기 차단: {\"version\":2,\"tasks\":[]}",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:16.191Z",
+          "duration": 868
+        },
+        {
+          "file": "app.spec.ts",
+          "test": "손상 원본 자동 덮어쓰기 차단: {\"version\":1,\"tasks\":[{}]}",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:17.068Z",
+          "duration": 775
+        },
+        {
+          "file": "app.spec.ts",
+          "test": "읽기 실패는 쓰기를 보호하고 재시도 때 기존 항목과 메모리 항목 합침",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:17.850Z",
+          "duration": 440
+        },
+        {
+          "file": "app.spec.ts",
+          "test": "localStorage 접근 자체 실패도 빈 값으로 덮어쓰지 않는다",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:18.297Z",
+          "duration": 425
+        },
+        {
+          "file": "v1.1.spec.ts",
+          "test": "저장 보호 blocked는 복원으로 우회하지 않음",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:49.014Z",
+          "duration": 485
+        },
+        {
+          "file": "v1.1.spec.ts",
+          "test": "저장 보호 unavailable는 복원으로 우회하지 않음",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:49.509Z",
+          "duration": 490
+        }
+      ],
+      "proofFiles": ["docs/evidence/v1.2/baseline-and-reproduction.json"],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "E09",
+      "action": "저장 실패 중 편집 후 백업",
+      "expected": "아직 저장 안 된 메모리 포함, 미저장 안내, 저장 원본 보존.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P10"],
+      "fixture": [
+        "Named test setup: UI-created tasks or isolated Task schema/Clock/Storage fixtures in tests/e2e"
+      ],
+      "environment": [
+        {
+          "browser": "Chrome 134.0.6998.36",
+          "timezone": "Asia/Seoul",
+          "viewport": "See named test; default 1440x900, geometry/touch cases have explicit viewport",
+          "fixtureClock": "2026-10-02 plus controlled boundary clocks"
+        }
+      ],
+      "executionTimes": ["2026-10-02T08:04:40.382Z"],
+      "steps": ["저장 실패 중 메모리 전체 백업·저장 원본 불변"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "저장 실패 중 메모리 전체 백업·저장 원본 불변"
+        }
+      ],
+      "evidence": [
+        {
+          "file": "v1.1.spec.ts",
+          "test": "저장 실패 중 메모리 전체 백업·저장 원본 불변",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:40.382Z",
+          "duration": 607
+        }
+      ],
+      "proofFiles": ["docs/evidence/v1.2/baseline-and-reproduction.json"],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "E10",
+      "action": "느린 파일 읽기 중 다른 파일 선택/패널 닫기·재열기",
+      "expected": "오래된 비동기 결과가 새 선택/패널을 덮어쓰지 않음.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P10"],
+      "fixture": [
+        "Named test setup: UI-created tasks or isolated Task schema/Clock/Storage fixtures in tests/e2e"
+      ],
+      "environment": [
+        {
+          "browser": "Chrome 134.0.6998.36",
+          "timezone": "Asia/Seoul",
+          "viewport": "See named test; default 1440x900, geometry/touch cases have explicit viewport",
+          "fixtureClock": "2026-10-02 plus controlled boundary clocks"
+        }
+      ],
+      "executionTimes": ["2026-10-02T08:04:50.579Z"],
+      "steps": ["늦은 파일 읽기가 다음 선택과 닫힌 패널을 덮어쓰지 않음"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All assertions in named UI test passed",
+          "test": "늦은 파일 읽기가 다음 선택과 닫힌 패널을 덮어쓰지 않음"
+        }
+      ],
+      "evidence": [
+        {
+          "file": "v1.1.spec.ts",
+          "test": "늦은 파일 읽기가 다음 선택과 닫힌 패널을 덮어쓰지 않음",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:50.579Z",
+          "duration": 594
+        }
+      ],
+      "proofFiles": ["docs/evidence/v1.2/baseline-and-reproduction.json"],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "E11",
+      "action": "파일 크기 제한 직전/직후, 대량 자체 백업 재가져오기",
+      "expected": "UTF-8 bytes 기준으로 판정. 앱 자체 백업의 복원 가능성과 제한 안내를 실제 검사.",
+      "phase": "before",
+      "status": "FAIL",
+      "personas": ["P10"],
+      "fixture": [
+        "Named test setup: UI-created tasks or isolated Task schema/Clock/Storage fixtures in tests/e2e"
+      ],
+      "environment": [
+        {
+          "browser": "Chrome 134.0.6998.36",
+          "timezone": "Asia/Seoul",
+          "viewport": "See named test; default 1440x900, geometry/touch cases have explicit viewport",
+          "fixtureClock": "2026-10-02 plus controlled boundary clocks"
+        }
+      ],
+      "executionTimes": ["2026-10-02T08:04:25.970Z"],
+      "steps": ["P10 E11: 6000개 자체 다운로드→같은 파일 UI 미리보기 (quota/목록 성능 제외)"],
+      "actual": [
+        {
+          "status": "FAIL",
+          "actual": "See preserved failure",
+          "test": "P10 E11: 6000개 자체 다운로드→같은 파일 UI 미리보기 (quota/목록 성능 제외)"
+        }
+      ],
+      "evidence": [
+        {
+          "file": "backup-size.spec.ts",
+          "test": "P10 E11: 6000개 자체 다운로드→같은 파일 UI 미리보기 (quota/목록 성능 제외)",
+          "status": "failed",
+          "startTime": "2026-10-02T08:04:25.970Z",
+          "duration": 6501
+        }
+      ],
+      "proofFiles": ["docs/evidence/v1.2/baseline-and-reproduction.json"],
+      "issueId": "SB-01",
+      "scope": "pure data and UI download/preview; 6000-item list performance and storage quota NOT_RUN"
+    },
+    {
+      "caseId": "F01",
+      "action": "Tab/Shift+Tab만으로 입력·편집·계획·백업·닫기",
+      "expected": "순서 합리적, 포커스 표시, dialog 안의 경계 이동/복귀 정확, 숨은 배경으로 이동하지 않음.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P03"],
+      "fixture": ["empty UI task, keyboard traversal"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:40.307Z"],
+      "steps": ["N 입력→Enter, Tab으로 편집, textarea Enter와 Escape, 계획/데이터 trap"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 0,
+            "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "taskCount": 0
+          },
+          "final": {
+            "rawBytes": 279,
+            "rawSHA256": "f9611e192bcc3aa72193fcb01e4e4f32dcecbabf1e454baf7cb11fd044b772f0",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "F02",
+      "action": "패널에서 N·/·Enter·Space·Escape",
+      "expected": "전역 단축키 차단, 컨트롤 의미에 맞는 조작, Escape 취소/닫기 정책 일치.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P03"],
+      "fixture": ["empty UI task, keyboard traversal"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:40.307Z"],
+      "steps": ["N 입력→Enter, Tab으로 편집, textarea Enter와 Escape, 계획/데이터 trap"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 0,
+            "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "taskCount": 0
+          },
+          "final": {
+            "rawBytes": 279,
+            "rawSHA256": "f9611e192bcc3aa72193fcb01e4e4f32dcecbabf1e454baf7cb11fd044b772f0",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "F03",
+      "action": "네 viewport에서 긴 제목·분류와 모든 패널",
+      "expected": "가로 넘침·잘림·겹침 없음. 스크롤 끝의 행동 버튼 접근 가능.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P05"],
+      "fixture": ["UI 200-char title and 24-char category"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 320,
+            "height": 740
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:43.066Z"],
+      "steps": ["긴 제목 추가→네 우선순위/분류 경계→저장→긴 파일명 미리보기"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 0,
+            "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "taskCount": 0
+          },
+          "final": {
+            "rawBytes": 936,
+            "rawSHA256": "1d72651b4584cc9ebe2e691d805d8bfd492c3324a36fbe3feda2e5e67125a37d",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [
+        {
+          "file": "app.spec.ts",
+          "test": "화면 1440×900·overflow·편집·스크린샷",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:21.341Z",
+          "duration": 1024
+        },
+        {
+          "file": "app.spec.ts",
+          "test": "화면 1366×768·overflow·편집·스크린샷",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:22.373Z",
+          "duration": 1038
+        },
+        {
+          "file": "app.spec.ts",
+          "test": "화면 390×844·overflow·편집·스크린샷",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:23.418Z",
+          "duration": 1043
+        },
+        {
+          "file": "app.spec.ts",
+          "test": "화면 320×740·overflow·편집·스크린샷",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:24.471Z",
+          "duration": 1037
+        },
+        {
+          "file": "v1.1.spec.ts",
+          "test": "v1.1 1440×900 계획·복원 미리보기·긴 제목·메타·하단 UI",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:52.787Z",
+          "duration": 1228
+        },
+        {
+          "file": "v1.1.spec.ts",
+          "test": "v1.1 1366×768 계획·복원 미리보기·긴 제목·메타·하단 UI",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:54.023Z",
+          "duration": 1169
+        },
+        {
+          "file": "v1.1.spec.ts",
+          "test": "v1.1 390×844 계획·복원 미리보기·긴 제목·메타·하단 UI",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:55.200Z",
+          "duration": 1092
+        },
+        {
+          "file": "v1.1.spec.ts",
+          "test": "v1.1 320×740 계획·복원 미리보기·긴 제목·메타·하단 UI",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:56.299Z",
+          "duration": 1140
+        }
+      ],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "F04",
+      "action": "touch로 완료/집중/상세/닫기/복원 방식 조작",
+      "expected": "오작동과 인접 버튼 충돌 없음. 핵심 터치 목표의 실제 크기 확인.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P04"],
+      "fixture": ["empty, touch with automation Enter; no OS keyboard"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": true
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:41.426Z"],
+      "steps": ["터치 입력, Enter→상세 저장→완료→전체 검색/완료 복원"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 0,
+            "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "taskCount": 0
+          },
+          "final": {
+            "rawBytes": 289,
+            "rawSHA256": "afa867b107cee0635d88d6796f67c43a114ff858f5d5601764d40864bba27a31",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [
+        {
+          "file": "v1.1.spec.ts",
+          "test": "새 모바일 패널 touch·작아진 가시 영역·복원 조작",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:51.686Z",
+          "duration": 1094
+        }
+      ],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "Actual automated UI behavior/data assertions; synthetic fixtures; no human success-rate claim"
+    },
+    {
+      "caseId": "F05",
+      "action": "축소 가시 영역에서 입력·상세·복원 미리보기",
+      "expected": "중요한 입력/오류/버튼을 볼 수 있고 내부 스크롤로 접근 가능. 실제 모바일 키보드와 구분.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P06"],
+      "fixture": ["UI task, reduced viewport (not physical keyboard)"],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 390,
+            "height": 480
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:44.143Z"],
+      "steps": ["입력→상세 분류 저장→손상 파일 오류→정상 미리보기"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 0,
+            "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "taskCount": 0
+          },
+          "final": {
+            "rawBytes": 290,
+            "rawSHA256": "d5499330d9de57975c3112f89f6d11ca6c2f5163e40e135466c9c01fedf2cfc5",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "reduced viewport; physical keyboard/safe-area NOT_RUN"
+    },
+    {
+      "caseId": "F06",
+      "action": "확대·reduced motion·색상 외 단서·accessible name 검사",
+      "expected": "글자/상태/포커스/오류 의미 유지. 자동 검사만으로 전체 WCAG 또는 스크린 리더 PASS 선언 금지.",
+      "phase": "before",
+      "status": "PASS",
+      "personas": ["P11"],
+      "fixture": [
+        "720x450 CSS / scale2: 1440x900 at 200% equivalent reflow; not native browser zoom"
+      ],
+      "environment": [
+        {
+          "browser": "134.0.6998.36",
+          "viewport": {
+            "width": 720,
+            "height": 450
+          },
+          "timezone": "Asia/Seoul",
+          "fixtureClock": "2026-10-02T10:00:00+09:00",
+          "mobile": false
+        }
+      ],
+      "executionTimes": ["2026-10-02T07:59:49.737Z"],
+      "steps": ["축소 layout에서 빈 오류→입력→편집 focus/이름/텍스트 상태→취소"],
+      "actual": [
+        {
+          "status": "PASS",
+          "actual": "All stated UI/data assertions passed",
+          "initial": {
+            "rawBytes": 0,
+            "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "taskCount": 0
+          },
+          "final": {
+            "rawBytes": 279,
+            "rawSHA256": "dab89c46180a8ba412a328075ed6204c6a045ab94ceb0b986aa88667f2648851",
+            "taskCount": 1
+          },
+          "screenshot": null
+        }
+      ],
+      "evidence": [
+        {
+          "file": "app.spec.ts",
+          "test": "reduced-motion·실제 토큰 대비·production 자산 응답",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:25.517Z",
+          "duration": 438
+        },
+        {
+          "file": "mobile-accessibility.spec.ts",
+          "test": "실제 렌더링 색·hover·포커스·접근 가능한 입력과 버튼 이름",
+          "status": "passed",
+          "startTime": "2026-10-02T08:04:34.505Z",
+          "duration": 606
+        }
+      ],
+      "proofFiles": [
+        "docs/evidence/v1.2/baseline-and-reproduction.json",
+        "docs/evidence/v1.2/synthetic-before.json"
+      ],
+      "issueId": null,
+      "scope": "200% equivalent reflow (720x450/scale2), automated names/contrast/motion; native browser zoom, screen reader/full WCAG NOT_RUN"
+    }
+  ]
+}

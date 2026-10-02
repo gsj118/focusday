@@ -70,21 +70,17 @@ test('E11: UTF-8 파일 정확한 한도와 1byte 초과, 선택만으로 저장
   await page.locator('.sidebar').getByRole('button', { name: '백업·복원', exact: true }).click()
   const json = JSON.stringify(createBackup({ version: 1, tasks: [] })),
     exact = json + ' '.repeat(MAX_BACKUP_BYTES - Buffer.byteLength(json))
-  await page
-    .locator('#backup-file')
-    .setInputFiles({
-      name: 'at-limit.json',
-      mimeType: 'application/json',
-      buffer: Buffer.from(exact),
-    })
+  await page.locator('#backup-file').setInputFiles({
+    name: 'at-limit.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(exact),
+  })
   await expect(page.getByRole('heading', { name: '복원 미리보기' })).toBeVisible()
-  await page
-    .locator('#backup-file')
-    .setInputFiles({
-      name: 'over-limit.json',
-      mimeType: 'application/json',
-      buffer: Buffer.from(exact + ' '),
-    })
+  await page.locator('#backup-file').setInputFiles({
+    name: 'over-limit.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(exact + ' '),
+  })
   await expect(page.getByRole('dialog').getByRole('alert')).toContainText('10MiB 이하')
   expect(await page.evaluate(() => localStorage.getItem('focusday:v1'))).toBeNull()
 })
