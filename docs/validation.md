@@ -1,67 +1,68 @@
-# Focusday v1.3 실제 검증 기록
+# Focusday v1.4 실제 검증 기록
 
-2026-10-08 KST. 노션 작업 UI 전체를 구현하고 검증했다. 실제 사용자 연구는 수행하지 않았다. [v1.2 문서 사본](versions/v1.2.0/validation.snapshot.md)과 이전 증거/태그를 유지하고 baseline을 새로 실행했다.
+2026-10-08 KST. 모든 검사는 실제 실행 후 기록했다. [전체 Case 표](SYNTHETIC_BETA_CASES_V1_4.md) · [첫 실패/수정](evidence/v1.4/findings.md). 이전 자료는 [v1.3 snapshot](versions/v1.3.0/validation.snapshot.md) 및 기존 evidence 디렉터리에 보존한다.
 
-## 실제 환경과 명령
+## 환경과 실행
 
-Windows NT10.0.26200 / PowerShell / Node24.19.0 / Playwright1.63.0 / 설치 Chrome **134.0.6998.36** headless, locale ko-KR, timezone Asia/Seoul. React19.3.0 / TypeScript5.9.3 / Vite8.3.2 / Vitest5.0.3. 최신 Chrome이라고 주장하지 않는다.
-
-프로젝트 고정값은 `pnpm@11.19.0`이며 도구 환경의 실행 바이너리는 pnpm11.25.0이다. 앱 버전 변경 후 pnpm 자동 의존성 검사가 제한 네트워크에서 재설치를 시도해 중단했다. 설치된 의존성과 lockfile을 유지하고 이번 프로세스에서만 `pnpm_config_verify_deps_before_run=false`로 명세의 명령을 실행했다. 의존성이나 프로젝트 설정을 추가하지 않았다. 원격은 workflow의 고정 pnpm/Node24/frozen lockfile 환경이다.
+Windows NT10.0.26200 / PowerShell / Node24.19.0 / Playwright1.63.0 / Chrome134.0.6998.36 headless, ko-KR, 기본 Asia/Seoul. 최신 브라우저라고 주장하지 않는다. 프로젝트 pnpm11.19.0 고정/도구 실행11.25.0. 기존 lockfile/의존성은 변경하지 않았다. 이 환경의 pnpm 자동 dependency 검사가 제한 네트워크에서 재설치를 시도해 중단했고 기존 문서의 프로세스 설정을 적용했다. [환경 시도](evidence/v1.4/environment-attempt.txt).
 
 ```powershell
 $env:pnpm_config_verify_deps_before_run = 'false'
 pnpm check
-# 별도 preview를 기존 Playwright 설정이 재사용
 node node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 4173 --strictPort
-# 다른 터미널
+# 별도 터미널, 실제 preview 재사용
 pnpm test:e2e
+# Pages build와 서버 양쪽에 같은 base를 적용
+$env:VITE_BASE_PATH = '/focusday/'
+pnpm build
+node node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 4180 --strictPort
+# 별도 터미널
+$env:E2E_BASE_URL = 'http://127.0.0.1:4180/focusday/'
+pnpm test:e2e
+node scripts/check-pages-assets.mjs
 ```
 
-Pages는 `VITE_BASE_PATH=/focusday/`로 build 후 port4180 preview를 시작하고 `E2E_BASE_URL=http://127.0.0.1:4180/focusday/`로 전체 E2E를 실행한다. root 결과를 복사한 뒤 Pages를 실행해 원본을 구분했다.
+시험은 새 격리 context이며 사용자 실목록/프로필을 변경하지 않는다. UI/storage/clock 오류 주입은 테스트에만 존재한다. pnpm check는 타입·lint·단위·서울/뉴욕 날짜·production build를 실제 실행한다.
 
-## 실행 결과
+## 실제 결과
 
-| 실행                                | 실제 결과/근거                                                                                                                                                                           |
-| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 변경 전 v1.2 `pnpm check`           | 타입·lint·단위46·서울/뉴욕 각22·build PASS. [로그](evidence/v1.3/baseline-check.txt)                                                                                                     |
-| 변경 전 기존 Chrome E2E             | 71 PASS, fail/skip/flaky0, exit0. [원본](evidence/v1.3/baseline-e2e.json)                                                                                                                |
-| 교체 후 첫 E2E                      | 72 PASS/8 FAIL. 속성12px 회귀와 이름/locator/3자리 hex 검사 문제. [원본](evidence/v1.3/root-first.json)                                                                                  |
-| 수정 후 E2E                         | 80 PASS. [원본](evidence/v1.3/root-second.json)                                                                                                                                          |
-| 복원 오류 초점 보완 후 `pnpm check` | 타입·lint·단위46·서울/뉴욕 각22·build PASS. [최종 로그](evidence/v1.3/check-final.txt)                                                                                                   |
-| 최종 루트 production E2E            | **80 PASS**, fail/skip/flaky0, exit0. [원본](evidence/v1.3/root-final.json), [로그](evidence/v1.3/root-final.txt)                                                                        |
-| Pages `/focusday/`                  | **80 PASS**, fail/skip/flaky0, exit0. [원본](evidence/v1.3/pages-final.json), [로그](evidence/v1.3/pages-final.txt). [HTML/JS/CSS/favicon 경로·형식200](evidence/v1.3/pages-assets.json) |
-| 백업 순수 경계 회귀                 | 전체 필드7000개 round trip·6000개 padded/compact·10MiB±1·초과 다운로드0. [원본](evidence/v1.3/backup-boundary-after.json)                                                                |
-| 전후 화면                           | 각8 viewport, overflow/실행 오류0. [Before](evidence/v1.3/before-visual.json), [After](evidence/v1.3/after-visual.json)                                                                  |
-| 보조 상태                           | 1440/320에서 후보 없음·검색 없음·undo·메뉴·교체·실패·성공·저장 보호 등18개. [원본](evidence/v1.3/ui-states.json)                                                                         |
+| 실행                      | 실제 결과                                                                 | 원본                                                                                      |
+| ------------------------- | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| 이번 시작 v1.3 check      | PASS: 단위46/서울·뉴욕각22/타입/lint/build                                | [log](evidence/v1.4/baseline-check.txt)                                                   |
+| 이번 시작 기존 E2E        | 80 PASS / fail·skip·flaky0, exit0                                         | [JSON](evidence/v1.4/baseline-e2e.json)                                                   |
+| 신규 Beta 첫 실행         | 15 PASS /2 FAIL, 테스트 locator/수집                                      | [raw](evidence/v1.4/beta-first.json) · [trace](evidence/v1.4/first-failures/)             |
+| 수정 후 신규 Beta         | 22 PASS / fail·skip·flaky0                                                | [raw](evidence/v1.4/beta-second.json)                                                     |
+| 새 상태 첫/두 번째 검수   | 8 viewport, 처음 sheet2조건/안내1조건FAIL → 모두PASS, overflow·실행 오류0 | [first](evidence/v1.4/features-first.json) · [second](evidence/v1.4/features-second.json) |
+| 첫 전체 root              | 100 PASS /2 FAIL, 미완료 범위/새 Tab 정지                                 | [raw](evidence/v1.4/root-first.json)                                                      |
+| 접힌 성취 포커스 재현     | B09 FAIL, body 초점                                                       | [raw](evidence/v1.4/focus-first.json)                                                     |
+| 첫 geometry 수정 뒤 전체  | 102 PASS /1 FAIL, native closed details도 rect 반환                       | [raw](evidence/v1.4/root-second.json) · [실제 진단](evidence/v1.4/focus-diagnosis.txt)    |
+| 명시적 closed 제외 뒤 B09 | PASS, 입력 초점 복귀                                                      | [raw](evidence/v1.4/focus-fixed.json)                                                     |
+| **최종 check**            | **PASS: 단위60/서울·뉴욕각36/타입/lint/build**, exit0                     | [log](evidence/v1.4/check-final.txt)                                                      |
+| **최종 root production**  | **103 PASS / fail·skip·flaky0**, exit0                                    | [raw](evidence/v1.4/root-final.json) · [log](evidence/v1.4/root-final.txt)                |
+| **최종 Pages /focusday/** | **103 PASS / fail·skip·flaky0**, exit0                                    | [raw](evidence/v1.4/pages-final.json) · [log](evidence/v1.4/pages-final.txt)              |
+| Pages HTML/JS/CSS/favicon | HTTP200, 실제 /focusday/ 자산 경로/형식                                   | [raw](evidence/v1.4/pages-assets.json)                                                    |
+| 전체 task 백업 경계       | 6000개 padded/compact round trip, 모든 속성 보존,10MiB ±1/초과 다운로드0  | [순수 데이터](evidence/v1.4/backup-boundary-after.json), 기존 E2E 유지                    |
 
-80개는 기존71개 + 작업 UI9개다. 기존 검사를 삭제/skip하거나 13px/대비 기준을 낮추지 않았다. 생성·기한/집중 분리·검색·완료·undo·초안/IME·날짜·저장 보호·복원 실패의 데이터 assertion을 유지했다. 새 검사는 검색/백업 진입과 초점 복귀, aria-pressed, 7개 viewport의 긴 정보/독립44px 타깃/내부 스크롤, 필수 경계 대비다.
+103개 = 기존80개(삭제/skip 없음) + v1.4 신규23개(12관점 세션+경계11개). v1.4 Case는26단계+11경계이며 테스트 실행 수와 다르다. 최초/중간 FAIL을 그대로 보존하고 실제 데이터/포커스/길이/대비 기준을 낮추지 않았다. 기존 테스트의 DOM 범위/새 summary Tab 정지는 같은 동작 의미로 갱신했다.
 
-## 화면·접근성 검수
+## 기능·시각·보존 근거
 
-1440×900, 1366×768, 1024×768, 768×1024, 390×844, 320×568과 작은 높이390×480, 720×450 CSS viewport/scale2 reflow를 촬영했다. keyboard-only, focus trap/복귀, Escape, reduced-motion, touch/isMobile, viewport 축소와 내부 스크롤은 자동화한다. fixture/storage 오류 주입은 격리 context에서만 사용하며 앱 초기값/사용자 프로필은 변경하지 않았다.
+같은날 refresh/새 page/모드 왕복·자정/visibility/focus·열린 앱 offline·내 문장0/120/121/HTML/composition·초안 저장/취소/오류·손상/미지원/읽기/초기화 실패를 실제 실행했다. 성취0→1→2→3→4/전체 무기한/예시·어제 제외/검색 독립/undo·삭제·복원/최근 정렬·시각/중복 격려/꺼진 동안 처리·서울/뉴욕 로컬 자정·import 후 직접3을 확인했다.
 
-실제 이미지를 열어 오늘·전체·계획·편집·복원·긴 정보·오류/저장 보호의 위계/흐름을 검토했다. 모바일 계획 설명 줄 폭과 오류 초점/스크롤을 보완했다. 데스크톱 기본 예시 행은 약93–94px에서56.8px로 줄고 정보가 많으면 자연스럽게 높아진다. [전후와 발견/수정](V1_3_UI_REDESIGN.md).
+명세6 viewport1440×900/1366×768/1024×768/768×1024/390×844/320×568 +720×450/scale2 동등 reflow +390×480 작은 높이,320×400 footer를 확인했다. [이번 v1.3 Before](evidence/v1.4/before-visual.json) · [같은 fixture After](evidence/v1.4/after-visual.json) · [새 상태](evidence/v1.4/features-second.json). 전후 기본 desktop row56.8px 유지, overflow0. 실제 사진을 열어 설정/안내·성취/모바일·전후 배치를 검토했다. touch/isMobile/tap·keyboard/trap/초점 복귀·status/alert·reduced-motion·기존4.5:1 텍스트/3:1 필수 경계 대비 회귀를 실행했다.
 
-실제 CSS 토큰 조합의 일반 글자4.5:1, 필수 입력 경계·체크박스·집중/포커스3:1을 확인했다. 3자리 minified hex를 확장해 계산하며 장식 구분선에는 입력 경계 기준을 강제하지 않는다. 이름·상태·role/aria·대비/keyboard 확인을 전체 WCAG 판정으로 확대하지 않는다.
+`src/domain.ts`, `storage.ts`, `backup.ts`, `pnpm-lock.yaml`은 시작 소스와 diff0이다. task key/data version/backup version1, id/기한/모든 속성·예시·완료와10MiB 동일 한도 유지. UI는 별도 key/version1·백업 제외이며 merge/replace 성공/실패 후 각각 UI 유지·성취 재계산/보존을 확인했다. 격려 표지 쓰기 실패의 현재 세션 억제와 refresh 이후 저장 의존 한계는 B06에서 직접 확인했다.
 
-## 데이터 보존과 미실행
+## 실제 미실행과 한계
 
-저장 key `focusday:v1`, data `version:1`, domain/storage/backup/date hook과 lockfile은 그대로다. 정상 초기 raw/write0, 모든 Task 필드, id·기한 유지, compact 전체 백업, merge/replace 성공1write·실패 시 raw/메모리 유지·초점 이동을 재실행했다. 일반 저장 실패 중 메모리 변경과 손상 원본 보호도 유지한다. [제품 명세](product-spec.md).
+| 조건                              | 상태 / 실제 대체 범위                                           |
+| --------------------------------- | --------------------------------------------------------------- |
+| 물리폰·OS 가상 키보드·safe-area   | NOT_RUN / Chrome hasTouch/isMobile·tap·visualViewport·축소 높이 |
+| OS 한글 IME·사람 OS 파일 선택창   | NOT_RUN / composition/229/키보드와 file upload 이벤트           |
+| native200% 확대·스크린 리더       | NOT_RUN /720×450 동등 reflow·이름/초점/대비/status              |
+| Safari/Firefox·최신 Chrome        | NOT_RUN / 로컬Chrome134, 원격은 workflow Chromium               |
+| 사람 사용자 연구/만족도/과업 시간 | NOT_RUN / AI 관점과 automation 실행 시간만 존재                 |
+| 다중 탭·실제 quota·대량 목록 성능 | NOT_RUN /80·200개 기능과6천개 read port 파일 경계               |
+| 오프라인 최초 페이지 다운로드/PWA | NOT_RUN·지원 안 함 / 열린 앱의 로컬 문구 offline 표시           |
 
-| 조건                                   | 상태·범위                                                                   |
-| -------------------------------------- | --------------------------------------------------------------------------- |
-| 실제 휴대폰·OS 가상 키보드·safe-area   | NOT_RUN. Chrome touch/isMobile, visualViewport 대응과 작은 높이 축소만 확인 |
-| 실제 OS 한글 IME·사람의 OS 파일 선택창 | NOT_RUN. composition/File/empty-selection 이벤트와 자동화 키 검사           |
-| native200% 브라우저 확대               | NOT_RUN. 720×450/scale2 동등 reflow와 구분                                  |
-| Safari/Firefox/최신 Chrome·스크린 리더 | NOT_RUN. Chrome134/원격 Chromium, 이름·초점·대비 범위                       |
-| 실제 사용자 연구·만족도·과업 시간      | NOT_RUN. AI 시각 검토/자동화이며 사람을 모집하지 않음                       |
-| 대량 목록 성능·storage quota·다중 탭   | NOT_RUN. 순수 데이터/read port의 파일 경계와 구분                           |
-| 10MiB 초과 전체 메모리 파일 보존/복원  | UNSUPPORTED. 전체 내보내기를 중단하고 부분 누락하지 않음                    |
-
-## 실제 원격·공개 결과
-
-소스ec67a2c의 [GitHub CI](https://github.com/gsj118/focusday/actions/runs/37736055832)·[수동 Pages](https://github.com/gsj118/focusday/actions/runs/37736088025)는 모두 success다. 고정pnpm11.19.0/frozen lockfile 환경에서 타입·lint·단위46·서울/뉴욕각22·build·Chromium E2E 각각80 passed를 실제 로그로 확인했다. [상태/job/PASS 로그](evidence/v1.3/github-actions.json). 로컬 Chrome134 결과와 구분한다.
-
-2026-10-08 15:12 KST 공개 Chrome desktop1440×900/mobile390×844는 버전1.3.0·핵심 조작·계획/복원·저장 새로고침·자산200·실행 오류0 PASS다. 별도6000개 read port의 전체 파일 다운로드/task 비교/같은 파일 미리보기도 PASS(4,877,007bytes). quota/목록 성능/6000개 적용은 제외한다. [공개 실행 원본](evidence/v1.3/live-deployment.json), [실제 공개 desktop](screenshots/v1.3/live-desktop.png), [mobile 복원](screenshots/v1.3/live-mobile-restore.png). 두 화면과 편집/계획도 직접 열어 시각 검토했다.
-
-첫 배포·최종 출시의 source 관계와 후속 main 재배포는 [배포 기록](deployment.md)에 구분한다. 실제 스마트폰/OS IME/사용자 연구 등의 미실행 범위는 그대로다.
+전체 WCAG/보안 감사를 완료했다고 주장하지 않는다. 원격CI·수동Pages·공개 재검증 결과는 실행 후 [배포 기록](deployment.md)에 기록한다.

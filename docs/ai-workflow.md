@@ -67,3 +67,13 @@
 물리 기기/OS IME/native 확대/스크린 리더/사용자 연구는 실행하지 않았다. [전후·검수 기록](V1_3_UI_REDESIGN.md) · [명령·환경·검증](validation.md) · [실제 GitHub/공개 완료 상태](deployment.md). 기존 identity/remote/태그/보호 규칙을 유지하며 완료 작업만 정상 커밋·push한다.
 
 baseline/설계526a06e → UI/회귀8b8a9ad → 전후/검증/문서ec67a2c를 정상 main에 push했다. 같은ec67a2c의 CI와 수동 Pages build/deploy가 실제 success, 고정pnpm11.19.0 원격E2E각80이었다. 공개 Chrome desktop/mobile와6000개 자체 파일 재가져오기 미리보기를 실제 실행해 PASS를 확인하고 공개 화면을 직접 열어 검수했다. 그 뒤 README와 배포/검증 문서를 실제 완료 결과로 확정했다. 원격/API/공개 결과를 AI의 시각 판단과 구분해 저장했다.
+
+## v1.4 최종 제출 작업
+
+[구현·검증 명세 원문](ai-prompts/10-v1.4-final-implementation.md)을 [실제 사용자 요청](ai-prompts/11-v1.4-user-request.md)의 명시 승인으로 적용했다. clean main80748d6에서 remote 일치를 확인하고 baseline check/E2E80·실제 v1.3 화면을 새로 기록했다. 이전 문서/태그/증거와 사용자의 목록을 보존했다.
+
+AI는 세 기능·날짜별 처리 표지·저장 경계·12관점의 서로 다른 연결 시나리오를 설계하고 구현했다. 실행 근거는 실제 production의 Playwright assertion·test clock·격리 storage 실패 주입·geometry·screenshot이다. 사람12명·만족도·감정·사람 과업 시간이나 독립 역할 의견을 만들지 않았다.
+
+첫 새17개 중15 PASS/2 FAIL은 locator 문제였고 실제8 viewport 검수에서 시트 폭/재시도 안내2건을 수정했다. 전체 회귀100 PASS/2 FAIL 뒤 검사 범위/Tab 경로를 보존해 갱신했고 접힌 성취의 숨은 행 포커스를 별도 FAIL로 재현해 수정했다. 첫 geometry 수정의 잔여 실패도 보존하고 native details의 rect가 있어도 숨겨지는 사실을 진단해 명시적으로 제외했다. [실제 발견·수정 흐름](evidence/v1.4/findings.md).
+
+최종 check·root/Pages 전체E2E·공개 desktop/mobile/backup/새 기능 재검증을 실제 실행하며 결과는 [validation](validation.md)·[deployment](deployment.md)에 구분한다. 창작 문구24개는 로컬 콘텐츠이며 앱 내 AI/API/실시간 밈 기능은 추가하지 않았다. 과거 task/백업 key와 schema version1·lockfile은 유지한다.

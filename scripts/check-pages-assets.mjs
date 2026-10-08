@@ -18,5 +18,5 @@ for (const path of paths) {
 }
 if (!response.ok || assets.length !== 3) throw new Error('HTML/JS/CSS/favicon 검증 실패')
 const result = { checkedAt: new Date().toISOString(), url, htmlStatus: response.status, assets }
-await writeFile('docs/evidence/v1.3/pages-assets.json', JSON.stringify(result, null, 2) + '\n')
+await writeFile('docs/evidence/v1.4/pages-assets.json', JSON.stringify(result, null, 2) + '\n')
 console.log(JSON.stringify(result, null, 2))

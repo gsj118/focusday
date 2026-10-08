@@ -1,4 +1,4 @@
-# Focusday design system · v1.3
+# Focusday design system · v1.4
 
 2026-10-08 KST. 목표는 노션 안의 정돈된 개인 할 일 작업 페이지다. 모든 값은 Focusday의 적용 결정이며 노션 공식 토큰을 추출한 값이 아니다. React/TypeScript/Vite와 일반 CSS, 기존 Icon, 시스템 sans-serif/한글 fallback을 유지한다.
 
@@ -62,3 +62,13 @@
 패널은 desktop 오른쪽, mobile sheet. header/footer는 고정, 내용은 내부 스크롤하며 줄바꿈/최소 폭/`min-height:0` 적용. menu 높이는 viewport에 제한하고 스크롤. 하단 nav/toast는 visualViewport 하단과 safe-area에 맞춤. 실제 OS 키보드 검증과 축소 viewport 검증을 구별한다.
 
 1440×900, 1366×768, 1024×768, 768×1024, 390×844, 320×568 및 작은 높이/200% 동등 reflow를 실제 Chrome 캡처로 검토. keyboard-only/초점 복귀/Tab trap/Escape/status/alert/reduced-motion 유지. 실제 스마트폰·OS IME·native zoom·스크린 리더는 실행하지 않은 한 PASS로 기록하지 않는다.
+
+## v1.4의 작은 격려와 성취
+
+v1.3의 위 토큰·목록·패널·모바일 구조를 유지한다. 오늘 제목 아래 기존 설명 한 줄만 문구로 바꾸며 overflow-wrap/white-space로120자 사용자 문장도 처리한다. 큰 카드/팝업/통계 UI는 추가하지 않는다. 전체 보기 설명·저장 상태는 유지한다.
+
+앱 메뉴의 단일 “문구와 격려 설정” 진입은 desktop440px panel,900px 미만 전체폭 sheet다. 기존 PanelDialog에 textarea Tab 경계와 고정 footer를 재사용한다. 모드 native radio와 격려 checkbox는44px label, 내 문장 입력은16px이다. 초안/오류/status·내부 scroll·Escape/취소 복귀를 공통 규칙으로 처리한다.
+
+오늘 목록 아래의 접힌 성취는 기존 completed-section과 TaskRow를 재사용하고 별도 이름/범위 도움말·로컬 완료 시각을 제공한다. 예시 제외/검색 무관인 현재 목록의 성취와 전체 완료 범위를 구별한다. 행 복원·닫기·날짜 변경의 summary 초점과 완료 후 숨은 행 배제를 검사한다. UndoToast 한 개에만 짧은 격려를 추가해 기존 행동/최신 undo/pause를 유지한다.
+
+[실제 전후·3건 수정](docs/V1_4_FINAL_UPDATE.md) · [8조건 새 상태 검수](docs/evidence/v1.4/features-second.json). 모든 상태는 실제 앱의 격리 fixture 캡처이며 생성 이미지가 아니다.

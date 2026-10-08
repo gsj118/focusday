@@ -1,0 +1,839 @@
+{
+  "coreCases": [
+    {
+      "caseId": "P01-01",
+      "persona": "P01",
+      "expected": "읽기만 수행, 기본 차분한 문구, 접힌 0개/빈 상태, 첫 입력 포커스",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:37.443Z",
+      "steps": "P01-01",
+      "status": "PASS",
+      "actual": {
+        "sentence": "계획은 바뀌어도 괜찮습니다.",
+        "achievements": "오늘 마친 일 0개",
+        "toast": null,
+        "focus": "BUTTON",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"905d5f97-f799-4002-83e9-6f8de293292b\",\"title\":\"첫 번째 할 일\",\"createdAt\":\"2026-10-08T01:00:00.220Z\",\"updatedAt\":\"2026-10-08T01:00:00.220Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false}]}",
+        "uiRaw": null,
+        "clock": "2026-10-08T01:00:00.282Z",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P01-01-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 0개; task 1; focus BUTTON; 문구 15자; toast 없음"
+    },
+    {
+      "caseId": "P01-02",
+      "persona": "P01",
+      "expected": "첫 완료 통합 toast/1개, undo 0개, 재완료 일반 안내",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:37.748Z",
+      "steps": "P01-02",
+      "status": "PASS",
+      "actual": {
+        "sentence": "계획은 바뀌어도 괜찮습니다.",
+        "achievements": "오늘 마친 일 1개",
+        "toast": "할 일을 완료했습니다.실행 취소완료 목록",
+        "focus": "INPUT",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"905d5f97-f799-4002-83e9-6f8de293292b\",\"title\":\"첫 번째 할 일\",\"createdAt\":\"2026-10-08T01:00:00.220Z\",\"updatedAt\":\"2026-10-08T01:00:00.567Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.567Z\",\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"calm\",\"customSentence\":\"\",\"encouragementEnabled\":true,\"processed\":{\"2026-10-08\":[1]}}",
+        "clock": "2026-10-08T01:00:00.583Z",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P01-02-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 1개; task 1; focus INPUT; 문구 15자; 할 일을 완료했습니다.실행 취소완료 목록"
+    },
+    {
+      "caseId": "P01-03",
+      "persona": "P01",
+      "expected": "설정 저장·백업 제외 경계·재방문 유지",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:38.028Z",
+      "steps": "P01-03",
+      "status": "PASS",
+      "actual": {
+        "sentence": "계획 변경도 계획이 하는 일 중 하나죠.",
+        "achievements": "오늘 마친 일 1개",
+        "toast": null,
+        "focus": "BODY",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"905d5f97-f799-4002-83e9-6f8de293292b\",\"title\":\"첫 번째 할 일\",\"createdAt\":\"2026-10-08T01:00:00.220Z\",\"updatedAt\":\"2026-10-08T01:00:00.567Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.567Z\",\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"humor\",\"customSentence\":\"\",\"encouragementEnabled\":true,\"processed\":{\"2026-10-08\":[1]}}",
+        "clock": "2026-10-08T01:00:01.130Z",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P01-03-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 1개; task 1; focus BODY; 문구 22자; toast 없음"
+    },
+    {
+      "caseId": "P02-01",
+      "persona": "P02",
+      "expected": "키보드 입력/설정 초안 취소, textarea 포함 trap, 메뉴로 초점 복귀",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:38.931Z",
+      "steps": "P02-01",
+      "status": "PASS",
+      "actual": {
+        "sentence": "계획은 바뀌어도 괜찮습니다.",
+        "achievements": "오늘 마친 일 0개",
+        "toast": null,
+        "focus": "예시 및 앱 정보",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"020fd3ea-0993-430b-bee8-da9af8c2715d\",\"title\":\"Keyboard task\",\"createdAt\":\"2026-10-08T01:00:00.318Z\",\"updatedAt\":\"2026-10-08T01:00:00.318Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false}]}",
+        "uiRaw": null,
+        "clock": "2026-10-08T01:00:00.473Z",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P02-01-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 0개; task 1; focus 예시 및 앱 정보; 문구 15자; toast 없음"
+    },
+    {
+      "caseId": "P02-02",
+      "persona": "P02",
+      "expected": "성취에서 유일한 완료 행 복원 후 summary 초점, 닫기/백업 초점",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:39.404Z",
+      "steps": "P02-02",
+      "status": "PASS",
+      "actual": {
+        "sentence": "계획은 바뀌어도 괜찮습니다.",
+        "achievements": "오늘 마친 일 0개",
+        "toast": null,
+        "focus": "BODY",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"020fd3ea-0993-430b-bee8-da9af8c2715d\",\"title\":\"Keyboard task\",\"createdAt\":\"2026-10-08T01:00:00.318Z\",\"updatedAt\":\"2026-10-08T01:00:00.619Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"calm\",\"customSentence\":\"\",\"encouragementEnabled\":true,\"processed\":{\"2026-10-08\":[1]}}",
+        "clock": "2026-10-08T01:00:00.790Z",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P02-02-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 0개; task 1; focus BODY; 문구 15자; toast 없음"
+    },
+    {
+      "caseId": "P03-01",
+      "persona": "P03",
+      "expected": "composition Enter 무제출, 제목/분류 편집 보존",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:40.042Z",
+      "steps": "P03-01",
+      "status": "PASS",
+      "actual": {
+        "sentence": "계획은 바뀌어도 괜찮습니다.",
+        "achievements": "오늘 마친 일 0개",
+        "toast": null,
+        "focus": "조합 중 편집",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"7a1ce7ed-cedb-47c3-ab81-81c00dbc4a03\",\"title\":\"조합 중\",\"createdAt\":\"2026-10-08T01:00:00.269Z\",\"updatedAt\":\"2026-10-08T01:00:00.678Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":\"한글 분류\",\"completedAt\":null,\"isDemo\":false},{\"id\":\"7ec57ab9-929a-4fd7-8735-6d1e990f3914\",\"title\":\"다음 입력\",\"createdAt\":\"2026-10-08T01:00:00.297Z\",\"updatedAt\":\"2026-10-08T01:00:00.297Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false}]}",
+        "uiRaw": null,
+        "clock": "2026-10-08T01:00:00.693Z",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P03-01-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 0개; task 2; focus 조합 중 편집; 문구 15자; toast 없음"
+    },
+    {
+      "caseId": "P03-02",
+      "persona": "P03",
+      "expected": "내 문장 0/121 오류, 120 허용, 조합 무저장, HTML plain text",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:40.543Z",
+      "steps": "P03-02",
+      "status": "PASS",
+      "actual": {
+        "sentence": "<img src=x onerror=alert(1)> 내 문장",
+        "achievements": "오늘 마친 일 0개",
+        "toast": null,
+        "focus": "BODY",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"7a1ce7ed-cedb-47c3-ab81-81c00dbc4a03\",\"title\":\"조합 중\",\"createdAt\":\"2026-10-08T01:00:00.269Z\",\"updatedAt\":\"2026-10-08T01:00:00.678Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":\"한글 분류\",\"completedAt\":null,\"isDemo\":false},{\"id\":\"7ec57ab9-929a-4fd7-8735-6d1e990f3914\",\"title\":\"다음 입력\",\"createdAt\":\"2026-10-08T01:00:00.297Z\",\"updatedAt\":\"2026-10-08T01:00:00.297Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"custom\",\"customSentence\":\"<img src=x onerror=alert(1)> 내 문장\",\"encouragementEnabled\":true,\"processed\":{}}",
+        "clock": "2026-10-08T01:00:01.492Z",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P03-02-PASS.png",
+      "firstStatus": "FAIL",
+      "summary": "오늘 마친 일 0개; task 2; focus BODY; 문구 33자; toast 없음"
+    },
+    {
+      "caseId": "P04-01",
+      "persona": "P04",
+      "expected": "390px 조작·설정 sheet/footer44px·취소 초점",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:41.678Z",
+      "steps": "P04-01",
+      "status": "PASS",
+      "actual": {
+        "sentence": "계획 변경도 계획이 하는 일 중 하나죠.",
+        "achievements": "오늘 마친 일 0개",
+        "toast": null,
+        "focus": "예시 및 앱 정보",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"28052d75-444a-45d1-a88e-59006deb68d9\",\"title\":\"모바일 장보기\",\"createdAt\":\"2026-10-08T01:00:00.130Z\",\"updatedAt\":\"2026-10-08T01:00:00.130Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"humor\",\"customSentence\":\"\",\"encouragementEnabled\":true,\"processed\":{}}",
+        "clock": "2026-10-08T01:00:00.480Z",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P04-01-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 0개; task 1; focus 예시 및 앱 정보; 문구 22자; toast 없음"
+    },
+    {
+      "caseId": "P04-02",
+      "persona": "P04",
+      "expected": "모바일 toast/nav 분리, undo 대상과 백업·재방문",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:42.152Z",
+      "steps": "P04-02",
+      "status": "PASS",
+      "actual": {
+        "sentence": "계획 변경도 계획이 하는 일 중 하나죠.",
+        "achievements": "오늘 마친 일 0개",
+        "toast": null,
+        "focus": "BODY",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"28052d75-444a-45d1-a88e-59006deb68d9\",\"title\":\"모바일 장보기\",\"createdAt\":\"2026-10-08T01:00:00.130Z\",\"updatedAt\":\"2026-10-08T01:00:00.680Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"humor\",\"customSentence\":\"\",\"encouragementEnabled\":true,\"processed\":{\"2026-10-08\":[1]}}",
+        "clock": "2026-10-08T01:00:00.855Z",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P04-02-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 0개; task 1; focus BODY; 문구 22자; toast 없음"
+    },
+    {
+      "caseId": "P05-01",
+      "persona": "P05",
+      "expected": "200자 제목/24자 분류/120자 문장 wrapping, 작은 높이 저장 접근",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:43.007Z",
+      "steps": "P05-01",
+      "status": "PASS",
+      "actual": {
+        "sentence": "긴한글EnglishWithoutSpaces긴한글EnglishWithoutSpaces긴한글EnglishWithoutSpaces긴한글EnglishWithoutSpaces긴한글EnglishWithoutSpaces긴한글En",
+        "achievements": "오늘 마친 일 0개",
+        "toast": null,
+        "focus": "예시 및 앱 정보",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"2ad9422f-a6c9-450d-870b-485c8d82de07\",\"title\":\"긴한글제목EnglishWithoutSpaces긴한글제목EnglishWithoutSpaces긴한글제목EnglishWithoutSpaces긴한글제목EnglishWithoutSpaces긴한글제목EnglishWithoutSpaces긴한글제목EnglishWithoutSpaces긴한글제목EnglishWithoutSpaces긴한글제목EnglishWithoutSpaces\",\"createdAt\":\"2026-10-08T01:00:00.146Z\",\"updatedAt\":\"2026-10-08T01:00:00.432Z\",\"dueDate\":\"2026-10-10\",\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":\"abcdefghijklmnopqrstuvwx\",\"completedAt\":null,\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"custom\",\"customSentence\":\"긴한글EnglishWithoutSpaces긴한글EnglishWithoutSpaces긴한글EnglishWithoutSpaces긴한글EnglishWithoutSpaces긴한글EnglishWithoutSpaces긴한글En\",\"encouragementEnabled\":true,\"processed\":{}}",
+        "clock": "2026-10-08T01:00:00.680Z",
+        "viewport": {
+          "width": 320,
+          "height": 400
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P05-01-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 0개; task 1; focus 예시 및 앱 정보; 문구 120자; toast 없음"
+    },
+    {
+      "caseId": "P05-02",
+      "persona": "P05",
+      "expected": "긴 성취 제목/시각/속성 보존, 320px 복원 panel, 재방문",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:43.659Z",
+      "steps": "P05-02",
+      "status": "PASS",
+      "actual": {
+        "sentence": "긴한글EnglishWithoutSpaces긴한글EnglishWithoutSpaces긴한글EnglishWithoutSpaces긴한글EnglishWithoutSpaces긴한글EnglishWithoutSpaces긴한글En",
+        "achievements": "오늘 마친 일 1개",
+        "toast": null,
+        "focus": "BODY",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"2ad9422f-a6c9-450d-870b-485c8d82de07\",\"title\":\"긴한글제목EnglishWithoutSpaces긴한글제목EnglishWithoutSpaces긴한글제목EnglishWithoutSpaces긴한글제목EnglishWithoutSpaces긴한글제목EnglishWithoutSpaces긴한글제목EnglishWithoutSpaces긴한글제목EnglishWithoutSpaces긴한글제목EnglishWithoutSpaces\",\"createdAt\":\"2026-10-08T01:00:00.146Z\",\"updatedAt\":\"2026-10-08T01:00:00.798Z\",\"dueDate\":\"2026-10-10\",\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":\"abcdefghijklmnopqrstuvwx\",\"completedAt\":\"2026-10-08T01:00:00.798Z\",\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"custom\",\"customSentence\":\"긴한글EnglishWithoutSpaces긴한글EnglishWithoutSpaces긴한글EnglishWithoutSpaces긴한글EnglishWithoutSpaces긴한글EnglishWithoutSpaces긴한글En\",\"encouragementEnabled\":true,\"processed\":{\"2026-10-08\":[1]}}",
+        "clock": "2026-10-08T01:00:01.200Z",
+        "viewport": {
+          "width": 320,
+          "height": 568
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P05-02-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 1개; task 1; focus BODY; 문구 120자; toast 없음"
+    },
+    {
+      "caseId": "P06-01",
+      "persona": "P06",
+      "expected": "검색은 후보/전체 데이터/오늘 성취 수에 영향 없음",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:44.507Z",
+      "steps": "P06-01",
+      "status": "PASS",
+      "actual": {
+        "sentence": "계획은 바뀌어도 괜찮습니다.",
+        "achievements": "오늘 마친 일 1개",
+        "toast": "할 일을 완료했습니다.첫 한 가지를 마쳤어요. 작은 진전입니다.실행 취소완료 목록",
+        "focus": "SUMMARY",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"쌓인 일 0\",\"title\":\"쌓인 일 0\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 1\",\"title\":\"쌓인 일 1\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 2\",\"title\":\"쌓인 일 2\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 3\",\"title\":\"쌓인 일 3\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 4\",\"title\":\"쌓인 일 4\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 5\",\"title\":\"쌓인 일 5\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 6\",\"title\":\"쌓인 일 6\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 7\",\"title\":\"쌓인 일 7\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 8\",\"title\":\"쌓인 일 8\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 9\",\"title\":\"쌓인 일 9\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 10\",\"title\":\"쌓인 일 10\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 11\",\"title\":\"쌓인 일 11\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 12\",\"title\":\"쌓인 일 12\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 13\",\"title\":\"쌓인 일 13\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 14\",\"title\":\"쌓인 일 14\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 15\",\"title\":\"쌓인 일 15\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 16\",\"title\":\"쌓인 일 16\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 17\",\"title\":\"쌓인 일 17\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 18\",\"title\":\"쌓인 일 18\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 19\",\"title\":\"쌓인 일 19\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 20\",\"title\":\"쌓인 일 20\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 21\",\"title\":\"쌓인 일 21\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 22\",\"title\":\"쌓인 일 22\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 23\",\"title\":\"쌓인 일 23\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 24\",\"title\":\"쌓인 일 24\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 25\",\"title\":\"쌓인 일 25\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 26\",\"title\":\"쌓인 일 26\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 27\",\"title\":\"쌓인 일 27\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 28\",\"title\":\"쌓인 일 28\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 29\",\"title\":\"쌓인 일 29\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 30\",\"title\":\"쌓인 일 30\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 31\",\"title\":\"쌓인 일 31\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 32\",\"title\":\"쌓인 일 32\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 33\",\"title\":\"쌓인 일 33\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 34\",\"title\":\"쌓인 일 34\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 35\",\"title\":\"쌓인 일 35\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 36\",\"title\":\"쌓인 일 36\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 37\",\"title\":\"쌓인 일 37\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 38\",\"title\":\"쌓인 일 38\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 39\",\"title\":\"쌓인 일 39\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 40\",\"title\":\"쌓인 일 40\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 41\",\"title\":\"쌓인 일 41\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 42\",\"title\":\"쌓인 일 42\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 43\",\"title\":\"쌓인 일 43\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 44\",\"title\":\"쌓인 일 44\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 45\",\"title\":\"쌓인 일 45\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 46\",\"title\":\"쌓인 일 46\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 47\",\"title\":\"쌓인 일 47\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 48\",\"title\":\"쌓인 일 48\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 49\",\"title\":\"쌓인 일 49\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 50\",\"title\":\"쌓인 일 50\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.298Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"high\",\"category\":\"찾기\",\"completedAt\":\"2026-10-08T01:00:00.298Z\",\"isDemo\":false},{\"id\":\"쌓인 일 51\",\"title\":\"쌓인 일 51\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 52\",\"title\":\"쌓인 일 52\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 53\",\"title\":\"쌓인 일 53\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 54\",\"title\":\"쌓인 일 54\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 55\",\"title\":\"쌓인 일 55\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 56\",\"title\":\"쌓인 일 56\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 57\",\"title\":\"쌓인 일 57\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 58\",\"title\":\"쌓인 일 58\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 59\",\"title\":\"쌓인 일 59\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 60\",\"title\":\"쌓인 일 60\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 61\",\"title\":\"쌓인 일 61\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 62\",\"title\":\"쌓인 일 62\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 63\",\"title\":\"쌓인 일 63\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 64\",\"title\":\"쌓인 일 64\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 65\",\"title\":\"쌓인 일 65\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 66\",\"title\":\"쌓인 일 66\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 67\",\"title\":\"쌓인 일 67\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 68\",\"title\":\"쌓인 일 68\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 69\",\"title\":\"쌓인 일 69\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 70\",\"title\":\"쌓인 일 70\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 71\",\"title\":\"쌓인 일 71\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 72\",\"title\":\"쌓인 일 72\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 73\",\"title\":\"쌓인 일 73\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 74\",\"title\":\"쌓인 일 74\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 75\",\"title\":\"쌓인 일 75\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 76\",\"title\":\"쌓인 일 76\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 77\",\"title\":\"쌓인 일 77\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 78\",\"title\":\"쌓인 일 78\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 79\",\"title\":\"쌓인 일 79\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"calm\",\"customSentence\":\"\",\"encouragementEnabled\":true,\"processed\":{\"2026-10-08\":[1]}}",
+        "clock": "2026-10-08T01:00:00.392Z",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P06-01-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 1개; task 80; focus SUMMARY; 문구 15자; 할 일을 완료했습니다.첫 한 가지를 마쳤어요. 작은 진전입니다.실행 취소완료 목록"
+    },
+    {
+      "caseId": "P06-02",
+      "persona": "P06",
+      "expected": "전체 완료/예시 제외·최근 완료 정렬·미리보기 데이터 보존",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:44.909Z",
+      "steps": "P06-02",
+      "status": "PASS",
+      "actual": {
+        "sentence": "계획은 바뀌어도 괜찮습니다.",
+        "achievements": "오늘 마친 일 2개",
+        "toast": null,
+        "focus": "BODY",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"쌓인 일 0\",\"title\":\"쌓인 일 0\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 1\",\"title\":\"쌓인 일 1\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 2\",\"title\":\"쌓인 일 2\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 3\",\"title\":\"쌓인 일 3\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 4\",\"title\":\"쌓인 일 4\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 5\",\"title\":\"쌓인 일 5\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 6\",\"title\":\"쌓인 일 6\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 7\",\"title\":\"쌓인 일 7\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 8\",\"title\":\"쌓인 일 8\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 9\",\"title\":\"쌓인 일 9\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 10\",\"title\":\"쌓인 일 10\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 11\",\"title\":\"쌓인 일 11\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 12\",\"title\":\"쌓인 일 12\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 13\",\"title\":\"쌓인 일 13\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 14\",\"title\":\"쌓인 일 14\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 15\",\"title\":\"쌓인 일 15\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 16\",\"title\":\"쌓인 일 16\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 17\",\"title\":\"쌓인 일 17\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 18\",\"title\":\"쌓인 일 18\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 19\",\"title\":\"쌓인 일 19\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 20\",\"title\":\"쌓인 일 20\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 21\",\"title\":\"쌓인 일 21\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 22\",\"title\":\"쌓인 일 22\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 23\",\"title\":\"쌓인 일 23\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 24\",\"title\":\"쌓인 일 24\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 25\",\"title\":\"쌓인 일 25\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 26\",\"title\":\"쌓인 일 26\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 27\",\"title\":\"쌓인 일 27\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 28\",\"title\":\"쌓인 일 28\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 29\",\"title\":\"쌓인 일 29\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 30\",\"title\":\"쌓인 일 30\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 31\",\"title\":\"쌓인 일 31\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 32\",\"title\":\"쌓인 일 32\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 33\",\"title\":\"쌓인 일 33\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 34\",\"title\":\"쌓인 일 34\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 35\",\"title\":\"쌓인 일 35\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 36\",\"title\":\"쌓인 일 36\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 37\",\"title\":\"쌓인 일 37\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 38\",\"title\":\"쌓인 일 38\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 39\",\"title\":\"쌓인 일 39\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 40\",\"title\":\"쌓인 일 40\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 41\",\"title\":\"쌓인 일 41\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 42\",\"title\":\"쌓인 일 42\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 43\",\"title\":\"쌓인 일 43\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 44\",\"title\":\"쌓인 일 44\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 45\",\"title\":\"쌓인 일 45\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 46\",\"title\":\"쌓인 일 46\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 47\",\"title\":\"쌓인 일 47\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 48\",\"title\":\"쌓인 일 48\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 49\",\"title\":\"쌓인 일 49\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 50\",\"title\":\"쌓인 일 50\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.298Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"high\",\"category\":\"찾기\",\"completedAt\":\"2026-10-08T01:00:00.298Z\",\"isDemo\":false},{\"id\":\"쌓인 일 51\",\"title\":\"쌓인 일 51\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 52\",\"title\":\"쌓인 일 52\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 53\",\"title\":\"쌓인 일 53\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 54\",\"title\":\"쌓인 일 54\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 55\",\"title\":\"쌓인 일 55\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 56\",\"title\":\"쌓인 일 56\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 57\",\"title\":\"쌓인 일 57\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 58\",\"title\":\"쌓인 일 58\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 59\",\"title\":\"쌓인 일 59\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 60\",\"title\":\"쌓인 일 60\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 61\",\"title\":\"쌓인 일 61\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 62\",\"title\":\"쌓인 일 62\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 63\",\"title\":\"쌓인 일 63\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 64\",\"title\":\"쌓인 일 64\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 65\",\"title\":\"쌓인 일 65\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 66\",\"title\":\"쌓인 일 66\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 67\",\"title\":\"쌓인 일 67\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 68\",\"title\":\"쌓인 일 68\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 69\",\"title\":\"쌓인 일 69\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 70\",\"title\":\"쌓인 일 70\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 71\",\"title\":\"쌓인 일 71\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 72\",\"title\":\"쌓인 일 72\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 73\",\"title\":\"쌓인 일 73\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 74\",\"title\":\"쌓인 일 74\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 75\",\"title\":\"쌓인 일 75\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 76\",\"title\":\"쌓인 일 76\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 77\",\"title\":\"쌓인 일 77\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 78\",\"title\":\"쌓인 일 78\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"쌓인 일 79\",\"title\":\"쌓인 일 79\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.628Z\",\"dueDate\":null,\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.628Z\",\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"calm\",\"customSentence\":\"\",\"encouragementEnabled\":true,\"processed\":{\"2026-10-08\":[1]}}",
+        "clock": "2026-10-08T01:00:00.951Z",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P06-02-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 2개; task 80; focus BODY; 문구 15자; toast 없음"
+    },
+    {
+      "caseId": "P07-01",
+      "persona": "P07",
+      "expected": "이어가기 id/기한 유지, 집중 재선택·기한 잔류 유지",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:45.782Z",
+      "steps": "P07-01",
+      "status": "PASS",
+      "actual": {
+        "sentence": "계획은 바뀌어도 괜찮습니다.",
+        "achievements": "오늘 마친 일 0개",
+        "toast": null,
+        "focus": "INPUT",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"어제 글쓰기\",\"title\":\"어제 글쓰기\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.270Z\",\"dueDate\":\"2026-10-10\",\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"오늘 납부\",\"title\":\"오늘 납부\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.403Z\",\"dueDate\":\"2026-10-08\",\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"calm\",\"customSentence\":\"\",\"encouragementEnabled\":true,\"processed\":{\"2026-10-08\":[1]}}",
+        "clock": "2026-10-08T01:00:00.410Z",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P07-01-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 0개; task 2; focus INPUT; 문구 15자; toast 없음"
+    },
+    {
+      "caseId": "P07-02",
+      "persona": "P07",
+      "expected": "전체에서 미래 일 완료도 성취, 설정 취소 유지·백업·재방문",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:46.212Z",
+      "steps": "P07-02",
+      "status": "PASS",
+      "actual": {
+        "sentence": "계획은 바뀌어도 괜찮습니다.",
+        "achievements": "오늘 마친 일 1개",
+        "toast": null,
+        "focus": "BODY",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"어제 글쓰기\",\"title\":\"어제 글쓰기\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.607Z\",\"dueDate\":\"2026-10-10\",\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.607Z\",\"isDemo\":false},{\"id\":\"오늘 납부\",\"title\":\"오늘 납부\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.403Z\",\"dueDate\":\"2026-10-08\",\"focusDate\":null,\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"calm\",\"customSentence\":\"\",\"encouragementEnabled\":true,\"processed\":{\"2026-10-08\":[1]}}",
+        "clock": "2026-10-08T01:00:01.078Z",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P07-02-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 1개; task 2; focus BODY; 문구 15자; toast 없음"
+    },
+    {
+      "caseId": "P08-01",
+      "persona": "P08",
+      "expected": "0→1/1→2/2→3/3→4 표시 조건, 최신 undo, stale cheer 제거",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:47.198Z",
+      "steps": "P08-01",
+      "status": "PASS",
+      "actual": {
+        "sentence": "계획은 바뀌어도 괜찮습니다.",
+        "achievements": "오늘 마친 일 4개",
+        "toast": "할 일을 완료했습니다.실행 취소완료 목록",
+        "focus": "실수 4 미완료로 복원",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"실수 1\",\"title\":\"실수 1\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.158Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.158Z\",\"isDemo\":false},{\"id\":\"실수 2\",\"title\":\"실수 2\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.201Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.201Z\",\"isDemo\":false},{\"id\":\"실수 3\",\"title\":\"실수 3\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.535Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.535Z\",\"isDemo\":false},{\"id\":\"실수 4\",\"title\":\"실수 4\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.404Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.404Z\",\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"calm\",\"customSentence\":\"\",\"encouragementEnabled\":true,\"processed\":{\"2026-10-08\":[1,3]}}",
+        "clock": "2026-10-08T01:00:00.546Z",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P08-01-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 4개; task 4; focus 실수 4 미완료로 복원; 문구 15자; 할 일을 완료했습니다.실행 취소완료 목록"
+    },
+    {
+      "caseId": "P08-02",
+      "persona": "P08",
+      "expected": "오늘 완료 삭제→undo 집계 회복만, 새로고침 후 중복 억제",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:47.762Z",
+      "steps": "P08-02",
+      "status": "PASS",
+      "actual": {
+        "sentence": "계획은 바뀌어도 괜찮습니다.",
+        "achievements": "오늘 마친 일 1개",
+        "toast": "할 일을 완료했습니다.실행 취소완료 목록",
+        "focus": "실수 2 완료",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"실수 2\",\"title\":\"실수 2\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:01.118Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"실수 3\",\"title\":\"실수 3\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:01.152Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"실수 4\",\"title\":\"실수 4\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:01.203Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false},{\"id\":\"실수 1\",\"title\":\"실수 1\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:01.251Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:01.251Z\",\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"calm\",\"customSentence\":\"\",\"encouragementEnabled\":true,\"processed\":{\"2026-10-08\":[1,3]}}",
+        "clock": "2026-10-08T01:00:01.269Z",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P08-02-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 1개; task 4; focus 실수 2 완료; 문구 15자; 할 일을 완료했습니다.실행 취소완료 목록"
+    },
+    {
+      "caseId": "P09-01",
+      "persona": "P09",
+      "expected": "같은 날짜 모드 왕복·refresh/reopen 동일, 유머 첫/3개",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:48.809Z",
+      "steps": "P09-01",
+      "status": "PASS",
+      "actual": {
+        "sentence": "계획 변경도 계획이 하는 일 중 하나죠.",
+        "achievements": "오늘 마친 일 3개",
+        "toast": null,
+        "focus": "BODY",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"1a1b6059-45d1-4c28-ada1-f95d493b6387\",\"title\":\"격려 1\",\"createdAt\":\"2026-10-08T01:00:00.714Z\",\"updatedAt\":\"2026-10-08T01:00:00.761Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.761Z\",\"isDemo\":false},{\"id\":\"06b29f43-6479-4601-bfc7-f2af97032205\",\"title\":\"격려 2\",\"createdAt\":\"2026-10-08T01:00:00.787Z\",\"updatedAt\":\"2026-10-08T01:00:00.827Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.827Z\",\"isDemo\":false},{\"id\":\"9891a4d2-07a0-4b79-88ac-1ecc7531d0b3\",\"title\":\"격려 3\",\"createdAt\":\"2026-10-08T01:00:00.849Z\",\"updatedAt\":\"2026-10-08T01:00:00.895Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.895Z\",\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"humor\",\"customSentence\":\"\",\"encouragementEnabled\":true,\"processed\":{\"2026-10-08\":[1,3]}}",
+        "clock": "2026-10-08T01:00:00.183Z",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P09-01-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 3개; task 3; focus BODY; 문구 22자; toast 없음"
+    },
+    {
+      "caseId": "P09-02",
+      "persona": "P09",
+      "expected": "네트워크 없는 열린 앱 문구·자정 갱신·둘째 날짜 첫 격려, suspend focus 갱신",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:49.976Z",
+      "steps": "P09-02",
+      "status": "PASS",
+      "actual": {
+        "sentence": "생각은 잠깐 주차하고, 한 가지 출발.",
+        "achievements": "오늘 마친 일 0개",
+        "toast": "할 일을 완료했습니다.실행 취소완료 목록",
+        "focus": "INPUT",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"1a1b6059-45d1-4c28-ada1-f95d493b6387\",\"title\":\"격려 1\",\"createdAt\":\"2026-10-08T01:00:00.714Z\",\"updatedAt\":\"2026-10-08T01:00:00.761Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.761Z\",\"isDemo\":false},{\"id\":\"06b29f43-6479-4601-bfc7-f2af97032205\",\"title\":\"격려 2\",\"createdAt\":\"2026-10-08T01:00:00.787Z\",\"updatedAt\":\"2026-10-08T01:00:00.827Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.827Z\",\"isDemo\":false},{\"id\":\"9891a4d2-07a0-4b79-88ac-1ecc7531d0b3\",\"title\":\"격려 3\",\"createdAt\":\"2026-10-08T01:00:00.849Z\",\"updatedAt\":\"2026-10-08T01:00:00.895Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.895Z\",\"isDemo\":false},{\"id\":\"f77672e5-1588-4266-8318-7b8c12dbce49\",\"title\":\"둘째 날짜\",\"createdAt\":\"2026-10-08T15:00:00.149Z\",\"updatedAt\":\"2026-10-08T15:00:00.190Z\",\"dueDate\":null,\"focusDate\":\"2026-10-09\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T15:00:00.190Z\",\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"humor\",\"customSentence\":\"\",\"encouragementEnabled\":true,\"processed\":{\"2026-10-08\":[1,3],\"2026-10-09\":[1]}}",
+        "clock": "2026-10-10T01:00:00.023Z",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P09-02-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 0개; task 4; focus INPUT; 문구 21자; 할 일을 완료했습니다.실행 취소완료 목록"
+    },
+    {
+      "caseId": "P10-01",
+      "persona": "P10",
+      "expected": "문구/격려 독립, 꺼진 동안 첫/3개도 처리",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:50.538Z",
+      "steps": "P10-01",
+      "status": "PASS",
+      "actual": {
+        "sentence": "해야 할 모든 일보다, 오늘 할 일에 집중하세요.",
+        "achievements": "오늘 마친 일 3개",
+        "toast": "할 일을 완료했습니다.실행 취소완료 목록",
+        "focus": "조용한 일 2 미완료로 복원",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"47aea1a2-d21a-4d84-a97c-c2bb5229a2b0\",\"title\":\"조용한 일 1\",\"createdAt\":\"2026-10-08T01:00:00.388Z\",\"updatedAt\":\"2026-10-08T01:00:00.428Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.428Z\",\"isDemo\":false},{\"id\":\"1ac3ff52-736f-4f45-8a27-9115ed12cd76\",\"title\":\"조용한 일 2\",\"createdAt\":\"2026-10-08T01:00:00.461Z\",\"updatedAt\":\"2026-10-08T01:00:00.495Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.495Z\",\"isDemo\":false},{\"id\":\"5bb34ffd-a106-4dd7-9c69-ff1da3661565\",\"title\":\"조용한 일 3\",\"createdAt\":\"2026-10-08T01:00:00.526Z\",\"updatedAt\":\"2026-10-08T01:00:00.944Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.944Z\",\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"off\",\"customSentence\":\"\",\"encouragementEnabled\":true,\"processed\":{\"2026-10-08\":[1,3]}}",
+        "clock": "2026-10-08T01:00:00.957Z",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P10-01-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 3개; task 3; focus 조용한 일 2 미완료로 복원; 문구 27자; 할 일을 완료했습니다.실행 취소완료 목록"
+    },
+    {
+      "caseId": "P10-02",
+      "persona": "P10",
+      "expected": "취소/Escape 무저장, 문구off+격려on 새 날짜 차분한 격려",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:51.509Z",
+      "steps": "P10-02",
+      "status": "PASS",
+      "actual": {
+        "sentence": "해야 할 모든 일보다, 오늘 할 일에 집중하세요.",
+        "achievements": "오늘 마친 일 1개",
+        "toast": "할 일을 완료했습니다.첫 한 가지를 마쳤어요. 작은 진전입니다.실행 취소완료 목록",
+        "focus": "INPUT",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"47aea1a2-d21a-4d84-a97c-c2bb5229a2b0\",\"title\":\"조용한 일 1\",\"createdAt\":\"2026-10-08T01:00:00.388Z\",\"updatedAt\":\"2026-10-08T01:00:00.428Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.428Z\",\"isDemo\":false},{\"id\":\"1ac3ff52-736f-4f45-8a27-9115ed12cd76\",\"title\":\"조용한 일 2\",\"createdAt\":\"2026-10-08T01:00:00.461Z\",\"updatedAt\":\"2026-10-08T01:00:00.495Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.495Z\",\"isDemo\":false},{\"id\":\"5bb34ffd-a106-4dd7-9c69-ff1da3661565\",\"title\":\"조용한 일 3\",\"createdAt\":\"2026-10-08T01:00:00.526Z\",\"updatedAt\":\"2026-10-08T01:00:00.944Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.944Z\",\"isDemo\":false},{\"id\":\"5a518ef5-162f-4629-8560-2c145a7038cd\",\"title\":\"조용한 둘째 날\",\"createdAt\":\"2026-10-09T01:00:00.032Z\",\"updatedAt\":\"2026-10-09T01:00:00.067Z\",\"dueDate\":null,\"focusDate\":\"2026-10-09\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-09T01:00:00.067Z\",\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"off\",\"customSentence\":\"\",\"encouragementEnabled\":true,\"processed\":{\"2026-10-08\":[1,3],\"2026-10-09\":[1]}}",
+        "clock": "2026-10-09T01:00:00.088Z",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P10-02-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 1개; task 4; focus INPUT; 문구 27자; 할 일을 완료했습니다.첫 한 가지를 마쳤어요. 작은 진전입니다.실행 취소완료 목록"
+    },
+    {
+      "caseId": "P11-01",
+      "persona": "P11",
+      "expected": "reflow 무넘침, 설정 오류 자동 초점·scroll, 필수 footer 접근",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:52.218Z",
+      "steps": "P11-01",
+      "status": "PASS",
+      "actual": {
+        "sentence": "가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가",
+        "achievements": "오늘 마친 일 0개",
+        "toast": null,
+        "focus": "예시 및 앱 정보",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"6074156c-773d-4dfc-b3ac-55ec5014385c\",\"title\":\"작업 확인\",\"createdAt\":\"2026-10-08T01:00:00.137Z\",\"updatedAt\":\"2026-10-08T01:00:00.137Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"custom\",\"customSentence\":\"가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가\",\"encouragementEnabled\":true,\"processed\":{}}",
+        "clock": "2026-10-08T01:00:00.463Z",
+        "viewport": {
+          "width": 720,
+          "height": 450
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P11-01-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 0개; task 1; focus 예시 및 앱 정보; 문구 120자; toast 없음"
+    },
+    {
+      "caseId": "P11-02",
+      "persona": "P11",
+      "expected": "내 문장 모드 차분한 격려, 성취 복원 후 키보드 초점/접근·재방문",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:52.668Z",
+      "steps": "P11-02",
+      "status": "PASS",
+      "actual": {
+        "sentence": "가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가",
+        "achievements": "오늘 마친 일 0개",
+        "toast": null,
+        "focus": "BODY",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"6074156c-773d-4dfc-b3ac-55ec5014385c\",\"title\":\"작업 확인\",\"createdAt\":\"2026-10-08T01:00:00.137Z\",\"updatedAt\":\"2026-10-08T01:00:00.665Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"custom\",\"customSentence\":\"가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가\",\"encouragementEnabled\":true,\"processed\":{\"2026-10-08\":[1]}}",
+        "clock": "2026-10-08T01:00:00.753Z",
+        "viewport": {
+          "width": 720,
+          "height": 450
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P11-02-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 0개; task 1; focus BODY; 문구 120자; toast 없음"
+    },
+    {
+      "caseId": "P12-01",
+      "persona": "P12",
+      "expected": "설정 저장 실패 초안/원본 유지·재시도, task 저장 상태 분리",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:53.276Z",
+      "steps": "P12-01",
+      "status": "PASS",
+      "actual": {
+        "sentence": "계획 변경도 계획이 하는 일 중 하나죠.",
+        "achievements": "오늘 마친 일 0개",
+        "toast": null,
+        "focus": "예시 및 앱 정보",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"보존할 일\",\"title\":\"보존할 일\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.000Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":null,\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"humor\",\"customSentence\":\"\",\"encouragementEnabled\":true,\"processed\":{}}",
+        "clock": "2026-10-08T01:00:00.390Z",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P12-01-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 0개; task 1; focus 예시 및 앱 정보; 문구 22자; toast 없음"
+    },
+    {
+      "caseId": "P12-02",
+      "persona": "P12",
+      "expected": "격려 표시/task 저장 실패에도 메모리 완료·undo, 중복 없음·좁은 재시도",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:53.672Z",
+      "steps": "P12-02",
+      "status": "PASS",
+      "actual": {
+        "sentence": "계획 변경도 계획이 하는 일 중 하나죠.",
+        "achievements": "오늘 마친 일 1개",
+        "toast": "할 일을 완료했습니다.실행 취소완료 목록",
+        "focus": "예시 및 앱 정보",
+        "taskRaw": "{\"version\":1,\"tasks\":[{\"id\":\"보존할 일\",\"title\":\"보존할 일\",\"createdAt\":\"2026-10-08T01:00:00.000Z\",\"updatedAt\":\"2026-10-08T01:00:00.608Z\",\"dueDate\":null,\"focusDate\":\"2026-10-08\",\"priority\":\"none\",\"category\":null,\"completedAt\":\"2026-10-08T01:00:00.608Z\",\"isDemo\":false}]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"humor\",\"customSentence\":\"\",\"encouragementEnabled\":true,\"processed\":{\"2026-10-08\":[1]}}",
+        "clock": "2026-10-08T01:00:00.793Z",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P12-02-PASS.png",
+      "firstStatus": "PASS",
+      "summary": "오늘 마친 일 1개; task 1; focus 예시 및 앱 정보; 문구 22자; 할 일을 완료했습니다.실행 취소완료 목록"
+    },
+    {
+      "caseId": "P12-03",
+      "persona": "P12",
+      "expected": "실패 복원은 원본/성취/UI유지, merge→2 이후 직접3은 후보, replace도 UI유지",
+      "phase": "final-root",
+      "checkedAt": "2026-10-08T07:18:54.064Z",
+      "steps": "P12-03",
+      "status": "PASS",
+      "actual": {
+        "sentence": "계획 변경도 계획이 하는 일 중 하나죠.",
+        "achievements": "오늘 마친 일 0개",
+        "toast": null,
+        "focus": "BODY",
+        "taskRaw": "{\"version\":1,\"tasks\":[]}",
+        "uiRaw": "{\"version\":1,\"sentenceMode\":\"humor\",\"customSentence\":\"\",\"encouragementEnabled\":true,\"processed\":{\"2026-10-08\":[1,3]}}",
+        "clock": "2026-10-08T01:00:01.560Z",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "screenshot": "docs/screenshots/v1.4/final-root/P12-03-PASS.png",
+      "firstStatus": "FAIL",
+      "summary": "오늘 마친 일 0개; task 0; focus BODY; 문구 22자; toast 없음"
+    }
+  ],
+  "boundary": [
+    {
+      "caseId": "B01-01",
+      "title": "B01 설정 보호·명시적 초기화: {broken",
+      "firstStatus": "PASS",
+      "status": "PASS",
+      "source": "docs/evidence/v1.4/root-final.json"
+    },
+    {
+      "caseId": "B01-02",
+      "title": "B01 설정 보호·명시적 초기화: {\"version\":2,\"sentenceMode\":\"calm\",\"customSentence\":\"\",\"encouragementEnabled\":true,\"processed\":{}}",
+      "firstStatus": "PASS",
+      "status": "PASS",
+      "source": "docs/evidence/v1.4/root-final.json"
+    },
+    {
+      "caseId": "B02-01",
+      "title": "B02 완료 timestamp 로컬 자정 경계·다른 시간대 Asia/Seoul",
+      "firstStatus": "PASS",
+      "status": "PASS",
+      "source": "docs/evidence/v1.4/root-final.json"
+    },
+    {
+      "caseId": "B02-02",
+      "title": "B02 완료 timestamp 로컬 자정 경계·다른 시간대 America/New_York",
+      "firstStatus": "PASS",
+      "status": "PASS",
+      "source": "docs/evidence/v1.4/root-final.json"
+    },
+    {
+      "caseId": "B03-01",
+      "title": "B03 초기/import/replace/예시 증가 무격려·새 직접 완료 경계",
+      "firstStatus": "PASS",
+      "status": "PASS",
+      "source": "docs/evidence/v1.4/root-final.json"
+    },
+    {
+      "caseId": "B04-01",
+      "title": "B04 설정 읽기 실패 후 좁은 재시도는 기존 설정/세션 표시를 합치며 할 일을 유지",
+      "firstStatus": "NOT_RUN",
+      "status": "PASS",
+      "source": "docs/evidence/v1.4/root-final.json"
+    },
+    {
+      "caseId": "B05-01",
+      "title": "B05 설정 초기화 쓰기 실패는 손상 원본과 할 일을 보호, 재시도 성공만 적용",
+      "firstStatus": "NOT_RUN",
+      "status": "PASS",
+      "source": "docs/evidence/v1.4/root-final.json"
+    },
+    {
+      "caseId": "B06-01",
+      "title": "B06 격려 표시 저장 실패는 세션 중복만 보장하며 새로고침 후 저장 상태에 의존",
+      "firstStatus": "NOT_RUN",
+      "status": "PASS",
+      "source": "docs/evidence/v1.4/root-final.json"
+    },
+    {
+      "caseId": "B07-01",
+      "title": "B07 검수 수정: 768px 전체폭 시트·재시도된 적용 설정과 미저장 초안 구별",
+      "firstStatus": "NOT_RUN",
+      "status": "PASS",
+      "source": "docs/evidence/v1.4/root-final.json"
+    },
+    {
+      "caseId": "B08-01",
+      "title": "B08 성취 행에 초점이 있을 때 날짜 변경으로 모두 사라져도 summary 복귀",
+      "firstStatus": "NOT_RUN",
+      "status": "PASS",
+      "source": "docs/evidence/v1.4/root-final.json"
+    },
+    {
+      "caseId": "B09-01",
+      "title": "B09 접힌 성취의 숨은 행을 완료 후 초점 대상으로 선택하지 않는다",
+      "firstStatus": "FAIL",
+      "status": "PASS",
+      "source": "docs/evidence/v1.4/root-final.json"
+    }
+  ],
+  "visual": [
+    {
+      "caseId": "V14-sheet-1440-1",
+      "expected": "existing full width mobile sheet below 900px",
+      "actual": {
+        "width": 440,
+        "viewport": 1440
+      },
+      "status": "PASS",
+      "screenshot": "docs/screenshots/v1.4/features-second/settings-1440x900.png",
+      "firstStatus": "PASS"
+    },
+    {
+      "caseId": "V14-sheet-1366-2",
+      "expected": "existing full width mobile sheet below 900px",
+      "actual": {
+        "width": 440,
+        "viewport": 1366
+      },
+      "status": "PASS",
+      "screenshot": "docs/screenshots/v1.4/features-second/settings-1366x768.png",
+      "firstStatus": "PASS"
+    },
+    {
+      "caseId": "V14-sheet-1024-3",
+      "expected": "existing full width mobile sheet below 900px",
+      "actual": {
+        "width": 440,
+        "viewport": 1024
+      },
+      "status": "PASS",
+      "screenshot": "docs/screenshots/v1.4/features-second/settings-1024x768.png",
+      "firstStatus": "PASS"
+    },
+    {
+      "caseId": "V14-sheet-768-4",
+      "expected": "existing full width mobile sheet below 900px",
+      "actual": {
+        "width": 768,
+        "viewport": 768
+      },
+      "status": "PASS",
+      "screenshot": "docs/screenshots/v1.4/features-second/settings-768x1024.png",
+      "firstStatus": "FAIL"
+    },
+    {
+      "caseId": "V14-sheet-390-5",
+      "expected": "existing full width mobile sheet below 900px",
+      "actual": {
+        "width": 390.3999938964844,
+        "viewport": 390
+      },
+      "status": "PASS",
+      "screenshot": "docs/screenshots/v1.4/features-second/settings-390x844.png",
+      "firstStatus": "PASS"
+    },
+    {
+      "caseId": "V14-sheet-320-6",
+      "expected": "existing full width mobile sheet below 900px",
+      "actual": {
+        "width": 320,
+        "viewport": 320
+      },
+      "status": "PASS",
+      "screenshot": "docs/screenshots/v1.4/features-second/settings-320x568.png",
+      "firstStatus": "PASS"
+    },
+    {
+      "caseId": "V14-sheet-720-7",
+      "expected": "existing full width mobile sheet below 900px",
+      "actual": {
+        "width": 720,
+        "viewport": 720
+      },
+      "status": "PASS",
+      "screenshot": "docs/screenshots/v1.4/features-second/settings-720x450.png",
+      "firstStatus": "FAIL"
+    },
+    {
+      "caseId": "V14-sheet-390-8",
+      "expected": "existing full width mobile sheet below 900px",
+      "actual": {
+        "width": 390.3999938964844,
+        "viewport": 390
+      },
+      "status": "PASS",
+      "screenshot": "docs/screenshots/v1.4/features-second/settings-390x480.png",
+      "firstStatus": "PASS"
+    },
+    {
+      "caseId": "V14-retry-draft-9",
+      "expected": "retry of applied settings distinguishes unsaved draft",
+      "actual": {
+        "message": "현재 적용된 설정과 격려 표시를 저장했습니다. 편집 중인 초안은 별도로 설정 저장을 눌러 적용해 주세요.",
+        "selectedDraftHumor": true,
+        "applied": "calm"
+      },
+      "status": "PASS",
+      "screenshot": "docs/screenshots/v1.4/features-second/settings-retry-draft-320.png",
+      "firstStatus": "FAIL"
+    }
+  ],
+  "limitations": [
+    "Physical smartphone/OS keyboard/OS IME/native zoom/screen reader/Safari/Firefox/human research: NOT_RUN"
+  ],
+  "note": "First failed P03-02/P12-03 retained in raw test report, trace and first-failures screenshots. B09 first failure was a later dedicated real reproduction, not initial Beta."
+}

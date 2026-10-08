@@ -6,7 +6,7 @@ import { createTask, type Task } from '../../src/domain'
 
 const day = '2026-10-02'
 const phase = process.env.BETA_PHASE || 'after'
-const shotDir = process.env.FOCUSDAY_SCREENSHOTS || `docs/screenshots/v1.3/regression/${phase}`
+const shotDir = process.env.FOCUSDAY_SCREENSHOTS || `docs/screenshots/v1.4/regression/${phase}`
 type CaseResult = Record<string, unknown>
 const results = new Map<string, CaseResult[]>()
 const make = (id: string, extra: Partial<Task> = {}) => ({

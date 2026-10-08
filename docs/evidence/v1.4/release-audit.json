@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-10-08T07:26:43.543Z",
+  "sourceCommitAtAudit": "e44c662978bb52fb3a1fa0d21f5c3ea80fc9edc9",
+  "status": "PASS",
+  "preserved": [
+    "src/domain.ts",
+    "src/storage.ts",
+    "src/backup.ts",
+    "pnpm-lock.yaml"
+  ],
+  "commands": {
+    "root-final": {
+      "startTime": "2026-10-08T07:17:35.444Z",
+      "duration": 94885.47,
+      "expected": 103,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "pages-final": {
+      "startTime": "2026-10-08T07:21:09.044Z",
+      "duration": 95485.243,
+      "expected": 103,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "linksChecked": 169,
+  "promptSHA256": "31bccbec238320b7a588a0724398a297de50570dacf288ace1689a72574b0425"
+}

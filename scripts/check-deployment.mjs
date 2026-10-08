@@ -5,13 +5,13 @@ import { chromium, expect } from '@playwright/test'
 const url = new URL(process.argv[2] || 'https://gsj118.github.io/focusday/')
 const evidenceDir = process.env.SMOKE_OUTPUT_DIR
   ? `${process.env.SMOKE_OUTPUT_DIR}/evidence`
-  : 'docs/evidence/v1.3'
+  : 'docs/evidence/v1.4'
 const screenshotDir = process.env.SMOKE_OUTPUT_DIR
   ? `${process.env.SMOKE_OUTPUT_DIR}/screenshots`
-  : 'docs/screenshots/v1.3'
+  : 'docs/screenshots/v1.4'
 assert.equal(url.protocol, 'https:')
 const report = {
-  appVersion: '1.3.0',
+  appVersion: '1.4.0',
   url: url.href,
   checkedAt: new Date().toISOString(),
   deployedSourceCommit: process.env.LIVE_HEAD_SHA || null,
@@ -54,6 +54,9 @@ try {
       await expect(page).toHaveTitle(/Focusday/)
       await expect(page.getByLabel('새 할 일 제목')).toBeVisible()
       assert.equal(await page.evaluate(() => localStorage.length), 0)
+      const initialSentence = await page.locator('.daily-sentence').textContent()
+      assert(initialSentence.length > 0)
+      await expect(page.locator('.achievements-section > summary')).toHaveText('오늘 마친 일 0개')
 
       if (name === 'desktop') {
         const html = await response.text()
@@ -88,6 +91,7 @@ try {
       await page.getByLabel('분류 선택').fill('배포 확인')
       await page.getByRole('button', { name: '저장', exact: true }).click()
       await page.reload({ waitUntil: 'networkidle' })
+      await expect(page.locator('.daily-sentence')).toHaveText(initialSentence)
       const readTasks = () =>
         page.evaluate(() => JSON.parse(localStorage.getItem('focusday:v1')).tasks)
       let tasks = await readTasks()
@@ -148,7 +152,7 @@ try {
       const beforeExport = await readTasks()
       const menu = page.locator(name === 'mobile' ? '.mobile-menu .app-menu' : '.sidebar .app-menu')
       await menu.locator('summary').click()
-      await expect(menu.getByText('Focusday 1.3.0', { exact: true })).toBeVisible()
+      await expect(menu.getByText('Focusday 1.4.0', { exact: true })).toBeVisible()
       await menu.getByRole('button', { name: '백업·복원', exact: true }).click()
       const downloadedPromise = page.waitForEvent('download')
       await page.getByRole('button', { name: 'JSON 백업 다운로드', exact: true }).click()
@@ -222,6 +226,101 @@ try {
         (await readTasks()).find((task) => task.id === continuedTask.id).focusDate,
         dates.today,
       )
+      // Actual v1.4 UI, using this fresh isolated context only. Earlier completion consumed mark 1.
+      const achievementSummary = page.locator('.achievements-section > summary')
+      const readUI = () => page.evaluate(() => JSON.parse(localStorage.getItem('focusday:ui:v1')))
+      const settings = async () => {
+        await menu.locator('summary').click()
+        await menu.getByRole('button', { name: '문구와 격려 설정', exact: true }).click()
+      }
+      const saveSettings = async () => {
+        await page
+          .locator('.editor-footer')
+          .getByRole('button', { name: '설정 저장', exact: true })
+          .click()
+        await expect(page.locator('.panel-feedback')).toHaveText('설정을 저장했습니다.')
+        await page.keyboard.press('Escape')
+      }
+      await settings()
+      await page.getByRole('radio', { name: '유머', exact: true }).check()
+      await saveSettings()
+      const humorSentence = await page.locator('.daily-sentence').textContent()
+      await page.reload({ waitUntil: 'networkidle' })
+      await expect(page.locator('.daily-sentence')).toHaveText(humorSentence)
+      for (const i of [1, 2, 3]) {
+        const title = `v1.4 공개 완료 ${name} ${i}`
+        await input.fill(title)
+        await input.press('Enter')
+        await page.getByRole('checkbox', { name: `${title} 완료`, exact: true }).click()
+        await expect(achievementSummary).toHaveText(`오늘 마친 일 ${i}개`)
+        await expect(page.locator('.encouragement')).toHaveCount(i === 3 ? 1 : 0)
+      }
+      await expect(page.locator('.encouragement')).toContainText('체크 세 칸')
+      await page.screenshot({ path: `${screenshotDir}/live-${name}-encouragement.png` })
+      await page.getByRole('button', { name: '실행 취소', exact: true }).click()
+      await expect(achievementSummary).toHaveText('오늘 마친 일 2개')
+      await expect(page.locator('.encouragement')).toHaveCount(0)
+      await page
+        .getByRole('checkbox', { name: `v1.4 공개 완료 ${name} 3 완료`, exact: true })
+        .click()
+      await expect(page.locator('.encouragement')).toHaveCount(0)
+      await achievementSummary.click()
+      await expect(page.locator('.achievements-section time')).toHaveCount(3)
+      await page.screenshot({ path: `${screenshotDir}/live-${name}-achievements.png` })
+      await settings()
+      await page.getByRole('radio', { name: '내 문장', exact: true }).check()
+      await page.getByLabel('내 문장 입력').fill('  <b>내가 정한 한 문장</b>  ')
+      await page.screenshot({ path: `${screenshotDir}/live-${name}-settings.png` })
+      await saveSettings()
+      await expect(page.locator('.daily-sentence')).toHaveText('<b>내가 정한 한 문장</b>')
+      await expect(page.locator('.daily-sentence b')).toHaveCount(0)
+      const uiBeforeRestore = await readUI()
+      const tasksBeforeRestore = await readTasks()
+      await menu.locator('summary').click()
+      await menu.getByRole('button', { name: '백업·복원', exact: true }).click()
+      const v14Download = page.waitForEvent('download')
+      await page.getByRole('button', { name: 'JSON 백업 다운로드', exact: true }).click()
+      const v14File = await v14Download
+      const v14BackupText = await readFile(await v14File.path(), 'utf8')
+      await v14File.delete()
+      const v14Backup = JSON.parse(v14BackupText)
+      assert.deepEqual(v14Backup.data, { version: 1, tasks: tasksBeforeRestore })
+      assert.deepEqual(Object.keys(v14Backup).sort(), [
+        'data',
+        'exportedAt',
+        'format',
+        'formatVersion',
+      ])
+      assert(!v14BackupText.includes('customSentence'))
+      await page
+        .locator('#backup-file')
+        .setInputFiles({
+          name: 'v1.4-self.json',
+          mimeType: 'application/json',
+          buffer: Buffer.from(v14BackupText),
+        })
+      await page.getByRole('button', { name: '합치기 적용', exact: true }).click()
+      await page.getByRole('button', { name: '목록으로 돌아가기', exact: true }).click()
+      assert.deepEqual(await readTasks(), tasksBeforeRestore)
+      assert.deepEqual(await readUI(), uiBeforeRestore)
+      await expect(achievementSummary).toHaveText('오늘 마친 일 3개')
+      await expect(page.locator('.encouragement')).toHaveCount(0)
+      await page.reload({ waitUntil: 'networkidle' })
+      await expect(page.locator('.daily-sentence')).toHaveText('<b>내가 정한 한 문장</b>')
+      await expect(achievementSummary).toHaveText('오늘 마친 일 3개')
+      await settings()
+      await page.getByRole('radio', { name: '끄기', exact: true }).check()
+      await page.getByRole('checkbox', { name: '완료 순간의 격려', exact: true }).uncheck()
+      await saveSettings()
+      await expect(page.locator('.daily-sentence')).toHaveText(
+        '해야 할 모든 일보다, 오늘 할 일에 집중하세요.',
+      )
+      assert.equal((await readUI()).encouragementEnabled, false)
+      await settings()
+      await page.getByRole('radio', { name: '차분한 문구', exact: true }).check()
+      await page.getByRole('checkbox', { name: '완료 순간의 격려', exact: true }).check()
+      await saveSettings()
+      await expect(page.locator('.daily-sentence')).toHaveText(initialSentence)
       assert.deepEqual(failures, [])
       report.screens.push({
         name,
@@ -238,12 +337,16 @@ try {
           '삭제 취소',
           '예시',
           '가로 넘침/편집기',
-          '앱 버전 1.3.0',
+          '앱 버전 1.4.0',
           '편집 조합 이벤트 Enter 무저장 (OS IME 제외)',
           'compact UTF-8 전체 백업, 10MiB 이내',
           'JSON 백업 모든 속성·완료·예시 보존',
           '복원 미리보기·id 합치기·저장',
           '오늘 계획·어제 이어가기 id/기한 유지',
+          'v1.4 문구 refresh/모드/내 문장 plain text/끄기·독립 격려/저장',
+          '성취 예시 제외·완료 시각·3개·undo·재완료 중복 방지',
+          '이전 첫 완료 처리 유지·유머 3개 격려 통합 toast',
+          '전체 task 백업·UI 설정 제외·합치기 후 UI/성취 재계산·재방문',
           '실행 오류 없음',
         ],
         status: 'PASS',

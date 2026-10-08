@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-10-08T07:21:02.064Z",
+  "url": "http://127.0.0.1:4180/focusday/",
+  "htmlStatus": 200,
+  "assets": [
+    {
+      "url": "http://127.0.0.1:4180/focusday/favicon.svg",
+      "status": 200,
+      "contentType": "image/svg+xml"
+    },
+    {
+      "url": "http://127.0.0.1:4180/focusday/assets/index-D0cb8x9V.js",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:4180/focusday/assets/index-BxzIbDmX.css",
+      "status": 200,
+      "contentType": "text/css"
+    }
+  ]
+}
