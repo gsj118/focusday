@@ -93,20 +93,18 @@ try {
     await menu.locator('summary').click()
     await menu.getByRole('button', { name: '백업·복원', exact: true }).click()
     await page.screenshot({ path: `${dir}/data-${width}x${height}.png` })
-    await page
-      .locator('#backup-file')
-      .setInputFiles({
-        name: 'preview.json',
-        mimeType: 'application/json',
-        buffer: Buffer.from(
-          JSON.stringify({
-            format: 'focusday-backup',
-            formatVersion: 1,
-            exportedAt: stamp,
-            data: { version: 1, tasks },
-          }),
-        ),
-      })
+    await page.locator('#backup-file').setInputFiles({
+      name: 'preview.json',
+      mimeType: 'application/json',
+      buffer: Buffer.from(
+        JSON.stringify({
+          format: 'focusday-backup',
+          formatVersion: 1,
+          exportedAt: stamp,
+          data: { version: 1, tasks },
+        }),
+      ),
+    })
     await expect(page.getByRole('heading', { name: '복원 미리보기', exact: true })).toBeVisible()
     await page.getByRole('button', { name: '합치기 적용', exact: true }).scrollIntoViewIfNeeded()
     await page.screenshot({ path: `${dir}/restore-${width}x${height}.png` })

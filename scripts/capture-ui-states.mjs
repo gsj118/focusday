@@ -41,20 +41,18 @@ try {
     await menu.locator('summary').click()
     await shot('app-menu')
     await menu.getByRole('button', { name: '백업·복원', exact: true }).click()
-    await page
-      .locator('#backup-file')
-      .setInputFiles({
-        name: 'empty-backup.json',
-        mimeType: 'application/json',
-        buffer: Buffer.from(
-          JSON.stringify({
-            format: 'focusday-backup',
-            formatVersion: 1,
-            exportedAt: new Date().toISOString(),
-            data: { version: 1, tasks: [] },
-          }),
-        ),
-      })
+    await page.locator('#backup-file').setInputFiles({
+      name: 'empty-backup.json',
+      mimeType: 'application/json',
+      buffer: Buffer.from(
+        JSON.stringify({
+          format: 'focusday-backup',
+          formatVersion: 1,
+          exportedAt: new Date().toISOString(),
+          data: { version: 1, tasks: [] },
+        }),
+      ),
+    })
     await page.getByRole('radio', { name: '백업으로 전체 교체', exact: true }).check()
     await page.getByRole('button', { name: '전체 교체 확인으로 이동', exact: true }).click()
     await shot('replace-confirm')

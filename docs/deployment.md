@@ -1,5 +1,15 @@
 # Focusday GitHub 제출과 Pages 배포 결과
 
+## v1.3 UI 교체·로컬 완료 상태
+
+2026-10-08 KST. 시작 main/tag v1.2.0 `78492375019cf800f37dc5a7a806bf1bf47f26d7`, 동일한 origin과 깨끗한 작업 폴더를 확인했다. 원격 사용자는 ADMIN이고 main branch protection 조회는404(미설정)였으며 기존 직접 main 제출과 main 수동 Pages 정책을 유지한다. identity/remote/태그/환경 보호를 변경하지 않는다.
+
+`526a06e`는 이번 baseline·before·DESIGN.md·첨부 원문 보존, `8b8a9ad2f6910c500475eefadc4d2dac7c57209c`는 노션 작업 UI 전체 구현과 회귀 보완이다. 앱1.3.0, 저장 key/data version1 유지. 첨부 원문 파일과 최종 Git blob의 byte/hash가 같다.
+
+로컬 check는 타입·lint·단위46·서울/뉴욕각22·build PASS다. 루트 production 및 실제 `/focusday/` production Chrome E2E는 **각80 PASS**, fail/skip/flaky0, exit0다. Pages HTML/JS/CSS/favicon은 모두200이며 예상 content-type과 하위 경로를 확인했다. 첫 preview의 base 환경 설정 누락으로 자산이 HTML이 된 실행은 중단하고 로그를 보존했다. 올바른 base로 다시 시작한 최종 실행과 구분한다. [전체 명령·범위](validation.md), [자산 원본](evidence/v1.3/pages-assets.json).
+
+현재 이 문서 커밋 단계에는 원격 CI/수동 Pages/공개 사이트 검증을 아직 완료로 기록하지 않는다. 실제 성공 뒤 source SHA·run URL·로그·공개 Chrome 결과를 이 절에 확정한다. push만으로 Pages 완료로 보지 않는다. 공개 확인 도구의 현재 버전은1.3.0이며 v1.3 경로에만 기록한다. 아래 v1.2/v1.1 결과는 당시 기록이다.
+
 ## v1.2 실제 GitHub·공개 배포 결과
 
 시작 main `7ff35e7` / v1.1.0 tag `e29397e`를 유지했다. 앱 1.2.0 구현 커밋은 `a52bb7aaa30c3780a429a2d0761dc928e2029353`이다. 자체 백업 크기와 상세 composition Enter 두 P1을 수정했고 저장 key/schema는 그대로다.
@@ -61,8 +71,8 @@ v1.1 작업 커밋을 main에 정상 push하고 수동 Pages workflow를 별도�
 
 [Vite 공식 Pages 안내](https://vite.dev/guide/static-deploy.html#github-pages)에 따라 `VITE_BASE_PATH`로 저장소 경로를 지정한다. Pages workflow는 `configure-pages`가 반환한 `base_path`(`/focusday`)를 읽는다. 라우터가 없어 별도 404 rewrite가 필요 없다.
 
-- `.github/workflows/ci.yml`: main push/PR에서 Node 24, 고정 lockfile 설치, 타입·lint·단위·서울/뉴욕 시간대·production build·현재 Chromium E2E 71개.
-- `.github/workflows/pages.yml`: main 수동 실행으로 위 검증을 수행하고 `/focusday/` production 앱의 현재 E2E 71개를 통과한 후 Pages에 배포.
+- `.github/workflows/ci.yml`: main push/PR에서 Node 24, 고정 lockfile 설치, 타입·lint·단위·서울/뉴욕 시간대·production build·현재 Chromium E2E 80개.
+- `.github/workflows/pages.yml`: main 수동 실행으로 위 검증을 수행하고 `/focusday/` production 앱의 현재 E2E 80개를 통과한 후 Pages에 배포.
 
 ## 공개 주소 재검증
 
@@ -73,7 +83,7 @@ node scripts/check-deployment.mjs https://gsj118.github.io/focusday/
 
 기본 브라우저는 설치된 Chrome이다. Chrome이 없다면 `pnpm exec playwright install chromium` 후 `PW_CHANNEL=chromium` 환경 변수를 지정한다. 검증은 격리 context만 사용하며 실제 사용자 브라우저의 할 일은 건드리지 않는다.
 
-현재 v1.2 스크립트는 1440×900과 모바일 에뮬레이션 390×844에서 생성·편집·새로고침·완료/삭제 취소·예시, 버전 1.2.0, JSON 전체 백업과 id 합치기, 오늘 계획·어제 이어가기의 id/기한 유지, 편집 조합 Enter 무저장과 compact 백업까지 확인한다. 별도 read port context로 공개 사이트의 6000개 실제 다운로드/미리보기도 확인하되 quota/목록 성능은 주장하지 않는다. 결과는 `docs/evidence/v1.2/live-deployment.json`, 화면은 `docs/screenshots/v1.2/live-*.png`에 기록해 v1.0/v1.1 증거를 보존한다. Chrome의 실행 오류·실패한 요청·4xx 응답이 있으면 실패한다. 반복 확인의 부산물을 Git에서 제외하려면 `SMOKE_OUTPUT_DIR=test-results/release-smoke` 환경 변수를 사용할 수 있다.
+현재 v1.3 스크립트는 1440×900과 모바일 에뮬레이션 390×844에서 생성·편집·새로고침·완료/삭제 취소·예시, 버전 1.3.0, JSON 전체 백업과 id 합치기, 오늘 계획·어제 이어가기의 id/기한 유지, 편집 조합 Enter 무저장과 compact 백업까지 확인한다. 별도 read port context로 공개 사이트의 6000개 실제 다운로드/미리보기도 확인하되 quota/목록 성능은 주장하지 않는다. 결과는 `docs/evidence/v1.3/live-deployment.json`, 화면은 `docs/screenshots/v1.3/live-*.png`에 기록해 v1.0/v1.1/v1.2 증거를 보존한다. Chrome의 실행 오류·실패한 요청·4xx 응답이 있으면 실패한다. 반복 확인의 부산물을 Git에서 제외하려면 `SMOKE_OUTPUT_DIR=test-results/release-smoke` 환경 변수를 사용할 수 있다.
 
 ## 변경 사항 재배포
 

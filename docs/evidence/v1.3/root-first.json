@@ -1,0 +1,3357 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\gsjtj\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\node_modules\\@playwright\\test\\cli.js",
+      "test"
+    ],
+    "configFile": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\playwright.config.ts",
+    "rootDir": "C:/Users/gsjtj/Documents/ChatGPT/Todolist/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/gsjtj/Documents/ChatGPT/Todolist/test-results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/gsjtj/Documents/ChatGPT/Todolist/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "command": "node node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 4173 --strictPort",
+      "url": "http://127.0.0.1:4173/",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "app.spec.ts",
+      "file": "app.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "최초 빈 상태·오늘/전체 생성 기본값·연속 입력·키별 저장",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 671,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:06.996Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-beb80a46c6b183b1382b",
+          "file": "app.spec.ts",
+          "line": 43,
+          "column": 1
+        },
+        {
+          "title": "속성 저장·새로고침 유지·미래 기한과 오늘 독립·기한에 의한 잔류 안내",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1206,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:08.002Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-ff07f90e8bc1d44c211c",
+          "file": "app.spec.ts",
+          "line": 66,
+          "column": 1
+        },
+        {
+          "title": "빈 제목·200자 한글·공백 없는 제목·한글 IME 조합 이벤트",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 666,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:09.216Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-7ab2ee92259de7c4e75b",
+          "file": "app.spec.ts",
+          "line": 100,
+          "column": 1
+        },
+        {
+          "title": "완료·실행 취소·다른 항목 편집 보존·완료 목록 복원",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 772,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:09.896Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-49e341e6164ee5e682a9",
+          "file": "app.spec.ts",
+          "line": 126,
+          "column": 1
+        },
+        {
+          "title": "삭제 취소는 원래 id·날짜·우선순위·분류·완료·예시 상태를 복원",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 660,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:10.683Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-bdd988283bf4bbcdfde8",
+          "file": "app.spec.ts",
+          "line": 142,
+          "column": 1
+        },
+        {
+          "title": "최근 행동만 실행 취소·이전 타이머 격리·hover/키보드에서 만료 정지",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 641,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:11.351Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-0981b3902e7364aed66a",
+          "file": "app.spec.ts",
+          "line": 161,
+          "column": 1
+        },
+        {
+          "title": "자정 전환 시 집중만 만료·기한 초과 표시·전체 보존",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 419,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:11.999Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-1be2c2cb082e26acc143",
+          "file": "app.spec.ts",
+          "line": 186,
+          "column": 1
+        },
+        {
+          "title": "focus에서 날짜 갱신·연말 경계",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 394,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:12.426Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-b1dc81da8cd3b2fdbe6b",
+          "file": "app.spec.ts",
+          "line": 197,
+          "column": 3
+        },
+        {
+          "title": "visibilitychange에서 날짜 갱신·연말 경계",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 412,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:12.829Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-5c2b720bc93de040ec36",
+          "file": "app.spec.ts",
+          "line": 197,
+          "column": 3
+        },
+        {
+          "title": "쓰기 실패 시 메모리 유지·지속 경고·실제 성공한 재시도",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 479,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:13.250Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-09f615ca548477d4e25e",
+          "file": "app.spec.ts",
+          "line": 212,
+          "column": 1
+        },
+        {
+          "title": "손상 원본 자동 덮어쓰기 차단: {broken",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 883,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:13.737Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-51c70a3dd2b64b2a5ddd",
+          "file": "app.spec.ts",
+          "line": 237,
+          "column": 3
+        },
+        {
+          "title": "손상 원본 자동 덮어쓰기 차단: {\"version\":2,\"tasks\":[]}",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 782,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:14.628Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-7cfbcb2245b4b4ae98c7",
+          "file": "app.spec.ts",
+          "line": 237,
+          "column": 3
+        },
+        {
+          "title": "손상 원본 자동 덮어쓰기 차단: {\"version\":1,\"tasks\":[{}]}",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 878,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:15.420Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-1e09222d6ef12cce5487",
+          "file": "app.spec.ts",
+          "line": 237,
+          "column": 3
+        },
+        {
+          "title": "읽기 실패는 쓰기를 보호하고 재시도 때 기존 항목과 메모리 항목 합침",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 487,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:16.306Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-d9d9d90acedc89cb49f0",
+          "file": "app.spec.ts",
+          "line": 272,
+          "column": 1
+        },
+        {
+          "title": "localStorage 접근 자체 실패도 빈 값으로 덮어쓰지 않는다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 472,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:16.801Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-e15e8b99a702d1cec6d6",
+          "file": "app.spec.ts",
+          "line": 292,
+          "column": 1
+        },
+        {
+          "title": "예시 선택·중복 방지·검색 현재 보기·완료 검색·예시 제거 사용자 보존",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1028,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:17.282Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-0e68f9ec5f391798e693",
+          "file": "app.spec.ts",
+          "line": 307,
+          "column": 1
+        },
+        {
+          "title": "200개 기본 검색·편집·완료·스크롤",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 832,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:18.321Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-b152d884cec527a793c3",
+          "file": "app.spec.ts",
+          "line": 338,
+          "column": 1
+        },
+        {
+          "title": "키보드 추가→편집→저장→완료→실행 취소, dialog trap·Escape·포커스 복귀",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 704,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:19.163Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-09699ed123ac8e592ed1",
+          "file": "app.spec.ts",
+          "line": 357,
+          "column": 1
+        },
+        {
+          "title": "화면 1440×900·overflow·편집·스크린샷",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1051,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:19.875Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-5b1bc3af2b0b1177f0ea",
+          "file": "app.spec.ts",
+          "line": 399,
+          "column": 3
+        },
+        {
+          "title": "화면 1366×768·overflow·편집·스크린샷",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 940,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:20.934Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-5af59becd1f6488e21c6",
+          "file": "app.spec.ts",
+          "line": 399,
+          "column": 3
+        },
+        {
+          "title": "화면 390×844·overflow·편집·스크린샷",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 932,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:21.886Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-53be4368d3d9e65e46b9",
+          "file": "app.spec.ts",
+          "line": 399,
+          "column": 3
+        },
+        {
+          "title": "화면 320×740·overflow·편집·스크린샷",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 861,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:22.828Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-a8c0dd47c802438c6bc4",
+          "file": "app.spec.ts",
+          "line": 399,
+          "column": 3
+        },
+        {
+          "title": "reduced-motion·실제 토큰 대비·production 자산 응답",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 515,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m4.5\u001b[39m\nReceived:    \u001b[31m3.0664433875560566\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m4.5\u001b[39m\nReceived:    \u001b[31m3.0664433875560566\u001b[39m\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\app.spec.ts:473:63",
+                    "location": {
+                      "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\app.spec.ts",
+                      "column": 63,
+                      "line": 473
+                    },
+                    "snippet": "  471 |     const a = luminance(fg),\n  472 |       b = luminance(bg)\n> 473 |     expect((Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05)).toBeGreaterThanOrEqual(4.5)\n      |                                                               ^\n  474 |   }\n  475 |   expect(errors).toEqual([])\n  476 |   expect(failures).toEqual([])"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\app.spec.ts",
+                        "column": 63,
+                        "line": 473
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m4.5\u001b[39m\nReceived:    \u001b[31m3.0664433875560566\u001b[39m\n\n  471 |     const a = luminance(fg),\n  472 |       b = luminance(bg)\n> 473 |     expect((Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05)).toBeGreaterThanOrEqual(4.5)\n      |                                                               ^\n  474 |   }\n  475 |   expect(errors).toEqual([])\n  476 |   expect(failures).toEqual([])\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\app.spec.ts:473:63"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:23.706Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\app-reduced-motion·실제-토큰-대비·production-자산-응답\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\app-reduced-motion·실제-토큰-대비·production-자산-응답\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\app-reduced-motion·실제-토큰-대비·production-자산-응답\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\app.spec.ts",
+                    "column": 63,
+                    "line": 473
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-cc5954f2da4850c3a8a5",
+          "file": "app.spec.ts",
+          "line": 434,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "backup-size.spec.ts",
+      "file": "backup-size.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "P10 E11: 6000개 자체 다운로드→같은 파일 UI 미리보기 (quota/목록 성능 제외)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2268,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:24.921Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "backup-size",
+                      "contentType": "application/json",
+                      "body": "eyJjYXNlSWQiOiJFMTEiLCJwaGFzZSI6ImFmdGVyIiwiY2hlY2tlZEF0IjoiMjAyNi0xMC0wOFQwNTo0NjoyNi45MDZaIiwidGFza0NvdW50Ijo2MDAwLCJieXRlcyI6NDg0NzAwNywibGltaXRCeXRlcyI6MTA0ODU3NjAsInF1b3RhVGVzdGVkIjpmYWxzZSwicmVuZGVyZWQ2MDAwTGlzdCI6ZmFsc2V9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6c6229692fe5ebc5377b-3def4c061d994b4a9844",
+          "file": "backup-size.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "E11: UTF-8 파일 정확한 한도와 1byte 초과, 선택만으로 저장하지 않음",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2446,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:27.617Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6c6229692fe5ebc5377b-d19eaba8131f6ebcf620",
+          "file": "backup-size.spec.ts",
+          "line": 70,
+          "column": 1
+        },
+        {
+          "title": "E11: 초과 자체 백업은 다운로드 성공으로 표시하지 않음·원본 보존",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1488,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:30.071Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6c6229692fe5ebc5377b-49431ce7acdc3dbc34ef",
+          "file": "backup-size.spec.ts",
+          "line": 94,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "details-boundaries.spec.ts",
+      "file": "details-boundaries.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "B03/B05/B06/B07: 네 우선순위·날짜·분류 경계·Enter/Space 실제 저장",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1144,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:31.573Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "772ee0b5e78bac850059-ccbc458ac26744329d66",
+          "file": "details-boundaries.spec.ts",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "mobile-accessibility.spec.ts",
+      "file": "mobile-accessibility.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "모바일 터치·작은 가시 영역 편집·알림과 하단 탐색 분리",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 898,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:32.749Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4d7db8387fe06ad7ce43-74f1e8800936036a72c7",
+          "file": "mobile-accessibility.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "실제 렌더링 색·hover·포커스·접근 가능한 입력과 버튼 이름",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 626,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:33.661Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4d7db8387fe06ad7ce43-9b789b6a4209dada5fbd",
+          "file": "mobile-accessibility.spec.ts",
+          "line": 41,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "synthetic-beta.spec.ts",
+      "file": "synthetic-beta.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "P01 처음 사용: 빈 안내→Enter→편집·취소→완료 복구",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 720,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "[A01,A02,B01] 빈 안내에서 제목 Enter, 행 제목을 눌러 편집",
+                      "duration": 125
+                    },
+                    {
+                      "title": "[B02,D01] 여러 초안 변경 후 취소, 완료→실행 취소→reload",
+                      "duration": 215
+                    }
+                  ],
+                  "startTime": "2026-10-08T05:46:34.314Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "synthetic-cases",
+                      "contentType": "application/json",
+                      "body": "W3siY2FzZUlkcyI6WyJBMDEiLCJBMDIiLCJCMDEiXSwicGVyc29uYUlkIjoiUDAxIiwicGhhc2UiOiJhZnRlciIsInNvdXJjZUNvbW1pdCI6IndvcmtpbmctdHJlZSIsImNoZWNrZWRBdCI6IjIwMjYtMTAtMDhUMDU6NDY6MzQuNTQ5WiIsImVudmlyb25tZW50Ijp7ImJyb3dzZXIiOiIxMzQuMC42OTk4LjM2Iiwidmlld3BvcnQiOnsid2lkdGgiOjEzNjYsImhlaWdodCI6NzY4fSwidGltZXpvbmUiOiJBc2lhL1Nlb3VsIiwiZml4dHVyZUNsb2NrIjoiMjAyNi0xMC0wMlQxMDowMDowMCswOTowMCIsIm1vYmlsZSI6ZmFsc2V9LCJmaXh0dXJlIjoiZW1wdHksIFVJIGNyZWF0aW9uIiwic3RlcHMiOiLruYgg7JWI64K07JeQ7IScIOygnOuqqSBFbnRlciwg7ZaJIOygnOuqqeydhCDriIzrn6wg7Y647KeRIiwiZXhwZWN0ZWQiOiIx6rCcLCDsoJXtmZXtlZwgdGl0bGUv7Jik64qYIGZvY3VzL251bGwgZHVlOyDtjrjsp5Eg7KCc66qpIGZvY3VzIiwiaW5pdGlhbCI6eyJyYXdCeXRlcyI6MCwicmF3U0hBMjU2IjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsInRhc2tDb3VudCI6MH0sImV2aWRlbmNlS2luZCI6ImFjdHVhbCBDaHJvbWUgVUkgd2l0aCBhc3NlcnRpb25zOyBzeW50aGV0aWMgZGF0YS9jbG9jazsgbm8gaHVtYW4gc3R1ZHkiLCJ0ZXN0IjoiUDAxIOyymOydjCDsgqzsmqk6IOu5iCDslYjrgrTihpJFbnRlcuKGku2OuOynkcK37Leo7IaM4oaS7JmE66OMIOuzteq1rCIsInN0YXR1cyI6IlBBU1MiLCJhY3R1YWwiOiJBbGwgc3RhdGVkIFVJL2RhdGEgYXNzZXJ0aW9ucyBwYXNzZWQiLCJmaW5hbCI6eyJyYXdCeXRlcyI6MjkyLCJyYXdTSEEyNTYiOiJjMWMxMmYzY2JkODg0YWRjYWNlYmMzMzNiODhiYzFiOGEzNTRkNTIxNzAyMmE5NzRjZWMyNjNhMGZhZDgzYjc0IiwidGFza0NvdW50IjoxfX0seyJjYXNlSWRzIjpbIkIwMiIsIkQwMSJdLCJwZXJzb25hSWQiOiJQMDEiLCJwaGFzZSI6ImFmdGVyIiwic291cmNlQ29tbWl0Ijoid29ya2luZy10cmVlIiwiY2hlY2tlZEF0IjoiMjAyNi0xMC0wOFQwNTo0NjozNC42ODlaIiwiZW52aXJvbm1lbnQiOnsiYnJvd3NlciI6IjEzNC4wLjY5OTguMzYiLCJ2aWV3cG9ydCI6eyJ3aWR0aCI6MTM2NiwiaGVpZ2h0Ijo3Njh9LCJ0aW1lem9uZSI6IkFzaWEvU2VvdWwiLCJmaXh0dXJlQ2xvY2siOiIyMDI2LTEwLTAyVDEwOjAwOjAwKzA5OjAwIiwibW9iaWxlIjpmYWxzZX0sImZpeHR1cmUiOiJvbmUgVUkgdGFzayIsInN0ZXBzIjoi7Jes65+sIOy0iOyViCDrs4Dqsr0g7ZuEIOy3qOyGjCwg7JmE66OM4oaS7Iuk7ZaJIOy3qOyGjOKGknJlbG9hZCIsImV4cGVjdGVkIjoi7LSI7JWIL+y3qOyGjOuKlCDsm5Drs7gg67aI67OALCDsmYTro4wg7Leo7IaM64qUIOybkOuemCDsho3shLEg67O07KG0IiwiaW5pdGlhbCI6eyJyYXdCeXRlcyI6MjkyLCJyYXdTSEEyNTYiOiJjMWMxMmYzY2JkODg0YWRjYWNlYmMzMzNiODhiYzFiOGEzNTRkNTIxNzAyMmE5NzRjZWMyNjNhMGZhZDgzYjc0IiwidGFza0NvdW50IjoxfSwiZXZpZGVuY2VLaW5kIjoiYWN0dWFsIENocm9tZSBVSSB3aXRoIGFzc2VydGlvbnM7IHN5bnRoZXRpYyBkYXRhL2Nsb2NrOyBubyBodW1hbiBzdHVkeSIsInRlc3QiOiJQMDEg7LKY7J2MIOyCrOyaqTog67mIIOyViOuCtOKGkkVudGVy4oaS7Y647KeRwrfst6jshozihpLsmYTro4wg67O16rWsIiwic3RhdHVzIjoiUEFTUyIsImFjdHVhbCI6IkFsbCBzdGF0ZWQgVUkvZGF0YSBhc3NlcnRpb25zIHBhc3NlZCIsImZpbmFsIjp7InJhd0J5dGVzIjoyOTIsInJhd1NIQTI1NiI6IjI4ZWFjOWNlM2MyZGZlOGJmYzRhZDU0NTkxZTU5NzdkNzhiODc2NWNmZWQyMjZkYjE0NWY2YTlkYTE3NzE4MjIiLCJ0YXNrQ291bnQiOjF9fV0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd738af53581f03b3252-0ce8cda14c4ebf2d8f7a",
+          "file": "synthetic-beta.spec.ts",
+          "line": 151,
+          "column": 1
+        },
+        {
+          "title": "P02 빠른 기록: 전체 5개→버튼 비교→빈/길이/중복 복구",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 959,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "[A03,A04,A05] 전체에서 주말 장보기 등 5개 연속 Enter, 버튼 1개, reload",
+                      "duration": 282
+                    },
+                    {
+                      "title": "[A06,A08,A09] 빈/공백 Enter·추가, 199/200/201자, 빠른 연속 Enter와 의도적 같은 제목",
+                      "duration": 247
+                    }
+                  ],
+                  "startTime": "2026-10-08T05:46:35.042Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "synthetic-cases",
+                      "contentType": "application/json",
+                      "body": "W3siY2FzZUlkcyI6WyJBMDMiLCJBMDQiLCJBMDUiXSwicGVyc29uYUlkIjoiUDAyIiwicGhhc2UiOiJhZnRlciIsInNvdXJjZUNvbW1pdCI6IndvcmtpbmctdHJlZSIsImNoZWNrZWRBdCI6IjIwMjYtMTAtMDhUMDU6NDY6MzUuMzM3WiIsImVudmlyb25tZW50Ijp7ImJyb3dzZXIiOiIxMzQuMC42OTk4LjM2Iiwidmlld3BvcnQiOnsid2lkdGgiOjE0NDAsImhlaWdodCI6OTAwfSwidGltZXpvbmUiOiJBc2lhL1Nlb3VsIiwiZml4dHVyZUNsb2NrIjoiMjAyNi0xMC0wMlQxMDowMDowMCswOTowMCIsIm1vYmlsZSI6ZmFsc2V9LCJmaXh0dXJlIjoiZW1wdHksIDUgVUkgdGl0bGVzIiwic3RlcHMiOiLsoITssrTsl5DshJwg7KO866eQIOyepeuztOq4sCDrk7EgNeqwnCDsl7Dsho0gRW50ZXIsIOuyhO2KvCAx6rCcLCByZWxvYWQiLCJleHBlY3RlZCI6IuqwgSAx6rCcLCDquLDrs7jqsJIg64+Z7J28LCDsnoXroKUg7LSI6riw7ZmUL2ZvY3VzLCByZWxvYWQg7Jyg7KeAIiwiaW5pdGlhbCI6eyJyYXdCeXRlcyI6MCwicmF3U0hBMjU2IjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsInRhc2tDb3VudCI6MH0sImV2aWRlbmNlS2luZCI6ImFjdHVhbCBDaHJvbWUgVUkgd2l0aCBhc3NlcnRpb25zOyBzeW50aGV0aWMgZGF0YS9jbG9jazsgbm8gaHVtYW4gc3R1ZHkiLCJ0ZXN0IjoiUDAyIOu5oOuluCDquLDroZ06IOyghOyytCA16rCc4oaS67KE7Yq8IOu5hOq1kOKGkuu5iC/quLjsnbQv7KSR67O1IOuzteq1rCIsInN0YXR1cyI6IlBBU1MiLCJhY3R1YWwiOiJBbGwgc3RhdGVkIFVJL2RhdGEgYXNzZXJ0aW9ucyBwYXNzZWQiLCJmaW5hbCI6eyJyYXdCeXRlcyI6MTUxNCwicmF3U0hBMjU2IjoiNmE1ZjM0OTBlYjVlMzkwN2U0MjQ3YWU1ZGYyZjJkMjNkYjdlZmI1NGVlMmI1ZmZkNGJjZDdjNGFkODhiNmI0MSIsInRhc2tDb3VudCI6Nn19LHsiY2FzZUlkcyI6WyJBMDYiLCJBMDgiLCJBMDkiXSwicGVyc29uYUlkIjoiUDAyIiwicGhhc2UiOiJhZnRlciIsInNvdXJjZUNvbW1pdCI6IndvcmtpbmctdHJlZSIsImNoZWNrZWRBdCI6IjIwMjYtMTAtMDhUMDU6NDY6MzUuNjMxWiIsImVudmlyb25tZW50Ijp7ImJyb3dzZXIiOiIxMzQuMC42OTk4LjM2Iiwidmlld3BvcnQiOnsid2lkdGgiOjE0NDAsImhlaWdodCI6OTAwfSwidGltZXpvbmUiOiJBc2lhL1Nlb3VsIiwiZml4dHVyZUNsb2NrIjoiMjAyNi0xMC0wMlQxMDowMDowMCswOTowMCIsIm1vYmlsZSI6ZmFsc2V9LCJmaXh0dXJlIjoic2l4IFVJIHRhc2tzIiwic3RlcHMiOiLruYgv6rO167CxIEVudGVywrfstpTqsIAsIDE5OS8yMDAvMjAx7J6QLCDruaDrpbgg7Jew7IaNIEVudGVy7JmAIOydmOuPhOyggSDqsJnsnYAg7KCc66qpIiwiZXhwZWN0ZWQiOiLruYgg7ZWt66qpIOyXhuydjCwgbWF4TGVuZ3RoMjAwLCDsnZjrj4TsoIEg6rCZ7J2AIOygnOuqqSBpZCDri6TrpoQiLCJpbml0aWFsIjp7InJhd0J5dGVzIjoxNTE0LCJyYXdTSEEyNTYiOiI2YTVmMzQ5MGViNWUzOTA3ZTQyNDdhZTVkZjJmMmQyM2RiN2VmYjU0ZWUyYjVmZmQ0YmNkN2M0YWQ4OGI2YjQxIiwidGFza0NvdW50Ijo2fSwiZXZpZGVuY2VLaW5kIjoiYWN0dWFsIENocm9tZSBVSSB3aXRoIGFzc2VydGlvbnM7IHN5bnRoZXRpYyBkYXRhL2Nsb2NrOyBubyBodW1hbiBzdHVkeSIsInRlc3QiOiJQMDIg67mg66W4IOq4sOuhnTog7KCE7LK0IDXqsJzihpLrsoTtirwg67mE6rWQ4oaS67mIL+q4uOydtC/spJHrs7Ug67O16rWsIiwic3RhdHVzIjoiUEFTUyIsImFjdHVhbCI6IkFsbCBzdGF0ZWQgVUkvZGF0YSBhc3NlcnRpb25zIHBhc3NlZCIsImZpbmFsIjp7InJhd0J5dGVzIjo0NTUyLCJyYXdTSEEyNTYiOiI5NTk5ZGZkYTI3NzliZmRjOTg5MmQ1Mjk0YThhODA3OGNhOGFiODIwOWYwYWMyZWRlNTE1YzMwZmU1MWE4NjE1IiwidGFza0NvdW50IjoxMX19XQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd738af53581f03b3252-9e3429022a8dda846559",
+          "file": "synthetic-beta.spec.ts",
+          "line": 203,
+          "column": 1
+        },
+        {
+          "title": "P03 키보드: 입력→Tab 편집→textarea Enter→취소→계획·백업",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1392,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "[B04,F01,F02] N 입력→Enter, Tab으로 편집, textarea Enter와 Escape, 계획/데이터 trap",
+                      "duration": 899
+                    },
+                    {
+                      "title": "[B02] 다시 편집 후 닫기, backdrop 클릭 취소",
+                      "duration": 129
+                    }
+                  ],
+                  "startTime": "2026-10-08T05:46:36.009Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "synthetic-cases",
+                      "contentType": "application/json",
+                      "body": "W3siY2FzZUlkcyI6WyJCMDQiLCJGMDEiLCJGMDIiXSwicGVyc29uYUlkIjoiUDAzIiwicGhhc2UiOiJhZnRlciIsInNvdXJjZUNvbW1pdCI6IndvcmtpbmctdHJlZSIsImNoZWNrZWRBdCI6IjIwMjYtMTAtMDhUMDU6NDY6MzYuMjQyWiIsImVudmlyb25tZW50Ijp7ImJyb3dzZXIiOiIxMzQuMC42OTk4LjM2Iiwidmlld3BvcnQiOnsid2lkdGgiOjE0NDAsImhlaWdodCI6OTAwfSwidGltZXpvbmUiOiJBc2lhL1Nlb3VsIiwiZml4dHVyZUNsb2NrIjoiMjAyNi0xMC0wMlQxMDowMDowMCswOTowMCIsIm1vYmlsZSI6ZmFsc2V9LCJmaXh0dXJlIjoiZW1wdHkgVUkgdGFzaywga2V5Ym9hcmQgdHJhdmVyc2FsIiwic3RlcHMiOiJOIOyeheugpeKGkkVudGVyLCBUYWLsnLzroZwg7Y647KeRLCB0ZXh0YXJlYSBFbnRlcuyZgCBFc2NhcGUsIOqzhO2ajS/rjbDsnbTthLAgdHJhcCIsImV4cGVjdGVkIjoidGV4dGFyZWEgRW50ZXIg7KSE67CU6r+I66eMOyBUYWIvU2hpZnRUYWIvRXNjYXBlIOydmOuvuOyZgCDtmLjstpwgZm9jdXMg7Jyg7KeAIiwiaW5pdGlhbCI6eyJyYXdCeXRlcyI6MCwicmF3U0hBMjU2IjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsInRhc2tDb3VudCI6MH0sImV2aWRlbmNlS2luZCI6ImFjdHVhbCBDaHJvbWUgVUkgd2l0aCBhc3NlcnRpb25zOyBzeW50aGV0aWMgZGF0YS9jbG9jazsgbm8gaHVtYW4gc3R1ZHkiLCJ0ZXN0IjoiUDAzIO2CpOuztOuTnDog7J6F66Cl4oaSVGFiIO2OuOynkeKGknRleHRhcmVhIEVudGVy4oaS7Leo7IaM4oaS6rOE7ZqNwrfrsLHsl4UiLCJzdGF0dXMiOiJQQVNTIiwiYWN0dWFsIjoiQWxsIHN0YXRlZCBVSS9kYXRhIGFzc2VydGlvbnMgcGFzc2VkIiwiZmluYWwiOnsicmF3Qnl0ZXMiOjI3OSwicmF3U0hBMjU2IjoiZDM4ZTk4NThjODEzYjFiNWE0MjZjNmMxYjgwZDk3ZDQ5YjdiOThmNDY3ZTkxNmE0ODI5YzM4NmRhZjBlZGZkZCIsInRhc2tDb3VudCI6MX19LHsiY2FzZUlkcyI6WyJCMDIiXSwicGVyc29uYUlkIjoiUDAzIiwicGhhc2UiOiJhZnRlciIsInNvdXJjZUNvbW1pdCI6IndvcmtpbmctdHJlZSIsImNoZWNrZWRBdCI6IjIwMjYtMTAtMDhUMDU6NDY6MzcuMTU2WiIsImVudmlyb25tZW50Ijp7ImJyb3dzZXIiOiIxMzQuMC42OTk4LjM2Iiwidmlld3BvcnQiOnsid2lkdGgiOjE0NDAsImhlaWdodCI6OTAwfSwidGltZXpvbmUiOiJBc2lhL1Nlb3VsIiwiZml4dHVyZUNsb2NrIjoiMjAyNi0xMC0wMlQxMDowMDowMCswOTowMCIsIm1vYmlsZSI6ZmFsc2V9LCJmaXh0dXJlIjoia2V5Ym9hcmQgVUkgdGFzayIsInN0ZXBzIjoi64uk7IucIO2OuOynkSDtm4Qg64ur6riwLCBiYWNrZHJvcCDtgbTrpq0g7Leo7IaMIiwiZXhwZWN0ZWQiOiLrkZAg6rK966GcIOuqqOuRkCDsm5Drs7gg67aI67OAIiwiaW5pdGlhbCI6eyJyYXdCeXRlcyI6Mjc5LCJyYXdTSEEyNTYiOiJkMzhlOTg1OGM4MTNiMWI1YTQyNmM2YzFiODBkOTdkNDliN2I5OGY0NjdlOTE2YTQ4MjljMzg2ZGFmMGVkZmRkIiwidGFza0NvdW50IjoxfSwiZXZpZGVuY2VLaW5kIjoiYWN0dWFsIENocm9tZSBVSSB3aXRoIGFzc2VydGlvbnM7IHN5bnRoZXRpYyBkYXRhL2Nsb2NrOyBubyBodW1hbiBzdHVkeSIsInRlc3QiOiJQMDMg7YKk67O065OcOiDsnoXroKXihpJUYWIg7Y647KeR4oaSdGV4dGFyZWEgRW50ZXLihpLst6jshozihpLqs4Ttmo3Ct+uwseyXhSIsInN0YXR1cyI6IlBBU1MiLCJhY3R1YWwiOiJBbGwgc3RhdGVkIFVJL2RhdGEgYXNzZXJ0aW9ucyBwYXNzZWQiLCJmaW5hbCI6eyJyYXdCeXRlcyI6Mjc5LCJyYXdTSEEyNTYiOiJkMzhlOTg1OGM4MTNiMWI1YTQyNmM2YzFiODBkOTdkNDliN2I5OGY0NjdlOTE2YTQ4MjljMzg2ZGFmMGVkZmRkIiwidGFza0NvdW50IjoxfX1d"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd738af53581f03b3252-ee943543c025af2b926e",
+          "file": "synthetic-beta.spec.ts",
+          "line": 268,
+          "column": 1
+        },
+        {
+          "title": "P04 모바일 touch: 입력 Enter→편집→완료 영역 복원→계획",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1565,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "[A12,F04,D02] 터치 입력, Enter→상세 저장→완료→전체 검색/완료 복원",
+                      "duration": 637
+                    },
+                    {
+                      "title": "[E03] 유효 파일 미리보기→취소→같은 파일 재선택",
+                      "duration": 254
+                    }
+                  ],
+                  "startTime": "2026-10-08T05:46:37.408Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "synthetic-cases",
+                      "contentType": "application/json",
+                      "body": "W3siY2FzZUlkcyI6WyJBMTIiLCJGMDQiLCJEMDIiXSwicGVyc29uYUlkIjoiUDA0IiwicGhhc2UiOiJhZnRlciIsInNvdXJjZUNvbW1pdCI6IndvcmtpbmctdHJlZSIsImNoZWNrZWRBdCI6IjIwMjYtMTAtMDhUMDU6NDY6MzcuNzU1WiIsImVudmlyb25tZW50Ijp7ImJyb3dzZXIiOiIxMzQuMC42OTk4LjM2Iiwidmlld3BvcnQiOnsid2lkdGgiOjM5MCwiaGVpZ2h0Ijo4NDR9LCJ0aW1lem9uZSI6IkFzaWEvU2VvdWwiLCJmaXh0dXJlQ2xvY2siOiIyMDI2LTEwLTAyVDEwOjAwOjAwKzA5OjAwIiwibW9iaWxlIjp0cnVlfSwiZml4dHVyZSI6ImVtcHR5LCB0b3VjaCB3aXRoIGF1dG9tYXRpb24gRW50ZXI7IG5vIE9TIGtleWJvYXJkIiwic3RlcHMiOiLthLDsuZgg7J6F66ClLCBFbnRlcuKGkuyDgeyEuCDsoIDsnqXihpLsmYTro4zihpLsoITssrQg6rKA7IOJL+yZhOujjCDrs7Xsm5AiLCJleHBlY3RlZCI6IjHqsJwg6riw67O46rCSLCA0NHB4IOuqqe2RnCwg6rKA7IOJIOykkSDsmYTro4wv67O17JuQIOydvOy5mCIsImluaXRpYWwiOnsicmF3Qnl0ZXMiOjAsInJhd1NIQTI1NiI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJ0YXNrQ291bnQiOjB9LCJldmlkZW5jZUtpbmQiOiJhY3R1YWwgQ2hyb21lIFVJIHdpdGggYXNzZXJ0aW9uczsgc3ludGhldGljIGRhdGEvY2xvY2s7IG5vIGh1bWFuIHN0dWR5IiwidGVzdCI6IlAwNCDrqqjrsJTsnbwgdG91Y2g6IOyeheugpSBFbnRlcuKGku2OuOynkeKGkuyZhOujjCDsmIHsl60g67O17JuQ4oaS6rOE7ZqNIiwic3RhdHVzIjoiUEFTUyIsImFjdHVhbCI6IkFsbCBzdGF0ZWQgVUkvZGF0YSBhc3NlcnRpb25zIHBhc3NlZCIsImZpbmFsIjp7InJhd0J5dGVzIjoyODksInJhd1NIQTI1NiI6ImFhZTQyZmIyMDBjZWYyM2M3OWE4YmU5ZTk2NWUwY2M2OGI1ZDM0ZGJhMGY4YjgzMmFiNmJiNTZjNzQ1NTNiNDkiLCJ0YXNrQ291bnQiOjF9fSx7ImNhc2VJZHMiOlsiRTAzIl0sInBlcnNvbmFJZCI6IlAwNCIsInBoYXNlIjoiYWZ0ZXIiLCJzb3VyY2VDb21taXQiOiJ3b3JraW5nLXRyZWUiLCJjaGVja2VkQXQiOiIyMDI2LTEwLTA4VDA1OjQ2OjM4LjQxMFoiLCJlbnZpcm9ubWVudCI6eyJicm93c2VyIjoiMTM0LjAuNjk5OC4zNiIsInZpZXdwb3J0Ijp7IndpZHRoIjozOTAsImhlaWdodCI6ODQ0fSwidGltZXpvbmUiOiJBc2lhL1Nlb3VsIiwiZml4dHVyZUNsb2NrIjoiMjAyNi0xMC0wMlQxMDowMDowMCswOTowMCIsIm1vYmlsZSI6dHJ1ZX0sImZpeHR1cmUiOiJvbmUgbW9iaWxlIHRhc2siLCJzdGVwcyI6IuycoO2aqCDtjIzsnbwg66+466as67O06riw4oaS7Leo7IaM4oaS6rCZ7J2AIO2MjOydvCDsnqzshKDtg50iLCJleHBlY3RlZCI6IuuqqeuhnS/soIDsnqUg7JuQ67O4IOq3uOuMgOuhnCwg7YyM7J2866qFL+yImC/quLDrs7gg7ZWp7LmY6riwIO2RnOyLnCIsImluaXRpYWwiOnsicmF3Qnl0ZXMiOjI4OSwicmF3U0hBMjU2IjoiYWFlNDJmYjIwMGNlZjIzYzc5YThiZTllOTY1ZTBjYzY4YjVkMzRkYmEwZjhiODMyYWI2YmI1NmM3NDU1M2I0OSIsInRhc2tDb3VudCI6MX0sImV2aWRlbmNlS2luZCI6ImFjdHVhbCBDaHJvbWUgVUkgd2l0aCBhc3NlcnRpb25zOyBzeW50aGV0aWMgZGF0YS9jbG9jazsgbm8gaHVtYW4gc3R1ZHkiLCJ0ZXN0IjoiUDA0IOuqqOuwlOydvCB0b3VjaDog7J6F66ClIEVudGVy4oaS7Y647KeR4oaS7JmE66OMIOyYgeyXrSDrs7Xsm5DihpLqs4Ttmo0iLCJzdGF0dXMiOiJQQVNTIiwiYWN0dWFsIjoiQWxsIHN0YXRlZCBVSS9kYXRhIGFzc2VydGlvbnMgcGFzc2VkIiwiZmluYWwiOnsicmF3Qnl0ZXMiOjI4OSwicmF3U0hBMjU2IjoiYWFlNDJmYjIwMGNlZjIzYzc5YThiZTllOTY1ZTBjYzY4YjVkMzRkYmEwZjhiODMyYWI2YmI1NmM3NDU1M2I0OSIsInRhc2tDb3VudCI6MX19XQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd738af53581f03b3252-174bff60ef863acc22f9",
+          "file": "synthetic-beta.spec.ts",
+          "line": 340,
+          "column": 1
+        },
+        {
+          "title": "P05 320px: 긴 제목·분류 저장→계획/복원→취소",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 999,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "[B07,F03] 긴 제목 추가→네 우선순위/분류 경계→저장→긴 파일명 미리보기",
+                      "duration": 574
+                    },
+                    {
+                      "title": "[B07] 분류 공백만 저장→분류 없음 확인",
+                      "duration": 85
+                    }
+                  ],
+                  "startTime": "2026-10-08T05:46:38.982Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "synthetic-cases",
+                      "contentType": "application/json",
+                      "body": "W3siY2FzZUlkcyI6WyJCMDciLCJGMDMiXSwicGVyc29uYUlkIjoiUDA1IiwicGhhc2UiOiJhZnRlciIsInNvdXJjZUNvbW1pdCI6IndvcmtpbmctdHJlZSIsImNoZWNrZWRBdCI6IjIwMjYtMTAtMDhUMDU6NDY6MzkuMjA0WiIsImVudmlyb25tZW50Ijp7ImJyb3dzZXIiOiIxMzQuMC42OTk4LjM2Iiwidmlld3BvcnQiOnsid2lkdGgiOjMyMCwiaGVpZ2h0Ijo3NDB9LCJ0aW1lem9uZSI6IkFzaWEvU2VvdWwiLCJmaXh0dXJlQ2xvY2siOiIyMDI2LTEwLTAyVDEwOjAwOjAwKzA5OjAwIiwibW9iaWxlIjpmYWxzZX0sImZpeHR1cmUiOiJVSSAyMDAtY2hhciB0aXRsZSBhbmQgMjQtY2hhciBjYXRlZ29yeSIsInN0ZXBzIjoi6ri0IOygnOuqqSDstpTqsIDihpLrhKQg7Jqw7ISg7Iic7JyEL+u2hOulmCDqsr3qs4TihpLsoIDsnqXihpLquLQg7YyM7J2866qFIOuvuOumrOuztOq4sCIsImV4cGVjdGVkIjoibWF4TGVuZ3RoMjQvdHJpbS9udWxsLCDrqqjrk6Ag7Luo7Yq466GkIOygkeq3vC/qsIDroZwg64SY7LmoIOyXhuydjCIsImluaXRpYWwiOnsicmF3Qnl0ZXMiOjAsInJhd1NIQTI1NiI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJ0YXNrQ291bnQiOjB9LCJldmlkZW5jZUtpbmQiOiJhY3R1YWwgQ2hyb21lIFVJIHdpdGggYXNzZXJ0aW9uczsgc3ludGhldGljIGRhdGEvY2xvY2s7IG5vIGh1bWFuIHN0dWR5IiwidGVzdCI6IlAwNSAzMjBweDog6ri0IOygnOuqqcK367aE66WYIOyggOyepeKGkuqzhO2ajS/rs7Xsm5DihpLst6jshowiLCJzdGF0dXMiOiJQQVNTIiwiYWN0dWFsIjoiQWxsIHN0YXRlZCBVSS9kYXRhIGFzc2VydGlvbnMgcGFzc2VkIiwiZmluYWwiOnsicmF3Qnl0ZXMiOjkzNiwicmF3U0hBMjU2IjoiNmFkZTM3ZmVmYWZjYTlkOGI3YjEwN2VhNDVmN2EzOTk5ZDgzNmM3MTVjOGNhN2FiNjA4Yjc2ZmU1NWVjZDdkZCIsInRhc2tDb3VudCI6MX19LHsiY2FzZUlkcyI6WyJCMDciXSwicGVyc29uYUlkIjoiUDA1IiwicGhhc2UiOiJhZnRlciIsInNvdXJjZUNvbW1pdCI6IndvcmtpbmctdHJlZSIsImNoZWNrZWRBdCI6IjIwMjYtMTAtMDhUMDU6NDY6MzkuNzkxWiIsImVudmlyb25tZW50Ijp7ImJyb3dzZXIiOiIxMzQuMC42OTk4LjM2Iiwidmlld3BvcnQiOnsid2lkdGgiOjMyMCwiaGVpZ2h0Ijo3NDB9LCJ0aW1lem9uZSI6IkFzaWEvU2VvdWwiLCJmaXh0dXJlQ2xvY2siOiIyMDI2LTEwLTAyVDEwOjAwOjAwKzA5OjAwIiwibW9iaWxlIjpmYWxzZX0sImZpeHR1cmUiOiJsb25nIFVJIHRhc2siLCJzdGVwcyI6Iuu2hOulmCDqs7XrsLHrp4wg7KCA7J6l4oaS67aE66WYIOyXhuydjCDtmZXsnbgiLCJleHBlY3RlZCI6IuyEoO2DnSDtlYTrk5zqsIAgbnVsbOuhnCDsoIDsnqXrkKgiLCJpbml0aWFsIjp7InJhd0J5dGVzIjo5MzYsInJhd1NIQTI1NiI6IjZhZGUzN2ZlZmFmY2E5ZDhiN2IxMDdlYTQ1ZjdhMzk5OWQ4MzZjNzE1YzhjYTdhYjYwOGI3NmZlNTVlY2Q3ZGQiLCJ0YXNrQ291bnQiOjF9LCJldmlkZW5jZUtpbmQiOiJhY3R1YWwgQ2hyb21lIFVJIHdpdGggYXNzZXJ0aW9uczsgc3ludGhldGljIGRhdGEvY2xvY2s7IG5vIGh1bWFuIHN0dWR5IiwidGVzdCI6IlAwNSAzMjBweDog6ri0IOygnOuqqcK367aE66WYIOyggOyepeKGkuqzhO2ajS/rs7Xsm5DihpLst6jshowiLCJzdGF0dXMiOiJQQVNTIiwiYWN0dWFsIjoiQWxsIHN0YXRlZCBVSS9kYXRhIGFzc2VydGlvbnMgcGFzc2VkIiwiZmluYWwiOnsicmF3Qnl0ZXMiOjg2NiwicmF3U0hBMjU2IjoiZjY0NmJlNjJmNGY1NThlNmQxNTUxNTc2Nzg1ZDgwN2JmMDczOGQzMDZiNDE5ZGQ2OTllNWQ5Y2Y2NzRjNjY3OSIsInRhc2tDb3VudCI6MX19XQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd738af53581f03b3252-7c67c1288939600e07a6",
+          "file": "synthetic-beta.spec.ts",
+          "line": 413,
+          "column": 1
+        },
+        {
+          "title": "P06 가시 영역 390×480: 입력→상세→복원 오류·재선택",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 811,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "[B08,F05] 입력→상세 분류 저장→손상 파일 오류→정상 미리보기",
+                      "duration": 494
+                    }
+                  ],
+                  "startTime": "2026-10-08T05:46:39.990Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "synthetic-cases",
+                      "contentType": "application/json",
+                      "body": "W3siY2FzZUlkcyI6WyJCMDgiLCJGMDUiXSwicGVyc29uYUlkIjoiUDA2IiwicGhhc2UiOiJhZnRlciIsInNvdXJjZUNvbW1pdCI6IndvcmtpbmctdHJlZSIsImNoZWNrZWRBdCI6IjIwMjYtMTAtMDhUMDU6NDY6NDAuMjA5WiIsImVudmlyb25tZW50Ijp7ImJyb3dzZXIiOiIxMzQuMC42OTk4LjM2Iiwidmlld3BvcnQiOnsid2lkdGgiOjM5MCwiaGVpZ2h0Ijo0ODB9LCJ0aW1lem9uZSI6IkFzaWEvU2VvdWwiLCJmaXh0dXJlQ2xvY2siOiIyMDI2LTEwLTAyVDEwOjAwOjAwKzA5OjAwIiwibW9iaWxlIjpmYWxzZX0sImZpeHR1cmUiOiJVSSB0YXNrLCByZWR1Y2VkIHZpZXdwb3J0IChub3QgcGh5c2ljYWwga2V5Ym9hcmQpIiwic3RlcHMiOiLsnoXroKXihpLsg4HshLgg67aE66WYIOyggOyepeKGkuyGkOyDgSDtjIzsnbwg7Jik66WY4oaS7KCV7IOBIOuvuOumrOuztOq4sCIsImV4cGVjdGVkIjoi7J6F66ClL+yggOyepS/smKTrpZgv7KCB7Jqp7JeQIOyKpO2BrOuhpOuhnCDsoJHqt7wsIOybkOuzuCDrrLTrs4Dqsr0iLCJpbml0aWFsIjp7InJhd0J5dGVzIjowLCJyYXdTSEEyNTYiOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwidGFza0NvdW50IjowfSwiZXZpZGVuY2VLaW5kIjoiYWN0dWFsIENocm9tZSBVSSB3aXRoIGFzc2VydGlvbnM7IHN5bnRoZXRpYyBkYXRhL2Nsb2NrOyBubyBodW1hbiBzdHVkeSIsInRlc3QiOiJQMDYg6rCA7IucIOyYgeyXrSAzOTDDlzQ4MDog7J6F66Cl4oaS7IOB7IS44oaS67O17JuQIOyYpOulmMK37J6s7ISg7YOdIiwic3RhdHVzIjoiUEFTUyIsImFjdHVhbCI6IkFsbCBzdGF0ZWQgVUkvZGF0YSBhc3NlcnRpb25zIHBhc3NlZCIsImZpbmFsIjp7InJhd0J5dGVzIjoyOTAsInJhd1NIQTI1NiI6ImEyMTBmNmZlNDg4MDMzYWM5Y2I2OGZhNjE0YWQ2YmI5ZTI1ZDFhOWRkMDVhNjNiZTU3MGVjMWE1ZGE1MDQzZTMiLCJ0YXNrQ291bnQiOjF9fV0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd738af53581f03b3252-55fcbd74336f44ee653a",
+          "file": "synthetic-beta.spec.ts",
+          "line": 466,
+          "column": 1
+        },
+        {
+          "title": "P07 기한/집중: 어제→이어가기→집중 해제→미래 기한",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 751,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "[C02,C03,C04,C05,C06] 어제2개 확인→겹침 집중/해제→미래 이어가기/해제",
+                      "duration": 378
+                    }
+                  ],
+                  "startTime": "2026-10-08T05:46:40.811Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "synthetic-cases",
+                      "contentType": "application/json",
+                      "body": "W3siY2FzZUlkcyI6WyJDMDIiLCJDMDMiLCJDMDQiLCJDMDUiLCJDMDYiXSwicGVyc29uYUlkIjoiUDA3IiwicGhhc2UiOiJhZnRlciIsInNvdXJjZUNvbW1pdCI6IndvcmtpbmctdHJlZSIsImNoZWNrZWRBdCI6IjIwMjYtMTAtMDhUMDU6NDY6NDEuMDU0WiIsImVudmlyb25tZW50Ijp7ImJyb3dzZXIiOiIxMzQuMC42OTk4LjM2Iiwidmlld3BvcnQiOnsid2lkdGgiOjE0NDAsImhlaWdodCI6OTAwfSwidGltZXpvbmUiOiJBc2lhL1Nlb3VsIiwiZml4dHVyZUNsb2NrIjoiMjAyNi0xMC0wMlQxMDowMDowMCswOTowMCIsIm1vYmlsZSI6ZmFsc2V9LCJmaXh0dXJlIjoieWVzdGVyZGF5LW92ZXJsYXAtdjEiLCJzdGVwcyI6IuyWtOygnDLqsJwg7ZmV7J244oaS6rK57LmoIOynkeykkS/tlbTsoJzihpLrr7jrnpgg7J207Ja06rCA6riwL+2VtOygnCIsImV4cGVjdGVkIjoi7J6Q64+ZIOydtOyblCDsl4bsnYwsIGlkL2R1ZS9jcmVhdGVkIOuztOyhtCwg7JqU7JW96rO8IOq4sO2VnCDsnpTrpZgg7KCV7ZmVIiwiaW5pdGlhbCI6eyJyYXdCeXRlcyI6OTU5LCJyYXdTSEEyNTYiOiJhM2E1OWJmNmY2NmZjZmU2NGFiM2UxMWM3NDhhMDYwNDU0ZDhjNmU5YmU2MTNhNzAzYjg3YTQxMWI5YWFkZDAzIiwidGFza0NvdW50Ijo0fSwiZXZpZGVuY2VLaW5kIjoiYWN0dWFsIENocm9tZSBVSSB3aXRoIGFzc2VydGlvbnM7IHN5bnRoZXRpYyBkYXRhL2Nsb2NrOyBubyBodW1hbiBzdHVkeSIsInRlc3QiOiJQMDcg6riw7ZWcL+ynkeykkTog7Ja07KCc4oaS7J207Ja06rCA6riw4oaS7KeR7KSRIO2VtOygnOKGkuuvuOuemCDquLDtlZwiLCJzdGF0dXMiOiJQQVNTIiwiYWN0dWFsIjoiQWxsIHN0YXRlZCBVSS9kYXRhIGFzc2VydGlvbnMgcGFzc2VkIiwiZmluYWwiOnsicmF3Qnl0ZXMiOjk0MywicmF3U0hBMjU2IjoiZjgwMmJlODUxMjIzMTIxZWJmYzhmM2ZjOWUyMGE2YTg5ODViNjliYWNmNWU0YzZjOGM2ZjA3Yzc5NWUzMjI4YiIsInRhc2tDb3VudCI6NH19XQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd738af53581f03b3252-60db90813f6f7f56b197",
+          "file": "synthetic-beta.spec.ts",
+          "line": 502,
+          "column": 1
+        },
+        {
+          "title": "P08 많은 일: 50→검색/후보→오늘, 후보 없음 복구",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 768,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "[C01,C08,C09,C10] 오늘 검색 중 계획 열기/선택/닫기→검색 해제→전체 분류 검색/없음",
+                      "duration": 383
+                    }
+                  ],
+                  "startTime": "2026-10-08T05:46:41.570Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "synthetic-cases",
+                      "contentType": "application/json",
+                      "body": "W3siY2FzZUlkcyI6WyJDMDEiLCJDMDgiLCJDMDkiLCJDMTAiXSwicGVyc29uYUlkIjoiUDA4IiwicGhhc2UiOiJhZnRlciIsInNvdXJjZUNvbW1pdCI6IndvcmtpbmctdHJlZSIsImNoZWNrZWRBdCI6IjIwMjYtMTAtMDhUMDU6NDY6NDEuODIyWiIsImVudmlyb25tZW50Ijp7ImJyb3dzZXIiOiIxMzQuMC42OTk4LjM2Iiwidmlld3BvcnQiOnsid2lkdGgiOjE0NDAsImhlaWdodCI6OTAwfSwidGltZXpvbmUiOiJBc2lhL1Nlb3VsIiwiZml4dHVyZUNsb2NrIjoiMjAyNi0xMC0wMlQxMDowMDowMCswOTowMCIsIm1vYmlsZSI6ZmFsc2V9LCJmaXh0dXJlIjoiNTAtdGFzayBmaXh0dXJlOyAyMDAtdGFzayByZWdyZXNzaW9uIHNlcGFyYXRlbHkiLCJzdGVwcyI6IuyYpOuKmCDqsoDsg4kg7KSRIOqzhO2ajSDsl7TquLAv7ISg7YOdL+uLq+q4sOKGkuqygOyDiSDtlbTsoJzihpLsoITssrQg67aE66WYIOqygOyDiS/sl4bsnYwiLCJleHBlY3RlZCI6IuqzhO2ajeydgCDqsoDsg4nqs7wg64+F66a9LCDsmKTripgv7KCE7LK0IOqygOyDiSDrspTsnIQv7Iir7J6QIO2RnOyLnDsg642w7J207YSwIOyViCDsgqzrnbzsp5AiLCJpbml0aWFsIjp7InJhd0J5dGVzIjoxMDg2MywicmF3U0hBMjU2IjoiODljM2JjNjkyZGY4NTY3Y2FlNGMxYzZhY2YyMDZhZGE5ZDRlNjk3MGI5NTU5NWY4MDA0ZWRiZDZhYjUyOTg4NiIsInRhc2tDb3VudCI6NTB9LCJldmlkZW5jZUtpbmQiOiJhY3R1YWwgQ2hyb21lIFVJIHdpdGggYXNzZXJ0aW9uczsgc3ludGhldGljIGRhdGEvY2xvY2s7IG5vIGh1bWFuIHN0dWR5IiwidGVzdCI6IlAwOCDrp47snYAg7J28OiA1MOKGkuqygOyDiS/tm4Trs7TihpLsmKTripgsIO2bhOuztCDsl4bsnYwg67O16rWsIiwic3RhdHVzIjoiUEFTUyIsImFjdHVhbCI6IkFsbCBzdGF0ZWQgVUkvZGF0YSBhc3NlcnRpb25zIHBhc3NlZCIsImZpbmFsIjp7InJhd0J5dGVzIjoxMDg3MSwicmF3U0hBMjU2IjoiNWY3Y2ZmOTVjMmQ2ZDU3NWJkYmE5ZThmZTdmNDQxYzc5OTQyYTc0NWM5NTNmODhiMmZkZDM1MzlmNWVmMzgzZCIsInRhc2tDb3VudCI6NTB9fV0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd738af53581f03b3252-a8fc09a9a9ae1bfd4a80",
+          "file": "synthetic-beta.spec.ts",
+          "line": 551,
+          "column": 1
+        },
+        {
+          "title": "P09 실수 복구: 삭제 취소→완료/편집→예시 재추가/제거",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1069,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "[D03,D05,D06] 삭제/undo→완료→다른 제목 편집→undo→예시 재추가/제거",
+                      "duration": 660
+                    }
+                  ],
+                  "startTime": "2026-10-08T05:46:42.348Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "synthetic-cases",
+                      "contentType": "application/json",
+                      "body": "W3siY2FzZUlkcyI6WyJEMDMiLCJEMDUiLCJEMDYiXSwicGVyc29uYUlkIjoiUDA5IiwicGhhc2UiOiJhZnRlciIsInNvdXJjZUNvbW1pdCI6IndvcmtpbmctdHJlZSIsImNoZWNrZWRBdCI6IjIwMjYtMTAtMDhUMDU6NDY6NDIuNjQwWiIsImVudmlyb25tZW50Ijp7ImJyb3dzZXIiOiIxMzQuMC42OTk4LjM2Iiwidmlld3BvcnQiOnsid2lkdGgiOjE0NDAsImhlaWdodCI6OTAwfSwidGltZXpvbmUiOiJBc2lhL1Nlb3VsIiwiZml4dHVyZUNsb2NrIjoiMjAyNi0xMC0wMlQxMDowMDowMCswOTowMCIsIm1vYmlsZSI6ZmFsc2V9LCJmaXh0dXJlIjoiVUkgdXNlciB0YXNrIG1peGVkIHdpdGggb3B0aW9uYWwgZGVtb3MiLCJzdGVwcyI6IuyCreygnC91bmRv4oaS7JmE66OM4oaS64uk66W4IOygnOuqqSDtjrjsp5HihpJ1bmRv4oaS7JiI7IucIOyerOy2lOqwgC/soJzqsbAiLCJleHBlY3RlZCI6IuyCreygnCDsoITssrQg67O17JuQLCDsmYTro4wgdW5kbyDri6Trpbgg7IaN7ISxIOycoOyngCwg7JiI7IucIOykkeuztS/sgqzsmqnsnpAg67O07KG0IiwiaW5pdGlhbCI6eyJyYXdCeXRlcyI6MjgyLCJyYXdTSEEyNTYiOiIxYzY1MzRkZDE3OWVjZjUzM2M1ZGFiNGIzNTkzMjYxNDlkMjlhZmM4ZTExZTU5NWRkYjQ3ZGFmOGJjZmNkM2RjIiwidGFza0NvdW50IjoxfSwiZXZpZGVuY2VLaW5kIjoiYWN0dWFsIENocm9tZSBVSSB3aXRoIGFzc2VydGlvbnM7IHN5bnRoZXRpYyBkYXRhL2Nsb2NrOyBubyBodW1hbiBzdHVkeSIsInRlc3QiOiJQMDkg7Iuk7IiYIOuzteq1rDog7IKt7KCcIOy3qOyGjOKGkuyZhOujjC/tjrjsp5HihpLsmIjsi5wg7J6s7LaU6rCAL+ygnOqxsCIsInN0YXR1cyI6IlBBU1MiLCJhY3R1YWwiOiJBbGwgc3RhdGVkIFVJL2RhdGEgYXNzZXJ0aW9ucyBwYXNzZWQiLCJmaW5hbCI6eyJyYXdCeXRlcyI6Mjc5LCJyYXdTSEEyNTYiOiIzNzUxZjc2NzBiMTQzNDIyODdmNzk2YWNkNGE5OWEzMTIxZTI4Y2U1YjA0NjRiOTQ0NjcxNzUzYjMwM2JkYWE1IiwidGFza0NvdW50IjoxfX1d"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd738af53581f03b3252-4b9d72f2662101b8bfaa",
+          "file": "synthetic-beta.spec.ts",
+          "line": 587,
+          "column": 1
+        },
+        {
+          "title": "P10 보존: 다운로드→빈 context 복원→재백업→교체 취소",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1743,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "[E01,E02,E05] 실제 다운로드→빈 환경 파일 UI 합치기→재백업 비교→교체 전 백업/취소",
+                      "duration": 1094
+                    }
+                  ],
+                  "startTime": "2026-10-08T05:46:43.424Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "synthetic-cases",
+                      "contentType": "application/json",
+                      "body": "W3siY2FzZUlkcyI6WyJFMDEiLCJFMDIiLCJFMDUiXSwicGVyc29uYUlkIjoiUDEwIiwicGhhc2UiOiJhZnRlciIsInNvdXJjZUNvbW1pdCI6IndvcmtpbmctdHJlZSIsImNoZWNrZWRBdCI6IjIwMjYtMTAtMDhUMDU6NDY6NDMuOTQyWiIsImVudmlyb25tZW50Ijp7ImJyb3dzZXIiOiIxMzQuMC42OTk4LjM2Iiwidmlld3BvcnQiOnsid2lkdGgiOjE0NDAsImhlaWdodCI6OTAwfSwidGltZXpvbmUiOiJBc2lhL1Nlb3VsIiwiZml4dHVyZUNsb2NrIjoiMjAyNi0xMC0wMlQxMDowMDowMCswOTowMCIsIm1vYmlsZSI6ZmFsc2V9LCJmaXh0dXJlIjoiVUktY3JlYXRlZCBjb21wbGV0ZSB3cmFwcGVyOyBzZXBhcmF0ZSBlbXB0eSBjb250ZXh0Iiwic3RlcHMiOiLsi6TsoJwg64uk7Jq066Gc65Oc4oaS67mIIO2ZmOqyvSDtjIzsnbwgVUkg7ZWp7LmY6riw4oaS7J6s67Cx7JeFIOu5hOq1kOKGkuq1kOyytCDsoIQg67Cx7JeFL+y3qOyGjCIsImV4cGVjdGVkIjoi7KCE7LK0IHRhc2sg7ZWE65OcIHJvdW5kIHRyaXAg7J287LmYLCDtmZXsnbgv7Leo7IaMIOybkOuzuCDrtojrs4AiLCJpbml0aWFsIjp7InJhd0J5dGVzIjoyOTcsInJhd1NIQTI1NiI6ImY3ZTk5MWQwZWIyNThjZTYxZmNhMTYzODI4NjhjY2FjOTFjZTAzODg3ZGY1YmI4NDY3ZWI5YWQzZDRhMjYwNGEiLCJ0YXNrQ291bnQiOjF9LCJldmlkZW5jZUtpbmQiOiJhY3R1YWwgQ2hyb21lIFVJIHdpdGggYXNzZXJ0aW9uczsgc3ludGhldGljIGRhdGEvY2xvY2s7IG5vIGh1bWFuIHN0dWR5IiwidGVzdCI6IlAxMCDrs7TsobQ6IOuLpOyatOuhnOuTnOKGkuu5iCBjb250ZXh0IOuzteybkOKGkuyerOuwseyXheKGkuq1kOyytCDst6jshowiLCJzdGF0dXMiOiJQQVNTIiwiYWN0dWFsIjoiQWxsIHN0YXRlZCBVSS9kYXRhIGFzc2VydGlvbnMgcGFzc2VkIiwiZmluYWwiOnsicmF3Qnl0ZXMiOjI5NywicmF3U0hBMjU2IjoiZjdlOTkxZDBlYjI1OGNlNjFmY2ExNjM4Mjg2OGNjYWM5MWNlMDM4ODdkZjViYjg0NjdlYjlhZDNkNGEyNjA0YSIsInRhc2tDb3VudCI6MX19XQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd738af53581f03b3252-8496f8575701d052d935",
+          "file": "synthetic-beta.spec.ts",
+          "line": 628,
+          "column": 1
+        },
+        {
+          "title": "P11 시각/확대: 200% reflow 동등 조건→reduced motion→오류 복구",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 885,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('오늘 집중', { exact: true })\nExpected: visible\nError: strict mode violation: getByText('오늘 집중', { exact: true }) resolved to 2 elements:\n    1) <h2>오늘 집중</h2> aka getByRole('heading', { name: '오늘 집중' })\n    2) <span class=\"focus-label\">…</span> aka getByRole('button', { name: '확대 확인 편집' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('오늘 집중', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('오늘 집중', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('오늘 집중', { exact: true })\nExpected: visible\nError: strict mode violation: getByText('오늘 집중', { exact: true }) resolved to 2 elements:\n    1) <h2>오늘 집중</h2> aka getByRole('heading', { name: '오늘 집중' })\n    2) <span class=\"focus-label\">…</span> aka getByRole('button', { name: '확대 확인 편집' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('오늘 집중', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('오늘 집중', { exact: true })\u001b[22m\n\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts:709:64\n    at check (C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts:122:5)\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts:694:5",
+                    "location": {
+                      "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts",
+                      "column": 64,
+                      "line": 709
+                    },
+                    "snippet": "  707 |         await input.fill('확대 확인')\n  708 |         await page.keyboard.press('Enter')\n> 709 |         await expect(page.getByText('오늘 집중', { exact: true })).toBeVisible()\n      |                                                                ^\n  710 |         await page.locator('.task-body').focus()\n  711 |         expect(\n  712 |           await page.locator('.task-body').evaluate((el) => getComputedStyle(el).outlineStyle),"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts",
+                        "column": 64,
+                        "line": 709
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('오늘 집중', { exact: true })\nExpected: visible\nError: strict mode violation: getByText('오늘 집중', { exact: true }) resolved to 2 elements:\n    1) <h2>오늘 집중</h2> aka getByRole('heading', { name: '오늘 집중' })\n    2) <span class=\"focus-label\">…</span> aka getByRole('button', { name: '확대 확인 편집' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('오늘 집중', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('오늘 집중', { exact: true })\u001b[22m\n\n\n  707 |         await input.fill('확대 확인')\n  708 |         await page.keyboard.press('Enter')\n> 709 |         await expect(page.getByText('오늘 집중', { exact: true })).toBeVisible()\n      |                                                                ^\n  710 |         await page.locator('.task-body').focus()\n  711 |         expect(\n  712 |           await page.locator('.task-body').evaluate((el) => getComputedStyle(el).outlineStyle),\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts:709:64\n    at check (C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts:122:5)\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts:694:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "[F06,A06] 축소 layout에서 빈 오류→입력→편집 focus/이름/텍스트 상태→취소",
+                      "duration": 82,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('오늘 집중', { exact: true })\nExpected: visible\nError: strict mode violation: getByText('오늘 집중', { exact: true }) resolved to 2 elements:\n    1) <h2>오늘 집중</h2> aka getByRole('heading', { name: '오늘 집중' })\n    2) <span class=\"focus-label\">…</span> aka getByRole('button', { name: '확대 확인 편집' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('오늘 집중', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('오늘 집중', { exact: true })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('오늘 집중', { exact: true })\nExpected: visible\nError: strict mode violation: getByText('오늘 집중', { exact: true }) resolved to 2 elements:\n    1) <h2>오늘 집중</h2> aka getByRole('heading', { name: '오늘 집중' })\n    2) <span class=\"focus-label\">…</span> aka getByRole('button', { name: '확대 확인 편집' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('오늘 집중', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('오늘 집중', { exact: true })\u001b[22m\n\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts:709:64\n    at check (C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts:122:5)\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts:694:5",
+                        "location": {
+                          "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts",
+                          "column": 64,
+                          "line": 709
+                        },
+                        "snippet": "  707 |         await input.fill('확대 확인')\n  708 |         await page.keyboard.press('Enter')\n> 709 |         await expect(page.getByText('오늘 집중', { exact: true })).toBeVisible()\n      |                                                                ^\n  710 |         await page.locator('.task-body').focus()\n  711 |         expect(\n  712 |           await page.locator('.task-body').evaluate((el) => getComputedStyle(el).outlineStyle),"
+                      }
+                    }
+                  ],
+                  "startTime": "2026-10-08T05:46:45.176Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\synthetic-beta-P11-시각-확대-2-d2e73--동등-조건→reduced-motion→오류-복구\\test-failed-1.png"
+                    },
+                    {
+                      "name": "synthetic-cases",
+                      "contentType": "application/json",
+                      "body": "W3siY2FzZUlkcyI6WyJGMDYiLCJBMDYiXSwicGVyc29uYUlkIjoiUDExIiwicGhhc2UiOiJhZnRlciIsInNvdXJjZUNvbW1pdCI6IndvcmtpbmctdHJlZSIsImNoZWNrZWRBdCI6IjIwMjYtMTAtMDhUMDU6NDY6NDUuNTEwWiIsImVudmlyb25tZW50Ijp7ImJyb3dzZXIiOiIxMzQuMC42OTk4LjM2Iiwidmlld3BvcnQiOnsid2lkdGgiOjcyMCwiaGVpZ2h0Ijo0NTB9LCJ0aW1lem9uZSI6IkFzaWEvU2VvdWwiLCJmaXh0dXJlQ2xvY2siOiIyMDI2LTEwLTAyVDEwOjAwOjAwKzA5OjAwIiwibW9iaWxlIjpmYWxzZX0sImZpeHR1cmUiOiI3MjB4NDUwIENTUyAvIHNjYWxlMjogMTQ0MHg5MDAgYXQgMjAwJSBlcXVpdmFsZW50IHJlZmxvdzsgbm90IG5hdGl2ZSBicm93c2VyIHpvb20iLCJzdGVwcyI6Iuy2leyGjCBsYXlvdXTsl5DshJwg67mIIOyYpOulmOKGkuyeheugpeKGku2OuOynkSBmb2N1cy/snbTrpoQv7YWN7Iqk7Yq4IOyDge2DnOKGkuy3qOyGjCIsImV4cGVjdGVkIjoi6rCA66GcIOuEmOy5qCDsl4bsnYwsIOyYpOulmCDsl7DqsrDqs7wgZm9jdXMgcmluZywgbW90aW9uIOygnOqxsCwg7IOB7YOcIO2FjeyKpO2KuCDsobTsnqwiLCJpbml0aWFsIjp7InJhd0J5dGVzIjowLCJyYXdTSEEyNTYiOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwidGFza0NvdW50IjowfSwiZXZpZGVuY2VLaW5kIjoiYWN0dWFsIENocm9tZSBVSSB3aXRoIGFzc2VydGlvbnM7IHN5bnRoZXRpYyBkYXRhL2Nsb2NrOyBubyBodW1hbiBzdHVkeSIsInRlc3QiOiJQMTEg7Iuc6rCBL+2ZleuMgDogMjAwJSByZWZsb3cg64+Z65OxIOyhsOqxtOKGknJlZHVjZWQgbW90aW9u4oaS7Jik66WYIOuzteq1rCIsInN0YXR1cyI6IkZBSUwiLCJhY3R1YWwiOiJFcnJvcjogXHUwMDFiWzJtZXhwZWN0KFx1MDAxYlsyMm1cdTAwMWJbMzFtbG9jYXRvclx1MDAxYlszOW1cdTAwMWJbMm0pLlx1MDAxYlsyMm10b0JlVmlzaWJsZVx1MDAxYlsybShcdTAwMWJbMjJtXHUwMDFiWzJtKVx1MDAxYlsyMm0gZmFpbGVkXG5cbkxvY2F0b3I6IGdldEJ5VGV4dCgn7Jik64qYIOynkeykkScsIHsgZXhhY3Q6IHRydWUgfSlcbkV4cGVjdGVkOiB2aXNpYmxlXG5FcnJvcjogc3RyaWN0IG1vZGUgdmlvbGF0aW9uOiBnZXRCeVRleHQoJ+yYpOuKmCDsp5HspJEnLCB7IGV4YWN0OiB0cnVlIH0pIHJlc29sdmVkIHRvIDIgZWxlbWVudHM6XG4gICAgMSkgPGgyPuyYpOuKmCDsp5HspJE8L2gyPiBha2EgZ2V0QnlSb2xlKCdoZWFkaW5nJywgeyBuYW1lOiAn7Jik64qYIOynkeykkScgfSlcbiAgICAyKSA8c3BhbiBjbGFzcz1cImZvY3VzLWxhYmVsXCI+4oCmPC9zcGFuPiBha2EgZ2V0QnlSb2xlKCdidXR0b24nLCB7IG5hbWU6ICftmZXrjIAg7ZmV7J24IO2OuOynkScgfSlcblxuQ2FsbCBsb2c6XG5cdTAwMWJbMm0gIC0gRXhwZWN0IFwidG9CZVZpc2libGVcIiBnZXRCeVRleHQoJ+yYpOuKmCDsp5HspJEnLCB7IGV4YWN0OiB0cnVlIH0pIHdpdGggdGltZW91dCA1MDAwbXNcdTAwMWJbMjJtXG5cdTAwMWJbMm0gIC0gd2FpdGluZyBmb3IgZ2V0QnlUZXh0KCfsmKTripgg7KeR7KSRJywgeyBleGFjdDogdHJ1ZSB9KVx1MDAxYlsyMm1cbiIsInNjcmVlbnNob3QiOiJkb2NzL3NjcmVlbnNob3RzL3YxLjMvcmVncmVzc2lvbi9hZnRlci9QMTEtRjA2LWZhaWx1cmUucG5nIiwiZmluYWwiOnsicmF3Qnl0ZXMiOjI3OSwicmF3U0hBMjU2IjoiZmYzOTQ5NWZhNWZkYjljM2QzZTFiMjVkNGMyZWU1NzRhMzdlZDZhYmQxNTQxZjBmMzFkMmQ0MDJjZWZkN2E4YiIsInRhc2tDb3VudCI6MX19XQ=="
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\synthetic-beta-P11-시각-확대-2-d2e73--동등-조건→reduced-motion→오류-복구\\test-failed-2.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\synthetic-beta-P11-시각-확대-2-d2e73--동등-조건→reduced-motion→오류-복구\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\synthetic-beta-P11-시각-확대-2-d2e73--동등-조건→reduced-motion→오류-복구\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts",
+                    "column": 64,
+                    "line": 709
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fd738af53581f03b3252-043eca4ae58718e3830a",
+          "file": "synthetic-beta.spec.ts",
+          "line": 679,
+          "column": 1
+        },
+        {
+          "title": "P12 경계 입력: 공백·조합→편집 조합 Enter→검색",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1063,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "[A07,A10,A11] 앞뒤 공백 제목, quick 조합 Enter, 완료 후 제출, 입력 N / Escape와 검색 Enter",
+                      "duration": 200
+                    },
+                    {
+                      "title": "[B05] 상세 분류에서 한글 조합 중 Enter",
+                      "duration": 393
+                    }
+                  ],
+                  "startTime": "2026-10-08T05:46:46.826Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "synthetic-cases",
+                      "contentType": "application/json",
+                      "body": "W3siY2FzZUlkcyI6WyJBMDciLCJBMTAiLCJBMTEiXSwicGVyc29uYUlkIjoiUDEyIiwicGhhc2UiOiJhZnRlciIsInNvdXJjZUNvbW1pdCI6IndvcmtpbmctdHJlZSIsImNoZWNrZWRBdCI6IjIwMjYtMTAtMDhUMDU6NDY6NDcuNDk5WiIsImVudmlyb25tZW50Ijp7ImJyb3dzZXIiOiIxMzQuMC42OTk4LjM2Iiwidmlld3BvcnQiOnsid2lkdGgiOjE0NDAsImhlaWdodCI6OTAwfSwidGltZXpvbmUiOiJBc2lhL1Nlb3VsIiwiZml4dHVyZUNsb2NrIjoiMjAyNi0xMC0wMlQxMDowMDowMCswOTowMCIsIm1vYmlsZSI6ZmFsc2V9LCJmaXh0dXJlIjoiVUkgS29yZWFuL0VuZ2xpc2gvZW1vamkgdGl0bGU7IGNvbXBvc2l0aW9uIGV2ZW50cywgbm90IE9TIElNRSIsInN0ZXBzIjoi7JWe65KkIOqzteuwsSDsoJzrqqksIHF1aWNrIOyhsO2VqSBFbnRlciwg7JmE66OMIO2bhCDsoJzstpwsIOyeheugpSBOIC8gRXNjYXBl7JmAIOqygOyDiSBFbnRlciIsImV4cGVjdGVkIjoidHJpbS/rgrTrtoAg66y47J6QIOuztOyhtCwg7KGw7ZWpIOykkSDsg53shLEwLCDqsoDsg4kgRW50ZXIg7IOd7ISxIOyXhuydjCIsImluaXRpYWwiOnsicmF3Qnl0ZXMiOjAsInJhd1NIQTI1NiI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJ0YXNrQ291bnQiOjB9LCJldmlkZW5jZUtpbmQiOiJhY3R1YWwgQ2hyb21lIFVJIHdpdGggYXNzZXJ0aW9uczsgc3ludGhldGljIGRhdGEvY2xvY2s7IG5vIGh1bWFuIHN0dWR5IiwidGVzdCI6IlAxMiDqsr3qs4Qg7J6F66ClOiDqs7XrsLHCt+yhsO2VqeKGku2OuOynkSDsobDtlakgRW50ZXLihpLqsoDsg4kiLCJzdGF0dXMiOiJQQVNTIiwiYWN0dWFsIjoiQWxsIHN0YXRlZCBVSS9kYXRhIGFzc2VydGlvbnMgcGFzc2VkIiwiZmluYWwiOnsicmF3Qnl0ZXMiOjI4OSwicmF3U0hBMjU2IjoiODdlZDY2NjAyN2VjMTI5MDUyMjY5MjNmYTY0YTRiMmRiOWQ0MGE3YzAzYmZhM2Y5NWEyMDFkZTA4NTE3ZDdlZCIsInRhc2tDb3VudCI6MX19LHsiY2FzZUlkcyI6WyJCMDUiXSwicGVyc29uYUlkIjoiUDEyIiwicGhhc2UiOiJhZnRlciIsInNvdXJjZUNvbW1pdCI6IndvcmtpbmctdHJlZSIsImNoZWNrZWRBdCI6IjIwMjYtMTAtMDhUMDU6NDY6NDcuNzE3WiIsImVudmlyb25tZW50Ijp7ImJyb3dzZXIiOiIxMzQuMC42OTk4LjM2Iiwidmlld3BvcnQiOnsid2lkdGgiOjE0NDAsImhlaWdodCI6OTAwfSwidGltZXpvbmUiOiJBc2lhL1Nlb3VsIiwiZml4dHVyZUNsb2NrIjoiMjAyNi0xMC0wMlQxMDowMDowMCswOTowMCIsIm1vYmlsZSI6ZmFsc2V9LCJmaXh0dXJlIjoib25lIFVJIHRhc2ssIGNhdGVnb3J5IGNvbXBvc2l0aW9uIGV2ZW50ICsgYWN0dWFsIEVudGVyIiwic3RlcHMiOiLsg4HshLgg67aE66WY7JeQ7IScIO2VnOq4gCDsobDtlakg7KSRIEVudGVyIiwiZXhwZWN0ZWQiOiLtjrjsp5Eg7Jyg7KeALCDsoIDsnqUg7JuQ67O4IOustOuzgOqyvTsg7KGw7ZWpIO2ZleyglSBFbnRlcuqwgCDsoIDsnqUg7JWE64uYIiwiaW5pdGlhbCI6eyJyYXdCeXRlcyI6Mjg5LCJyYXdTSEEyNTYiOiI4N2VkNjY2MDI3ZWMxMjkwNTIyNjkyM2ZhNjRhNGIyZGI5ZDQwYTdjMDNiZmEzZjk1YTIwMWRlMDg1MTdkN2VkIiwidGFza0NvdW50IjoxfSwiZXZpZGVuY2VLaW5kIjoiYWN0dWFsIENocm9tZSBVSSB3aXRoIGFzc2VydGlvbnM7IHN5bnRoZXRpYyBkYXRhL2Nsb2NrOyBubyBodW1hbiBzdHVkeSIsInRlc3QiOiJQMTIg6rK96rOEIOyeheugpTog6rO167CxwrfsobDtlanihpLtjrjsp5Eg7KGw7ZWpIEVudGVy4oaS6rKA7IOJIiwic3RhdHVzIjoiUEFTUyIsImFjdHVhbCI6IkFsbCBzdGF0ZWQgVUkvZGF0YSBhc3NlcnRpb25zIHBhc3NlZCIsImZpbmFsIjp7InJhd0J5dGVzIjozMDAsInJhd1NIQTI1NiI6ImViZDNmNTM3ZjM0M2U5YzJkMTQwYmU3MDRjNzkzMDM2YjAwYjkyM2RlYzUzOTZiNjczOTI4OGYwMDRiMTUyNjciLCJ0YXNrQ291bnQiOjF9fV0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd738af53581f03b3252-d20c33326ef78cc301f0",
+          "file": "synthetic-beta.spec.ts",
+          "line": 742,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "v1.1.spec.ts",
+      "file": "v1.1.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "v1 데이터 그대로 로드·계획 그룹·사실 이유·중복 제외·집중 중·이어가기 id/기한 보존",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 562,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:48.254Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-4cdfbaeac9fb41add139",
+          "file": "v1.1.spec.ts",
+          "line": 73,
+          "column": 1
+        },
+        {
+          "title": "요약 합계·집중 해제 기한 잔류·완료 후 즉시 일치",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 550,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:48.824Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-f261a6bc4e8d35b3abe0",
+          "file": "v1.1.spec.ts",
+          "line": 115,
+          "column": 1
+        },
+        {
+          "title": "후보 없음·전체 경로·N 단축키 차단·Escape와 양방향 Tab 경계",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 523,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:49.383Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-16910f90a7e79d1bec0d",
+          "file": "v1.1.spec.ts",
+          "line": 139,
+          "column": 1
+        },
+        {
+          "title": "열린 계획 패널의 자정·월말 어제 상태·자동 이월 없음",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 499,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:49.922Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-b79ce0499542c10ae258",
+          "file": "v1.1.spec.ts",
+          "line": 163,
+          "column": 1
+        },
+        {
+          "title": "계획 focus 연말 갱신·이어가기",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 487,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:50.431Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-2a93bdbab38ba99efb14",
+          "file": "v1.1.spec.ts",
+          "line": 183,
+          "column": 3
+        },
+        {
+          "title": "계획 visibilitychange 연말 갱신·이어가기",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 490,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:50.926Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-c190a1ebdc1d4b14acc9",
+          "file": "v1.1.spec.ts",
+          "line": 183,
+          "column": 3
+        },
+        {
+          "title": "전체 JSON 백업 round trip·저장 쓰기 없음·Object URL 정리",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 726,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:51.423Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-c228084f954f24d51c8e",
+          "file": "v1.1.spec.ts",
+          "line": 204,
+          "column": 1
+        },
+        {
+          "title": "저장 실패 중 메모리 전체 백업·저장 원본 불변",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 649,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:52.159Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-837a5a2e75df526deb50",
+          "file": "v1.1.spec.ts",
+          "line": 244,
+          "column": 1
+        },
+        {
+          "title": "파일 검증 손상 JSON·원본/상태 유지·재선택",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 570,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:52.816Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-15ac96b04072c77af9a7",
+          "file": "v1.1.spec.ts",
+          "line": 294,
+          "column": 3
+        },
+        {
+          "title": "파일 검증 raw 저장 원본·원본/상태 유지·재선택",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 581,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:53.394Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-491a2eae8dc399d77da0",
+          "file": "v1.1.spec.ts",
+          "line": 294,
+          "column": 3
+        },
+        {
+          "title": "파일 검증 백업 버전·원본/상태 유지·재선택",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 555,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:53.986Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-8feab698163968f86d5a",
+          "file": "v1.1.spec.ts",
+          "line": 294,
+          "column": 3
+        },
+        {
+          "title": "파일 검증 데이터 버전·원본/상태 유지·재선택",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 533,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:54.548Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-2e81422b59a0dd6e55d1",
+          "file": "v1.1.spec.ts",
+          "line": 294,
+          "column": 3
+        },
+        {
+          "title": "파일 검증 중복 id·원본/상태 유지·재선택",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 544,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:55.088Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-c1287653ec9d335233ab",
+          "file": "v1.1.spec.ts",
+          "line": 294,
+          "column": 3
+        },
+        {
+          "title": "파일 검증 잘못된 날짜·원본/상태 유지·재선택",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 509,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:55.639Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-df643990abc75cbda917",
+          "file": "v1.1.spec.ts",
+          "line": 294,
+          "column": 3
+        },
+        {
+          "title": "파일 검증 제목 길이·원본/상태 유지·재선택",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 541,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:56.157Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-414c5960cb3c0e4c609e",
+          "file": "v1.1.spec.ts",
+          "line": 294,
+          "column": 3
+        },
+        {
+          "title": "10MiB 초과·파일 선택 취소와 미리보기 취소는 목록/저장 상태 불변",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1460,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:56.705Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-a458a8f970df6b94600a",
+          "file": "v1.1.spec.ts",
+          "line": 316,
+          "column": 1
+        },
+        {
+          "title": "합치기 미리보기·현재 중복 보존·다른 id 같은 제목·1회 저장·검색/완료 갱신",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 808,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:58.174Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-2b0eaa655aab1be83d8f",
+          "file": "v1.1.spec.ts",
+          "line": 339,
+          "column": 1
+        },
+        {
+          "title": "전체 교체 확인·취소·교체 전 백업·빈 백업으로 명시적 교체",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 895,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:58.991Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-d0429fec071402de5316",
+          "file": "v1.1.spec.ts",
+          "line": 378,
+          "column": 1
+        },
+        {
+          "title": "복원 merge 쓰기 실패 원본/메모리/상태 유지·재시도·오래된 실행 취소 정리",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 767,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:46:59.893Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-2d45b5c52ff41d43f4ce",
+          "file": "v1.1.spec.ts",
+          "line": 402,
+          "column": 3
+        },
+        {
+          "title": "복원 replace 쓰기 실패 원본/메모리/상태 유지·재시도·오래된 실행 취소 정리",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 828,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:47:00.667Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-f3dc4e6ab5667eb00b7a",
+          "file": "v1.1.spec.ts",
+          "line": 402,
+          "column": 3
+        },
+        {
+          "title": "저장 보호 blocked는 복원으로 우회하지 않음",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 513,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:47:01.503Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-c1e49f41df3eb9d7539a",
+          "file": "v1.1.spec.ts",
+          "line": 457,
+          "column": 3
+        },
+        {
+          "title": "저장 보호 unavailable는 복원으로 우회하지 않음",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 508,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:47:02.024Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-7c6924a455cc13d9fb96",
+          "file": "v1.1.spec.ts",
+          "line": 457,
+          "column": 3
+        },
+        {
+          "title": "정확한 예시 재추가 피드백·중복 때 저장 없음·사용자 보존",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 606,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:47:02.540Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-2dc93c8e877d6cdbca33",
+          "file": "v1.1.spec.ts",
+          "line": 474,
+          "column": 1
+        },
+        {
+          "title": "늦은 파일 읽기가 다음 선택과 닫힌 패널을 덮어쓰지 않음",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 611,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:47:03.153Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-3e1d99d503956a474918",
+          "file": "v1.1.spec.ts",
+          "line": 490,
+          "column": 1
+        },
+        {
+          "title": "데이터 패널 키보드·Tab trap·Escape와 호출 메뉴 포커스 복귀",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 544,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:47:03.772Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-c03d987764f06c64f27a",
+          "file": "v1.1.spec.ts",
+          "line": 524,
+          "column": 1
+        },
+        {
+          "title": "새 모바일 패널 touch·작아진 가시 영역·복원 조작",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1204,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:47:04.324Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-110885d1ca63aa6909b9",
+          "file": "v1.1.spec.ts",
+          "line": 557,
+          "column": 1
+        },
+        {
+          "title": "v1.1 1440×900 계획·복원 미리보기·긴 제목·메타·하단 UI",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 458,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m13\u001b[39m\nReceived:    \u001b[31m12\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m13\u001b[39m\nReceived:    \u001b[31m12\u001b[39m\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts:616:7",
+                    "location": {
+                      "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts",
+                      "column": 7,
+                      "line": 616
+                    },
+                    "snippet": "  614 |         .first()\n  615 |         .evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),\n> 616 |     ).toBeGreaterThanOrEqual(13)\n      |       ^\n  617 |     await page.screenshot({\n  618 |       path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.3/regression'}/today-${label}.png`,\n  619 |       fullPage: false,"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts",
+                        "column": 7,
+                        "line": 616
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m13\u001b[39m\nReceived:    \u001b[31m12\u001b[39m\n\n  614 |         .first()\n  615 |         .evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),\n> 616 |     ).toBeGreaterThanOrEqual(13)\n      |       ^\n  617 |     await page.screenshot({\n  618 |       path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.3/regression'}/today-${label}.png`,\n  619 |       fullPage: false,\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts:616:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:47:05.537Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\v1.1-v1-1-1440×900-계획·복원-미리보기·긴-제목·메타·하단-UI\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\v1.1-v1-1-1440×900-계획·복원-미리보기·긴-제목·메타·하단-UI\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\v1.1-v1-1-1440×900-계획·복원-미리보기·긴-제목·메타·하단-UI\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts",
+                    "column": 7,
+                    "line": 616
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-12cae2549e72d93f53bf",
+          "file": "v1.1.spec.ts",
+          "line": 605,
+          "column": 3
+        },
+        {
+          "title": "v1.1 1366×768 계획·복원 미리보기·긴 제목·메타·하단 UI",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 616,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m13\u001b[39m\nReceived:    \u001b[31m12\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m13\u001b[39m\nReceived:    \u001b[31m12\u001b[39m\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts:616:7",
+                    "location": {
+                      "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts",
+                      "column": 7,
+                      "line": 616
+                    },
+                    "snippet": "  614 |         .first()\n  615 |         .evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),\n> 616 |     ).toBeGreaterThanOrEqual(13)\n      |       ^\n  617 |     await page.screenshot({\n  618 |       path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.3/regression'}/today-${label}.png`,\n  619 |       fullPage: false,"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts",
+                        "column": 7,
+                        "line": 616
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m13\u001b[39m\nReceived:    \u001b[31m12\u001b[39m\n\n  614 |         .first()\n  615 |         .evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),\n> 616 |     ).toBeGreaterThanOrEqual(13)\n      |       ^\n  617 |     await page.screenshot({\n  618 |       path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.3/regression'}/today-${label}.png`,\n  619 |       fullPage: false,\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts:616:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:47:06.617Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\v1.1-v1-1-1366×768-계획·복원-미리보기·긴-제목·메타·하단-UI\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\v1.1-v1-1-1366×768-계획·복원-미리보기·긴-제목·메타·하단-UI\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\v1.1-v1-1-1366×768-계획·복원-미리보기·긴-제목·메타·하단-UI\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts",
+                    "column": 7,
+                    "line": 616
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-b2315e9675e85e321db8",
+          "file": "v1.1.spec.ts",
+          "line": 605,
+          "column": 3
+        },
+        {
+          "title": "v1.1 390×844 계획·복원 미리보기·긴 제목·메타·하단 UI",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 576,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m13\u001b[39m\nReceived:    \u001b[31m12\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m13\u001b[39m\nReceived:    \u001b[31m12\u001b[39m\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts:616:7",
+                    "location": {
+                      "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts",
+                      "column": 7,
+                      "line": 616
+                    },
+                    "snippet": "  614 |         .first()\n  615 |         .evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),\n> 616 |     ).toBeGreaterThanOrEqual(13)\n      |       ^\n  617 |     await page.screenshot({\n  618 |       path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.3/regression'}/today-${label}.png`,\n  619 |       fullPage: false,"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts",
+                        "column": 7,
+                        "line": 616
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m13\u001b[39m\nReceived:    \u001b[31m12\u001b[39m\n\n  614 |         .first()\n  615 |         .evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),\n> 616 |     ).toBeGreaterThanOrEqual(13)\n      |       ^\n  617 |     await page.screenshot({\n  618 |       path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.3/regression'}/today-${label}.png`,\n  619 |       fullPage: false,\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts:616:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:47:08.243Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\v1.1-v1-1-390×844-계획·복원-미리보기·긴-제목·메타·하단-UI\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\v1.1-v1-1-390×844-계획·복원-미리보기·긴-제목·메타·하단-UI\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\v1.1-v1-1-390×844-계획·복원-미리보기·긴-제목·메타·하단-UI\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts",
+                    "column": 7,
+                    "line": 616
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-85fe9bb7458ab255e70b",
+          "file": "v1.1.spec.ts",
+          "line": 605,
+          "column": 3
+        },
+        {
+          "title": "v1.1 320×740 계획·복원 미리보기·긴 제목·메타·하단 UI",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 543,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m13\u001b[39m\nReceived:    \u001b[31m12\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m13\u001b[39m\nReceived:    \u001b[31m12\u001b[39m\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts:616:7",
+                    "location": {
+                      "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts",
+                      "column": 7,
+                      "line": 616
+                    },
+                    "snippet": "  614 |         .first()\n  615 |         .evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),\n> 616 |     ).toBeGreaterThanOrEqual(13)\n      |       ^\n  617 |     await page.screenshot({\n  618 |       path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.3/regression'}/today-${label}.png`,\n  619 |       fullPage: false,"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts",
+                        "column": 7,
+                        "line": 616
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m13\u001b[39m\nReceived:    \u001b[31m12\u001b[39m\n\n  614 |         .first()\n  615 |         .evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),\n> 616 |     ).toBeGreaterThanOrEqual(13)\n      |       ^\n  617 |     await page.screenshot({\n  618 |       path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.3/regression'}/today-${label}.png`,\n  619 |       fullPage: false,\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts:616:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:47:09.811Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\v1.1-v1-1-320×740-계획·복원-미리보기·긴-제목·메타·하단-UI\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\v1.1-v1-1-320×740-계획·복원-미리보기·긴-제목·메타·하단-UI\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\v1.1-v1-1-320×740-계획·복원-미리보기·긴-제목·메타·하단-UI\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts",
+                    "column": 7,
+                    "line": 616
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2b7e6d1f85049e714749-8f0797c8811b4fb95679",
+          "file": "v1.1.spec.ts",
+          "line": 605,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "title": "workspace.spec.ts",
+      "file": "workspace.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "사이드바 검색·직접 백업·초점 복귀와 목록 집중 상태/동작 분리",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30191,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\workspace.spec.ts",
+                        "column": 63,
+                        "line": 27
+                      },
+                      "message": "Error: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '검색', exact: true })\u001b[22m\n\n\n  25 |     await page.evaluate(() => JSON.parse(localStorage.getItem('focusday:v1')!).tasks[0].dueDate),\n  26 |   ).toBe('2099-12-31')\n> 27 |   await page.getByRole('button', { name: '검색', exact: true }).click()\n     |                                                               ^\n  28 |   await expect(page.getByLabel('제목·분류 검색')).toBeFocused()\n  29 |   await page.keyboard.type('업무')\n  30 |   await expect(page.locator('.task-row')).toHaveCount(1)\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\workspace.spec.ts:27:63"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:47:11.280Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\workspace-사이드바-검색·직접-백업·초점-복귀와-목록-집중-상태-동작-분리\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\workspace-사이드바-검색·직접-백업·초점-복귀와-목록-집중-상태-동작-분리\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\workspace-사이드바-검색·직접-백업·초점-복귀와-목록-집중-상태-동작-분리\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b163ed09f68681248ada-bcbfbde3c53a28688764",
+          "file": "workspace.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "작업 UI 1440×900: 긴 정보·독립 조작 영역·내부 스크롤",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 973,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:47:42.358Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b163ed09f68681248ada-1a4b2476fac302d2af82",
+          "file": "workspace.spec.ts",
+          "line": 47,
+          "column": 3
+        },
+        {
+          "title": "작업 UI 1366×768: 긴 정보·독립 조작 영역·내부 스크롤",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 778,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:47:43.706Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b163ed09f68681248ada-0a86fd9e0b8daaf9e65b",
+          "file": "workspace.spec.ts",
+          "line": 47,
+          "column": 3
+        },
+        {
+          "title": "작업 UI 1024×768: 긴 정보·독립 조작 영역·내부 스크롤",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 756,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:47:44.493Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b163ed09f68681248ada-d06f8a9be9ce460cf692",
+          "file": "workspace.spec.ts",
+          "line": 47,
+          "column": 3
+        },
+        {
+          "title": "작업 UI 768×1024: 긴 정보·독립 조작 영역·내부 스크롤",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 790,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:47:45.256Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b163ed09f68681248ada-9375195605f1a3e4e4fb",
+          "file": "workspace.spec.ts",
+          "line": 47,
+          "column": 3
+        },
+        {
+          "title": "작업 UI 390×844: 긴 정보·독립 조작 영역·내부 스크롤",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 667,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:47:46.054Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b163ed09f68681248ada-644a1b6b8f8b9a865750",
+          "file": "workspace.spec.ts",
+          "line": 47,
+          "column": 3
+        },
+        {
+          "title": "작업 UI 320×568: 긴 정보·독립 조작 영역·내부 스크롤",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 672,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:47:46.728Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b163ed09f68681248ada-1ad5910dadf23a31205e",
+          "file": "workspace.spec.ts",
+          "line": 47,
+          "column": 3
+        },
+        {
+          "title": "작업 UI 720×450: 긴 정보·독립 조작 영역·내부 스크롤",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 695,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:47:47.409Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b163ed09f68681248ada-349c01c2fd6e9602a6ba",
+          "file": "workspace.spec.ts",
+          "line": 47,
+          "column": 3
+        },
+        {
+          "title": "필수 입력 경계·체크박스·집중 상태의 실제 대비",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 461,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m3\u001b[39m\nReceived:    \u001b[31m1.1507587554743721\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m3\u001b[39m\nReceived:    \u001b[31m1.1507587554743721\u001b[39m\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\workspace.spec.ts:114:7",
+                    "location": {
+                      "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\workspace.spec.ts",
+                      "column": 7,
+                      "line": 114
+                    },
+                    "snippet": "  112 |     expect(\n  113 |       (Math.max(luminance(a), luminance(b)) + 0.05) / (Math.min(luminance(a), luminance(b)) + 0.05),\n> 114 |     ).toBeGreaterThanOrEqual(3)\n      |       ^\n  115 | })\n  116 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\workspace.spec.ts",
+                        "column": 7,
+                        "line": 114
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m3\u001b[39m\nReceived:    \u001b[31m1.1507587554743721\u001b[39m\n\n  112 |     expect(\n  113 |       (Math.max(luminance(a), luminance(b)) + 0.05) / (Math.min(luminance(a), luminance(b)) + 0.05),\n> 114 |     ).toBeGreaterThanOrEqual(3)\n      |       ^\n  115 | })\n  116 |\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\workspace.spec.ts:114:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T05:47:48.111Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\workspace-필수-입력-경계·체크박스·집중-상태의-실제-대비\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\workspace-필수-입력-경계·체크박스·집중-상태의-실제-대비\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\workspace-필수-입력-경계·체크박스·집중-상태의-실제-대비\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\workspace.spec.ts",
+                    "column": 7,
+                    "line": 114
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b163ed09f68681248ada-0b243b90008990021919",
+          "file": "workspace.spec.ts",
+          "line": 91,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-08T05:46:06.086Z",
+    "duration": 102708.353,
+    "expected": 72,
+    "skipped": 0,
+    "unexpected": 8,
+    "flaky": 0
+  }
+}

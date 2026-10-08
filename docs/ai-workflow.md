@@ -53,3 +53,15 @@
 가상 관점의 버튼 발견/검색 혼동은 AI walkthrough 가설로 남겼다. 한도를 넘는 자체 데이터 전체의 파일 보존, 물리기기/OS IME/native 확대/스크린 리더·전체WCAG 미실행도 명시했다. 자동화 시간을 사람의 과업 시간이나 독립 평가 점수로 사용하지 않았다. [Synthetic Beta](SYNTHETIC_BETA_V1_2.md) · [실제 변경](V1_2_UPDATE.md) · [검증](validation.md).
 
 정상 인증·기존 저장소 push 권한을 확인한 뒤 완료 작업을 정상 push했다. 실제 CI/Pages 원격 검사와 build/deploy 성공을 확인하고, 공개 Chrome desktop/mobile 및 6000개 파일 재선택도 실행했다. 그 결과로 README의 공개 대표 화면·링크·출시 문서를 확정했다. [원격/공개 증거와 출시 관계](deployment.md). 기존 환경 보호 규칙·Git identity·remote·태그는 유지했다.
+
+## v1.3 UI 전면 교체의 실제 작업
+
+[실제 사용자 실행 요청](ai-prompts/09-v1.3-user-request.md)이 [첨부 원문](ai-prompts/08-v1.3-implementation.md)을 이번 구현 명세로 명시적으로 채택했다. 원문을 별도 보존하고 SHA-256 일치를 확인했다. 같은 Codex 세션이 자료 확인·설계·구현·시각 검수·테스트·수정·문서·GitHub 작업을 수행했다. 별도 subagent/모델/사람 검토는 없다.
+
+현재 코드/문서/워크플로와 clean main7849237·동일 origin·권한을 확인하고 v1.2 자료를 보존했다. baseline check46/시간대각22와 E2E71을 실제로 다시 실행했다. 명세의6개 URL을 열고 노션 공식 가이드의 Tasks 이미지를 브라우저에서 확대해 대조했다. 제3자 분석의 홈페이지 표현과 공식 작업 UI를 구분해 Focusday 전용 DESIGN.md를 작성했다.
+
+전체 CSS 토큰과 sidebar/페이지/행/편집/보조 패널/모바일/오류를 구현했다. domain/storage/backup/date hook·lockfile은 바꾸지 않았다. 합성 데이터의 실제 Chrome 화면을8개 viewport에서 촬영하고 모바일 계획 설명 폭/13px 메타/독립 조작/오류 가시성을 수정했다. 첫 E2E72 PASS/8 FAIL과 수정 후80 PASS를 둘 다 보존했다. locator 중복·3자리 hex 도구 오류는 실제 글자 크기 회귀와 분리했고 기존 검사를 삭제/skip하지 않았다.
+
+최종 check·root E2E80 뒤 실제 `/focusday/` build와 별도 preview를 검증했다. 첫 Pages preview에 base 환경 변수를 빠뜨려 자산이 HTML로 반환되어 검사를 중단했다. 서버에 같은 base를 적용하고 HTML/JS/CSS/favicon의 경로·content-type을 먼저 확인한 뒤 전체 E2E를 다시 실행했다. 도구 설정 실패를 앱 기능 PASS로 기록하지 않는다.
+
+물리 기기/OS IME/native 확대/스크린 리더/사용자 연구는 실행하지 않았다. [전후·검수 기록](V1_3_UI_REDESIGN.md) · [명령·환경·검증](validation.md) · [실제 GitHub/공개 완료 상태](deployment.md). 기존 identity/remote/태그/보호 규칙을 유지하며 완료 작업만 정상 커밋·push한다.

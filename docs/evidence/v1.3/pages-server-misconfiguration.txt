@@ -1,0 +1,45 @@
+$ playwright test
+
+Running 80 tests using 1 worker
+
+(node:18660) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   1 tests\e2e\app.spec.ts:43:1 › 최초 빈 상태·오늘/전체 생성 기본값·연속 입력·키별 저장 (5.4s)
+(node:12908) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   2 tests\e2e\app.spec.ts:66:1 › 속성 저장·새로고침 유지·미래 기한과 오늘 독립·기한에 의한 잔류 안내 (30.2s)
+(node:3556) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   3 tests\e2e\app.spec.ts:100:1 › 빈 제목·200자 한글·공백 없는 제목·한글 IME 조합 이벤트 (30.1s)
+(node:18968) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   4 tests\e2e\app.spec.ts:126:1 › 완료·실행 취소·다른 항목 편집 보존·완료 목록 복원 (30.2s)
+(node:18380) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   5 tests\e2e\app.spec.ts:142:1 › 삭제 취소는 원래 id·날짜·우선순위·분류·완료·예시 상태를 복원 (30.2s)
+(node:9300) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   6 tests\e2e\app.spec.ts:161:1 › 최근 행동만 실행 취소·이전 타이머 격리·hover/키보드에서 만료 정지 (30.2s)
+(node:12500) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   7 tests\e2e\app.spec.ts:186:1 › 자정 전환 시 집중만 만료·기한 초과 표시·전체 보존 (5.4s)
+(node:18724) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   8 tests\e2e\app.spec.ts:197:3 › focus에서 날짜 갱신·연말 경계 (5.4s)
+(node:16244) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   9 tests\e2e\app.spec.ts:197:3 › visibilitychange에서 날짜 갱신·연말 경계 (5.4s)
+(node:5860) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  10 tests\e2e\app.spec.ts:212:1 › 쓰기 실패 시 메모리 유지·지속 경고·실제 성공한 재시도 (30.2s)
+(node:11780) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  11 tests\e2e\app.spec.ts:237:3 › 손상 원본 자동 덮어쓰기 차단: {broken (30.2s)
+(node:16268) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  12 tests\e2e\app.spec.ts:237:3 › 손상 원본 자동 덮어쓰기 차단: {"version":2,"tasks":[]} (30.2s)
+(node:16952) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  13 tests\e2e\app.spec.ts:237:3 › 손상 원본 자동 덮어쓰기 차단: {"version":1,"tasks":[{}]} (30.2s)
+(node:3424) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

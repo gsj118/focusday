@@ -1,0 +1,151 @@
+{
+  "url": "http://127.0.0.1:4173/",
+  "checkedAt": "2026-10-08T05:52:15.185Z",
+  "browser": "134.0.6998.36",
+  "states": [
+    {
+      "name": "plan-empty",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": false
+    },
+    {
+      "name": "no-results",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": false
+    },
+    {
+      "name": "undo",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": false
+    },
+    {
+      "name": "app-menu",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": false
+    },
+    {
+      "name": "replace-confirm",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": false
+    },
+    {
+      "name": "restore-failure",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": false
+    },
+    {
+      "name": "restore-success",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": false
+    },
+    {
+      "name": "save-failure",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "isolated": true
+    },
+    {
+      "name": "storage-protection",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "isolated": true
+    },
+    {
+      "name": "plan-empty",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "overflow": false
+    },
+    {
+      "name": "no-results",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "overflow": false
+    },
+    {
+      "name": "undo",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "overflow": false
+    },
+    {
+      "name": "app-menu",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "overflow": false
+    },
+    {
+      "name": "replace-confirm",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "overflow": false
+    },
+    {
+      "name": "restore-failure",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "overflow": false
+    },
+    {
+      "name": "restore-success",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "overflow": false
+    },
+    {
+      "name": "save-failure",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "isolated": true
+    },
+    {
+      "name": "storage-protection",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "isolated": true
+    }
+  ]
+}
