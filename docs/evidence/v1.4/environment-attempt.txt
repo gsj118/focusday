@@ -1,0 +1,142 @@
+? Verifying lockfile against supply-chain policies (168 entries)...
+Lockfile is up to date, resolution step is skipped
+Already up to date
+[ERR_PNPM_META_FETCH_FAIL] GET https://registry.npmjs.org/pnpm: fetch failed
+
+   ╭────────────────────────────────────────────────────────────────────────╮
+   │                                                                        │
+   │                  Update available! 11.25.0 → 12.8.1.                   │
+   │                  Changelog: https://pnpm.io/v/12.8.1                   │
+   │   To update, run: Invoke-WebRequest https://get.pnpm.io/install.ps1    │
+   │                 -UseBasicParsing | Invoke-Expression                   │
+   │                                                                        │
+   ╰────────────────────────────────────────────────────────────────────────╯
+
+[WARN] GET https://registry.npmjs.org/@cacheable%2Fmemory error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@cacheable%2Futils error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@eslint-community%2Fregexpp error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@eslint-community%2Feslint-utils error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@eslint%2Fconfig-helpers error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@eslint%2Fcore error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@eslint%2Fjs error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@eslint%2Fplugin-kit error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@eslint%2Fconfig-array error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@humanfs%2Fcore error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@humanwhocodes%2Fmodule-importer error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@humanfs%2Ftypes error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@humanfs%2Fnode error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@jridgewell%2Ftrace-mapping error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@eslint%2Fobject-schema error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@humanwhocodes%2Fretry error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@jridgewell%2Fresolve-uri error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@keyv%2Fbigmap error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@playwright%2Ftest error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@jridgewell%2Fsourcemap-codec error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@oxc-project%2Ftypes error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@keyv%2Fserialize error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-android-arm-eabi error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-darwin-arm64 error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-linux-arm-gnueabihf error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-freebsd-x64 error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-android-arm64 error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-linux-arm64-gnu error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-darwin-x64 error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-linux-arm64-musl error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-linux-x64-gnu error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-openharmony-arm64 error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-linux-ppc64-gnu error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-linux-x64-musl error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-linux-s390x-gnu error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-win32-x64-msvc error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-win32-arm64-msvc error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@types%2Fchai error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@types%2Fdeep-eql error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fpluginutils error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@types%2Fjson-schema error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@types%2Fesrecurse error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@types%2Freact-dom error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@types%2Fnode error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@types%2Festree error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@types%2Freact error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@typescript-eslint%2Fparser error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@typescript-eslint%2Feslint-plugin error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@typescript-eslint%2Ftsconfig-utils error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@typescript-eslint%2Fproject-service error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@typescript-eslint%2Fscope-manager error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@typescript-eslint%2Futils error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@typescript-eslint%2Ftypes error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@typescript-eslint%2Ftypescript-estree error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@typescript-eslint%2Ftype-utils error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@typescript-eslint%2Fvisitor-keys error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@vitejs%2Fplugin-react error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@vitest%2Fmocker error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/acorn-jsx error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/ajv error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/acorn error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/assertion-error error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@vitest%2Fspy error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/balanced-match error (EACCES). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/@cacheable%2Futils error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@cacheable%2Fmemory error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@eslint-community%2Fregexpp error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@eslint-community%2Feslint-utils error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@eslint%2Fconfig-helpers error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@eslint%2Fcore error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@eslint%2Fjs error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@eslint%2Fplugin-kit error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@eslint%2Fconfig-array error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@humanfs%2Fcore error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@humanwhocodes%2Fmodule-importer error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@humanfs%2Ftypes error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@humanfs%2Fnode error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@jridgewell%2Ftrace-mapping error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@eslint%2Fobject-schema error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@humanwhocodes%2Fretry error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@jridgewell%2Fresolve-uri error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@keyv%2Fbigmap error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@playwright%2Ftest error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@jridgewell%2Fsourcemap-codec error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@oxc-project%2Ftypes error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@keyv%2Fserialize error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-android-arm-eabi error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-darwin-arm64 error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-linux-arm-gnueabihf error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-freebsd-x64 error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-android-arm64 error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-linux-arm64-gnu error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-darwin-x64 error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-linux-arm64-musl error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-linux-x64-gnu error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-openharmony-arm64 error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-linux-ppc64-gnu error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-linux-x64-musl error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-linux-s390x-gnu error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-win32-x64-msvc error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fbinding-win32-arm64-msvc error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@types%2Fchai error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@types%2Fdeep-eql error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@rolldown%2Fpluginutils error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@types%2Fjson-schema error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@types%2Fesrecurse error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@types%2Freact-dom error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@types%2Fnode error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@types%2Festree error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@types%2Freact error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@typescript-eslint%2Fparser error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@typescript-eslint%2Feslint-plugin error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@typescript-eslint%2Ftsconfig-utils error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@typescript-eslint%2Fproject-service error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@typescript-eslint%2Fscope-manager error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@typescript-eslint%2Futils error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@typescript-eslint%2Ftypes error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@typescript-eslint%2Ftypescript-estree error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@typescript-eslint%2Ftype-utils error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@typescript-eslint%2Fvisitor-keys error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@vitejs%2Fplugin-react error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@vitest%2Fmocker error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/acorn-jsx error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/ajv error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/acorn error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/assertion-error error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/@vitest%2Fspy error (EACCES). Will retry in 1 minute. 1 retries left.
+[WARN] GET https://registry.npmjs.org/balanced-match error (EACCES). Will retry in 1 minute. 1 retries left.

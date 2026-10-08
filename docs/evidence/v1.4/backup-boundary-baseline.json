@@ -1,0 +1,13 @@
+{
+  "caseId": "E11",
+  "checkedAt": "2026-10-08T06:43:22.711Z",
+  "taskCount": 6000,
+  "paddedBytes": 5531044,
+  "compactBytes": 4847007,
+  "limitBytes": 10485760,
+  "paddedAccepted": true,
+  "compactAccepted": true,
+  "taskFieldsPreserved": true,
+  "quotaTested": false,
+  "status": "PASS"
+}
