@@ -29,3 +29,5 @@ duration은 자동화된 과업의 실행 시간이며 앱 성능 벤치마크�
 이번 시작 코드의 [baseline71](v1.3/baseline-e2e.json)과 [check](v1.3/baseline-check.txt), 교체 후 [첫72 PASS/8 FAIL](v1.3/root-first.json), [보완80 PASS](v1.3/root-second.json), [최종root80](v1.3/root-final.json)을 구분한다. 원본 JSON과 명령 로그를 보존한다. 첫 Pages 서버 base 설정 오류 로그도 남기며 최종 Pages 결과와 구분한다.
 
 [before/after](v1.3/after-visual.json) geometry와 [18개 상태](v1.3/ui-states.json)는 실제 Chrome 합성 데이터의 촬영 기록이다. [백업 경계](v1.3/backup-boundary-after.json)와 최신 원격/공개 실행은 [검증](../validation.md)·[배포](../deployment.md)에 연결한다. 현재 공개 검사 도구는 v1.3 경로에만 저장해 기존 버전 자료를 유지한다.
+
+[v1.3 GitHub Actions](v1.3/github-actions.json)는 실제ec67a2c CI/Pages 성공 상태/job/고정pnpm11.19.0/단위46·시간대각22·Chromium80의 로그다. [공개 검증](v1.3/live-deployment.json)은 같은 소스의 버전1.3.0·desktop/mobile·자산200·핵심/계획/복원·6000개 전체 다운로드/재선택 미리보기 PASS다. 재배포 후 반복 실행은 `test-results/release-smoke/`에 분리한다.

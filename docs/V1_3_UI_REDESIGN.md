@@ -36,7 +36,7 @@ getdesign.md의 분석/preview와 awesome-design-md를 직접 열어 확인했�
 
 ## 검수와 수정 근거
 
-8개 viewport(명세6개 +720×450 동등 reflow +390×480 작은 높이)의 본문/계획/편집/긴 제목/전체/파일/미리보기를 촬영하고 geometry와 직접 시각 검토를 병행했다. [before](evidence/v1.3/before-visual.json)/[after](evidence/v1.3/after-visual.json)의 동일 데스크톱 예시 행은 약93.6px →56.8px. 가로 overflow·실행 오류가 없다. 1024px에서는 정보 보존을 위해 메타가 제목 아래로 내려가 행이 자연스럽게 커진다.
+8개 viewport(명세6개 +720×450 동등 reflow +390×480 작은 높이)의 본문/계획/편집/긴 제목/전체/파일/미리보기를 촬영하고 geometry와 직접 시각 검토를 병행했다. [before](evidence/v1.3/before-visual.json)/[after](evidence/v1.3/after-visual.json)의 동일 데스크톱 예시 행은 약93–94px →56.8px. 가로 overflow·실행 오류가 없다. 1024px에서는 정보 보존을 위해 메타가 제목 아래로 내려가 행이 자연스럽게 커진다.
 
 발견/수정:
 
@@ -56,3 +56,7 @@ getdesign.md의 분석/preview와 awesome-design-md를 직접 열어 확인했�
 미래 기한+오늘 집중, 오늘 기한+집중 해제 잔류, 어제 수동 이어가기의 id/기한, 그룹/검색/완료/undo pause, 초기 읽기/손상 보호/메모리 쓰기 실패, 10MiB UTF-8 전체 compact 백업/재가져오기/id 합치기/확인 교체/실패 보호, restore 후 오래된 검색·undo 정리, 자정·키보드·composition 동작의 기존 assertion을 유지했다.
 
 물리 스마트폰·실제 가상 키보드·OS 한글 IME·native200% zoom·스크린 리더·Safari/Firefox·사람 사용자 연구는 미실행이다. Chrome 에뮬레이션/축소 viewport/합성 이벤트/이름·대비·keyboard 검사를 이들과 구분한다. [검증 범위](validation.md) · [배포 결과](deployment.md) · [AI 개발 기록](ai-workflow.md).
+
+## GitHub와 실제 공개 완료
+
+기존 main에 정상 push하고 수동 Pages를 실행했다. ec67a2c 소스의 CI/Pages는 둘 다 success, 원격 Chromium도 각각80 passed다. 공개 버전1.3.0·자산200·desktop/mobile 핵심 조작·계획/복원·6000개 전체 다운로드/재선택 미리보기를 PASS로 확인했다. [원격 증거](evidence/v1.3/github-actions.json) · [공개 실행](evidence/v1.3/live-deployment.json) · [실제 공개 화면](screenshots/v1.3/live-desktop.png). 최종 출시 문서의 앱 소스는 이 검증된 소스와 같다. 기존 태그/원격/보호 규칙을 유지한다.

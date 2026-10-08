@@ -58,4 +58,10 @@ Pages는 `VITE_BASE_PATH=/focusday/`로 build 후 port4180 preview를 시작하�
 | 대량 목록 성능·storage quota·다중 탭   | NOT_RUN. 순수 데이터/read port의 파일 경계와 구분                           |
 | 10MiB 초과 전체 메모리 파일 보존/복원  | UNSUPPORTED. 전체 내보내기를 중단하고 부분 누락하지 않음                    |
 
-원격 CI/Pages 및 공개 검증은 source SHA와 완료 상태를 [배포 기록](deployment.md)에 연결하고 새 원본으로 보존한다.
+## 실제 원격·공개 결과
+
+소스ec67a2c의 [GitHub CI](https://github.com/gsj118/focusday/actions/runs/37736055832)·[수동 Pages](https://github.com/gsj118/focusday/actions/runs/37736088025)는 모두 success다. 고정pnpm11.19.0/frozen lockfile 환경에서 타입·lint·단위46·서울/뉴욕각22·build·Chromium E2E 각각80 passed를 실제 로그로 확인했다. [상태/job/PASS 로그](evidence/v1.3/github-actions.json). 로컬 Chrome134 결과와 구분한다.
+
+2026-10-08 15:12 KST 공개 Chrome desktop1440×900/mobile390×844는 버전1.3.0·핵심 조작·계획/복원·저장 새로고침·자산200·실행 오류0 PASS다. 별도6000개 read port의 전체 파일 다운로드/task 비교/같은 파일 미리보기도 PASS(4,877,007bytes). quota/목록 성능/6000개 적용은 제외한다. [공개 실행 원본](evidence/v1.3/live-deployment.json), [실제 공개 desktop](screenshots/v1.3/live-desktop.png), [mobile 복원](screenshots/v1.3/live-mobile-restore.png). 두 화면과 편집/계획도 직접 열어 시각 검토했다.
+
+첫 배포·최종 출시의 source 관계와 후속 main 재배포는 [배포 기록](deployment.md)에 구분한다. 실제 스마트폰/OS IME/사용자 연구 등의 미실행 범위는 그대로다.

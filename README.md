@@ -2,9 +2,9 @@
 
 **생각난 일은 빠르게 담고, 오늘 할 일만 선명하게.** 계정 없이 사용하는 개인용 할 일 관리 앱입니다.
 
-![Focusday v1.3 실제 데스크톱 화면 — 합성 예시 데이터](docs/screenshots/v1.3/after/today-1440x900.png)
+![Focusday v1.3 실제 데스크톱 화면 — 합성 예시 데이터](docs/screenshots/v1.3/live-desktop.png)
 
-**[Focusday 바로 사용하기](https://gsj118.github.io/focusday/)** · [GitHub 저장소](https://github.com/gsj118/focusday). v1.3.0은 노션 작업 화면을 참고해 사이드바·목록·계획·편집·백업·모바일을 교체한 버전입니다. 원격/공개 확인 상태는 [배포 기록](docs/deployment.md)에 구분합니다.
+**[Focusday 바로 사용하기](https://gsj118.github.io/focusday/)** · [GitHub 저장소](https://github.com/gsj118/focusday). v1.3.0은 노션 작업 화면을 참고해 사이드바·목록·계획·편집·백업·모바일을 교체한 버전입니다. 2026-10-08 GitHub CI·수동 Pages와 공개 desktop/mobile·백업 검증을 완료했습니다. [실제 배포 결과](docs/deployment.md).
 
 Node.js 24 / pnpm 11.19.0에서 실행하세요.
 
@@ -31,9 +31,9 @@ pnpm dev
 4. 체크박스로 완료하고 **실행 취소** 또는 전체의 완료 영역에서 복원합니다.
 5. 사이드바 **백업·복원**, 모바일 **예시 및 앱 정보 → 백업·복원**에서 JSON을 다운로드합니다. 파일 선택은 미리보기이며 합치기는 중복 id의 현재 항목을 유지합니다.
 
-| 모바일 계획                                                                                                      | 모바일 복원 미리보기                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| <img src="docs/screenshots/v1.3/after/plan-390x844.png" alt="390×844 실제 계획 패널, 합성 데이터" width="300" /> | <img src="docs/screenshots/v1.3/after/restore-390x844.png" alt="390×844 실제 복원 미리보기, 합성 데이터" width="300" /> |
+| 모바일 계획                                                                                                    | 모바일 복원 미리보기                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| <img src="docs/screenshots/v1.3/live-mobile-plan.png" alt="390×844 실제 계획 패널, 합성 데이터" width="300" /> | <img src="docs/screenshots/v1.3/live-mobile-restore.png" alt="390×844 실제 복원 미리보기, 합성 데이터" width="300" /> |
 
 격리 Chrome context의 실제 앱 화면입니다. 모바일은 에뮬레이션이며 생성 이미지/목업이 아닙니다. [320px 편집](docs/screenshots/v1.3/after/editor-320x568.png) · [3분 시연](docs/demo-script.md).
 
@@ -54,15 +54,15 @@ pnpm preview
 
 다른 터미널에서 `pnpm test:e2e`를 실행합니다. preview 재사용과 자동 서버 모두 지원합니다. 기본은 설치된 Chrome이며 없으면 `pnpm exec playwright install chromium` 후 `PW_CHANNEL=chromium`을 지정합니다. 검증은 격리 context만 사용합니다.
 
-| v1.3 실제 실행               | 결과                                                                            |
-| ---------------------------- | ------------------------------------------------------------------------------- |
-| 작업 전 v1.2 baseline        | 타입·lint·단위46·서울/뉴욕 각22·build·E2E71 PASS                                |
-| 변경 후 `pnpm check`         | 타입·lint·단위46·서울/뉴욕 각22·build PASS                                      |
-| 루트 production Chrome E2E   | 80 PASS, fail/skip/flaky0                                                       |
-| Pages `/focusday/` build·E2E | 80 PASS, fail/skip/flaky0, 자산200. [원본](docs/evidence/v1.3/pages-final.json) |
-| 실제 화면                    | 명세6개 viewport +390×480 +720×450 동등 reflow, 별도18개 상태 촬영              |
-| 기능 회귀                    | 기존71개 유지, 검색/백업/초점/긴 정보/조작 영역/대비9개 추가                    |
-| GitHub CI·Pages·공개 사이트  | [실제 원격/공개 결과](docs/deployment.md)                                       |
+| v1.3 실제 실행               | 결과                                                                                            |
+| ---------------------------- | ----------------------------------------------------------------------------------------------- |
+| 작업 전 v1.2 baseline        | 타입·lint·단위46·서울/뉴욕 각22·build·E2E71 PASS                                                |
+| 변경 후 `pnpm check`         | 타입·lint·단위46·서울/뉴욕 각22·build PASS                                                      |
+| 루트 production Chrome E2E   | 80 PASS, fail/skip/flaky0                                                                       |
+| Pages `/focusday/` build·E2E | 80 PASS, fail/skip/flaky0, 자산200. [원본](docs/evidence/v1.3/pages-final.json)                 |
+| 실제 화면                    | 명세6개 viewport +390×480 +720×450 동등 reflow, 별도18개 상태 촬영                              |
+| 기능 회귀                    | 기존71개 유지, 검색/백업/초점/긴 정보/조작 영역/대비9개 추가                                    |
+| GitHub CI·Pages·공개 사이트  | 모두 성공, 원격 E2E각80·공개1.3.0/자산200/핵심/6000개 미리보기 PASS. [증거](docs/deployment.md) |
 
 [환경·명령·결과·미실행](docs/validation.md) · [루트 원본](docs/evidence/v1.3/root-final.json). 실제 스마트폰·가상 키보드·OS 한글 IME·native200% zoom·스크린 리더·Safari/Firefox·사람 사용자 연구는 미실행입니다. 축소 viewport·합성 이벤트·Chrome reflow와 구분합니다.
 
@@ -90,6 +90,6 @@ React19.3.0 + TypeScript5.9.3 + Vite8.3.2 + 일반 CSS. 서버·라우터·상�
 | [v1.0.0](https://github.com/gsj118/focusday/tree/v1.0.0) | 빠른 입력·오늘/전체·기한/집중·저장 보호·undo. [보존](docs/versions/v1.0.0/index.md)                                               |
 | [v1.1.0](https://github.com/gsj118/focusday/tree/v1.1.0) | 계획·어제 이어가기·백업/복원. [변경](docs/V1_1_UPDATE.md), [보존](docs/versions/v1.1.0/index.md)                                  |
 | [v1.2.0](https://github.com/gsj118/focusday/tree/v1.2.0) | Synthetic Beta로 백업 크기/조합 Enter 보완. [53개 검사](docs/SYNTHETIC_BETA_CASES_V1_2.md), [보존](docs/versions/v1.2.0/index.md) |
-| v1.3.0                                                   | 노션 작업 UI 전체 교체와 기존 데이터/기능 보존. [전후·검수](docs/V1_3_UI_REDESIGN.md), [CHANGELOG](CHANGELOG.md)                  |
+| [v1.3.0](https://github.com/gsj118/focusday/tree/v1.3.0) | 노션 작업 UI 전체 교체와 기존 데이터/기능 보존. [전후·검수](docs/V1_3_UI_REDESIGN.md), [CHANGELOG](CHANGELOG.md)                  |
 
 기존 태그·이력을 유지하고 실제 변경 단위로 커밋합니다. CI는 main push/PR, Pages는 **main 수동 workflow**입니다. 공개 확인 도구는 새 증거/화면을 `docs/evidence/v1.3/`, `docs/screenshots/v1.3/`에 저장합니다. [배포와 재검증](docs/deployment.md).

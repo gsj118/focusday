@@ -65,3 +65,5 @@
 최종 check·root E2E80 뒤 실제 `/focusday/` build와 별도 preview를 검증했다. 첫 Pages preview에 base 환경 변수를 빠뜨려 자산이 HTML로 반환되어 검사를 중단했다. 서버에 같은 base를 적용하고 HTML/JS/CSS/favicon의 경로·content-type을 먼저 확인한 뒤 전체 E2E를 다시 실행했다. 도구 설정 실패를 앱 기능 PASS로 기록하지 않는다.
 
 물리 기기/OS IME/native 확대/스크린 리더/사용자 연구는 실행하지 않았다. [전후·검수 기록](V1_3_UI_REDESIGN.md) · [명령·환경·검증](validation.md) · [실제 GitHub/공개 완료 상태](deployment.md). 기존 identity/remote/태그/보호 규칙을 유지하며 완료 작업만 정상 커밋·push한다.
+
+baseline/설계526a06e → UI/회귀8b8a9ad → 전후/검증/문서ec67a2c를 정상 main에 push했다. 같은ec67a2c의 CI와 수동 Pages build/deploy가 실제 success, 고정pnpm11.19.0 원격E2E각80이었다. 공개 Chrome desktop/mobile와6000개 자체 파일 재가져오기 미리보기를 실제 실행해 PASS를 확인하고 공개 화면을 직접 열어 검수했다. 그 뒤 README와 배포/검증 문서를 실제 완료 결과로 확정했다. 원격/API/공개 결과를 AI의 시각 판단과 구분해 저장했다.

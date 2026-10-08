@@ -1,6 +1,6 @@
 # Focusday GitHub 제출과 Pages 배포 결과
 
-## v1.3 UI 교체·로컬 완료 상태
+## v1.3 UI 교체·실제 GitHub와 공개 배포 완료
 
 2026-10-08 KST. 시작 main/tag v1.2.0 `78492375019cf800f37dc5a7a806bf1bf47f26d7`, 동일한 origin과 깨끗한 작업 폴더를 확인했다. 원격 사용자는 ADMIN이고 main branch protection 조회는404(미설정)였으며 기존 직접 main 제출과 main 수동 Pages 정책을 유지한다. identity/remote/태그/환경 보호를 변경하지 않는다.
 
@@ -8,7 +8,17 @@
 
 로컬 check는 타입·lint·단위46·서울/뉴욕각22·build PASS다. 루트 production 및 실제 `/focusday/` production Chrome E2E는 **각80 PASS**, fail/skip/flaky0, exit0다. Pages HTML/JS/CSS/favicon은 모두200이며 예상 content-type과 하위 경로를 확인했다. 첫 preview의 base 환경 설정 누락으로 자산이 HTML이 된 실행은 중단하고 로그를 보존했다. 올바른 base로 다시 시작한 최종 실행과 구분한다. [전체 명령·범위](validation.md), [자산 원본](evidence/v1.3/pages-assets.json).
 
-현재 이 문서 커밋 단계에는 원격 CI/수동 Pages/공개 사이트 검증을 아직 완료로 기록하지 않는다. 실제 성공 뒤 source SHA·run URL·로그·공개 Chrome 결과를 이 절에 확정한다. push만으로 Pages 완료로 보지 않는다. 공개 확인 도구의 현재 버전은1.3.0이며 v1.3 경로에만 기록한다. 아래 v1.2/v1.1 결과는 당시 기록이다.
+기존 main에 세 작업 커밋을 정상 push했다. 첫 v1.3 배포 소스는 `ec67a2cdd8f75c870e243a18c0248076a4120bb2`다. [CI](https://github.com/gsj118/focusday/actions/runs/37736055832)와 [Pages 검증·build/deploy](https://github.com/gsj118/focusday/actions/runs/37736088025)가 모두 **success**다. 실제 pnpm11.19.0/frozen lockfile 원격 로그의 타입·lint·단위46·서울/뉴욕각22·build·Chromium E2E **각80 passed**를 확인했다. [API 상태·job·실제 검사 로그](evidence/v1.3/github-actions.json).
+
+2026-10-08 15:12 KST부터 공개 URL에서 Chrome134의 격리된1440×900 desktop·390×844 touch mobile을 조작해 앱 **1.3.0**, HTML/JS/CSS/favicon200, 생성·속성 편집·새로고침 저장·완료/삭제 undo·예시·계획·어제 이어가기 id/기한·compact 전체 백업·미리보기/id 합치기·조합 Enter 무저장·실행 오류0을 확인했다. 모두 PASS다. [공개 실행 원본](evidence/v1.3/live-deployment.json). 실제 공개 desktop과 mobile 편집/계획/복원 화면을 열어 시각 검토했다.
+
+별도 격리 read port의6000개도 공개 앱에서 실제 전체 다운로드→task 모든 필드 비교→같은 파일 선택→6000개 미리보기 PASS, **4,877,007 bytes**였다. 실제 quota/6000개 목록 성능/복원 적용은 실행하지 않았다. [공개 백업 화면](screenshots/v1.3/live-backup-6000.png).
+
+[공개 desktop](screenshots/v1.3/live-desktop.png) · [mobile](screenshots/v1.3/live-mobile.png) · [모바일 계획](screenshots/v1.3/live-mobile-plan.png) · [모바일 복원](screenshots/v1.3/live-mobile-restore.png). 실제 앱의 합성 데이터이며 생성 이미지가 아니다.
+
+출시 [v1.3.0](https://github.com/gsj118/focusday/tree/v1.3.0)은 공개 증거와 문서를 보완한 릴리스다. 첫 배포ec67a2c 이후 앱/public/package/lockfile/Vite 소스는 동일하며 후속 변경은 공개 증거·문서다. 출시 커밋도 허용된 main에서 같은 수동 workflow로 배포한다. 최신 소스 SHA와 상태는 [CI 목록](https://github.com/gsj118/focusday/actions/workflows/ci.yml)·[Pages 목록](https://github.com/gsj118/focusday/actions/workflows/pages.yml)에 표시된다. 반복 공개 검증의 증거/촬영은 `test-results/release-smoke/`에 저장해 첫 공개 자료를 유지한다.
+
+이전 태그/버전 문서/v1.2 증거·identity·remote·환경 보호는 유지했다. force push·이력 재작성·실패 숨김은 없다. 공개 확인 도구의 현재 버전은1.3.0이며 v1.3 경로에만 기록한다. 아래 v1.2/v1.1 결과는 당시 기록이다.
 
 ## v1.2 실제 GitHub·공개 배포 결과
 

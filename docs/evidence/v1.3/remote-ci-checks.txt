@@ -1,0 +1,12 @@
+verify	Run pnpm install --frozen-lockfile	2026-10-08T06:09:26.4694771Z Done in 3.2s using pnpm v11.19.0
+verify	Run pnpm check	2026-10-08T06:09:26.9880153Z $ pnpm typecheck && pnpm lint && pnpm test && pnpm test:dates && pnpm build
+verify	Run pnpm check	2026-10-08T06:09:27.4219500Z $ tsc --noEmit
+verify	Run pnpm check	2026-10-08T06:09:30.6173880Z $ eslint .
+verify	Run pnpm check	2026-10-08T06:09:34.1292292Z       Tests  46 passed (46)
+verify	Run pnpm check	2026-10-08T06:09:34.6235262Z Calendar tests in Asia/Seoul
+verify	Run pnpm check	2026-10-08T06:09:35.2324800Z       Tests  22 passed (22)
+verify	Run pnpm check	2026-10-08T06:09:35.2527973Z Calendar tests in America/New_York
+verify	Run pnpm check	2026-10-08T06:09:35.9263326Z       Tests  22 passed (22)
+verify	Run pnpm check	2026-10-08T06:09:36.3986831Z $ tsc --noEmit && vite build
+verify	Run pnpm check	2026-10-08T06:09:39.5063223Z ✓ built in 134ms
+verify	Run pnpm test:e2e	2026-10-08T06:11:30.3102595Z   80 passed (1.3m)
