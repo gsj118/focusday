@@ -1687,6 +1687,11 @@ dialog::backdrop {
 .preferences-dialog {
   width: 440px;
 }
+@media (max-width: 899px) {
+  .preferences-dialog {
+    width: 100%;
+  }
+}
 .preferences-fields fieldset {
   padding: 0;
   margin: var(--space-5) 0;

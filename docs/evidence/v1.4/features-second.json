@@ -1,0 +1,261 @@
+{
+  "phase": "second",
+  "url": "http://127.0.0.1:4173/",
+  "checkedAt": "2026-10-08T07:03:27.683Z",
+  "browser": "134.0.6998.36",
+  "screens": [
+    {
+      "width": 1440,
+      "height": 900,
+      "dialogBox": {
+        "x": 1000,
+        "y": 0,
+        "width": 440,
+        "height": 900
+      },
+      "footerBox": {
+        "x": 1000,
+        "y": 823.2000122070312,
+        "width": 440,
+        "height": 76.79998779296875
+      },
+      "overflow": false,
+      "documentOverflow": false,
+      "errors": [],
+      "condition": "CSS viewport / touch emulation below 500px"
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "dialogBox": {
+        "x": 926.4000244140625,
+        "y": 0,
+        "width": 440,
+        "height": 768
+      },
+      "footerBox": {
+        "x": 926.4000244140625,
+        "y": 691.2000122070312,
+        "width": 440,
+        "height": 76.79998779296875
+      },
+      "overflow": false,
+      "documentOverflow": false,
+      "errors": [],
+      "condition": "CSS viewport / touch emulation below 500px"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "dialogBox": {
+        "x": 584,
+        "y": 0,
+        "width": 440,
+        "height": 768
+      },
+      "footerBox": {
+        "x": 584,
+        "y": 691.2000122070312,
+        "width": 440,
+        "height": 76.79998779296875
+      },
+      "overflow": false,
+      "documentOverflow": false,
+      "errors": [],
+      "condition": "CSS viewport / touch emulation below 500px"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "dialogBox": {
+        "x": 0,
+        "y": 264,
+        "width": 768,
+        "height": 760
+      },
+      "footerBox": {
+        "x": 0,
+        "y": 955.2000122070312,
+        "width": 768,
+        "height": 68.79998779296875
+      },
+      "overflow": false,
+      "documentOverflow": false,
+      "errors": [],
+      "condition": "CSS viewport / touch emulation below 500px"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "dialogBox": {
+        "x": 0,
+        "y": 84,
+        "width": 390.3999938964844,
+        "height": 760
+      },
+      "footerBox": {
+        "x": 0,
+        "y": 775.2000122070312,
+        "width": 390.3999938964844,
+        "height": 68.79998779296875
+      },
+      "overflow": false,
+      "documentOverflow": false,
+      "errors": [],
+      "condition": "CSS viewport / touch emulation below 500px"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "dialogBox": {
+        "x": 0,
+        "y": 16,
+        "width": 320,
+        "height": 552
+      },
+      "footerBox": {
+        "x": 0,
+        "y": 499.20001220703125,
+        "width": 320,
+        "height": 68.79998779296875
+      },
+      "overflow": false,
+      "documentOverflow": false,
+      "errors": [],
+      "condition": "CSS viewport / touch emulation below 500px"
+    },
+    {
+      "width": 720,
+      "height": 450,
+      "dialogBox": {
+        "x": 0,
+        "y": 16,
+        "width": 720,
+        "height": 434.3999938964844
+      },
+      "footerBox": {
+        "x": 0,
+        "y": 381.6000061035156,
+        "width": 720,
+        "height": 68.79998779296875
+      },
+      "overflow": false,
+      "documentOverflow": false,
+      "errors": [],
+      "condition": "200% equivalent CSS reflow, not native zoom"
+    },
+    {
+      "width": 390,
+      "height": 480,
+      "dialogBox": {
+        "x": 0,
+        "y": 16,
+        "width": 390.3999938964844,
+        "height": 464
+      },
+      "footerBox": {
+        "x": 0,
+        "y": 411.20001220703125,
+        "width": 390.3999938964844,
+        "height": 68.79998779296875
+      },
+      "overflow": false,
+      "documentOverflow": false,
+      "errors": [],
+      "condition": "reduced viewport, not OS keyboard"
+    }
+  ],
+  "observations": [
+    {
+      "caseId": "V14-sheet-1440",
+      "expected": "existing full width mobile sheet below 900px",
+      "actual": {
+        "width": 440,
+        "viewport": 1440
+      },
+      "status": "PASS",
+      "screenshot": "docs/screenshots/v1.4/features-second/settings-1440x900.png"
+    },
+    {
+      "caseId": "V14-sheet-1366",
+      "expected": "existing full width mobile sheet below 900px",
+      "actual": {
+        "width": 440,
+        "viewport": 1366
+      },
+      "status": "PASS",
+      "screenshot": "docs/screenshots/v1.4/features-second/settings-1366x768.png"
+    },
+    {
+      "caseId": "V14-sheet-1024",
+      "expected": "existing full width mobile sheet below 900px",
+      "actual": {
+        "width": 440,
+        "viewport": 1024
+      },
+      "status": "PASS",
+      "screenshot": "docs/screenshots/v1.4/features-second/settings-1024x768.png"
+    },
+    {
+      "caseId": "V14-sheet-768",
+      "expected": "existing full width mobile sheet below 900px",
+      "actual": {
+        "width": 768,
+        "viewport": 768
+      },
+      "status": "PASS",
+      "screenshot": "docs/screenshots/v1.4/features-second/settings-768x1024.png"
+    },
+    {
+      "caseId": "V14-sheet-390",
+      "expected": "existing full width mobile sheet below 900px",
+      "actual": {
+        "width": 390.3999938964844,
+        "viewport": 390
+      },
+      "status": "PASS",
+      "screenshot": "docs/screenshots/v1.4/features-second/settings-390x844.png"
+    },
+    {
+      "caseId": "V14-sheet-320",
+      "expected": "existing full width mobile sheet below 900px",
+      "actual": {
+        "width": 320,
+        "viewport": 320
+      },
+      "status": "PASS",
+      "screenshot": "docs/screenshots/v1.4/features-second/settings-320x568.png"
+    },
+    {
+      "caseId": "V14-sheet-720",
+      "expected": "existing full width mobile sheet below 900px",
+      "actual": {
+        "width": 720,
+        "viewport": 720
+      },
+      "status": "PASS",
+      "screenshot": "docs/screenshots/v1.4/features-second/settings-720x450.png"
+    },
+    {
+      "caseId": "V14-sheet-390",
+      "expected": "existing full width mobile sheet below 900px",
+      "actual": {
+        "width": 390.3999938964844,
+        "viewport": 390
+      },
+      "status": "PASS",
+      "screenshot": "docs/screenshots/v1.4/features-second/settings-390x480.png"
+    },
+    {
+      "caseId": "V14-retry-draft",
+      "expected": "retry of applied settings distinguishes unsaved draft",
+      "actual": {
+        "message": "현재 적용된 설정과 격려 표시를 저장했습니다. 편집 중인 초안은 별도로 설정 저장을 눌러 적용해 주세요.",
+        "selectedDraftHumor": true,
+        "applied": "calm"
+      },
+      "status": "PASS",
+      "screenshot": "docs/screenshots/v1.4/features-second/settings-retry-draft-320.png"
+    }
+  ]
+}

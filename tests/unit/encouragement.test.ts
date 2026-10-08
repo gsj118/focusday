@@ -69,14 +69,20 @@ describe('achievements and milestones', () => {
   })
   it('UTC date slice is not used at Seoul/New York local midnight', () => {
     const zone = Intl.DateTimeFormat().resolvedOptions().timeZone
-    const stamp = zone === 'Asia/Seoul' ? '2026-10-07T15:10:00.000Z' : zone === 'America/New_York' ? '2026-10-09T03:10:00.000Z' : '2026-10-08T12:00:00.000Z'
+    const stamp =
+      zone === 'Asia/Seoul'
+        ? '2026-10-07T15:10:00.000Z'
+        : zone === 'America/New_York'
+          ? '2026-10-09T03:10:00.000Z'
+          : '2026-10-08T12:00:00.000Z'
     const task = {
       ...createTask('boundary', 'all', '2026-10-08', stamp, 'boundary'),
       completedAt: stamp,
     }
     expect(localDate(new Date(stamp))).toBe('2026-10-08')
     expect(selectAchievements([task], '2026-10-08')).toHaveLength(1)
-    if (zone === 'Asia/Seoul' || zone === 'America/New_York') expect(stamp.slice(0, 10)).not.toBe('2026-10-08')
+    if (zone === 'Asia/Seoul' || zone === 'America/New_York')
+      expect(stamp.slice(0, 10)).not.toBe('2026-10-08')
   })
   it('only direct 0→1 and 2→3 transitions are candidates', () => {
     expect([0, 1, 2, 3].map((before) => completionMilestone(before, before + 1))).toEqual([

@@ -1,0 +1,94 @@
+$ playwright test "tests/e2e/v1.4.spec.ts"
+
+Running 17 tests using 1 worker
+
+(node:3076) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\e2e\v1.4.spec.ts:128:1 › P01 처음 사용: 빈 화면→입력→계획→완료 복구→설정·백업→재방문 (1.7s)
+  ok  2 tests\e2e\v1.4.spec.ts:189:1 › P02 키보드: Enter·Tab·Escape→설정 trap→성취 복원 초점→백업 (1.0s)
+  x   3 tests\e2e\v1.4.spec.ts:246:1 › P03 한글 입력: 합성 조합→연속 입력·편집→내 문장 경계·HTML→재방문 (30.3s)
+(node:12872) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  4 tests\e2e\v1.4.spec.ts:300:1 › P04 모바일 터치390: 입력→계획→설정→완료·undo→sheet 백업→재방문 (1.3s)
+  ok  5 tests\e2e\v1.4.spec.ts:334:1 › P05 작은 화면320: 긴 정보→작은 높이 설정→성취→백업·재방문 (1.4s)
+  ok  6 tests\e2e\v1.4.spec.ts:389:1 › P06 쌓인 일: 80개→검색·계획·정렬→검색 중 완료→성취·백업 (1.4s)
+  ok  7 tests\e2e\v1.4.spec.ts:442:1 › P07 계획 변경: 어제 이어가기→미래 기한·잔류→완료→설정 취소·재방문 (1.4s)
+  ok  8 tests\e2e\v1.4.spec.ts:497:1 › P08 실수 복구: 완료·빠른 연속→undo·재완료→삭제·복원→새로고침 (1.6s)
+  ok  9 tests\e2e\v1.4.spec.ts:553:1 › P09 격려 선호: 문구 왕복→완료→refresh/reopen·offline→자정·재방문 (1.7s)
+  ok 10 tests\e2e\v1.4.spec.ts:622:1 › P10 조용한 화면: 독립 끄기→완료 시점 처리→켜기·재완료→설정 취소·재방문 (1.7s)
+  ok 11 tests\e2e\v1.4.spec.ts:667:1 › P11 확대·낮은 시력 관점: 200% 동등 reflow→긴 설정·오류 초점→성취 복구 (1.2s)
+  x  12 tests\e2e\v1.4.spec.ts:719:1 › P12 보존: 설정/할 일 쓰기 실패→백업·실패 복원→재시도→정상 복원·재방문 (30.2s)
+(node:5248) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 13 tests\e2e\v1.4.spec.ts:824:3 › B01 설정 보호·명시적 초기화: {broken (990ms)
+  ok 14 tests\e2e\v1.4.spec.ts:824:3 › B01 설정 보호·명시적 초기화: {"version":2,"sentenceMode":"calm","customSentence":"","encouragementEnabled":true,"processed":{}} (809ms)
+  ok 15 tests\e2e\v1.4.spec.ts:848:3 › B02 완료 timestamp 로컬 자정 경계·다른 시간대 Asia/Seoul (956ms)
+  ok 16 tests\e2e\v1.4.spec.ts:848:3 › B02 완료 timestamp 로컬 자정 경계·다른 시간대 America/New_York (1.0s)
+  ok 17 tests\e2e\v1.4.spec.ts:875:1 › B03 초기/import/replace/예시 증가 무격려·새 직접 완료 경계 (705ms)
+
+
+  1) tests\e2e\v1.4.spec.ts:246:1 › P03 한글 입력: 합성 조합→연속 입력·편집→내 문장 경계·HTML→재방문 › P03-02 ────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.evaluate: Target page, context or browser has been closed
+
+       99 |     throw error
+      100 |   } finally {
+    > 101 |     record.actual = await page.evaluate(() => ({
+          |                                ^
+      102 |       sentence: document.querySelector('.daily-sentence')?.textContent || null,
+      103 |       achievements: document.querySelector('.achievements-section > summary')?.textContent || null,
+      104 |       toast: document.querySelector('.undo-toast')?.textContent || null,
+        at check (C:\Users\gsjtj\Documents\ChatGPT\Todolist\tests\e2e\v1.4.spec.ts:101:32)
+        at C:\Users\gsjtj\Documents\ChatGPT\Todolist\tests\e2e\v1.4.spec.ts:268:3
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\artifacts\v1.4-P03-한글-입력-합성-조합→연속-입력·편집→내-문장-경계·HTML→재방문\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\artifacts\v1.4-P03-한글-입력-합성-조합→연속-입력·편집→내-문장-경계·HTML→재방문\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\artifacts\v1.4-P03-한글-입력-합성-조합→연속-입력·편집→내-문장-경계·HTML→재방문\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\artifacts\v1.4-P03-한글-입력-합성-조합→연속-입력·편집→내-문장-경계·HTML→재방문\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\e2e\v1.4.spec.ts:719:1 › P12 보존: 설정/할 일 쓰기 실패→백업·실패 복원→재시도→정상 복원·재방문 › P12-03 ───────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.evaluate: Target page, context or browser has been closed
+
+       99 |     throw error
+      100 |   } finally {
+    > 101 |     record.actual = await page.evaluate(() => ({
+          |                                ^
+      102 |       sentence: document.querySelector('.daily-sentence')?.textContent || null,
+      103 |       achievements: document.querySelector('.achievements-section > summary')?.textContent || null,
+      104 |       toast: document.querySelector('.undo-toast')?.textContent || null,
+        at check (C:\Users\gsjtj\Documents\ChatGPT\Todolist\tests\e2e\v1.4.spec.ts:101:32)
+        at C:\Users\gsjtj\Documents\ChatGPT\Todolist\tests\e2e\v1.4.spec.ts:781:3
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\artifacts\v1.4-P12-보존-설정-할-일-쓰기-실패→백업·실패-복원→재시도→정상-복원·재방문\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\artifacts\v1.4-P12-보존-설정-할-일-쓰기-실패→백업·실패-복원→재시도→정상-복원·재방문\error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\artifacts\v1.4-P12-보존-설정-할-일-쓰기-실패→백업·실패-복원→재시도→정상-복원·재방문\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\artifacts\v1.4-P12-보존-설정-할-일-쓰기-실패→백업·실패-복원→재시도→정상-복원·재방문\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests\e2e\v1.4.spec.ts:246:1 › P03 한글 입력: 합성 조합→연속 입력·편집→내 문장 경계·HTML→재방문 ──────────────────────
+    tests\e2e\v1.4.spec.ts:719:1 › P12 보존: 설정/할 일 쓰기 실패→백업·실패 복원→재시도→정상 복원·재방문 ─────────────────────
+  15 passed (1.4m)
+[ELIFECYCLE] Command failed with exit code 1.

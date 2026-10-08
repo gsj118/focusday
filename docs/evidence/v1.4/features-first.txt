@@ -1,0 +1,38 @@
+{
+  "screens": 8,
+  "failedObservations": [
+    {
+      "caseId": "V14-sheet-768",
+      "expected": "existing full width mobile sheet below 900px",
+      "actual": {
+        "width": 440,
+        "viewport": 768
+      },
+      "status": "FAIL",
+      "screenshot": "docs/screenshots/v1.4/features-first/settings-768x1024.png"
+    },
+    {
+      "caseId": "V14-sheet-720",
+      "expected": "existing full width mobile sheet below 900px",
+      "actual": {
+        "width": 440,
+        "viewport": 720
+      },
+      "status": "FAIL",
+      "screenshot": "docs/screenshots/v1.4/features-first/settings-720x450.png"
+    },
+    {
+      "caseId": "V14-retry-draft",
+      "expected": "retry of applied settings distinguishes unsaved draft",
+      "actual": {
+        "message": "설정을 저장했습니다.",
+        "selectedDraftHumor": true,
+        "applied": "calm"
+      },
+      "status": "FAIL",
+      "screenshot": "docs/screenshots/v1.4/features-first/settings-retry-draft-320.png"
+    }
+  ],
+  "overflow": [],
+  "errors": []
+}

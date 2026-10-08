@@ -32,8 +32,8 @@ export function PreferencesPanel({
   const composing = useRef(false)
   const lastCompositionEnd = useRef(0)
   useLayoutEffect(() => {
-    if (feedback && !feedback.ok) {
-      error.current?.focus()
+    if (feedback) {
+      if (!feedback.ok) error.current?.focus()
       error.current?.scrollIntoView({ block: 'nearest' })
     }
   }, [feedback])

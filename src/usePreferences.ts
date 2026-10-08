@@ -63,7 +63,16 @@ export function usePreferences() {
       return encouragements[previous.sentenceMode === 'humor' ? 'humor' : 'calm'][milestone]
   }
   function retry() {
-    if (guard === 'ready') return applySaved(current.current)
+    if (guard === 'ready') {
+      const result = applySaved(current.current)
+      return result.ok
+        ? {
+            ok: true,
+            reason:
+              '현재 적용된 설정과 격려 표시를 저장했습니다. 편집 중인 초안은 별도로 설정 저장을 눌러 적용해 주세요.',
+          }
+        : result
+    }
     const loaded = loadPreferences()
     if (loaded.state !== 'ready') {
       setGuard(loaded.state)
@@ -78,7 +87,16 @@ export function usePreferences() {
     setPreferences(next)
     setGuard('ready')
     setError('')
-    if (Object.keys(sessionProcessed.current).length) return applySaved(next)
+    if (Object.keys(sessionProcessed.current).length) {
+      const result = applySaved(next)
+      return result.ok
+        ? {
+            ok: true,
+            reason:
+              '설정을 다시 읽고 이번 세션의 격려 표시를 저장했습니다. 편집 중인 초안은 별도로 저장해 주세요.',
+          }
+        : result
+    }
     return { ok: true, reason: '설정을 다시 읽었습니다. 초안을 저장하면 적용됩니다.' }
   }
   function reset() {

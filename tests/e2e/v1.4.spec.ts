@@ -10,6 +10,7 @@ const stamp = '2026-10-08T01:00:00.000Z'
 const phase = process.env.V14_PHASE || 'final'
 const shots = process.env.V14_SHOTS || `docs/screenshots/v1.4/beta-${phase}`
 const observations = new Map<string, Record<string, unknown>[]>()
+test.use({ actionTimeout: 5000 })
 const make = (id: string, extra: Partial<Task> = {}): Task => ({
   ...createTask(id, 'all', day, stamp, id),
   ...extra,
@@ -63,13 +64,11 @@ async function saveSettings(page: Page) {
   await page.keyboard.press('Escape')
 }
 async function upload(page: Page, list: Task[]) {
-  await page
-    .locator('#backup-file')
-    .setInputFiles({
-      name: 'v1-backup.json',
-      mimeType: 'application/json',
-      buffer: Buffer.from(JSON.stringify(createBackup({ version: 1, tasks: list }, stamp))),
-    })
+  await page.locator('#backup-file').setInputFiles({
+    name: 'v1-backup.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(JSON.stringify(createBackup({ version: 1, tasks: list }, stamp))),
+  })
   await expect(page.getByRole('heading', { name: '복원 미리보기', exact: true })).toBeVisible()
 }
 async function check(
@@ -98,19 +97,29 @@ async function check(
     record.error = String(error)
     throw error
   } finally {
-    record.actual = await page.evaluate(() => ({
-      sentence: document.querySelector('.daily-sentence')?.textContent || null,
-      achievements: document.querySelector('.achievements-section > summary')?.textContent || null,
-      toast: document.querySelector('.undo-toast')?.textContent || null,
-      focus: document.activeElement?.getAttribute('aria-label') || document.activeElement?.tagName,
-      taskRaw: localStorage.getItem('focusday:v1'),
-      uiRaw: localStorage.getItem('focusday:ui:v1'),
-      clock: new Date().toISOString(),
-      viewport: { width: innerWidth, height: innerHeight },
-    }))
+    record.actual = await page
+      .evaluate(() => ({
+        sentence: document.querySelector('.daily-sentence')?.textContent || null,
+        achievements:
+          document.querySelector('.achievements-section > summary')?.textContent || null,
+        toast: document.querySelector('.undo-toast')?.textContent || null,
+        focus:
+          document.activeElement?.getAttribute('aria-label') || document.activeElement?.tagName,
+        taskRaw: localStorage.getItem('focusday:v1'),
+        uiRaw: localStorage.getItem('focusday:ui:v1'),
+        clock: new Date().toISOString(),
+        viewport: { width: innerWidth, height: innerHeight },
+      }))
+      .catch(() => ({
+        status: 'INCONCLUSIVE',
+        reason:
+          'Browser closed after test failure; retained trace/screenshot contains last UI state.',
+      }))
     const path = `${shots}/${id}-${record.status}.png`
-    await page.screenshot({ path })
-    record.screenshot = path
+    if (!page.isClosed()) {
+      await page.screenshot({ path }).catch(() => undefined)
+      record.screenshot = path
+    }
     await info.attach('v1.4-case', {
       body: Buffer.from(JSON.stringify(record)),
       contentType: 'application/json',
@@ -277,7 +286,10 @@ test('P03 한글 입력: 합성 조합→연속 입력·편집→내 문장 경�
       await page.getByRole('button', { name: '설정 저장', exact: true }).click()
       await expect(page.getByRole('alert').filter({ hasText: '1–120' })).toBeVisible()
       await page.getByLabel('내 문장 입력').fill('가'.repeat(121))
-      await page.getByRole('button', { name: '설정 저장 재시도', exact: true }).click()
+      await page
+        .locator('.editor-footer')
+        .getByRole('button', { name: /설정 저장/ })
+        .click()
       await expect(page.getByRole('alert').filter({ hasText: '121자' })).toBeVisible()
       await page.getByLabel('내 문장 입력').fill('가'.repeat(120))
       await saveSettings(page)
@@ -297,8 +309,18 @@ test('P03 한글 입력: 합성 조합→연속 입력·편집→내 문장 경�
   )
 })
 
-test('P04 모바일 터치390: 입력→계획→설정→완료·undo→sheet 백업→재방문', async ({ page }, info) => {
-  await page.setViewportSize({ width: 390, height: 844 })
+test('P04 모바일 터치390: 입력→계획→설정→완료·undo→sheet 백업→재방문', async ({
+  browser,
+}, info) => {
+  const context = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+    isMobile: true,
+    hasTouch: true,
+    timezoneId: 'Asia/Seoul',
+    locale: 'ko-KR',
+  })
+  const page = await context.newPage()
+  await page.clock.install({ time: new Date(stamp) })
   await page.goto('./')
   await check(page, info, 'P04-01', '390px 조작·설정 sheet/footer44px·취소 초점', async () => {
     await add(page, '모바일 장보기')
@@ -314,12 +336,12 @@ test('P04 모바일 터치390: 입력→계획→설정→완료·undo→sheet �
     await saveSettings(page)
   })
   await check(page, info, 'P04-02', '모바일 toast/nav 분리, undo 대상과 백업·재방문', async () => {
-    await complete(page, '모바일 장보기')
+    await page.getByRole('checkbox', { name: '모바일 장보기 완료', exact: true }).tap()
     const toast = await page.locator('.undo-toast').boundingBox()
     const navBox = await page.locator('.mobile-nav').boundingBox()
     expect(toast!.y + toast!.height).toBeLessThanOrEqual(navBox!.y)
     await expect(cheer(page)).toContainText('첫 체크')
-    await page.getByRole('button', { name: '실행 취소', exact: true }).click()
+    await page.getByRole('button', { name: '실행 취소', exact: true }).tap()
     await open(page, '백업·복원')
     await expect(
       page.getByRole('button', { name: 'JSON 백업 다운로드', exact: true }),
@@ -329,6 +351,7 @@ test('P04 모바일 터치390: 입력→계획→설정→완료·undo→sheet �
     await expect(sentence(page)).toHaveText(dailySentence(day, 'humor'))
     await expect(summary(page)).toHaveText('오늘 마친 일 0개')
   })
+  await context.close()
 })
 
 test('P05 작은 화면320: 긴 정보→작은 높이 설정→성취→백업·재방문', async ({ page }, info) => {
@@ -794,7 +817,7 @@ test('P12 보존: 설정/할 일 쓰기 실패→백업·실패 복원→재시�
       await expect(summary(page)).toHaveText('오늘 마친 일 1개')
       await expect(page.getByRole('alert').filter({ hasText: '복원 저장에 실패' })).toBeFocused()
       await page.evaluate(() => Object.assign(window, { v14FailTask: false }))
-      await page.getByRole('button', { name: '합치기 적용', exact: true }).click()
+      await page.getByRole('button', { name: '합치기 다시 시도', exact: true }).click()
       await page.getByRole('button', { name: '목록으로 돌아가기', exact: true }).click()
       await expect(summary(page)).toHaveText('오늘 마친 일 2개')
       await expect(cheer(page)).toHaveCount(0)
@@ -807,9 +830,7 @@ test('P12 보존: 설정/할 일 쓰기 실패→백업·실패 복원→재시�
       await upload(page, [])
       await page.getByLabel('백업으로 전체 교체', { exact: true }).check()
       await page.getByRole('button', { name: '전체 교체 확인으로 이동', exact: true }).click()
-      await page
-        .getByRole('button', { name: '확인 후 전체 교체', exact: true })
-        .click()
+      await page.getByRole('button', { name: '확인 후 전체 교체', exact: true }).click()
       await page.getByRole('button', { name: '목록으로 돌아가기', exact: true }).click()
       await expect(summary(page)).toHaveText('오늘 마친 일 0개')
       expect(await prefs(page)).toEqual(uiAfter)
@@ -895,3 +916,130 @@ test('B03 초기/import/replace/예시 증가 무격려·새 직접 완료 경�
   expect((await prefs(page))?.processed[day]).toEqual([3])
 })
 
+test('B04 설정 읽기 실패 후 좁은 재시도는 기존 설정/세션 표시를 합치며 할 일을 유지', async ({
+  page,
+}) => {
+  const existing = {
+    ...defaultPreferences(),
+    sentenceMode: 'humor',
+    encouragementEnabled: false,
+    processed: { '2026-10-07': [3] },
+  }
+  await seed(page, [make('읽기 보호', { focusDate: day })], existing)
+  await page.addInitScript(() => {
+    Object.assign(window, { v14ReadFail: true })
+    const get = Storage.prototype.getItem
+    Storage.prototype.getItem = function (key) {
+      if (key === 'focusday:ui:v1' && (window as unknown as { v14ReadFail: boolean }).v14ReadFail)
+        throw new Error('read denied')
+      return get.call(this, key)
+    }
+  })
+  await page.goto('./')
+  await expect(sentence(page)).toHaveText(dailySentence(day, 'calm'))
+  await complete(page, '읽기 보호')
+  await page.evaluate(() => Object.assign(window, { v14ReadFail: false }))
+  expect(await prefs(page)).toEqual(existing)
+  const storedTasks = await tasks(page)
+  await open(page)
+  await page.getByRole('button', { name: '설정 다시 읽기', exact: true }).click()
+  expect(await prefs(page)).toEqual({
+    ...existing,
+    processed: { ...existing.processed, [day]: [1] },
+  })
+  expect(await tasks(page)).toEqual(storedTasks)
+  await page.keyboard.press('Escape')
+  await expect(sentence(page)).toHaveText(dailySentence(day, 'humor'))
+})
+
+test('B05 설정 초기화 쓰기 실패는 손상 원본과 할 일을 보호, 재시도 성공만 적용', async ({
+  page,
+}) => {
+  await seed(page, [make('원본 할 일')], '{broken')
+  await page.addInitScript(() => {
+    Object.assign(window, { v14ResetFail: true })
+    const set = Storage.prototype.setItem
+    Storage.prototype.setItem = function (key, value) {
+      if (key === 'focusday:ui:v1' && (window as unknown as { v14ResetFail: boolean }).v14ResetFail)
+        throw new Error('write denied')
+      return set.call(this, key, value)
+    }
+  })
+  await page.goto('./')
+  const original = await tasks(page)
+  await open(page)
+  await page.getByRole('button', { name: '설정만 초기화…', exact: true }).click()
+  await page.getByRole('button', { name: '설정 원본 초기화 확인', exact: true }).click()
+  expect(await page.evaluate(() => localStorage.getItem('focusday:ui:v1'))).toBe('{broken')
+  expect(await tasks(page)).toEqual(original)
+  await page.evaluate(() => Object.assign(window, { v14ResetFail: false }))
+  await page.getByRole('button', { name: '설정 원본 초기화 확인', exact: true }).click()
+  expect(await prefs(page)).toEqual(defaultPreferences())
+  expect(await tasks(page)).toEqual(original)
+})
+
+test('B06 격려 표시 저장 실패는 세션 중복만 보장하며 새로고침 후 저장 상태에 의존', async ({
+  page,
+}) => {
+  await seed(page, [make('표시 저장 실패', { focusDate: day })])
+  await page.addInitScript(() => {
+    const set = Storage.prototype.setItem
+    Storage.prototype.setItem = function (key, value) {
+      if (key === 'focusday:ui:v1') throw new Error('quota')
+      return set.call(this, key, value)
+    }
+  })
+  await page.goto('./')
+  await complete(page, '표시 저장 실패')
+  await expect(cheer(page)).toHaveCount(1)
+  await page.getByRole('button', { name: '실행 취소', exact: true }).click()
+  await complete(page, '표시 저장 실패')
+  await expect(cheer(page)).toHaveCount(0)
+  await page.getByRole('button', { name: '실행 취소', exact: true }).click()
+  expect(await prefs(page)).toBeNull()
+  await page.reload()
+  await complete(page, '표시 저장 실패')
+  await expect(cheer(page)).toHaveCount(1)
+})
+
+test('B07 검수 수정: 768px 전체폭 시트·재시도된 적용 설정과 미저장 초안 구별', async ({ page }) => {
+  await page.setViewportSize({ width: 768, height: 1024 })
+  await page.addInitScript(() => {
+    Object.assign(window, { v14RetryFail: true })
+    const set = Storage.prototype.setItem
+    Storage.prototype.setItem = function (key, value) {
+      if (key === 'focusday:ui:v1' && (window as unknown as { v14RetryFail: boolean }).v14RetryFail)
+        throw new Error('quota')
+      return set.call(this, key, value)
+    }
+  })
+  await page.goto('./')
+  await open(page)
+  const panelBox = await page.getByRole('dialog').boundingBox()
+  expect(panelBox!.width).toBe(768)
+  await page.getByRole('radio', { name: '유머', exact: true }).check()
+  await page.getByRole('button', { name: '설정 저장', exact: true }).click()
+  await page.evaluate(() => Object.assign(window, { v14RetryFail: false }))
+  await page
+    .locator('.storage-banner')
+    .getByRole('button', { name: '설정 저장 재시도', exact: true })
+    .click()
+  await expect(page.locator('.panel-feedback')).toContainText('편집 중인 초안은 별도로')
+  await expect(page.getByRole('radio', { name: '유머', exact: true })).toBeChecked()
+  expect((await prefs(page))?.sentenceMode).toBe('calm')
+  const feedbackBox = await page.locator('.panel-feedback').boundingBox()
+  expect(feedbackBox!.y + feedbackBox!.height).toBeLessThanOrEqual(1024)
+  await saveSettings(page)
+  expect((await prefs(page))?.sentenceMode).toBe('humor')
+})
+
+test('B08 성취 행에 초점이 있을 때 날짜 변경으로 모두 사라져도 summary 복귀', async ({ page }) => {
+  await seed(page, [make('날짜 변경 초점', { completedAt: stamp })])
+  await page.goto('./')
+  await summary(page).click()
+  await page.getByRole('checkbox', { name: '날짜 변경 초점 미완료로 복원', exact: true }).focus()
+  await page.clock.setSystemTime(new Date('2026-10-09T10:00:00+09:00'))
+  await page.evaluate(() => window.dispatchEvent(new Event('focus')))
+  await expect(summary(page)).toHaveText('오늘 마친 일 0개')
+  await expect(summary(page)).toBeFocused()
+})
