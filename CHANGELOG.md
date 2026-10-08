@@ -6,7 +6,7 @@
 - 완료 순간의 격려: 실제 사용자 완료0→1/2→3만 기존 UndoToast에 통합. 로컬 날짜별 중복 억제, 꺼진 동안도 처리, import/초기 load/undo 제외.
 - 오늘 마친 일: 현재 비예시 completedAt의 로컬 날짜로 계산, 검색 무관, 접힌 목록/완료 시각/속성·미완료 복원 제공.
 - 별도UI key/version1, 원본 보호/저장 실패 초안 유지·좁은 재시도/명시적 설정만 초기화. task/backup version1·10MiB·lockfile은 유지하고 UI/내 문장은 백업에서 제외.
-- 실제12관점 첫/최종 실행 및8개 화면 조건 검수. sheet 폭·재시도 안내·숨은 행 포커스3건을 실제 재현하고 수정했다. 기존 검사를 보존해 최종103개 E2E를 실행한다.
+- 실제12관점 첫/최종 실행 및8개 화면 조건 검수. sheet 폭·재시도 안내·숨은 행 포커스3건을 실제 재현하고 수정했다. 기존 검사를 보존해 로컬 root/Pages·원격 CI/Pages E2E각103 PASS, 공개 desktop/mobile 재검증 PASS를 확인했다.
 
 [최종 업데이트](docs/V1_4_FINAL_UPDATE.md) · [실제 발견/수정](docs/evidence/v1.4/findings.md) · [검증](docs/validation.md) · [배포](docs/deployment.md).
 

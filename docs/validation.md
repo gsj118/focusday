@@ -42,6 +42,9 @@ node scripts/check-pages-assets.mjs
 | **최종 Pages /focusday/** | **103 PASS / fail·skip·flaky0**, exit0                                    | [raw](evidence/v1.4/pages-final.json) · [log](evidence/v1.4/pages-final.txt)              |
 | Pages HTML/JS/CSS/favicon | HTTP200, 실제 /focusday/ 자산 경로/형식                                   | [raw](evidence/v1.4/pages-assets.json)                                                    |
 | 전체 task 백업 경계       | 6000개 padded/compact round trip, 모든 속성 보존,10MiB ±1/초과 다운로드0  | [순수 데이터](evidence/v1.4/backup-boundary-after.json), 기존 E2E 유지                    |
+| **GitHub CI / Pages**     | **각103 PASS**, 단위60·서울/뉴욕각36·타입/lint/build·deploy success       | [실제 원격 상태/로그](evidence/v1.4/github-actions.json)                                  |
+| **공개 desktop / mobile** | **모두 PASS**, 앱1.4.0·자산200·기존 기능·설정/성취/격려/undo·backup       | [공개 원본](evidence/v1.4/live-deployment.json)                                           |
+| 공개6000개 파일           | 다운로드 전체 필드 비교/같은 파일 미리보기 PASS,4,877,007 bytes           | [공개 원본](evidence/v1.4/live-deployment.json), quota/목록 성능 제외                     |
 
 103개 = 기존80개(삭제/skip 없음) + v1.4 신규23개(12관점 세션+경계11개). v1.4 Case는26단계+11경계이며 테스트 실행 수와 다르다. 최초/중간 FAIL을 그대로 보존하고 실제 데이터/포커스/길이/대비 기준을 낮추지 않았다. 기존 테스트의 DOM 범위/새 summary Tab 정지는 같은 동작 의미로 갱신했다.
 
@@ -65,4 +68,4 @@ node scripts/check-pages-assets.mjs
 | 다중 탭·실제 quota·대량 목록 성능 | NOT_RUN /80·200개 기능과6천개 read port 파일 경계               |
 | 오프라인 최초 페이지 다운로드/PWA | NOT_RUN·지원 안 함 / 열린 앱의 로컬 문구 offline 표시           |
 
-전체 WCAG/보안 감사를 완료했다고 주장하지 않는다. 원격CI·수동Pages·공개 재검증 결과는 실행 후 [배포 기록](deployment.md)에 기록한다.
+전체 WCAG/보안 감사를 완료했다고 주장하지 않는다. 원격CI·수동Pages·공개 재검증은 실제 완료했으며 소스SHA/run 링크·공개 시각과 화면은 [배포 기록](deployment.md)에 기록했다. 알려진 중대한 미해결 문제는 없다. 표지 저장 실패 뒤 새로고침 한계와 위 NOT_RUN은 그대로 남는다.

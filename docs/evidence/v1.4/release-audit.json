@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-08T07:26:43.543Z",
-  "sourceCommitAtAudit": "e44c662978bb52fb3a1fa0d21f5c3ea80fc9edc9",
+  "checkedAt": "2026-10-08T07:36:11.999Z",
+  "sourceCommitAtAudit": "22fa8f0c0708c54fb4dc41a485c20943816653d3",
   "status": "PASS",
   "preserved": [
     "src/domain.ts",
@@ -26,6 +26,6 @@
       "flaky": 0
     }
   },
-  "linksChecked": 169,
+  "linksChecked": 178,
   "promptSHA256": "31bccbec238320b7a588a0724398a297de50570dacf288ace1689a72574b0425"
 }

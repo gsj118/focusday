@@ -40,4 +40,6 @@ task/schema/backup validator/lockfile/의존성은 변경하지 않았다. v1.3�
 
 발견한 제품 결함3건: 태블릿 설정 시트 폭(SB14-01), 적용 설정 재시도와 미저장 초안을 혼동하는 안내(SB14-02), 접힌 성취 행에 완료 후 초점을 시도하는 회귀(SB14-03). 모두 재현/원인/수정/재검증을 [실제 발견 기록](evidence/v1.4/findings.md)에 연결했다. 테스트의 오류 후 버튼 이름·새 Tab 정지·미완료 DOM 범위도 의미를 유지해 갱신했다. [Synthetic Beta](SYNTHETIC_BETA_V1_4.md) · [Case 결과](SYNTHETIC_BETA_CASES_V1_4.md) · [최종 검증](validation.md) · [배포](deployment.md).
 
+최종 check는 단위60·서울/뉴욕각36·타입/lint/build PASS, 로컬 root/Pages E2E각103 PASS다. 정상 push 후 GitHub CI/수동 Pages도각103 PASS·deploy success이며 공개 Chrome desktop/mobile의 기존 기능·세 기능·백업 재검증도 모두 PASS했다. [원격 실행 근거](evidence/v1.4/github-actions.json) · [공개 실행 근거](evidence/v1.4/live-deployment.json) · [공개 모바일 격려/undo](screenshots/v1.4/live-mobile-encouragement.png). 알려진 중대한 미해결 문제는 없다.
+
 가상 관점은 AI 설계 가설이며 사람12명을 모집한 연구가 아니다. 완료/초점/저장/오류/시계·실제 screenshot은 도구 실행 근거다. 물리폰/실제 가상 키보드/OS IME/native zoom/스크린 리더/Safari·Firefox/사용자 만족도·사람 과업 시간은 NOT_RUN이다.

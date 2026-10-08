@@ -2,11 +2,17 @@
 
 ## v1.4.0 최종 제출 · 2026-10-08 KST
 
-기존 clean main80748d6에서 시작해 remote 사용자 변경을 확인하고 정상 커밋한다. task/backup version1·lockfile·과거 태그/증거/identity/환경 정책을 유지한다. [로컬 최종검증](validation.md)은 check 단위60/서울·뉴욕각36/root 및 Pages 경로 E2E각103 PASS, 자산HTTP200이다.
+기존 clean main80748d6에서 시작해 remote 사용자 변경을 확인하고 정상 커밋·push했다. task/backup version1·lockfile·과거 태그/증거/identity/환경 정책을 유지했다. [로컬 최종검증](validation.md)은 check 단위60/서울·뉴욕각36/root 및 Pages 경로 E2E각103 PASS, 자산HTTP200이다.
 
-기존 main push CI와 **main 수동 pages.yml**을 사용한다. push만으로 배포됐다고 간주하지 않는다. 원격 실행과 공개 확인은 현재 진행 단계이며, 완료한 실제 SHA/run/상태/공개 결과를 이 영역과 `docs/evidence/v1.4/`에 갱신한다. PR/보호 정책을 우회하거나 force push하지 않는다.
+기존 main 직접 제출 정책에 따라 PR 없이 정상 push하고 **main 수동 pages.yml**을 별도로 실행했다. 첫 v1.4 배포 소스는 `22fa8f0c0708c54fb4dc41a485c20943816653d3`다. [CI](https://github.com/gsj118/focusday/actions/runs/37743830378)와 [Pages build/deploy](https://github.com/gsj118/focusday/actions/runs/37743834673)가 모두 **success**다. 실제 고정 pnpm11.19.0/frozen lockfile 원격 로그에서 타입·lint·단위60·서울/뉴욕각36·build·Chromium E2E **각103 passed**를 확인했다. [API 상태·job·PASS 로그](evidence/v1.4/github-actions.json). push만으로 배포됐다고 간주하지 않았으며 보호 규칙 우회나 force push는 없다.
 
 공개 재검증 도구 `node scripts/check-deployment.mjs https://gsj118.github.io/focusday/`는 새로운 격리 Chrome desktop1440×900/mobile390×844 context에서 기존 CRUD/계획/백업과 v1.4 문구/설정/성취/격려/undo·재방문을 실제 조작한다. UI 설정 백업 제외와 복원 후 유지도 확인한다. 6000개 파일은 read port로 실제 다운로드/미리보기만 검사하며 quota/목록 성능은 주장하지 않는다.
+
+2026-10-08 **16:33 KST** 공개 URL에서 위 조작을 실제 실행해 **모두 PASS**했다. 앱1.4.0·HTML/JS/CSS/favicon HTTP200·실행 오류0, 문구 refresh/모드 왕복/HTML 같은 내 문장·독립 끄기, 유머3개 격려·undo/재완료 중복 억제, 성취 시각·개수, UI 제외 전체 백업·합치기 뒤 설정 유지와 재방문을 확인했다. 6000개 모든 task 필드 다운로드→같은 파일 미리보기는4,877,007 bytes/PASS였다. [공개 원본](evidence/v1.4/live-deployment.json) · [실행 log](evidence/v1.4/live-deployment.txt).
+
+[공개 desktop](screenshots/v1.4/live-desktop.png) · [mobile](screenshots/v1.4/live-mobile.png) · [설정](screenshots/v1.4/live-mobile-settings.png) · [성취](screenshots/v1.4/live-desktop-achievements.png) · [격려/undo](screenshots/v1.4/live-mobile-encouragement.png) · [6000개 미리보기](screenshots/v1.4/live-backup-6000.png). 실제 합성 데이터의 앱 캡처이며 공개 desktop/mobile 설정·성취·격려 화면을 열어 검토했다.
+
+출시 [v1.4.0](https://github.com/gsj118/focusday/tree/v1.4.0)은 공개 증거·문서를 보완한 최종 제출 커밋을 가리킨다. 첫 배포22fa8f0 뒤 앱/public/package/lockfile/Vite 소스는 동일하고 후속 변경은 공개 증거·문서다. 최종 main도 같은 수동 workflow로 다시 배포하며 최신 SHA/상태는 [CI 목록](https://github.com/gsj118/focusday/actions/workflows/ci.yml)·[Pages 목록](https://github.com/gsj118/focusday/actions/workflows/pages.yml)에 남는다. 반복 공개 검증은 `test-results/release-v1.4/`에 저장해 첫 실제 자료를 보존한다. 기존 v1.0–v1.3 태그를 이동하지 않았다.
 
 아래는 이전 버전 당시 기록이며 현재 결과로 복사하지 않았다. v1.3 원본 사본은 [보존 문서](versions/v1.3.0/deployment.snapshot.md)다.
 

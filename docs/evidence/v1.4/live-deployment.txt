@@ -1,0 +1,3 @@
+desktop 1440×900: PASS
+mobile 390×844: PASS
+public 6000-task download/re-import preview: PASS (quota/list performance excluded)

@@ -35,6 +35,8 @@ production은 `pnpm build` → `pnpm preview` → [127.0.0.1:4173](http://127.0.
 
 이번 작업은 기존80개 baseline을 새로 실행하고12개 관점/26개 연결 단계와 추가 경계를 실제 브라우저에서 검사했습니다. 첫 신규 실행15 PASS/2 FAIL, 첫 전체100 PASS/2 FAIL과 후속 포커스 재현 FAIL을 보존했습니다. 태블릿 sheet 폭·재시도 안내·숨은 성취 행 초점3건을 수정했습니다. 최종 로컬/원격의 정확한 결과는 [검증 기록](docs/validation.md)과 [배포 기록](docs/deployment.md)에 있습니다. 테스트를 삭제/skip하거나 기준을 내려 통과시키지 않았습니다.
 
+최종 타입/lint/build·단위60·서울/뉴욕각36, 로컬 root/Pages와 GitHub CI/Pages E2E각103개가 모두 통과했습니다. 수동 Pages 배포 후 공개 desktop/mobile의 세 기능·기존 조작·백업도 PASS입니다. [실제 원격 근거](docs/evidence/v1.4/github-actions.json) · [공개 근거](docs/evidence/v1.4/live-deployment.json) · [공개 모바일 격려/undo](docs/screenshots/v1.4/live-mobile-encouragement.png).
+
 ## 데이터와 제한
 
 앱1.4.0, 기존 할 일 key `focusday:v1` / AppData version1 / backup formatVersion1을 유지합니다. 전체 할 일 JSON 백업은 compact UTF-8 최대10MiB이며 초과하면 일부를 빼지 않고 다운로드를 중단합니다. 과거 v1 백업을 그대로 읽습니다.
@@ -57,4 +59,4 @@ baseline/설계 → 세 기능 → 첫 평가/수정 → 전체 회귀의 포커
 | [v1.1.0](https://github.com/gsj118/focusday/tree/v1.1.0) | 계획·어제 이어가기·backup/restore. [기록](docs/V1_1_UPDATE.md)                                        |
 | [v1.2.0](https://github.com/gsj118/focusday/tree/v1.2.0) | Synthetic Beta의 백업/IME 보완. [기록](docs/V1_2_UPDATE.md)                                           |
 | [v1.3.0](https://github.com/gsj118/focusday/tree/v1.3.0) | 노션 작업 UI. [기록](docs/V1_3_UI_REDESIGN.md) · [당시 문서](docs/versions/v1.3.0/README.snapshot.md) |
-| v1.4.0                                                   | 세 기능과 실제 Beta/수정/최종 제출. [기록](docs/V1_4_FINAL_UPDATE.md)                                 |
+| [v1.4.0](https://github.com/gsj118/focusday/tree/v1.4.0) | 세 기능과 실제 Beta/수정/최종 제출. [기록](docs/V1_4_FINAL_UPDATE.md)                                 |

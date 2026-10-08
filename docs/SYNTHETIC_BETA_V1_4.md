@@ -31,7 +31,7 @@ Windows/PowerShell, Node24.19.0, 실행 pnpm11.25.0(프로젝트11.19.0 고정),
 
 별도 첫 화면 검수는8 viewport에서 overflow/실행 오류0이었지만 태블릿 설정 sheet의 폭 두 조건과 재시도 성공 설명 한 조건이 FAIL이었다. 이는 제품 문제2건이며 전체폭 mobile 규칙과 적용 설정/미저장 초안 안내를 수정했다. 동일 조건 재검수는 모두 PASS.
 
-첫 전체 회귀102개는100 PASS/2 FAIL(새 summary Tab 정지·미완료 DOM 범위)이었다. 검사의 의미를 유지해 새 구조로 갱신했다. 이어서 접힌 성취의 숨은 행에 초점이 떨어지는 SB14-03을 별도 B09에서 실제 FAIL로 재현해 수정했다. [재현→수정→근거](evidence/v1.4/findings.md). 최종 check/root103/Pages103 및 공개 결과는 [검증](validation.md)·[배포](deployment.md)에 실제 실행 후 기록한다.
+첫 전체 회귀102개는100 PASS/2 FAIL(새 summary Tab 정지·미완료 DOM 범위)이었다. 검사의 의미를 유지해 새 구조로 갱신했다. 이어서 접힌 성취의 숨은 행에 초점이 떨어지는 SB14-03을 별도 B09에서 실제 FAIL로 재현해 수정했다. [재현→수정→근거](evidence/v1.4/findings.md). 최종 check와 로컬 root/Pages각103, 원격 CI/Pages각103, 공개 desktop/mobile 재검증이 모두 PASS다. 실제 원본은 [검증](validation.md)·[배포](deployment.md)에 연결했다.
 
 ## 해석의 범위
 

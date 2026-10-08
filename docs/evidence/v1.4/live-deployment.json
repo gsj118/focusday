@@ -1,0 +1,97 @@
+{
+  "appVersion": "1.4.0",
+  "url": "https://gsj118.github.io/focusday/",
+  "checkedAt": "2026-10-08T07:33:27.068Z",
+  "deployedSourceCommit": "22fa8f0c0708c54fb4dc41a485c20943816653d3",
+  "platform": "win32",
+  "browser": "134.0.6998.36",
+  "assets": [
+    {
+      "url": "https://gsj118.github.io/focusday/favicon.svg",
+      "status": 200
+    },
+    {
+      "url": "https://gsj118.github.io/focusday/assets/index-D0cb8x9V.js",
+      "status": 200
+    },
+    {
+      "url": "https://gsj118.github.io/focusday/assets/index-BxzIbDmX.css",
+      "status": 200
+    }
+  ],
+  "screens": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "isMobile": false,
+      "checks": [
+        "HTML/자산",
+        "첫 빈 화면",
+        "생성",
+        "속성 편집",
+        "새로고침 저장",
+        "오늘/전체",
+        "완료 취소",
+        "삭제 취소",
+        "예시",
+        "가로 넘침/편집기",
+        "앱 버전 1.4.0",
+        "편집 조합 이벤트 Enter 무저장 (OS IME 제외)",
+        "compact UTF-8 전체 백업, 10MiB 이내",
+        "JSON 백업 모든 속성·완료·예시 보존",
+        "복원 미리보기·id 합치기·저장",
+        "오늘 계획·어제 이어가기 id/기한 유지",
+        "v1.4 문구 refresh/모드/내 문장 plain text/끄기·독립 격려/저장",
+        "성취 예시 제외·완료 시각·3개·undo·재완료 중복 방지",
+        "이전 첫 완료 처리 유지·유머 3개 격려 통합 toast",
+        "전체 task 백업·UI 설정 제외·합치기 후 UI/성취 재계산·재방문",
+        "실행 오류 없음"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "isMobile": true,
+      "checks": [
+        "HTML/자산",
+        "첫 빈 화면",
+        "생성",
+        "속성 편집",
+        "새로고침 저장",
+        "오늘/전체",
+        "완료 취소",
+        "삭제 취소",
+        "예시",
+        "가로 넘침/편집기",
+        "앱 버전 1.4.0",
+        "편집 조합 이벤트 Enter 무저장 (OS IME 제외)",
+        "compact UTF-8 전체 백업, 10MiB 이내",
+        "JSON 백업 모든 속성·완료·예시 보존",
+        "복원 미리보기·id 합치기·저장",
+        "오늘 계획·어제 이어가기 id/기한 유지",
+        "v1.4 문구 refresh/모드/내 문장 plain text/끄기·독립 격려/저장",
+        "성취 예시 제외·완료 시각·3개·undo·재완료 중복 방지",
+        "이전 첫 완료 처리 유지·유머 3개 격려 통합 toast",
+        "전체 task 백업·UI 설정 제외·합치기 후 UI/성취 재계산·재방문",
+        "실행 오류 없음"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS",
+  "backupBoundary": {
+    "taskCount": 6000,
+    "bytes": 4877007,
+    "status": "PASS",
+    "storageQuotaTested": false,
+    "rendered6000List": false,
+    "method": "Isolated read port + actual live UI download/re-import preview; no apply"
+  }
+}
