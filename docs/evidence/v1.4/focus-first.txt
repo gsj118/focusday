@@ -1,0 +1,51 @@
+$ playwright test "tests/e2e/v1.4.spec.ts" "--grep" "B09"
+
+Running 1 test using 1 worker
+
+(node:18964) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\e2e\v1.4.spec.ts:1047:1 › B09 접힌 성취의 숨은 행을 완료 후 초점 대상으로 선택하지 않는다 (5.6s)
+
+
+  1) tests\e2e\v1.4.spec.ts:1047:1 › B09 접힌 성취의 숨은 행을 완료 후 초점 대상으로 선택하지 않는다 ────────────────────────
+
+    Error: expect(locator).toBeFocused() failed
+
+    Locator:  getByLabel('새 할 일 제목')
+    Expected: focused
+    Received: inactive
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeFocused" getByLabel('새 할 일 제목') with timeout 5000ms
+      - waiting for getByLabel('새 할 일 제목')
+        14 × locator resolved to <input value="" maxlength="200" id="quick-title" autocomplete="off" aria-invalid="false" placeholder="무엇을 해야 하나요?" aria-describedby="quick-hint"/>
+           - unexpected value "inactive"
+
+
+      1049 |   await page.goto('./')
+      1050 |   await complete(page, '마지막 미완료')
+    > 1051 |   await expect(page.getByLabel('새 할 일 제목')).toBeFocused()
+           |                                             ^
+      1052 |   await expect(summary(page)).toHaveText('오늘 마친 일 2개')
+      1053 | })
+      1054 |
+        at C:\Users\gsjtj\Documents\ChatGPT\Todolist\tests\e2e\v1.4.spec.ts:1051:45
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\artifacts\v1.4-B09-접힌-성취의-숨은-행을-완료-후-초점-대상으로-선택하지-않는다\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\artifacts\v1.4-B09-접힌-성취의-숨은-행을-완료-후-초점-대상으로-선택하지-않는다\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\artifacts\v1.4-B09-접힌-성취의-숨은-행을-완료-후-초점-대상으로-선택하지-않는다\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\artifacts\v1.4-B09-접힌-성취의-숨은-행을-완료-후-초점-대상으로-선택하지-않는다\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\v1.4.spec.ts:1047:1 › B09 접힌 성취의 숨은 행을 완료 후 초점 대상으로 선택하지 않는다 ─────────────────────────
+[ELIFECYCLE] Command failed with exit code 1.

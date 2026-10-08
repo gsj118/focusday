@@ -12,3 +12,11 @@
 추가 검토 보완: 일반 UTC CI에서 날짜 unit fixture를 서울/뉴욕 고정 fixture와 구분했다. 실제 두 시간대 실행은 각각36개이며 자정 경계 assertion을 유지한다. 첫 P04는390 viewport 조건, 최종 P04는 isMobile/hasTouch context의 tap 완료/undo로 확장했다. OS 키보드·물리폰·OS IME 결과로 표현하지 않는다.
 
 [수정 후 Beta](beta-second.json): 22 PASS/FAIL0/skip0. [수정 후 실제 화면 검수](features-second.json): 실패 관찰0, overflow0, 실행 오류0. 이후 최종 전체 root/Pages 결과는 [검증 기록](../../validation.md)에 연결한다. 이 문서는 실제 발견 뒤에 작성했고 가짜 결함·조사 소감·과거 실행 날짜를 만들지 않았다.
+
+## 전체 회귀에서 이어진 실제 발견
+
+[첫 전체 root](root-first.json)는100 PASS/2 FAIL이었다. 미완료 행을 확인하는 기존 검사가 접힌 성취의 DOM 행도 세었고, 기존 키보드 검사는 새 성취 summary의 Tab 정지를 반영하지 않았다. 미완료 섹션 안에서 같은2개 assertion을 유지하고 별도 성취1개도 검사한다. Tab4회 뒤 summary 초점을 확인한 후 다음 Tab으로 undo에 도달하고 Enter 복구까지 유지한다. 테스트를 삭제/skip하거나 포커스 검사를 클릭으로 바꾸지 않았다.
+
+**SB14-03 · 완료 후 숨은 행에 초점 시도:** 접힌 오늘 성취1개 + 마지막 오늘 미완료1개 → 마지막 항목 완료 → 입력 초점 기대/실제 inactive. [실제 재현 FAIL](focus-first.json), [원본 화면·trace](focus-first-failure/). 인접 행 선택이 접힌 details 내부의 숨은 행도 선택하고 focus가 실패하는 것이 원인이다. 렌더링된 행만 인접 후보로 사용하고 마지막 복귀 때에도 대상의 실제 표시 여부를 확인해 입력 또는 성취 summary로 복귀한다. B09를 추가해 먼저 실패를 재현한 뒤 수정했다. 최종 B09/root/Pages 결과는 validation에 연결한다.
+
+첫 geometry 기반 수정 뒤 [두 번째 전체 root](root-second.json)는102 PASS/1 FAIL(B09)이었다. [실제 진단](focus-diagnosis.txt)에서 native closed details 내부 행도 clientRects1/양의 크기를 반환하며 완료 후 activeElement=BODY임을 확인했다. 따라서 rect 확인만으로는 부족해 `details:not([open])` 내부 행을 명시적으로 제외하고 summary 자체의 초점 복귀는 허용했다. [B09 수정 후 PASS](focus-fixed.json). 이 중간 실패도 최종 PASS에 숨기지 않는다.

@@ -1,0 +1,9 @@
+$ playwright test "tests/e2e/v1.4.spec.ts" "--grep" "B09"
+
+Running 1 test using 1 worker
+
+(node:4924) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\e2e\v1.4.spec.ts:1047:1 › B09 접힌 성취의 숨은 행을 완료 후 초점 대상으로 선택하지 않는다 (538ms)
+
+  1 passed (1.4s)

@@ -385,6 +385,8 @@ test('키보드 추가→편집→저장→완료→실행 취소, dialog trap·
   await page.keyboard.press('Tab')
   await page.keyboard.press('Tab')
   await page.keyboard.press('Tab')
+  await expect(page.locator('.achievements-section > summary')).toBeFocused()
+  await page.keyboard.press('Tab')
   await expect(page.getByRole('button', { name: '실행 취소', exact: true })).toBeFocused()
   await page.keyboard.press('Enter')
   await expect(page.getByRole('button', { name: 'Keyboard task 편집', exact: true })).toBeVisible()
@@ -410,7 +412,7 @@ for (const [width, height] of [
       ).toBeGreaterThanOrEqual(44)
     }
     await page.screenshot({
-      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.3/regression'}/${width === 1440 ? 'desktop' : width === 390 ? 'mobile' : `layout-${width}`}.png`,
+      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.4/regression'}/${width === 1440 ? 'desktop' : width === 390 ? 'mobile' : `layout-${width}`}.png`,
       fullPage: true,
     })
     await page.getByRole('button', { name: '발표 자료 최종 확인 편집', exact: true }).click()
@@ -422,7 +424,7 @@ for (const [width, height] of [
     expect(box.x).toBeGreaterThanOrEqual(0)
     expect(box.x + box.width).toBeLessThanOrEqual(width)
     await page.screenshot({
-      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.3/regression'}/${width === 1440 ? 'desktop-editor' : width === 390 ? 'mobile-editor' : `editor-${width}`}.png`,
+      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.4/regression'}/${width === 1440 ? 'desktop-editor' : width === 390 ? 'mobile-editor' : `editor-${width}`}.png`,
       fullPage: true,
     })
     await page.getByLabel('제목', { exact: true }).fill('긴한글제목'.repeat(40))

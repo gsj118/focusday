@@ -110,7 +110,9 @@ export default function App() {
   function focusAfterRemoval(task: Task) {
     const selector =
       task.completedAt && view === 'today' ? '.achievements-section .task-row' : '.task-row'
-    const rows = [...document.querySelectorAll<HTMLElement>(selector)]
+    const rows = [...document.querySelectorAll<HTMLElement>(selector)].filter(
+      (row) => row.getClientRects().length > 0 && !row.closest('details:not([open])'),
+    )
     const index = rows.findIndex((row) => row.dataset.taskId === task.id)
     const next = rows[index + 1] || rows[index - 1]
     pendingFocus.current =
@@ -284,7 +286,13 @@ export default function App() {
       achievementsSummary.current?.scrollIntoView({ block: 'nearest' })
       return
     }
-    if (target !== 'input' && target.isConnected) target.focus()
+    if (
+      target !== 'input' &&
+      target.isConnected &&
+      target.getClientRects().length > 0 &&
+      (!target.closest('details:not([open])') || target.matches('summary'))
+    )
+      target.focus()
     else focusInput()
   }, [editing, panel, data, view, completedOpen, today, achievementsOpen])
   useEffect(() => {

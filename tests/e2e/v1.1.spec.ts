@@ -133,7 +133,8 @@ test('요약 합계·집중 해제 기한 잔류·완료 후 즉시 일치', asy
   await expect(page.getByRole('button', { name: '기한 편집', exact: true })).toBeVisible()
   await page.getByRole('checkbox', { name: '직접 완료', exact: true }).click()
   await expect(summary).toContainText('직접 집중으로 고른 0개 · 기한으로 표시된 2개')
-  expect(await page.locator('.task-row').count()).toBe(2)
+  await expect(page.locator('.task-section .task-row')).toHaveCount(2)
+  await expect(page.locator('.achievements-section > summary')).toHaveText('오늘 마친 일 1개')
 })
 
 test('후보 없음·전체 경로·N 단축키 차단·Escape와 양방향 Tab 경계', async ({ page }) => {
@@ -617,7 +618,7 @@ for (const [width, height] of [
         .evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),
     ).toBeGreaterThanOrEqual(13)
     await page.screenshot({
-      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.3/regression'}/today-${label}.png`,
+      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.4/regression'}/today-${label}.png`,
       fullPage: false,
     })
     await page.getByRole('button', { name: '오늘 계획하기', exact: true }).click()
@@ -631,7 +632,7 @@ for (const [width, height] of [
     }
     await assertBounds()
     await page.screenshot({
-      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.3/regression'}/plan-${label}.png`,
+      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.4/regression'}/plan-${label}.png`,
       fullPage: false,
     })
     await dialog
@@ -655,7 +656,7 @@ for (const [width, height] of [
     await assertBounds()
     await page.getByRole('button', { name: '합치기 적용', exact: true }).scrollIntoViewIfNeeded()
     await page.screenshot({
-      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.3/regression'}/restore-${label}.png`,
+      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.4/regression'}/restore-${label}.png`,
       fullPage: false,
     })
     const target = (await page

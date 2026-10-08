@@ -1,0 +1,166 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\gsjtj\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/v1.4.spec.ts",
+      "--grep",
+      "B09"
+    ],
+    "configFile": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\playwright.config.ts",
+    "rootDir": "C:/Users/gsjtj/Documents/ChatGPT/Todolist/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/gsjtj/Documents/ChatGPT/Todolist/test-results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/gsjtj/Documents/ChatGPT/Todolist/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "command": "node node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 4173 --strictPort",
+      "url": "http://127.0.0.1:4173/",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "v1.4.spec.ts",
+      "file": "v1.4.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "B09 접힌 성취의 숨은 행을 완료 후 초점 대상으로 선택하지 않는다",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5569,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('새 할 일 제목')\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByLabel('새 할 일 제목') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('새 할 일 제목')\u001b[22m\n\u001b[2m    14 × locator resolved to <input value=\"\" maxlength=\"200\" id=\"quick-title\" autocomplete=\"off\" aria-invalid=\"false\" placeholder=\"무엇을 해야 하나요?\" aria-describedby=\"quick-hint\"/>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('새 할 일 제목')\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByLabel('새 할 일 제목') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('새 할 일 제목')\u001b[22m\n\u001b[2m    14 × locator resolved to <input value=\"\" maxlength=\"200\" id=\"quick-title\" autocomplete=\"off\" aria-invalid=\"false\" placeholder=\"무엇을 해야 하나요?\" aria-describedby=\"quick-hint\"/>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.4.spec.ts:1051:45",
+                    "location": {
+                      "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.4.spec.ts",
+                      "column": 45,
+                      "line": 1051
+                    },
+                    "snippet": "  1049 |   await page.goto('./')\n  1050 |   await complete(page, '마지막 미완료')\n> 1051 |   await expect(page.getByLabel('새 할 일 제목')).toBeFocused()\n       |                                             ^\n  1052 |   await expect(summary(page)).toHaveText('오늘 마친 일 2개')\n  1053 | })\n  1054 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.4.spec.ts",
+                        "column": 45,
+                        "line": 1051
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('새 할 일 제목')\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByLabel('새 할 일 제목') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('새 할 일 제목')\u001b[22m\n\u001b[2m    14 × locator resolved to <input value=\"\" maxlength=\"200\" id=\"quick-title\" autocomplete=\"off\" aria-invalid=\"false\" placeholder=\"무엇을 해야 하나요?\" aria-describedby=\"quick-hint\"/>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  1049 |   await page.goto('./')\n  1050 |   await complete(page, '마지막 미완료')\n> 1051 |   await expect(page.getByLabel('새 할 일 제목')).toBeFocused()\n       |                                             ^\n  1052 |   await expect(summary(page)).toHaveText('오늘 마친 일 2개')\n  1053 | })\n  1054 |\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.4.spec.ts:1051:45"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T07:10:01.549Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\v1.4-B09-접힌-성취의-숨은-행을-완료-후-초점-대상으로-선택하지-않는다\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\v1.4-B09-접힌-성취의-숨은-행을-완료-후-초점-대상으로-선택하지-않는다\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\test-results\\artifacts\\v1.4-B09-접힌-성취의-숨은-행을-완료-후-초점-대상으로-선택하지-않는다\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.4.spec.ts",
+                    "column": 45,
+                    "line": 1051
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "5b435937409bb59bf9be-b18575ce981475dbb7d0",
+          "file": "v1.4.spec.ts",
+          "line": 1047,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-08T07:10:00.928Z",
+    "duration": 6761.547,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

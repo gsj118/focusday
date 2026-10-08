@@ -1043,3 +1043,14 @@ test('B08 성취 행에 초점이 있을 때 날짜 변경으로 모두 사라�
   await expect(summary(page)).toHaveText('오늘 마친 일 0개')
   await expect(summary(page)).toBeFocused()
 })
+
+test('B09 접힌 성취의 숨은 행을 완료 후 초점 대상으로 선택하지 않는다', async ({ page }) => {
+  await seed(page, [
+    make('마지막 미완료', { focusDate: day }),
+    make('접힌 완료', { completedAt: stamp }),
+  ])
+  await page.goto('./')
+  await complete(page, '마지막 미완료')
+  await expect(page.getByLabel('새 할 일 제목')).toBeFocused()
+  await expect(summary(page)).toHaveText('오늘 마친 일 2개')
+})
