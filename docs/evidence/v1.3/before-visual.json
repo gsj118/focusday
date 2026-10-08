@@ -1,0 +1,120 @@
+{
+  "phase": "before",
+  "url": "http://127.0.0.1:4173/",
+  "checkedAt": "2026-10-08T05:34:08.356Z",
+  "browser": "134.0.6998.36",
+  "screens": [
+    {
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "planOverflow": false,
+      "dataOverflow": false,
+      "rowHeights": [
+        93.4000015258789,
+        94.20000457763672,
+        93.4000015258789
+      ],
+      "errors": [],
+      "condition": "CSS viewport"
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "overflow": false,
+      "planOverflow": false,
+      "dataOverflow": false,
+      "rowHeights": [
+        93.4000015258789,
+        94.20000457763672,
+        93.4000015258789
+      ],
+      "errors": [],
+      "condition": "CSS viewport"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "overflow": false,
+      "planOverflow": false,
+      "dataOverflow": false,
+      "rowHeights": [
+        93.4000015258789,
+        94.20000457763672,
+        93.4000015258789
+      ],
+      "errors": [],
+      "condition": "CSS viewport"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "planOverflow": false,
+      "dataOverflow": false,
+      "rowHeights": [
+        88,
+        88,
+        88
+      ],
+      "errors": [],
+      "condition": "CSS viewport"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "planOverflow": false,
+      "dataOverflow": false,
+      "rowHeights": [
+        112.80000305175781,
+        113.5999984741211,
+        88
+      ],
+      "errors": [],
+      "condition": "CSS viewport"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "planOverflow": false,
+      "dataOverflow": false,
+      "rowHeights": [
+        112.80000305175781,
+        113.5999984741211,
+        88
+      ],
+      "errors": [],
+      "condition": "CSS viewport"
+    },
+    {
+      "width": 720,
+      "height": 450,
+      "overflow": false,
+      "planOverflow": false,
+      "dataOverflow": false,
+      "rowHeights": [
+        88,
+        88,
+        88
+      ],
+      "errors": [],
+      "condition": "200% equivalent reflow, not native zoom"
+    },
+    {
+      "width": 390,
+      "height": 480,
+      "overflow": false,
+      "planOverflow": false,
+      "dataOverflow": false,
+      "rowHeights": [
+        112.80000305175781,
+        113.5999984741211,
+        88
+      ],
+      "errors": [],
+      "condition": "reduced viewport, not OS keyboard"
+    }
+  ]
+}
