@@ -410,7 +410,7 @@ for (const [width, height] of [
       ).toBeGreaterThanOrEqual(44)
     }
     await page.screenshot({
-      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.2'}/${width === 1440 ? 'desktop' : width === 390 ? 'mobile' : `layout-${width}`}.png`,
+      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.3/regression'}/${width === 1440 ? 'desktop' : width === 390 ? 'mobile' : `layout-${width}`}.png`,
       fullPage: true,
     })
     await page.getByRole('button', { name: '발표 자료 최종 확인 편집', exact: true }).click()
@@ -422,7 +422,7 @@ for (const [width, height] of [
     expect(box.x).toBeGreaterThanOrEqual(0)
     expect(box.x + box.width).toBeLessThanOrEqual(width)
     await page.screenshot({
-      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.2'}/${width === 1440 ? 'desktop-editor' : width === 390 ? 'mobile-editor' : `editor-${width}`}.png`,
+      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.3/regression'}/${width === 1440 ? 'desktop-editor' : width === 390 ? 'mobile-editor' : `editor-${width}`}.png`,
       fullPage: true,
     })
     await page.getByLabel('제목', { exact: true }).fill('긴한글제목'.repeat(40))
@@ -446,19 +446,22 @@ test('reduced-motion·실제 토큰 대비·production 자산 응답', async ({ 
       .getByRole('button', { name: '추가', exact: true })
       .evaluate((el) => getComputedStyle(el).transitionDuration),
   ).toBe('0s')
-  const pairs = await page.evaluate(() => [
-    ['#111827', '#FFFFFF'],
-    ['#475569', '#F8FAFC'],
-    ['#FFFFFF', '#4F46E5'],
-    ['#FFFFFF', '#4338CA'],
-    ['#B91C1C', '#FFFFFF'],
-    ['#4338CA', '#EEF2FF'],
-    ['#64748B', '#FFFFFF'],
-    ['#92400E', '#FFFFFF'],
-    ['#C7D2FE', '#111827'],
-  ])
+  const pairs = await page.evaluate(() => {
+    const css = getComputedStyle(document.documentElement)
+    return [
+      ['--text', '--surface'],
+      ['--muted', '--sidebar'],
+      ['--on-accent', '--accent'],
+      ['--on-accent', '--focus'],
+      ['--danger', '--surface'],
+      ['--focus', '--soft'],
+      ['--muted', '--hover'],
+      ['--warning', '--surface'],
+      ['--toast-action', '--toast-bg'],
+    ].map((pair) => pair.map((token) => css.getPropertyValue(token).trim()))
+  })
   const luminance = (hex: string) =>
-    hex
+    (hex.length === 4 ? '#' + [...hex.slice(1)].map((c) => c + c).join('') : hex)
       .slice(1)
       .match(/../g)!
       .map((v) => parseInt(v, 16) / 255)

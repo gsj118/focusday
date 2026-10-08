@@ -16,7 +16,7 @@ it('SB-01: 6000개 200자 한글 자체 백업의 재가져오기', () => {
   const compactResult = parseBackup(compact)
   if (process.env.BETA_PHASE === 'before')
     writeFileSync(
-      'docs/evidence/v1.2/backup-boundary-before.json',
+      'docs/evidence/v1.3/backup-boundary-before.json',
       JSON.stringify(
         {
           caseId: 'E11',
@@ -42,7 +42,7 @@ it('SB-01: 6000개 200자 한글 자체 백업의 재가져오기', () => {
   if (compactResult.ok) expect(compactResult.backup.data).toEqual(data)
   if (process.env.BETA_PHASE !== 'before')
     writeFileSync(
-      'docs/evidence/v1.2/backup-boundary-after.json',
+      'docs/evidence/v1.3/backup-boundary-after.json',
       JSON.stringify(
         {
           caseId: 'E11',

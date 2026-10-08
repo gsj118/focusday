@@ -104,7 +104,7 @@ export function TaskEditor({ task, today, onSave, onClose, onDelete }: Props) {
         <div className="sheet-handle" />
         <header className="editor-header">
           <div>
-            <p className="eyebrow">TASK DETAILS</p>
+            <p className="eyebrow">Focusday / 할 일</p>
             <h2 id="editor-heading">할 일 편집</h2>
           </div>
           <button type="button" className="icon-button" aria-label="편집 닫기" onClick={onClose}>
@@ -134,66 +134,82 @@ export function TaskEditor({ task, today, onSave, onClose, onDelete }: Props) {
               {error}
             </p>
           )}
-          <label className="focus-setting">
-            <span className="focus-setting-icon">
-              <Icon name="sun" />
-            </span>
-            <span>
-              <strong>오늘 집중</strong>
-              <small>집중하기 / 집중 해제는 기한을 바꾸지 않아요.</small>
-            </span>
-            <input
-              type="checkbox"
-              aria-label={draft.focusDate === today ? '집중 해제' : '집중하기'}
-              checked={draft.focusDate === today}
-              onChange={(e) => setDraft({ ...draft, focusDate: e.target.checked ? today : null })}
-            />
-          </label>
-          {draft.focusDate !== today && dueForcesToday && (
-            <p className="field-hint due-guidance">
-              기한 때문에 오늘에도 표시됩니다. 아래에서 기한을 변경할 수 있습니다.
-            </p>
-          )}
-          <label htmlFor="edit-due">기한</label>
-          <div className="date-control">
-            <input
-              id="edit-due"
-              type="date"
-              value={draft.dueDate ?? ''}
-              onChange={(e) => setDraft({ ...draft, dueDate: e.target.value || null })}
-            />
-            <button
-              type="button"
-              className="text-button"
-              disabled={!draft.dueDate}
-              onClick={() => setDraft({ ...draft, dueDate: null })}
-            >
-              해제
-            </button>
+          <div className="property-list">
+            <div className="property-row">
+              <span className="property-label">
+                <Icon name="sun" size={16} />
+                오늘 집중
+              </span>
+              <label className="focus-setting">
+                <input
+                  type="checkbox"
+                  aria-label={draft.focusDate === today ? '집중 해제' : '집중하기'}
+                  checked={draft.focusDate === today}
+                  onChange={(e) =>
+                    setDraft({ ...draft, focusDate: e.target.checked ? today : null })
+                  }
+                />
+                <span>{draft.focusDate === today ? '집중 중' : '선택 안 함'}</span>
+              </label>
+            </div>
+            <p className="field-hint property-hint">집중하기 / 집중 해제는 기한을 바꾸지 않아요.</p>
+            {draft.focusDate !== today && dueForcesToday && (
+              <p className="field-hint due-guidance">
+                기한 때문에 오늘에도 표시됩니다. 아래에서 기한을 변경할 수 있습니다.
+              </p>
+            )}
+            <div className="property-row">
+              <label htmlFor="edit-due" className="property-label">
+                기한
+              </label>
+              <div className="date-control">
+                <input
+                  id="edit-due"
+                  type="date"
+                  value={draft.dueDate ?? ''}
+                  onChange={(e) => setDraft({ ...draft, dueDate: e.target.value || null })}
+                />
+                <button
+                  type="button"
+                  className="text-button"
+                  disabled={!draft.dueDate}
+                  onClick={() => setDraft({ ...draft, dueDate: null })}
+                >
+                  해제
+                </button>
+              </div>
+            </div>
+            <div className="property-row">
+              <label htmlFor="edit-priority" className="property-label">
+                우선순위
+              </label>
+              <select
+                id="edit-priority"
+                value={draft.priority}
+                onChange={(e) => setDraft({ ...draft, priority: e.target.value as Priority })}
+              >
+                {Object.entries(priorityLabels).map(([key, text]) => (
+                  <option key={key} value={key}>
+                    {text}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="property-row">
+              <label htmlFor="edit-category" className="property-label">
+                분류 <span className="optional">선택</span>
+              </label>
+              <input
+                id="edit-category"
+                value={draft.category ?? ''}
+                placeholder="예: 개인, 업무, 생활"
+                maxLength={24}
+                onChange={(e) => setDraft({ ...draft, category: e.target.value || null })}
+              />
+            </div>
+            <p className="field-hint property-hint">분류는 하나만, 24자까지 입력할 수 있어요.</p>
           </div>
-          <label htmlFor="edit-priority">우선순위</label>
-          <select
-            id="edit-priority"
-            value={draft.priority}
-            onChange={(e) => setDraft({ ...draft, priority: e.target.value as Priority })}
-          >
-            {Object.entries(priorityLabels).map(([key, text]) => (
-              <option key={key} value={key}>
-                {text}
-              </option>
-            ))}
-          </select>
-          <label htmlFor="edit-category">
-            분류 <span className="optional">선택</span>
-          </label>
-          <input
-            id="edit-category"
-            value={draft.category ?? ''}
-            placeholder="예: 개인, 업무, 생활"
-            maxLength={24}
-            onChange={(e) => setDraft({ ...draft, category: e.target.value || null })}
-          />
-          <p className="field-hint">분류는 하나만, 24자까지 입력할 수 있어요.</p>
+          <p className="editor-draft-note">변경한 내용은 저장을 눌러 적용합니다.</p>
         </div>
         <footer className="editor-footer">
           <button type="button" className="delete-button" onClick={onDelete}>

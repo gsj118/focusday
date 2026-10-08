@@ -4,13 +4,13 @@
 
 ## 직접 확인한 참조
 
-| 자료 | 확인과 적용 |
-| --- | --- |
-| [getdesign.md](https://getdesign.md/) | DESIGN.md를 색·서체·간격·컴포넌트의 일관된 근거로 사용하는 방식 참고. |
-| [Notion 분석](https://getdesign.md/notion/design-md) | 제3자 독립 분석임을 확인. 따뜻한 중립 표면만 참고하고 serif 표제 제안은 작업 앱에 적용하지 않음. |
-| [Notion preview](https://getdesign.md/design-md/notion/preview) | 흰 표면·hairline·작은 입력 모서리 참고. 64px 홍보 표제, pill CTA, 가격 카드, indigo hero, sticker 이미지는 제외. |
-| [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) | 브랜드별 분석 모음과 Notion 항목을 확인. 다른 브랜드의 시각 체계를 혼합하지 않음. |
-| [Notion Projects 공식](https://www.notion.com/product/projects) | 실제 프로젝트·할 일 작업 화면과 속성 중심 구성을 대조. 마케팅 페이지 레이아웃은 가져오지 않음. |
+| 자료                                                                                                       | 확인과 적용                                                                                                                                                       |
+| ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [getdesign.md](https://getdesign.md/)                                                                      | DESIGN.md를 색·서체·간격·컴포넌트의 일관된 근거로 사용하는 방식 참고.                                                                                             |
+| [Notion 분석](https://getdesign.md/notion/design-md)                                                       | 제3자 독립 분석임을 확인. 따뜻한 중립 표면만 참고하고 serif 표제 제안은 작업 앱에 적용하지 않음.                                                                  |
+| [Notion preview](https://getdesign.md/design-md/notion/preview)                                            | 흰 표면·hairline·작은 입력 모서리 참고. 64px 홍보 표제, pill CTA, 가격 카드, indigo hero, sticker 이미지는 제외.                                                  |
+| [awesome-design-md](https://github.com/VoltAgent/awesome-design-md)                                        | 브랜드별 분석 모음과 Notion 항목을 확인. 다른 브랜드의 시각 체계를 혼합하지 않음.                                                                                 |
+| [Notion Projects 공식](https://www.notion.com/product/projects)                                            | 실제 프로젝트·할 일 작업 화면과 속성 중심 구성을 대조. 마케팅 페이지 레이아웃은 가져오지 않음.                                                                    |
 | [Projects & Tasks 공식 가이드](https://www.notion.com/help/guides/getting-started-with-projects-and-tasks) | 본문 및 확대된 Tasks 화면을 브라우저로 직접 확인. 페이지 제목, breadcrumb, 조용한 목록 도구, 얇은 행 구분, 속성 태그를 적용. 협업·보드·필터 기능은 확장하지 않음. |
 
 브라우저에서 공식 가이드의 “Add different views to your tasks database…” 작업 화면을 확대해 검토했다. 노션 이름/로고/이미지/폰트를 앱 자산으로 복사하지 않는다. 추가 CLI 설치 없이 공개 분석과 공식 화면을 확인했다.
@@ -19,22 +19,22 @@
 
 `src/styles.css`의 `:root`가 단일 기준이다.
 
-| 토큰 | 값 / 역할 |
-| --- | --- |
-| `--bg`, `--surface` | #FFFFFF · 본문/패널 |
-| `--sidebar`, `--quiet` | #F7F7F5 · 탐색/안내 |
-| `--text` | #37352F · 본문 |
-| `--muted` | #6B6B65 · 보조 정보/placeholder |
-| `--border` | #E9E9E7 · 장식 구분선 |
-| `--control-border` | #8A8A83 · 필수 입력·체크 경계 |
-| `--hover` | #EFEFED · hover/선택 |
-| `--accent`, `--focus` | #1769B5, #125A9E · 흰 글자 버튼/링크/포커스 |
-| `--soft` | #EAF3FC · 집중 상태 |
-| `--danger`, `--danger-soft` | #9B403A, #FBEEED · 오류/기한 초과 |
-| `--radius-sm`, `--radius`, `--radius-panel` | 4px / 6px / 8px |
-| `--space-1..8` | 4 / 8 / 12 / 16 / 20 / 24 / 32 / 48px |
-| `--font-xs`, `--font-sm`, `--font-body`, `--font-input`, `--font-title` | 12 / 13 / 15 / 16 / 36px |
-| `--sidebar-width`, `--page-width`, `--editor-width`, `--panel-width` | 232 / 1040 / 480 / 520px |
+| 토큰                                                                    | 값 / 역할                                   |
+| ----------------------------------------------------------------------- | ------------------------------------------- |
+| `--bg`, `--surface`                                                     | #FFFFFF · 본문/패널                         |
+| `--sidebar`, `--quiet`                                                  | #F7F7F5 · 탐색/안내                         |
+| `--text`                                                                | #37352F · 본문                              |
+| `--muted`                                                               | #6B6B65 · 보조 정보/placeholder             |
+| `--border`                                                              | #E9E9E7 · 장식 구분선                       |
+| `--control-border`                                                      | #8A8A83 · 필수 입력·체크 경계               |
+| `--hover`                                                               | #EFEFED · hover/선택                        |
+| `--accent`, `--focus`                                                   | #1769B5, #125A9E · 흰 글자 버튼/링크/포커스 |
+| `--soft`                                                                | #EAF3FC · 집중 상태                         |
+| `--danger`, `--danger-soft`                                             | #9B403A, #FBEEED · 오류/기한 초과           |
+| `--radius-sm`, `--radius`, `--radius-panel`                             | 4px / 6px / 8px                             |
+| `--space-1..8`                                                          | 4 / 8 / 12 / 16 / 20 / 24 / 32 / 48px       |
+| `--font-xs`, `--font-sm`, `--font-body`, `--font-input`, `--font-title` | 12 / 13 / 15 / 16 / 36px                    |
+| `--sidebar-width`, `--page-width`, `--editor-width`, `--panel-width`    | 232 / 1040 / 480 / 520px                    |
 
 일반 목록에 그림자가 없다. 떠 있는 메뉴/패널/toast만 최소 shadow. 작은 사각형 체크와 직사각 태그. 한글에는 음수 자간을 적용하지 않는다. 제목 36px(모바일 30px), 본문 15px/1.5, 보조 12–13px. 입력은 16px. 실제 렌더링 조합별 텍스트 4.5:1, 필수 경계와 focus 3:1 검사. 장식 구분선은 상태/입력을 판별하는 유일한 경계로 사용하지 않는다.
 
@@ -62,4 +62,3 @@
 패널은 desktop 오른쪽, mobile sheet. header/footer는 고정, 내용은 내부 스크롤하며 줄바꿈/최소 폭/`min-height:0` 적용. menu 높이는 viewport에 제한하고 스크롤. 하단 nav/toast는 visualViewport 하단과 safe-area에 맞춤. 실제 OS 키보드 검증과 축소 viewport 검증을 구별한다.
 
 1440×900, 1366×768, 1024×768, 768×1024, 390×844, 320×568 및 작은 높이/200% 동등 reflow를 실제 Chrome 캡처로 검토. keyboard-only/초점 복귀/Tab trap/Escape/status/alert/reduced-motion 유지. 실제 스마트폰·OS IME·native zoom·스크린 리더는 실행하지 않은 한 PASS로 기록하지 않는다.
-

@@ -57,6 +57,7 @@ export function TaskRow({ task, today, onToggle, onEdit, onFocus }: Props) {
           className={`focus-button ${focused ? 'is-focused' : ''}`}
           onClick={() => onFocus(task)}
           aria-label={`${task.title} ${focused ? '집중 해제' : '집중하기'}`}
+          aria-pressed={focused}
           title={focused ? '집중 해제' : '집중하기'}
         >
           <Icon name={focused ? 'sun' : 'plus'} size={18} />

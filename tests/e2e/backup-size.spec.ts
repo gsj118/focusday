@@ -20,7 +20,10 @@ test('P10 E11: 6000개 자체 다운로드→같은 파일 UI 미리보기 (quot
   await page.clock.install({ time: new Date('2026-10-02T10:00:00+09:00') })
   await page.goto('./')
   await page.locator('.sidebar .app-menu summary').click()
-  await page.locator('.sidebar').getByRole('button', { name: '백업·복원', exact: true }).click()
+  await page
+    .locator('.sidebar .app-menu')
+    .getByRole('button', { name: '백업·복원', exact: true })
+    .click()
   const pending = page.waitForEvent('download')
   await page.getByRole('button', { name: 'JSON 백업 다운로드', exact: true }).click()
   const download = await pending,
@@ -33,7 +36,7 @@ test('P10 E11: 6000개 자체 다운로드→같은 파일 UI 미리보기 (quot
     buffer: Buffer.from(text),
   })
   const phase = process.env.BETA_PHASE || 'after'
-  await page.screenshot({ path: `docs/screenshots/v1.2/${phase}/backup-6000.png` })
+  await page.screenshot({ path: `docs/screenshots/v1.3/regression/${phase}/backup-6000.png` })
   await info.attach('backup-size', {
     body: Buffer.from(
       JSON.stringify({
@@ -67,7 +70,10 @@ test('P10 E11: 6000개 자체 다운로드→같은 파일 UI 미리보기 (quot
 test('E11: UTF-8 파일 정확한 한도와 1byte 초과, 선택만으로 저장하지 않음', async ({ page }) => {
   await page.goto('./')
   await page.locator('.sidebar .app-menu summary').click()
-  await page.locator('.sidebar').getByRole('button', { name: '백업·복원', exact: true }).click()
+  await page
+    .locator('.sidebar .app-menu')
+    .getByRole('button', { name: '백업·복원', exact: true })
+    .click()
   const json = JSON.stringify(createBackup({ version: 1, tasks: [] })),
     exact = json + ' '.repeat(MAX_BACKUP_BYTES - Buffer.byteLength(json))
   await page.locator('#backup-file').setInputFiles({
@@ -100,7 +106,10 @@ test('E11: 초과 자체 백업은 다운로드 성공으로 표시하지 않음
   }, raw)
   await page.goto('./')
   await page.locator('.sidebar .app-menu summary').click()
-  await page.locator('.sidebar').getByRole('button', { name: '백업·복원', exact: true }).click()
+  await page
+    .locator('.sidebar .app-menu')
+    .getByRole('button', { name: '백업·복원', exact: true })
+    .click()
   let downloads = 0
   page.on('download', () => downloads++)
   await page.getByRole('button', { name: 'JSON 백업 다운로드', exact: true }).click()

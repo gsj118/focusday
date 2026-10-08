@@ -431,6 +431,8 @@ for (const mode of ['merge', 'replace'] as const)
     await expect(page.getByRole('dialog').getByRole('alert')).toContainText(
       '적용 전 목록과 저장 원본을 유지했습니다',
     )
+    await expect(page.getByRole('dialog').getByRole('alert')).toBeFocused()
+    await expect(page.getByRole('dialog').getByRole('alert')).toBeInViewport()
     expect(await page.evaluate((key) => localStorage.getItem(key), STORAGE_KEY)).toBe(before)
     expect(await page.locator('.task-row').count()).toBe(1)
     expect(await page.locator('.task-row .task-title').innerText()).toBe('현재')
@@ -615,7 +617,7 @@ for (const [width, height] of [
         .evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),
     ).toBeGreaterThanOrEqual(13)
     await page.screenshot({
-      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.2'}/today-${label}.png`,
+      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.3/regression'}/today-${label}.png`,
       fullPage: false,
     })
     await page.getByRole('button', { name: '오늘 계획하기', exact: true }).click()
@@ -629,7 +631,7 @@ for (const [width, height] of [
     }
     await assertBounds()
     await page.screenshot({
-      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.2'}/plan-${label}.png`,
+      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.3/regression'}/plan-${label}.png`,
       fullPage: false,
     })
     await dialog
@@ -653,7 +655,7 @@ for (const [width, height] of [
     await assertBounds()
     await page.getByRole('button', { name: '합치기 적용', exact: true }).scrollIntoViewIfNeeded()
     await page.screenshot({
-      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.2'}/restore-${label}.png`,
+      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.3/regression'}/restore-${label}.png`,
       fullPage: false,
     })
     const target = (await page

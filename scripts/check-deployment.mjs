@@ -5,13 +5,13 @@ import { chromium, expect } from '@playwright/test'
 const url = new URL(process.argv[2] || 'https://gsj118.github.io/focusday/')
 const evidenceDir = process.env.SMOKE_OUTPUT_DIR
   ? `${process.env.SMOKE_OUTPUT_DIR}/evidence`
-  : 'docs/evidence/v1.2'
+  : 'docs/evidence/v1.3'
 const screenshotDir = process.env.SMOKE_OUTPUT_DIR
   ? `${process.env.SMOKE_OUTPUT_DIR}/screenshots`
-  : 'docs/screenshots/v1.2'
+  : 'docs/screenshots/v1.3'
 assert.equal(url.protocol, 'https:')
 const report = {
-  appVersion: '1.2.0',
+  appVersion: '1.3.0',
   url: url.href,
   checkedAt: new Date().toISOString(),
   deployedSourceCommit: process.env.LIVE_HEAD_SHA || null,
@@ -148,7 +148,7 @@ try {
       const beforeExport = await readTasks()
       const menu = page.locator(name === 'mobile' ? '.mobile-menu .app-menu' : '.sidebar .app-menu')
       await menu.locator('summary').click()
-      await expect(menu.getByText('Focusday 1.2.0', { exact: true })).toBeVisible()
+      await expect(menu.getByText('Focusday 1.3.0', { exact: true })).toBeVisible()
       await menu.getByRole('button', { name: '백업·복원', exact: true }).click()
       const downloadedPromise = page.waitForEvent('download')
       await page.getByRole('button', { name: 'JSON 백업 다운로드', exact: true }).click()
@@ -238,7 +238,7 @@ try {
           '삭제 취소',
           '예시',
           '가로 넘침/편집기',
-          '앱 버전 1.2.0',
+          '앱 버전 1.3.0',
           '편집 조합 이벤트 Enter 무저장 (OS IME 제외)',
           'compact UTF-8 전체 백업, 10MiB 이내',
           'JSON 백업 모든 속성·완료·예시 보존',
@@ -286,7 +286,7 @@ try {
     await largePage.goto(url.href, { waitUntil: 'networkidle' })
     await largePage.locator('.sidebar summary').click()
     await largePage
-      .locator('.sidebar')
+      .locator('.sidebar .app-menu')
       .getByRole('button', { name: '백업·복원', exact: true })
       .click()
     const pending = largePage.waitForEvent('download')

@@ -38,12 +38,19 @@ export function DataPanel({
   const [restored, setRestored] = useState(false)
   const request = useRef(0)
   const previewHeading = useRef<HTMLHeadingElement>(null)
+  const errorMessage = useRef<HTMLParagraphElement>(null)
   useLayoutEffect(() => {
     if (backup) {
       previewHeading.current?.focus()
       previewHeading.current?.scrollIntoView({ block: 'start' })
     }
   }, [backup, confirmReplace])
+  useLayoutEffect(() => {
+    if (error) {
+      errorMessage.current?.focus()
+      errorMessage.current?.scrollIntoView({ block: 'nearest' })
+    }
+  }, [error])
   useEffect(
     () => () => {
       request.current++
@@ -169,7 +176,7 @@ export function DataPanel({
         </>
       )}
       {error && (
-        <p className="field-error" role="alert">
+        <p ref={errorMessage} tabIndex={-1} className="field-error" role="alert">
           {error}
         </p>
       )}

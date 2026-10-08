@@ -292,7 +292,7 @@ export default function App() {
           }}
         >
           <Icon name={item === 'today' ? 'sun' : 'list'} />
-          <span>{item === 'today' ? '오늘' : '전체'}</span>
+          <span>{item === 'today' ? '오늘' : '전체 할 일'}</span>
           <span className="nav-count">{item === 'today' ? todayCount : allCount}</span>
         </button>
       ))}
@@ -334,7 +334,7 @@ export default function App() {
           백업·복원
         </button>
         <hr />
-        <strong>Focusday 1.2.0</strong>
+        <strong>Focusday 1.3.0</strong>
         <p>
           계정 없이 이 브라우저에 저장합니다. JSON 파일로 직접 백업할 수 있습니다. 자동 서버
           백업·기기 간 동기화는 제공하지 않습니다.
@@ -377,15 +377,34 @@ export default function App() {
       <aside className="sidebar">
         <a className="brand" href="#main" aria-label="Focusday">
           <span className="brand-icon">
-            <Icon name="check" size={23} />
+            <Icon name="check" size={18} />
           </span>
           <span>
-            Focusday<span className="brand-tagline">오늘에 집중하는 작은 습관</span>
+            Focusday<span className="brand-tagline">개인 작업 공간</span>
           </span>
         </a>
+        <button
+          className="sidebar-search"
+          aria-label="검색"
+          onClick={() => {
+            search.current?.focus()
+            search.current?.scrollIntoView({ block: 'center' })
+          }}
+        >
+          <Icon name="search" size={18} />
+          검색
+          <kbd>/</kbd>
+        </button>
         <p className="nav-label">나의 할 일</p>
         {nav()}
         <div className="sidebar-bottom">
+          <button
+            className="sidebar-utility"
+            onClick={(event) => openPanel('data', event.currentTarget)}
+          >
+            <Icon name="storage" size={18} />
+            백업·복원
+          </button>
           {menu}
           <div className="local-note">
             <Icon name="storage" size={16} />
@@ -396,8 +415,8 @@ export default function App() {
       <main id="main" className="main-content">
         <div className="topline">
           <span>
-            나의 하루 <span className="breadcrumb-slash">/</span>{' '}
-            {view === 'today' ? '오늘' : '전체'}
+            Focusday <span className="breadcrumb-slash">/</span>{' '}
+            {view === 'today' ? '오늘' : '전체 할 일'}
           </span>
           <div className="save-status" role="status">
             <span
@@ -415,7 +434,10 @@ export default function App() {
           </div>
         </div>
         <header className="page-header">
-          <div>
+          <div className="page-heading">
+            <div className="page-icon">
+              <Icon name={view === 'today' ? 'sun' : 'list'} size={32} />
+            </div>
             <div className="page-title">
               <h1>{view === 'today' ? '오늘' : '전체 할 일'}</h1>
               <span className="header-date">
@@ -432,36 +454,12 @@ export default function App() {
                 : '생각난 일은 담아두고, 오늘 할 일을 골라보세요.'}
             </p>
           </div>
-          <div className="search-field">
-            <Icon name="search" size={18} />
-            <label className="sr-only" htmlFor="search">
-              제목·분류 검색
-            </label>
-            <input
-              ref={search}
-              id="search"
-              type="search"
-              value={query}
-              placeholder="제목·분류 검색"
-              onChange={(e) => setQuery(e.target.value)}
-            />
-            {query && (
-              <button
-                className="icon-button"
-                aria-label="검색 지우기"
-                onClick={() => {
-                  setQuery('')
-                  search.current?.focus()
-                }}
-              >
-                <Icon name="close" size={17} />
-              </button>
-            )}
-          </div>
         </header>
         {view === 'today' && (
           <section className="today-planning" aria-label="오늘 집중 요약">
-            <div>
+            <Icon name="sun" size={20} />
+            <div className="planning-copy">
+              <h2>오늘 집중</h2>
               <p>
                 직접 집중으로 고른 <strong>{summary.focused}개</strong> · 기한으로 표시된{' '}
                 <strong>{summary.dueOnly}개</strong>
@@ -517,6 +515,39 @@ export default function App() {
             </button>
           </section>
         )}
+        <div className="list-toolbar">
+          <div className="list-label">
+            <Icon name="list" size={17} />
+            <span>할 일 목록</span>
+            <span className="list-hint">제목을 눌러 편집</span>
+          </div>
+          <div className="search-field">
+            <Icon name="search" size={17} />
+            <label className="sr-only" htmlFor="search">
+              제목·분류 검색
+            </label>
+            <input
+              ref={search}
+              id="search"
+              type="search"
+              value={query}
+              placeholder="제목·분류 검색"
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            {query && (
+              <button
+                className="icon-button"
+                aria-label="검색 지우기"
+                onClick={() => {
+                  setQuery('')
+                  search.current?.focus()
+                }}
+              >
+                <Icon name="close" size={17} />
+              </button>
+            )}
+          </div>
+        </div>
         <form
           ref={composer}
           className="quick-add"

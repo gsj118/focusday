@@ -58,7 +58,7 @@ export function PanelDialog({
         <div className="sheet-handle" />
         <header className="editor-header">
           <div>
-            <p className="eyebrow">FOCUSDAY</p>
+            <p className="eyebrow">Focusday / {kind === 'plan' ? '오늘' : '데이터'}</p>
             <h2 id={`${kind}-heading`}>{title}</h2>
           </div>
           <button

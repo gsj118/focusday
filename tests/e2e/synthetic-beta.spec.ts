@@ -6,7 +6,7 @@ import { createTask, type Task } from '../../src/domain'
 
 const day = '2026-10-02'
 const phase = process.env.BETA_PHASE || 'after'
-const shotDir = process.env.FOCUSDAY_SCREENSHOTS || `docs/screenshots/v1.2/${phase}`
+const shotDir = process.env.FOCUSDAY_SCREENSHOTS || `docs/screenshots/v1.3/regression/${phase}`
 type CaseResult = Record<string, unknown>
 const results = new Map<string, CaseResult[]>()
 const make = (id: string, extra: Partial<Task> = {}) => ({
@@ -307,7 +307,7 @@ test('P03 키보드: 입력→Tab 편집→textarea Enter→취소→계획·백
       await page.keyboard.press('Enter')
       await tabTo(
         page,
-        page.locator('.sidebar').getByRole('button', { name: '백업·복원', exact: true }),
+        page.locator('.sidebar .app-menu').getByRole('button', { name: '백업·복원', exact: true }),
       )
       await page.keyboard.press('Enter')
       await page.keyboard.press('Shift+Tab')
@@ -706,7 +706,7 @@ test('P11 시각/확대: 200% reflow 동등 조건→reduced motion→오류 복
         await expect(page.getByRole('alert')).toBeVisible()
         await input.fill('확대 확인')
         await page.keyboard.press('Enter')
-        await expect(page.getByText('오늘 집중', { exact: true })).toBeVisible()
+        await expect(page.locator('.task-row .focus-label')).toHaveText('오늘 집중')
         await page.locator('.task-body').focus()
         expect(
           await page.locator('.task-body').evaluate((el) => getComputedStyle(el).outlineStyle),
