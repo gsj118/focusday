@@ -108,8 +108,8 @@ export function DataPanel({
   return (
     <PanelDialog title="백업·복원" kind="data" onClose={onClose}>
       <p className="panel-intro">
-        내 할 일을 파일로 보관하고 필요할 때 가져오세요. 파일은 직접 보관해야 하며 자동 서버
-        백업·동기화가 아닙니다.
+        전체 할 일을 파일로 보관하고 필요할 때 가져오세요. 완료·예시와 모든 속성을 포함합니다. 문구
+        설정·내 문장은 제외하며 파일은 직접 보관해야 합니다. 자동 서버 백업·동기화가 아닙니다.
       </p>
       <PanelStorageNotice guard={guard} saveError={saveError} />
       {guard !== 'ready' && (

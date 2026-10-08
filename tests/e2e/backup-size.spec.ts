@@ -36,7 +36,9 @@ test('P10 E11: 6000개 자체 다운로드→같은 파일 UI 미리보기 (quot
     buffer: Buffer.from(text),
   })
   const phase = process.env.BETA_PHASE || 'after'
-  await page.screenshot({ path: `docs/screenshots/v1.3/regression/${phase}/backup-6000.png` })
+  await page.screenshot({
+    path: `${process.env.FOCUSDAY_SCREENSHOTS || `docs/screenshots/v1.4/regression/${phase}`}/backup-6000.png`,
+  })
   await info.attach('backup-size', {
     body: Buffer.from(
       JSON.stringify({

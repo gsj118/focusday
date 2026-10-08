@@ -6,6 +6,7 @@ import {
   createTask,
   isOverdue,
   isToday,
+  localDate,
   selectCompleted,
   selectTasks,
   todaySummary,
@@ -29,6 +30,9 @@ import { TaskRow } from './components/TaskRow'
 import { UndoToast } from './components/UndoToast'
 import { PlanPanel } from './components/PlanPanel'
 import { DataPanel } from './components/DataPanel'
+import { PreferencesPanel } from './components/PreferencesPanel'
+import { dailySentence, selectAchievements, completionMilestone } from './encouragement'
+import { usePreferences } from './usePreferences'
 
 export default function App() {
   const [initial] = useState(() => loadData())
@@ -43,10 +47,17 @@ export default function App() {
   const [inputError, setInputError] = useState('')
   const [query, setQuery] = useState('')
   const [editing, setEditing] = useState<Task | null>(null)
-  const [panel, setPanel] = useState<'plan' | 'data' | null>(null)
+  const [panel, setPanel] = useState<'plan' | 'data' | 'preferences' | null>(null)
   const [undo, setUndo] = useState<UndoAction | null>(null)
   const undoToken = useRef(0)
   const [completedOpen, setCompletedOpen] = useState(false)
+  const [achievementsOpen, setAchievementsOpen] = useState(false)
+  const [encouragement, setEncouragement] = useState<{
+    token: number
+    day: string
+    count: number
+    text: string
+  } | null>(null)
   const [notice, setNotice] = useState<{ text: string; taskId?: string } | null>(null)
   const [confirmReset, setConfirmReset] = useState(false)
   const input = useRef<HTMLInputElement>(null)
@@ -55,13 +66,17 @@ export default function App() {
   const composing = useRef(false)
   const lastCompositionEnd = useRef(0)
   const returnFocus = useRef<HTMLElement | null>(null)
-  const pendingFocus = useRef<HTMLElement | 'input' | 'completed' | null>(null)
+  const pendingFocus = useRef<HTMLElement | 'input' | 'completed' | 'achievements' | null>(null)
   const completedSummary = useRef<HTMLElement>(null)
+  const achievementsSummary = useRef<HTMLElement>(null)
+  const achievementFocus = useRef(false)
   const resetDialog = useRef<HTMLDialogElement>(null)
   const today = useToday()
+  const ui = usePreferences()
   useVisualViewport()
   const active = selectTasks(data.tasks, view, today, query)
   const completed = selectCompleted(data.tasks, query)
+  const achievements = selectAchievements(data.tasks, today)
   const todayCount = data.tasks.filter((t) => isToday(t, today)).length
   const summary = todaySummary(data.tasks, today)
   const yesterdayCount = yesterdayTasks(data.tasks, today).length
@@ -93,28 +108,43 @@ export default function App() {
     setEditing(null)
   }
   function focusAfterRemoval(task: Task) {
-    const rows = [...document.querySelectorAll<HTMLElement>('.task-row')]
+    const selector =
+      task.completedAt && view === 'today' ? '.achievements-section .task-row' : '.task-row'
+    const rows = [...document.querySelectorAll<HTMLElement>(selector)]
     const index = rows.findIndex((row) => row.dataset.taskId === task.id)
     const next = rows[index + 1] || rows[index - 1]
-    pendingFocus.current = next?.querySelector<HTMLElement>('input') || 'input'
+    pendingFocus.current =
+      next?.querySelector<HTMLElement>('input') ||
+      (task.completedAt && view === 'today' ? 'achievements' : 'input')
   }
   function toggle(task: Task) {
-    if (!task.completedAt) {
-      setUndo({ token: ++undoToken.current, kind: 'complete', task })
-    }
-    focusAfterRemoval(task)
-    change((tasks) =>
-      tasks.map((t) =>
-        t.id === task.id
-          ? {
-              ...t,
-              completedAt: t.completedAt ? null : new Date().toISOString(),
-              updatedAt: new Date().toISOString(),
-            }
-          : t,
-      ),
+    const actual = current.current.tasks.find((item) => item.id === task.id)
+    if (!actual) return
+    const now = new Date()
+    const actionDay = localDate(now)
+    const stamp = now.toISOString()
+    const next = current.current.tasks.map((t) =>
+      t.id === actual.id
+        ? { ...t, completedAt: t.completedAt ? null : stamp, updatedAt: stamp }
+        : t,
     )
-    if (task.completedAt) setNotice({ text: '미완료로 복원했습니다.' })
+    focusAfterRemoval(task)
+    const before = selectAchievements(current.current.tasks, actionDay).length
+    change(() => next)
+    setEncouragement(null)
+    if (!actual.completedAt) {
+      const token = ++undoToken.current
+      setUndo({ token, kind: 'complete', task: actual })
+      const count = selectAchievements(next, actionDay).length
+      const milestone = actual.isDemo ? null : completionMilestone(before, count)
+      if (milestone) {
+        const text = ui.processMilestone(actionDay, milestone)
+        if (text) setEncouragement({ token, day: actionDay, count, text })
+      }
+    } else {
+      if (undo?.kind === 'complete' && undo.task.id === actual.id) setUndo(null)
+      setNotice({ text: '미완료로 복원했습니다.' })
+    }
   }
   function toggleFocus(task: Task, fromPlan = false) {
     const removing = task.focusDate === today
@@ -173,7 +203,7 @@ export default function App() {
   function downloadRaw() {
     downloadJSON(raw ?? '', 'focusday-original.json')
   }
-  function openPanel(kind: 'plan' | 'data', origin: HTMLElement) {
+  function openPanel(kind: 'plan' | 'data' | 'preferences', origin: HTMLElement) {
     if (editing || confirmReset) return
     const menu = origin.closest('details')
     returnFocus.current = menu?.querySelector('summary') || origin
@@ -237,16 +267,26 @@ export default function App() {
   }, [confirmReset])
   useLayoutEffect(() => {
     const target = pendingFocus.current
-    if (!target || editing || panel) return
+    if (editing || panel) return
+    if (!target) {
+      if (achievementFocus.current && document.activeElement === document.body)
+        achievementsSummary.current?.focus()
+      return
+    }
     pendingFocus.current = null
     if (target === 'completed') {
       completedSummary.current?.focus()
       completedSummary.current?.scrollIntoView({ block: 'nearest' })
       return
     }
+    if (target === 'achievements') {
+      achievementsSummary.current?.focus()
+      achievementsSummary.current?.scrollIntoView({ block: 'nearest' })
+      return
+    }
     if (target !== 'input' && target.isConnected) target.focus()
     else focusInput()
-  }, [editing, panel, data, view, completedOpen])
+  }, [editing, panel, data, view, completedOpen, today, achievementsOpen])
   useEffect(() => {
     const keyboard = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement
@@ -334,7 +374,19 @@ export default function App() {
           백업·복원
         </button>
         <hr />
-        <strong>Focusday 1.3.0</strong>
+        <button
+          className="secondary-button"
+          onClick={(event) => openPanel('preferences', event.currentTarget)}
+        >
+          문구와 격려 설정
+        </button>
+        {ui.error && (
+          <p className="field-hint">
+            설정 저장 확인이 필요합니다. 문구와 격려 설정에서 복구할 수 있습니다.
+          </p>
+        )}
+        <hr />
+        <strong>Focusday 1.4.0</strong>
         <p>
           계정 없이 이 브라우저에 저장합니다. JSON 파일로 직접 백업할 수 있습니다. 자동 서버
           백업·기기 간 동기화는 제공하지 않습니다.
@@ -347,7 +399,7 @@ export default function App() {
       </div>
     </details>
   )
-  const row = (task: Task) => (
+  const row = (task: Task, showCompletionTime = false) => (
     <TaskRow
       key={task.id}
       task={task}
@@ -355,6 +407,7 @@ export default function App() {
       onToggle={toggle}
       onFocus={toggleFocus}
       onEdit={openEditor}
+      showCompletionTime={showCompletionTime}
     />
   )
   const section = (label: string, tasks: Task[], overdue = false) =>
@@ -365,12 +418,17 @@ export default function App() {
           <span>{tasks.length}</span>
           {overdue && <p>기한을 확인해 주세요</p>}
         </div>
-        <ul className="task-list">{tasks.map(row)}</ul>
+        <ul className="task-list">{tasks.map((task) => row(task))}</ul>
       </section>
     )
 
   return (
-    <div className="app-shell">
+    <div
+      className="app-shell"
+      onFocusCapture={(event) => {
+        achievementFocus.current = !!(event.target as HTMLElement).closest('.achievements-section')
+      }}
+    >
       <a className="skip-link" href="#main">
         할 일 목록으로 이동
       </a>
@@ -448,9 +506,9 @@ export default function App() {
                 }).format(calendarDate(today))}
               </span>
             </div>
-            <p>
+            <p className={view === 'today' ? 'daily-sentence' : undefined}>
               {view === 'today'
-                ? '해야 할 모든 일보다, 오늘 할 일에 집중하세요.'
+                ? dailySentence(today, ui.preferences.sentenceMode, ui.preferences.customSentence)
                 : '생각난 일은 담아두고, 오늘 할 일을 골라보세요.'}
             </p>
           </div>
@@ -712,6 +770,35 @@ export default function App() {
         ) : (
           section('미완료 할 일', active)
         )}
+        {view === 'today' && (
+          <details
+            className="completed-section achievements-section"
+            open={achievementsOpen}
+            onToggle={(event) => {
+              setAchievementsOpen(event.currentTarget.open)
+              if (
+                !event.currentTarget.open &&
+                event.currentTarget.contains(document.activeElement) &&
+                document.activeElement !== achievementsSummary.current
+              )
+                achievementsSummary.current?.focus()
+            }}
+          >
+            <summary ref={achievementsSummary}>
+              <Icon name="chevron" size={18} />
+              오늘 마친 일 {achievements.length}개
+            </summary>
+            <p className="field-hint">
+              현재 목록에 남아 있는 직접 만든 일 중 오늘 완료한 항목입니다. 검색과 무관하며 완료
+              취소·삭제·복원에 따라 바뀝니다.
+            </p>
+            {achievements.length ? (
+              <ul className="task-list">{achievements.map((task) => row(task, true))}</ul>
+            ) : (
+              <p className="achievement-empty">오늘 마친 일이 여기에 모입니다.</p>
+            )}
+          </details>
+        )}
         {view === 'all' && data.tasks.some((t) => t.completedAt) && (
           <details
             className="completed-section"
@@ -723,7 +810,7 @@ export default function App() {
               완료된 할 일 <span>{completed.length}</span>
             </summary>
             {completed.length ? (
-              <ul className="task-list">{completed.map(row)}</ul>
+              <ul className="task-list">{completed.map((task) => row(task))}</ul>
             ) : (
               <p className="field-hint">검색어와 일치하는 완료 항목이 없습니다.</p>
             )}
@@ -760,6 +847,17 @@ export default function App() {
           onClose={closePanel}
         />
       )}
+      {panel === 'preferences' && (
+        <PreferencesPanel
+          preferences={ui.preferences}
+          guard={ui.guard}
+          storageError={ui.error}
+          onSave={ui.save}
+          onRetry={ui.retry}
+          onReset={ui.reset}
+          onClose={closePanel}
+        />
+      )}
       {editing && (
         <TaskEditor
           key={editing.id}
@@ -779,6 +877,14 @@ export default function App() {
         <UndoToast
           key={undo.token}
           undo={undo}
+          encouragement={
+            encouragement?.token === undo.token &&
+            encouragement.day === today &&
+            encouragement.count === achievements.length &&
+            data.tasks.some((task) => task.id === undo.task.id && task.completedAt)
+              ? encouragement.text
+              : undefined
+          }
           onUndo={() => {
             change((tasks) => applyUndo(tasks, undo))
             setUndo(null)

@@ -6,8 +6,9 @@ type Props = {
   onUndo: () => void
   onExpire: (token: number) => void
   onCompleted: () => void
+  encouragement?: string
 }
-export function UndoToast({ undo, onUndo, onExpire, onCompleted }: Props) {
+export function UndoToast({ undo, onUndo, onExpire, onCompleted, encouragement }: Props) {
   const remaining = useRef(8000)
   const started = useRef(0)
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -57,7 +58,10 @@ export function UndoToast({ undo, onUndo, onExpire, onCompleted }: Props) {
         }
       }}
     >
-      <span role="status">할 일을 {undo.kind === 'complete' ? '완료' : '삭제'}했습니다.</span>
+      <span role="status">
+        할 일을 {undo.kind === 'complete' ? '완료' : '삭제'}했습니다.
+        {encouragement && <span className="encouragement">{encouragement}</span>}
+      </span>
       <div className="toast-actions">
         <button onClick={onUndo}>실행 취소</button>
         {undo.kind === 'complete' && <button onClick={onCompleted}>완료 목록</button>}

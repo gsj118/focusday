@@ -7,8 +7,9 @@ type Props = {
   onToggle: (task: Task) => void
   onEdit: (task: Task, origin: HTMLElement) => void
   onFocus: (task: Task) => void
+  showCompletionTime?: boolean
 }
-export function TaskRow({ task, today, onToggle, onEdit, onFocus }: Props) {
+export function TaskRow({ task, today, onToggle, onEdit, onFocus, showCompletionTime }: Props) {
   const done = !!task.completedAt
   const focused = task.focusDate === today
   return (
@@ -31,6 +32,14 @@ export function TaskRow({ task, today, onToggle, onEdit, onFocus }: Props) {
       >
         <span className="task-title">{task.title}</span>
         <span className="task-meta">
+          {showCompletionTime && task.completedAt && (
+            <time dateTime={task.completedAt}>
+              {new Intl.DateTimeFormat('ko-KR', { hour: '2-digit', minute: '2-digit' }).format(
+                new Date(task.completedAt),
+              )}{' '}
+              완료
+            </time>
+          )}
           {task.dueDate && (
             <span className={task.dueDate < today && !done ? 'meta-overdue' : ''}>
               {dueLabel(task.dueDate, today)}

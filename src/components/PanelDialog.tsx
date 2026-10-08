@@ -6,11 +6,13 @@ export function PanelDialog({
   kind,
   onClose,
   children,
+  footer,
 }: {
   title: string
-  kind: 'plan' | 'data'
+  kind: 'plan' | 'data' | 'preferences'
   onClose: () => void
   children: ReactNode
+  footer?: ReactNode
 }) {
   const dialog = useRef<HTMLDialogElement>(null)
   const close = useRef<HTMLButtonElement>(null)
@@ -40,7 +42,7 @@ export function PanelDialog({
         if (event.key !== 'Tab') return
         const controls = [
           ...event.currentTarget.querySelectorAll<HTMLElement>(
-            'button:not([disabled]),input:not([disabled]),select:not([disabled]),a[href],[tabindex="0"]',
+            'button:not([disabled]),input:not([disabled]),textarea:not([disabled]),select:not([disabled]),a[href],[tabindex="0"]',
           ),
         ].filter((element) => element.getClientRects().length > 0)
         const first = controls[0],
@@ -58,7 +60,9 @@ export function PanelDialog({
         <div className="sheet-handle" />
         <header className="editor-header">
           <div>
-            <p className="eyebrow">Focusday / {kind === 'plan' ? '오늘' : '데이터'}</p>
+            <p className="eyebrow">
+              Focusday / {kind === 'plan' ? '오늘' : kind === 'data' ? '데이터' : '설정'}
+            </p>
             <h2 id={`${kind}-heading`}>{title}</h2>
           </div>
           <button
@@ -71,6 +75,7 @@ export function PanelDialog({
           </button>
         </header>
         <div className="panel-body">{children}</div>
+        {footer}
       </div>
     </dialog>
   )

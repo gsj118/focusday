@@ -1664,3 +1664,72 @@ dialog::backdrop {
     scroll-behavior: auto !important;
   }
 }
+
+/* v1.4: reuse the workspace surfaces and keep the task list above achievements. */
+.daily-sentence {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+.achievements-section > .field-hint {
+  margin: var(--space-2) 0 var(--space-3);
+  max-width: 64ch;
+}
+.achievement-empty {
+  color: var(--muted);
+  font-size: var(--font-sm);
+  padding: var(--space-3) 0;
+}
+.encouragement {
+  display: block;
+  overflow-wrap: anywhere;
+  margin-top: var(--space-1);
+}
+.preferences-dialog {
+  width: 440px;
+}
+.preferences-fields fieldset {
+  padding: 0;
+  margin: var(--space-5) 0;
+  border: 0;
+}
+.preferences-fields legend,
+.custom-sentence-field > label {
+  font-size: var(--font-sm);
+  font-weight: 600;
+}
+.preference-choice {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--touch-target);
+  padding: var(--space-2) 0;
+  cursor: pointer;
+}
+.preference-choice input {
+  accent-color: var(--accent);
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin: 0;
+}
+.custom-sentence-field textarea {
+  display: block;
+  width: 100%;
+  min-height: 88px;
+  border: 1px solid var(--control-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2);
+  margin: var(--space-2) 0;
+  font-size: var(--font-input);
+  resize: vertical;
+  overflow-wrap: anywhere;
+}
+.preferences-reset {
+  margin: var(--space-4) 0;
+  padding: var(--space-3);
+  background: var(--danger-soft);
+  overflow-wrap: anywhere;
+}
+.preferences-reset button {
+  margin-top: var(--space-2);
+}

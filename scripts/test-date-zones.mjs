@@ -9,6 +9,7 @@ for (const zone of ['Asia/Seoul', 'America/New_York']) {
       'run',
       'tests/unit/domain.test.ts',
       'tests/unit/planning.test.ts',
+      'tests/unit/encouragement.test.ts',
     ],
     {
       env: { ...process.env, TZ: zone },
