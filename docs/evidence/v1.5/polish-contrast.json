@@ -1,0 +1,91 @@
+{
+  "method": "WCAG relative luminance on final semantic token values; browser computed-style and focus/geometry checks run separately in E2E. Not a complete accessibility audit.",
+  "tokens": {
+    "bg": "#ffffff",
+    "surface": "#ffffff",
+    "sidebar": "#f5f6f8",
+    "quiet": "#f5f6f8",
+    "text": "#27313f",
+    "muted": "#626b77",
+    "border": "#e1e5eb",
+    "control-border": "#858e9a",
+    "hover": "#e9edf2",
+    "accent": "#255fb2",
+    "focus": "#194b8c",
+    "soft": "#edf3fc",
+    "danger": "#9b3b37",
+    "danger-soft": "#fbeeed",
+    "warning": "#8b5b16",
+    "warning-soft": "#fff7e8",
+    "success": "#2e6950",
+    "success-soft": "#f1f7f3",
+    "on-accent": "#ffffff",
+    "toast-bg": "#27313f",
+    "toast-action": "#d5e6ff"
+  },
+  "checks": [
+    {
+      "foreground": "text",
+      "background": "surface",
+      "ratio": 13.15,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "muted",
+      "background": "quiet",
+      "ratio": 4.99,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "on-accent",
+      "background": "accent",
+      "ratio": 6.25,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "on-accent",
+      "background": "focus",
+      "ratio": 8.65,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "success",
+      "background": "success-soft",
+      "ratio": 5.95,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "warning",
+      "background": "warning-soft",
+      "ratio": 5.47,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "danger",
+      "background": "danger-soft",
+      "ratio": 6.04,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "control-border",
+      "background": "quiet",
+      "ratio": 3.07,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "foreground": "focus",
+      "background": "surface",
+      "ratio": 8.65,
+      "minimum": 3,
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "observedDate": "2026-11-20",
+  "source": "https://getdesign.md/design-md/notion/preview",
+  "sourceType": "Third-party Notion design analysis preview; not the Notion application or official design tokens",
+  "method": "Read getComputedStyle for rendered root custom properties, visible buttons and textarea through CUA",
+  "observed": {
+    "--color-canvas": "#ffffff",
+    "--color-canvas-soft": "#f6f5f4",
+    "--color-border": "#e6e6e6",
+    "--color-primary": "#0075de",
+    "--color-foreground": "#000000",
+    "--color-foreground-muted": "#615d59",
+    "bodyFontSize": "16px",
+    "utilityButton": { "fontSize": "14px", "borderRadius": "8px", "padding": "0px 14px" },
+    "textarea": { "fontSize": "15px", "borderRadius": "4px", "padding": "12px 14px" }
+  },
+  "officialVisualReference": "https://www.notion.com/help/guides/getting-started-with-projects-and-tasks",
+  "officialObservation": "Expanded Tasks screenshot: aligned page title and content, quiet view toolbar, hairline-separated rows and compact property labels. No CSS values were extracted from this screenshot.",
+  "adaptation": {
+    "source": "src/tokens.css",
+    "textareaFontSize": "16px for Korean readability and mobile inputs",
+    "text": "#31302e from the published analysis palette",
+    "layout": "216px sidebar, 1240px maximum page, 340px capture column, 32px column gap: Focusday decisions, not measured Notion dimensions",
+    "primaryFlow": "Fixed daily plan on the left; editable memo capture on the right; one column below 1180px"
+  }
+}

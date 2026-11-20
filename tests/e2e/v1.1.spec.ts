@@ -60,7 +60,7 @@ async function manage(page: Page) {
 }
 async function download(page: Page) {
   const promise = page.waitForEvent('download')
-  await page.getByRole('button', { name: 'JSON 백업 다운로드', exact: true }).click()
+  await page.getByRole('button', { name: '백업 파일 다운로드', exact: true }).click()
   const downloaded = await promise
   expect(downloaded.suggestedFilename()).toBe('focusday-backup-2026-10-02.json')
   const content = JSON.parse(await readFile((await downloaded.path())!, 'utf8'))
@@ -71,12 +71,12 @@ test.beforeEach(async ({ page }) => {
   await page.clock.install({ time: new Date('2026-10-02T10:00:00+09:00') })
 })
 
-test('v1 데이터 그대로 로드·계획 그룹·사실 이유·중복 제외·집중 중·이어가기 id/기한 보존', async ({
+test('v1 데이터 그대로 로드·계획 그룹·사실 이유·중복 제외·오늘에 포함·이어가기 id/기한 보존', async ({
   page,
 }) => {
   const original = [
     task('기한 겹침', { dueDate: '2026-09-30', focusDate: '2026-10-01', priority: 'high' }),
-    task('오늘 기한', { dueDate: today }),
+    task('오늘까지', { dueDate: today }),
     task('어제 일', { focusDate: '2026-10-01', dueDate: '2026-10-03' }),
     task('중요한 일', { priority: 'high', focusDate: today }),
     task('완료한 어제', { focusDate: '2026-10-01', completedAt: '2026-10-01T01:00:00.000Z' }),
@@ -93,13 +93,13 @@ test('v1 데이터 그대로 로드·계획 그룹·사실 이유·중복 제외
     await dialog
       .locator('.plan-row')
       .evaluateAll((rows) => rows.map((row) => (row as HTMLElement).dataset.taskId)),
-  ).toEqual(['기한 겹침', '오늘 기한', '어제 일', '중요한 일'])
+  ).toEqual(['기한 겹침', '오늘까지', '어제 일', '중요한 일'])
   await expect(dialog.locator('[data-task-id="기한 겹침"] .plan-reasons')).toContainText(
     '어제 선택한 일',
   )
-  await expect(dialog.getByText('오늘 집중 · 집중 중', { exact: true })).toBeVisible()
+  await expect(dialog.getByText('오늘 계획에 포함됨', { exact: true })).toBeVisible()
   expect(await page.evaluate(() => window.__restoreWrites)).toBe(0)
-  await dialog.getByRole('button', { name: '어제 일 집중하기', exact: true }).click()
+  await dialog.getByRole('button', { name: '어제 일 오늘에 넣기', exact: true }).click()
   expect((await readTasks(page)).find((t) => t.id === '어제 일')).toMatchObject({
     ...original[2],
     focusDate: today,
@@ -107,13 +107,15 @@ test('v1 데이터 그대로 로드·계획 그룹·사실 이유·중복 제외
   })
   expect(await readTasks(page)).toHaveLength(original.length)
   await expect(page.locator('.yesterday-note')).toContainText('어제 마치지 못한 일 1개')
-  await expect(dialog.getByRole('button', { name: '어제 일 집중하기', exact: true })).toHaveCount(0)
+  await expect(
+    dialog.getByRole('button', { name: '어제 일 오늘에 넣기', exact: true }),
+  ).toHaveCount(0)
   await page.keyboard.press('Escape')
   await expect(page.getByRole('button', { name: '오늘 계획하기', exact: true })).toBeFocused()
   await expect(page.getByRole('button', { name: '어제 일 편집', exact: true })).toBeVisible()
 })
 
-test('요약 합계·집중 해제 기한 잔류·완료 후 즉시 일치', async ({ page }) => {
+test('요약 합계·오늘에서 빼기 기한 잔류·완료 후 즉시 일치', async ({ page }) => {
   await seed(
     page,
     rawData([
@@ -124,16 +126,18 @@ test('요약 합계·집중 해제 기한 잔류·완료 후 즉시 일치', asy
     ]),
   )
   await page.goto('./')
-  const summary = page.getByRole('region', { name: '오늘 집중 요약' })
-  await expect(summary).toContainText('직접 집중으로 고른 2개 · 기한으로 표시된 1개')
-  await page.getByRole('button', { name: '둘 다 집중 해제', exact: true }).click()
-  await expect(summary).toContainText('직접 집중으로 고른 1개 · 기한으로 표시된 2개')
+  const summary = page.getByRole('region', { name: '오늘 계획 요약' })
+  await expect(summary).toContainText('직접 고른 2개 · 기한으로 표시된 1개')
+  await page.getByRole('button', { name: '둘 다 오늘에서 빼기', exact: true }).click()
+  await expect(summary).toContainText('직접 고른 1개 · 기한으로 표시된 2개')
   await expect(
-    page.getByText('집중은 해제했습니다. 기한 때문에 오늘에도 표시됩니다.', { exact: true }),
+    page.getByText('오늘 선택은 해제했어요. 기한이 오늘까지라 목록에는 남아 있어요.', {
+      exact: true,
+    }),
   ).toBeVisible()
   await expect(page.getByRole('button', { name: '기한 편집', exact: true })).toBeVisible()
   await page.getByRole('checkbox', { name: '직접 완료', exact: true }).click()
-  await expect(summary).toContainText('직접 집중으로 고른 0개 · 기한으로 표시된 2개')
+  await expect(summary).toContainText('직접 고른 0개 · 기한으로 표시된 2개')
   await expect(page.locator('.task-section .task-row')).toHaveCount(2)
   await expect(page.locator('.achievements-section > summary')).toHaveText('오늘 마친 일 1개')
 })
@@ -142,9 +146,7 @@ test('후보 없음·전체 경로·N 단축키 차단·Escape와 양방향 Tab 
   await seed(page, rawData([task('낮은 일', { priority: 'low' })]))
   await page.goto('./')
   await page.getByRole('button', { name: '오늘 계획하기', exact: true }).click()
-  await expect(
-    page.getByRole('heading', { name: '지금 살펴볼 계획 후보가 없습니다' }),
-  ).toBeVisible()
+  await expect(page.getByRole('heading', { name: '지금 추천할 일이 없어요' })).toBeVisible()
   const close = page.getByRole('button', { name: '오늘 계획하기 닫기' })
   await expect(close).toBeFocused()
   await page.keyboard.press('n')
@@ -159,7 +161,7 @@ test('후보 없음·전체 경로·N 단축키 차단·Escape와 양방향 Tab 
     .first()
     .click()
   await expect(page.getByRole('dialog')).toHaveCount(0)
-  await expect(page.getByRole('button', { name: '낮은 일 집중하기', exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: '낮은 일 오늘에 넣기', exact: true })).toBeVisible()
 })
 
 test('열린 계획 패널의 자정·월말 어제 상태·자동 이월 없음', async ({ page }) => {
@@ -194,7 +196,7 @@ for (const event of ['focus', 'visibilitychange'])
     )
     await page
       .getByRole('dialog')
-      .getByRole('button', { name: '연말 집중하기', exact: true })
+      .getByRole('button', { name: '연말 오늘에 넣기', exact: true })
       .click()
     expect((await readTasks(page))[0]).toMatchObject({
       id: '연말',
@@ -231,7 +233,7 @@ test('전체 JSON 백업 round trip·저장 쓰기 없음·Object URL 정리', a
   expect(await page.evaluate(() => window.__restoreWrites)).toBe(0)
   await page.clock.runFor(1100)
   expect(await page.evaluate(() => window.__revokedURLs)).toBe(1)
-  await page.getByLabel('백업 파일 선택 / 다시 선택').setInputFiles({
+  await page.getByLabel('백업 파일 선택').setInputFiles({
     name: 'round-trip.json',
     mimeType: 'application/json',
     buffer: Buffer.from(JSON.stringify(exported)),
@@ -240,7 +242,7 @@ test('전체 JSON 백업 round trip·저장 쓰기 없음·Object URL 정리', a
   await expect(page.locator('.restore-preview')).toContainText(
     '백업 전체 2개 · 미완료 1개 · 완료 1개',
   )
-  await expect(page.locator('.merge-summary')).toContainText('추가 0개 · 중복 id 유지 2개')
+  await expect(page.locator('.merge-summary')).toContainText('추가 0개 · 기존 항목 유지 2개')
 })
 
 test('저장 실패 중 메모리 전체 백업·저장 원본 불변', async ({ page }) => {
@@ -250,12 +252,10 @@ test('저장 실패 중 메모리 전체 백업·저장 원본 불변', async ({
   await page.evaluate(() => {
     window.__failWrite = true
   })
-  await page.getByLabel('새 할 일 제목').fill('아직 저장 안 됨')
-  await page.getByLabel('새 할 일 제목').press('Enter')
+  await page.getByLabel('할 일 메모').fill('아직 저장 안 됨')
+  await page.getByLabel('할 일 메모').press('Enter')
   await manage(page)
-  await expect(page.getByRole('dialog').getByRole('alert')).toContainText(
-    '아직 브라우저에 저장되지 않은 변경',
-  )
+  await expect(page.getByRole('dialog').getByRole('alert')).toContainText('아직 저장되지 않은 변경')
   expect((await download(page)).data.tasks.map((t: Task) => t.title)).toEqual([
     '저장 원본',
     '아직 저장 안 됨',
@@ -264,8 +264,8 @@ test('저장 실패 중 메모리 전체 백업·저장 원본 불변', async ({
 })
 
 const invalidFiles = [
-  ['손상 JSON', '{bad', 'JSON을 읽을 수 없습니다'],
-  ['raw 저장 원본', rawData([]), '정식 백업 파일이 아닙니다'],
+  ['손상 JSON', '{bad', '백업 파일을 읽지 못했어요'],
+  ['raw 저장 원본', rawData([]), 'Focusday 백업 파일이 아니에요'],
   [
     '백업 버전',
     JSON.stringify({ ...createBackup(data([])), formatVersion: 2 }),
@@ -274,22 +274,22 @@ const invalidFiles = [
   [
     '데이터 버전',
     JSON.stringify({ ...createBackup(data([])), data: { version: 2, tasks: [] } }),
-    '백업 데이터가 올바르지 않습니다',
+    '백업 내용이 올바르지 않아요',
   ],
   [
     '중복 id',
     JSON.stringify(createBackup(data([task('same'), task('same')]))),
-    '백업 데이터가 올바르지 않습니다',
+    '백업 내용이 올바르지 않아요',
   ],
   [
     '잘못된 날짜',
     JSON.stringify(createBackup(data([task('bad', { dueDate: '2026-02-30' })]))),
-    '백업 데이터가 올바르지 않습니다',
+    '백업 내용이 올바르지 않아요',
   ],
   [
     '제목 길이',
     JSON.stringify(createBackup(data([task('long', { title: '가'.repeat(201) })]))),
-    '백업 데이터가 올바르지 않습니다',
+    '백업 내용이 올바르지 않아요',
   ],
 ] as const
 for (const [label, content, message] of invalidFiles)
@@ -299,7 +299,7 @@ for (const [label, content, message] of invalidFiles)
     await page.goto('./')
     const initialStatus = await page.locator('.save-status').innerText()
     await manage(page)
-    const input = page.getByLabel('백업 파일 선택 / 다시 선택')
+    const input = page.getByLabel('백업 파일 선택')
     await input.setInputFiles({
       name: 'invalid.json',
       mimeType: 'application/json',
@@ -320,7 +320,7 @@ test('10MiB 초과·파일 선택 취소와 미리보기 취소는 목록/저장
   await seed(page, raw)
   await page.goto('./')
   await manage(page)
-  const input = page.getByLabel('백업 파일 선택 / 다시 선택')
+  const input = page.getByLabel('백업 파일 선택')
   await input.setInputFiles({
     name: 'large.json',
     mimeType: 'application/json',
@@ -354,9 +354,9 @@ test('합치기 미리보기·현재 중복 보존·다른 id 같은 제목·1�
   await page.goto('./')
   await page.getByLabel('제목·분류 검색').fill('검색 필터')
   await manage(page)
-  await page.getByLabel('백업 파일 선택 / 다시 선택').setInputFiles(file(incoming))
-  await expect(page.locator('.merge-summary')).toContainText('추가 1개 · 중복 id 유지 2개')
-  await expect(page.locator('.merge-summary')).toContainText('내용이 다른 중복 1개')
+  await page.getByLabel('백업 파일 선택').setInputFiles(file(incoming))
+  await expect(page.locator('.merge-summary')).toContainText('추가 1개 · 기존 항목 유지 2개')
+  await expect(page.locator('.merge-summary')).toContainText('내용이 달라진 기존 항목 1개')
   expect(await page.evaluate(() => window.__restoreWrites)).toBe(0)
   await page.getByRole('button', { name: '합치기 적용', exact: true }).click()
   await expect(page.getByRole('heading', { name: '복원 완료', exact: true })).toBeVisible()
@@ -370,9 +370,7 @@ test('합치기 미리보기·현재 중복 보존·다른 id 같은 제목·1�
     .click()
   await expect(page.getByRole('button', { name: '같은 제목 편집', exact: true })).toHaveCount(2)
   await page.locator('.completed-section summary').click()
-  await expect(
-    page.getByRole('checkbox', { name: 'equal 미완료로 복원', exact: true }),
-  ).toBeVisible()
+  await expect(page.getByRole('checkbox', { name: 'equal 완료 취소', exact: true })).toBeVisible()
   await page.reload()
   expect(await readTasks(page)).toEqual([...original, incoming[2]])
 })
@@ -383,7 +381,7 @@ test('전체 교체 확인·취소·교체 전 백업·빈 백업으로 명시�
   await seed(page, raw)
   await page.goto('./')
   await manage(page)
-  await page.getByLabel('백업 파일 선택 / 다시 선택').setInputFiles(file([]))
+  await page.getByLabel('백업 파일 선택').setInputFiles(file([]))
   await page.getByRole('radio', { name: '백업으로 전체 교체', exact: true }).check()
   await expect(page.locator('.replace-warning')).toContainText('현재 2개 → 교체 후 0개')
   await page.getByRole('button', { name: '전체 교체 확인으로 이동', exact: true }).click()
@@ -415,7 +413,7 @@ for (const mode of ['merge', 'replace'] as const)
     const count = await page.evaluate(() => window.__restoreWrites)
     await manage(page)
     await page
-      .getByLabel('백업 파일 선택 / 다시 선택')
+      .getByLabel('백업 파일 선택')
       .setInputFiles(file([task('새 백업', { priority: 'high' })]))
     if (mode === 'replace') {
       await page.getByRole('radio', { name: '백업으로 전체 교체', exact: true }).check()
@@ -431,7 +429,7 @@ for (const mode of ['merge', 'replace'] as const)
       })
       .click()
     await expect(page.getByRole('dialog').getByRole('alert')).toContainText(
-      '적용 전 목록과 저장 원본을 유지했습니다',
+      '기존 목록은 그대로예요',
     )
     await expect(page.getByRole('dialog').getByRole('alert')).toBeFocused()
     await expect(page.getByRole('dialog').getByRole('alert')).toBeInViewport()
@@ -463,10 +461,10 @@ for (const state of ['blocked', 'unavailable'])
     await seed(page, raw, state === 'unavailable')
     await page.goto('./')
     await manage(page)
-    await page.getByLabel('백업 파일 선택 / 다시 선택').setInputFiles(file([task('가져올 일')]))
+    await page.getByLabel('백업 파일 선택').setInputFiles(file([task('가져올 일')]))
     await expect(page.getByRole('button', { name: '합치기 적용', exact: true })).toBeDisabled()
     await expect(
-      page.getByText('저장 보호를 먼저 해결해야 복원할 수 있습니다.', { exact: true }),
+      page.getByText('저장된 원본을 확인한 뒤에 백업을 가져올 수 있어요.', { exact: true }),
     ).toBeVisible()
     expect(await page.evaluate(() => window.__restoreWrites)).toBe(0)
     await page.evaluate(() => {
@@ -480,7 +478,7 @@ test('이전 버전의 예시 제거는 사용자 기록을 보존', async ({ pa
   await page.goto('./')
   const menu = page.locator('.sidebar .app-menu')
   await menu.locator('summary').click()
-  await menu.getByRole('button', { name: '예시 데이터 제거', exact: true }).click()
+  await menu.getByRole('button', { name: '예시 할 일 지우기', exact: true }).click()
   expect((await readTasks(page)).map((t) => t.id)).toEqual(['사용자'])
 })
 
@@ -500,7 +498,7 @@ test('늦은 파일 읽기가 다음 선택과 닫힌 패널을 덮어쓰지 않
   })
   await page.goto('./')
   await manage(page)
-  const input = page.getByLabel('백업 파일 선택 / 다시 선택')
+  const input = page.getByLabel('백업 파일 선택')
   await input.setInputFiles({ ...file([task('늦은 백업')]), name: 'slow.json' })
   await input.setInputFiles({
     name: 'invalid.json',
@@ -508,7 +506,9 @@ test('늦은 파일 읽기가 다음 선택과 닫힌 패널을 덮어쓰지 않
     buffer: Buffer.from('{broken'),
   })
   await page.clock.runFor(2100)
-  await expect(page.getByRole('dialog').getByRole('alert')).toContainText('JSON을 읽을 수 없습니다')
+  await expect(page.getByRole('dialog').getByRole('alert')).toContainText(
+    '백업 파일을 읽지 못했어요',
+  )
   await expect(page.getByRole('heading', { name: '복원 미리보기' })).toHaveCount(0)
   await input.setInputFiles({ ...file([task('늦은 백업')]), name: 'slow.json' })
   await page.keyboard.press('Escape')
@@ -524,7 +524,7 @@ test('데이터 패널 키보드·Tab trap·Escape와 호출 메뉴 포커스 �
   const close = page.getByRole('button', { name: '백업·복원 닫기', exact: true })
   await expect(close).toBeFocused()
   await page.keyboard.press('Shift+Tab')
-  await expect(page.getByLabel('백업 파일 선택 / 다시 선택')).toBeFocused()
+  await expect(page.getByLabel('백업 파일 선택')).toBeFocused()
   await page.keyboard.press('Tab')
   await expect(close).toBeFocused()
   await page.keyboard.press('/')
@@ -569,7 +569,7 @@ test('새 모바일 패널 touch·작아진 가시 영역·복원 조작', async
     await page.getByRole('button', { name: '오늘 계획하기', exact: true }).tap()
     await page.setViewportSize({ width: 390, height: 480 })
     const action = page.getByRole('button', {
-      name: '어제 시작한 글 이어쓰기 집중하기',
+      name: '어제 시작한 글 이어쓰기 오늘에 넣기',
       exact: true,
     })
     await action.scrollIntoViewIfNeeded()
@@ -579,7 +579,7 @@ test('새 모바일 패널 touch·작아진 가시 영역·복원 조작', async
     )
     await page.getByRole('button', { name: '오늘 계획하기 닫기', exact: true }).tap()
     await manage(page)
-    await page.getByLabel('백업 파일 선택 / 다시 선택').setInputFiles(file([task('모바일 복원')]))
+    await page.getByLabel('백업 파일 선택').setInputFiles(file([task('모바일 복원')]))
     const apply = page.getByRole('button', { name: '합치기 적용', exact: true })
     await apply.scrollIntoViewIfNeeded()
     await expect(apply).toBeInViewport()
@@ -631,7 +631,7 @@ for (const [width, height] of [
       fullPage: false,
     })
     await dialog
-      .getByRole('button', { name: '어제 시작한 글 이어쓰기 집중하기', exact: true })
+      .getByRole('button', { name: '어제 시작한 글 이어쓰기 오늘에 넣기', exact: true })
       .click()
     await expect(
       dialog.getByRole('button', { name: '오늘 계획하기 닫기', exact: true }),
@@ -639,7 +639,7 @@ for (const [width, height] of [
     await page.keyboard.press('Escape')
     await manage(page)
     await page
-      .getByLabel('백업 파일 선택 / 다시 선택')
+      .getByLabel('백업 파일 선택')
       .setInputFiles(
         file([
           displayTasks[0],
@@ -676,7 +676,7 @@ for (const [width, height] of [
     await assertBounds()
     const action = page
       .getByRole('dialog')
-      .getByRole('button', { name: `${longTask.title} 집중하기`, exact: true })
+      .getByRole('button', { name: `${longTask.title} 오늘에 넣기`, exact: true })
     await action.scrollIntoViewIfNeeded()
     expect((await action.boundingBox())!.height).toBeGreaterThanOrEqual(44)
     await action.click()

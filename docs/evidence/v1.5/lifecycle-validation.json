@@ -1,0 +1,125 @@
+{
+  "date": "2026-11-20",
+  "status": "Local reviewed build; no commit, push, deployment or remote CI",
+  "productIssuesReproducedBeforeFix": [
+    {
+      "scenario": "L01 자정 전 정리한 메모는 수정한 기한을 보존하고 날짜 변경을 확인받는다",
+      "status": "failed"
+    },
+    {
+      "scenario": "L02 미리보기 제목·분류의 한글 조합 Enter가 묶음을 조기 저장하지 않는다",
+      "status": "failed"
+    },
+    {
+      "scenario": "L03 편집창을 연 채 날짜가 바뀌어도 새 오늘 계획을 오래된 체크 상태로 제거하지 않는다",
+      "status": "failed"
+    },
+    {
+      "scenario": "L04 지난 날짜의 순서 되돌리기는 새 계획에 무효인 성공 안내를 내지 않는다",
+      "status": "failed"
+    },
+    {
+      "scenario": "L05 전체 목록의 미래 기한을 오늘로 바꾸면 오늘에 반영·명시적 제외와 되돌리기 보존",
+      "status": "failed"
+    }
+  ],
+  "harnessCorrections": [
+    "Used click plus visible progress assertion for a checkbox that disappears after completion",
+    "Removed conflicting repeated date word from manual-mode sample",
+    "Asserted manual-mode UI and persisted tasks rather than requiring unused auto state to be persisted at midnight"
+  ],
+  "checks": {
+    "typecheck": "passed",
+    "lint": "passed",
+    "unit": 112,
+    "dateTests": {
+      "Asia/Seoul": 88,
+      "America/New_York": 88
+    },
+    "productionBuild": "passed"
+  },
+  "browser": {
+    "startTime": "2026-11-20T03:07:05.255Z",
+    "duration": 208639.20799999998,
+    "expected": 139,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "newLifecycleScenarios": [
+      {
+        "title": "L01 자정 전 정리한 메모는 수정한 기한을 보존하고 날짜 변경을 확인받는다",
+        "passed": true
+      },
+      {
+        "title": "L02 미리보기 제목·분류의 한글 조합 Enter가 묶음을 조기 저장하지 않는다",
+        "passed": true
+      },
+      {
+        "title": "L03 편집창을 연 채 날짜가 바뀌어도 새 오늘 계획을 오래된 체크 상태로 제거하지 않는다",
+        "passed": true
+      },
+      {
+        "title": "L04 지난 날짜의 순서 되돌리기는 새 계획에 무효인 성공 안내를 내지 않는다",
+        "passed": true
+      },
+      {
+        "title": "L05 전체 목록의 미래 기한을 오늘로 바꾸면 오늘에 반영·명시적 제외와 되돌리기 보존",
+        "passed": true
+      },
+      {
+        "title": "L06 실제 자정 타이머는 완료·미루기를 초기화하고 오늘 기한·다음주 기한을 다시 고른다",
+        "passed": true
+      },
+      {
+        "title": "L07 완료 뒤 다음 날 되돌려도 오늘의 새 계획을 어제 것으로 덮어쓰지 않는다",
+        "passed": true
+      },
+      {
+        "title": "L07 삭제 뒤 다음 날 되돌려도 오늘의 새 계획을 어제 것으로 덮어쓰지 않는다",
+        "passed": true
+      },
+      {
+        "title": "L08 미리보기 수정·제외·반환·오류 수정·저장·원문 복구·새로고침",
+        "passed": true
+      },
+      {
+        "title": "L09 모든 일을 미룸·한 개 완료·완료 취소·다시 이어가기와 분량 변경 취소",
+        "passed": true
+      },
+      {
+        "title": "L10 수동 모드 전체 입력·자정·지난 묶음 추가 취소도 원본을 복구한다",
+        "passed": true
+      },
+      {
+        "title": "L11 연말·윤년·월요일 경계의 실제 메모 저장과 다음날 재방문",
+        "passed": true
+      },
+      {
+        "title": "L12 미리보기에서 고친 기한으로만 계획하고 다음 날 묶음 취소도 다른 일을 보존한다",
+        "passed": true
+      },
+      {
+        "title": "L13 자정 후 원문으로 돌아가 다시 정리하면 새 오늘 기준을 쓰고 확인은 날짜마다 필요하다",
+        "passed": true
+      },
+      {
+        "title": "L14 수동 편집창에서 어제 선택했던 체크는 새 날짜로 옮겨지지 않는다",
+        "passed": true
+      },
+      {
+        "title": "L15 뉴욕 DST 시작일의 23시간 하루 뒤에도 로컬 자정에 계획이 갱신된다",
+        "passed": true
+      }
+    ]
+  },
+  "directUI": "lifecycle-ui.json",
+  "hashes": {
+    "src/App.tsx": "431f4fbf9f9f2cbb4902b26b1b8c91920fe069b34e5130dfa4bc5386f2b488f3",
+    "src/components/CaptureComposer.tsx": "25b1f73ae06fde71d54fcec5613b2376991d4ce5137a75c5a3439c238c472dc7",
+    "src/components/TaskEditor.tsx": "ba1fe8e3fc927e178509fbc71d45f01caaede2455bc30a715abc8009d88c3782",
+    "src/workbench.css": "c0be1a97b30b761833322e766d9bbab23d9c55d220380f1f4dd470df475c541c",
+    "tests/e2e/lifecycle.spec.ts": "b263057c93a7003d9706729d871a079ca630da4027c9290bde0a559de23c9282",
+    "dist/assets/index-By2TZWuf.css": "03647decd0b5a893964aa644826d1618031d52cc23ca9ba49ad408e1c6b69396",
+    "dist/assets/index-tcjlO1fB.js": "1044e5ab3321a0fda2dcda4b34f757f42957e89ecd21ae5664a282cf51ee7151"
+  }
+}

@@ -35,7 +35,7 @@ describe('daily original content', () => {
     expect(dailySentence('2026-10-08', 'custom', '<b>직접 입력</b>')).toBe('<b>직접 입력</b>')
   })
   it('trimmed plain text boundaries count Unicode characters', () => {
-    expect(validateSentence('  ')).toContain('1–120')
+    expect(validateSentence('  ')).toContain('1~120')
     expect(validateSentence(' 가'.trim().repeat(120))).toBe('')
     expect(validateSentence('가'.repeat(121))).toContain('121자')
     expect(validateSentence('🙂'.repeat(120))).toBe('')

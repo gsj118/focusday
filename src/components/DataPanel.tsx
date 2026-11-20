@@ -85,7 +85,7 @@ export function DataPanel({
       else setError(parsed.reason)
     } catch {
       if (token === request.current)
-        setError('파일을 읽을 수 없습니다. 백업 파일을 다시 선택해 주세요.')
+        setError('파일을 읽지 못했어요. 백업 파일을 다시 선택해 주세요.')
     } finally {
       if (token === request.current) setReading(false)
     }
@@ -102,19 +102,19 @@ export function DataPanel({
   }
   const exportButton = (
     <button className="secondary-button" onClick={() => setExportFeedback(onExport())}>
-      JSON 백업 다운로드
+      백업 파일 다운로드
     </button>
   )
   return (
     <PanelDialog title="백업·복원" kind="data" onClose={onClose}>
       <p className="panel-intro">
-        전체 할 일을 파일로 보관하고 필요할 때 가져오세요. 완료·예시와 모든 속성을 포함합니다. 문구
-        설정·내 문장은 제외하며 파일은 직접 보관해야 합니다. 자동 서버 백업·동기화가 아닙니다.
+        할 일을 파일로 보관하거나 다른 기기로 옮길 수 있어요. 문구 설정과 오늘 계획은 백업에
+        포함되지 않아요.
       </p>
       <PanelStorageNotice guard={guard} saveError={saveError} />
       {guard !== 'ready' && (
         <p className="field-hint">
-          지금 백업하면 현재 탭의 목록만 포함됩니다. 보호 중인 저장 원본은 포함되지 않습니다.
+          지금 백업하면 이 탭에 보이는 목록만 담겨요. 보호 중인 저장 원본은 따로 내려받아 주세요.
         </p>
       )}
       {exportFeedback && (
@@ -128,7 +128,7 @@ export function DataPanel({
       {restored && (
         <section className="restore-success" role="status">
           <h3>복원 완료</h3>
-          <p>실제 저장을 완료했습니다. 현재 목록은 전체 {currentCounts.total}개입니다.</p>
+          <p>백업 내용을 저장했어요. 현재 목록에는 할 일 {currentCounts.total}개가 있어요.</p>
           <button className="primary-button" onClick={onClose}>
             목록으로 돌아가기
           </button>
@@ -137,28 +137,28 @@ export function DataPanel({
       {!confirmReplace && (
         <>
           <section className="data-section" aria-labelledby="export-heading">
-            <h3 id="export-heading">전체 데이터 백업</h3>
+            <h3 id="export-heading">전체 할 일 백업</h3>
             <p>
               현재 탭의 전체 {currentCounts.total}개 · 미완료 {currentCounts.unfinished}개 · 완료{' '}
               {currentCounts.completed}개
             </p>
             <p className="field-hint">
-              완료·예시와 모든 속성을 포함합니다. 저장 실패 중의 변경도 포함됩니다.
+              완료한 일과 예시, 기한·분류도 함께 담아요. 아직 저장되지 않은 변경도 포함해요.
             </p>
             <p className="field-hint">
-              백업·가져오기 최대 {BACKUP_LIMIT_LABEL}. 초과 시 내보내기를 중단하며 목록은
-              유지됩니다.
+              최대 {BACKUP_LIMIT_LABEL}까지 백업할 수 있어요. 용량을 넘으면 다운로드를 멈추고 목록은
+              그대로 둬요.
             </p>
             {exportButton}
           </section>
           <section className="data-section" aria-labelledby="import-heading">
             <h3 id="import-heading">백업 파일 가져오기</h3>
             <p className="field-hint">
-              Focusday 정식 JSON 백업 · 최대 {BACKUP_LIMIT_LABEL}. 선택만으로 목록은 바뀌지
-              않습니다.
+              Focusday 백업 파일(.json, 최대 {BACKUP_LIMIT_LABEL})을 골라 주세요. 내용을 확인한 뒤
+              복원해요.
             </p>
             <label htmlFor="backup-file" className="file-label">
-              백업 파일 선택 / 다시 선택
+              백업 파일 선택
             </label>
             <input
               id="backup-file"
@@ -168,7 +168,7 @@ export function DataPanel({
             />
             {reading && (
               <p role="status" className="field-hint">
-                백업을 확인하고 있습니다…
+                백업 파일을 확인하고 있어요…
               </p>
             )}
             {filename && <p className="file-name">{filename}</p>}
@@ -197,8 +197,8 @@ export function DataPanel({
           {confirmReplace ? (
             <>
               <p className="replace-warning">
-                현재 목록 {currentCounts.total}개가 백업의 {counts.total}개로 대체됩니다. 현재
-                목록에만 있는 항목은 사라집니다. 교체 전 백업을 보관해 주세요.
+                현재 목록 {currentCounts.total}개를 백업의 {counts.total}개로 바꿔요. 현재 목록에만
+                있는 할 일은 사라져요. 교체하기 전에 백업을 보관해 주세요.
               </p>
               {exportButton}
               <div className="restore-actions">
@@ -248,18 +248,18 @@ export function DataPanel({
               {mode === 'merge' ? (
                 <div className="merge-summary">
                   <p>
-                    추가 {prepared.added}개 · 중복 id 유지 {prepared.duplicates}개
+                    추가 {prepared.added}개 · 기존 항목 유지 {prepared.duplicates}개
                   </p>
-                  <p>내용이 다른 중복 {prepared.conflicts}개도 현재 항목을 유지합니다.</p>
+                  <p>내용이 달라진 기존 항목 {prepared.conflicts}개도 현재 내용을 유지해요.</p>
                   <p className="field-hint">
-                    제목이 같아도 id가 다르면 별도 항목으로 추가합니다. 복원 후 전체{' '}
-                    {prepared.data.tasks.length}개.
+                    제목이 같아도 별도로 만든 할 일은 각각 남아요. 합치면 전체{' '}
+                    {prepared.data.tasks.length}개가 돼요.
                   </p>
                 </div>
               ) : (
                 <p className="replace-warning">
-                  현재 {currentCounts.total}개 → 교체 후 {counts.total}개. 다음 단계에서 확인해야
-                  적용됩니다.
+                  현재 {currentCounts.total}개 → 교체 후 {counts.total}개. 다음 단계에서 한 번 더
+                  확인한 뒤 적용해요.
                 </p>
               )}
               <div className="restore-actions">
@@ -281,7 +281,7 @@ export function DataPanel({
             </>
           )}
           {guard !== 'ready' && (
-            <p className="field-error">저장 보호를 먼저 해결해야 복원할 수 있습니다.</p>
+            <p className="field-error">저장된 원본을 확인한 뒤에 백업을 가져올 수 있어요.</p>
           )}
         </section>
       )}

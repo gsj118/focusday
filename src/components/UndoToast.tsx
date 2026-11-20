@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
-import type { UndoAction } from '../domain'
+import type { RecentAction } from '../history'
 
 type Props = {
-  undo: UndoAction
+  undo: RecentAction
   onUndo: () => void
   onExpire: (token: number) => void
   onCompleted: () => void
@@ -59,7 +59,7 @@ export function UndoToast({ undo, onUndo, onExpire, onCompleted, encouragement }
       }}
     >
       <span role="status">
-        할 일을 {undo.kind === 'complete' ? '완료' : '삭제'}했습니다.
+        {undo.message}
         {encouragement && <span className="encouragement">{encouragement}</span>}
       </span>
       <div className="toast-actions">

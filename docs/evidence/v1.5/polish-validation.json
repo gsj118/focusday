@@ -1,0 +1,59 @@
+{
+  "date": "2026-11-20",
+  "status": "local review only, no commit/push/deploy",
+  "results": {
+    "full": {
+      "startTime": "2026-11-20T03:29:17.729Z",
+      "duration": 188682.98500000002,
+      "expected": 144,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "responsive": {
+      "startTime": "2026-11-20T03:32:55.062Z",
+      "duration": 55352.678,
+      "expected": 36,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "finalNarrow": {
+      "startTime": "2026-11-20T03:34:49.663Z",
+      "duration": 5756.293,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "check": {
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "unit": 112,
+    "dates": {
+      "Asia/Seoul": 88,
+      "America/New_York": 88
+    },
+    "build": "PASS"
+  },
+  "sourceSha256": {
+    "src/App.tsx": "bef00fa83dfbc6acfbf2cdb908dc5ebc7fecff4ba172f82f353719db288bb9e1",
+    "src/tokens.css": "19d5af81e7f87f44823f7e47e7b4c9c91b7c31fb4f4ca178fcb80be906ed77c6",
+    "src/workbench.css": "0c9ceab1614e944a884fc53d6499e6c413ba0457c741d443cd908b915bc1a177",
+    "src/components/CaptureComposer.tsx": "8784e76287eea9c6df797fbab02bb1be09e0ca20b1b92a10b90a156c0669d47a",
+    "src/components/TaskEditor.tsx": "ec5779a6c3a25617cff9fec9cd4c0075c1f0613186dcdf5c3f9f74c30c3c43d1",
+    "src/components/TaskRow.tsx": "ab4781823db99b6aac0144c40a29ca2e381fee2cc8fb19cfbd7c7b964b4e4776",
+    "src/components/PlanPanel.tsx": "2328c17d3ad89f06665dad6502ea846690d767fd99a0f3aa500194eadac7b7ca",
+    "src/components/DataPanel.tsx": "8980f866a5afac85376b30194f4d271a2f5d88d242bb6780d91b0cab6b01fcda",
+    "src/components/PreferencesPanel.tsx": "1e548453b6158f4d53a9e542f68d4a3e77c0f1fb861c6f771ecb922cf3132452",
+    "src/encouragement.ts": "2be85ddf384fc8e95f797cc355fe0205606af673ad6b7788c87e3bc74004428e",
+    "src/domain.ts": "c4f4ced724626bbcfce9a0d44df3635fca02fb8c979aeb986a2c1371c3def7a1",
+    "src/capture.ts": "2ff0f95f6d3981235805313af652ca52a877d590fd051f824b3bf00436f96cd0",
+    "tests/e2e/polish.spec.ts": "8813b71bc3ea40553a4056b008c3eab5b48d76a97e3c00b515fe8594e8e9fa51"
+  },
+  "buildSha256": {
+    "dist/assets/index-BaTjq9XF.js": "40ce909454ea6a55254ed3969019fe8bca8d568536c612c13ac18989224cff9d",
+    "dist/assets/index-CQGKtnj4.css": "452f8eaef815316c77c30daa5203d7e1c514481802e018cc8ecfdea54ee8e9e4"
+  }
+}

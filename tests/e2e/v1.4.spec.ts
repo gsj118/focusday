@@ -50,8 +50,8 @@ async function open(page: Page, name = '문구와 격려 설정') {
   await menu(page).getByRole('button', { name, exact: true }).click()
 }
 async function add(page: Page, title: string) {
-  await page.getByLabel('새 할 일 제목').fill(title)
-  await page.getByLabel('새 할 일 제목').press('Enter')
+  await page.getByLabel('할 일 메모').fill(title)
+  await page.getByLabel('할 일 메모').press('Enter')
 }
 async function complete(page: Page, title: string) {
   await page.getByRole('checkbox', { name: `${title} 완료`, exact: true }).click()
@@ -61,7 +61,7 @@ async function saveSettings(page: Page) {
     .locator('.editor-footer')
     .getByRole('button', { name: /설정 저장/ })
     .click()
-  await expect(page.getByRole('status').filter({ hasText: '설정을 저장했습니다.' })).toBeVisible()
+  await expect(page.getByRole('status').filter({ hasText: '설정을 저장했어요.' })).toBeVisible()
   await page.keyboard.press('Escape')
 }
 async function upload(page: Page, list: Task[]) {
@@ -153,9 +153,9 @@ test('P01 처음 사용: 빈 화면→입력→계획→완료 복구→설정·
       await expect(summary(page)).toHaveText('오늘 마친 일 0개')
       expect(await page.locator('.achievements-section').getAttribute('open')).toBeNull()
       await summary(page).click()
-      await expect(page.getByText('오늘 마친 일이 여기에 모입니다.')).toBeVisible()
+      await expect(page.getByText('오늘 마친 일이 여기에 모여요.')).toBeVisible()
       await add(page, '첫 번째 할 일')
-      await expect(page.getByLabel('새 할 일 제목')).toBeFocused()
+      await expect(page.getByLabel('할 일 메모')).toBeFocused()
       await page.getByRole('button', { name: '오늘 계획하기', exact: true }).click()
       await page.keyboard.press('Escape')
     },
@@ -167,7 +167,7 @@ test('P01 처음 사용: 빈 화면→입력→계획→완료 복구→설정·
     '첫 완료 통합 toast/1개, undo 0개, 재완료 일반 안내',
     async () => {
       await complete(page, '첫 번째 할 일')
-      await expect(cheer(page)).toContainText('첫 한 가지')
+      await expect(cheer(page)).toContainText('첫 번째 일을')
       await expect(summary(page)).toHaveText('오늘 마친 일 1개')
       await page.getByRole('button', { name: '실행 취소', exact: true }).click()
       await expect(summary(page)).toHaveText('오늘 마친 일 0개')
@@ -181,7 +181,7 @@ test('P01 처음 사용: 빈 화면→입력→계획→완료 복구→설정·
     await saveSettings(page)
     await open(page, '백업·복원')
     const pending = page.waitForEvent('download')
-    await page.getByRole('button', { name: 'JSON 백업 다운로드', exact: true }).click()
+    await page.getByRole('button', { name: '백업 파일 다운로드', exact: true }).click()
     const download = await pending
     const text = await readFile((await download.path())!, 'utf8')
     const backup = JSON.parse(text)
@@ -209,7 +209,7 @@ test('P02 키보드: Enter·Tab·Escape→설정 trap→성취 복원 초점→�
     'P02-01',
     '키보드 입력/설정 초안 취소, textarea 포함 trap, 메뉴로 초점 복귀',
     async () => {
-      await page.getByLabel('새 할 일 제목').focus()
+      await page.getByLabel('할 일 메모').focus()
       await page.keyboard.type('Keyboard task')
       await page.keyboard.press('Enter')
       await menu(page).locator('summary').focus()
@@ -244,7 +244,7 @@ test('P02 키보드: Enter·Tab·Escape→설정 trap→성취 복원 초점→�
       await page.keyboard.press('Space')
       await summary(page).focus()
       await page.keyboard.press('Enter')
-      await page.getByRole('checkbox', { name: 'Keyboard task 미완료로 복원', exact: true }).focus()
+      await page.getByRole('checkbox', { name: 'Keyboard task 완료 취소', exact: true }).focus()
       await page.keyboard.press('Space')
       await expect(summary(page)).toBeFocused()
       await expect(summary(page)).toHaveText('오늘 마친 일 0개')
@@ -261,7 +261,7 @@ test('P02 키보드: Enter·Tab·Escape→설정 trap→성취 복원 초점→�
 test('P03 한글 입력: 합성 조합→연속 입력·편집→내 문장 경계·HTML→재방문', async ({ page }, info) => {
   await page.goto('./')
   await check(page, info, 'P03-01', 'composition Enter 무제출, 제목/분류 편집 보존', async () => {
-    const input = page.getByLabel('새 할 일 제목')
+    const input = page.getByLabel('할 일 메모')
     await input.fill('조합 중')
     await input.dispatchEvent('compositionstart')
     await input.press('Enter')
@@ -290,7 +290,7 @@ test('P03 한글 입력: 합성 조합→연속 입력·편집→내 문장 경�
       await page.getByRole('radio', { name: '내 문장', exact: true }).check()
       await page.getByLabel('내 문장 입력').fill('   ')
       await page.getByRole('button', { name: '설정 저장', exact: true }).click()
-      await expect(page.getByRole('alert').filter({ hasText: '1–120' })).toBeVisible()
+      await expect(page.getByRole('alert').filter({ hasText: '1~120' })).toBeVisible()
       await page.getByLabel('내 문장 입력').fill('가'.repeat(121))
       await page
         .locator('.editor-footer')
@@ -351,7 +351,7 @@ test('P04 모바일 터치390: 입력→계획→설정→완료·undo→sheet �
     await page.getByRole('button', { name: '실행 취소', exact: true }).tap()
     await open(page, '백업·복원')
     await expect(
-      page.getByRole('button', { name: 'JSON 백업 다운로드', exact: true }),
+      page.getByRole('button', { name: '백업 파일 다운로드', exact: true }),
     ).toBeVisible()
     await page.keyboard.press('Escape')
     await page.reload()
@@ -434,7 +434,7 @@ test('P06 쌓인 일: 80개→검색·계획·정렬→검색 중 완료→성�
     async () => {
       await page.getByLabel('제목·분류 검색').fill('찾기')
       await page.getByRole('button', { name: '오늘 계획하기', exact: true }).click()
-      await page.getByRole('button', { name: '쌓인 일 50 집중하기', exact: true }).click()
+      await page.getByRole('button', { name: '쌓인 일 50 오늘에 넣기', exact: true }).click()
       await page.keyboard.press('Escape')
       await complete(page, '쌓인 일 50')
       await expect(summary(page)).toHaveText('오늘 마친 일 1개')
@@ -443,7 +443,7 @@ test('P06 쌓인 일: 80개→검색·계획·정렬→검색 중 완료→성�
       await expect(summary(page)).toHaveText('오늘 마친 일 1개')
       await summary(page).click()
       await expect(
-        page.getByRole('checkbox', { name: '쌓인 일 50 미완료로 복원', exact: true }),
+        page.getByRole('checkbox', { name: '쌓인 일 50 완료 취소', exact: true }),
       ).toBeVisible()
     },
   )
@@ -460,7 +460,7 @@ test('P06 쌓인 일: 80개→검색·계획·정렬→검색 중 완료→성�
       await expect(summary(page)).toHaveText('오늘 마친 일 2개')
       await open(page, '백업·복원')
       await upload(page, await tasks(page))
-      await expect(page.locator('.merge-summary')).toContainText('추가 0개 · 중복 id 유지 80개')
+      await expect(page.locator('.merge-summary')).toContainText('추가 0개 · 기존 항목 유지 80개')
       await page.keyboard.press('Escape')
       await page.reload()
       expect((await tasks(page)).length).toBe(80)
@@ -484,17 +484,19 @@ test('P07 계획 변경: 어제 이어가기→미래 기한·잔류→완료→
     '이어가기 id/기한 유지, 집중 재선택·기한 잔류 유지',
     async () => {
       await page.getByRole('button', { name: '오늘 계획하기', exact: true }).click()
-      await page.getByRole('button', { name: '어제 글쓰기 집중하기', exact: true }).click()
+      await page.getByRole('button', { name: '어제 글쓰기 오늘에 넣기', exact: true }).click()
       await page.keyboard.press('Escape')
       expect((await tasks(page))[0]).toMatchObject({
         id: '어제 글쓰기',
         focusDate: day,
         dueDate: '2026-10-10',
       })
-      await page.getByRole('button', { name: '어제 글쓰기 집중 해제', exact: true }).click()
-      await page.getByRole('button', { name: '오늘 납부 집중 해제', exact: true }).click()
+      await page.getByRole('button', { name: '어제 글쓰기 오늘에서 빼기', exact: true }).click()
+      await page.getByRole('button', { name: '오늘 납부 오늘에서 빼기', exact: true }).click()
       await expect(
-        page.getByText('집중은 해제했습니다. 기한 때문에 오늘에도 표시됩니다.', { exact: true }),
+        page.getByText('오늘 선택은 해제했어요. 기한이 오늘까지라 목록에는 남아 있어요.', {
+          exact: true,
+        }),
       ).toBeVisible()
       await complete(page, '오늘 납부')
       await page.getByRole('button', { name: '실행 취소', exact: true }).click()
@@ -551,7 +553,7 @@ test('P08 실수 복구: 완료·빠른 연속→undo·재완료→삭제·복�
       await complete(page, '실수 4')
       await expect(cheer(page)).toHaveCount(0)
       await summary(page).click()
-      await page.getByRole('checkbox', { name: '실수 3 미완료로 복원', exact: true }).click()
+      await page.getByRole('checkbox', { name: '실수 3 완료 취소', exact: true }).click()
       await expect(cheer(page)).toHaveCount(0)
       await complete(page, '실수 3')
       await expect(cheer(page)).toHaveCount(0)
@@ -572,7 +574,7 @@ test('P08 실수 복구: 완료·빠른 연속→undo·재완료→삭제·복�
       await page.reload()
       await summary(page).click()
       for (const i of [1, 2, 3, 4])
-        await page.getByRole('checkbox', { name: `실수 ${i} 미완료로 복원`, exact: true }).click()
+        await page.getByRole('checkbox', { name: `실수 ${i} 완료 취소`, exact: true }).click()
       await complete(page, '실수 1')
       await expect(cheer(page)).toHaveCount(0)
       expect((await prefs(page))?.processed[day]).toEqual([1, 3])
@@ -670,7 +672,7 @@ test('P10 조용한 화면: 독립 끄기→완료 시점 처리→켜기·재�
     await page.getByRole('checkbox', { name: '완료 순간의 격려', exact: true }).check()
     await saveSettings(page)
     await summary(page).click()
-    await page.getByRole('checkbox', { name: '조용한 일 3 미완료로 복원', exact: true }).click()
+    await page.getByRole('checkbox', { name: '조용한 일 3 완료 취소', exact: true }).click()
     await complete(page, '조용한 일 3')
     await expect(cheer(page)).toHaveCount(0)
   })
@@ -689,7 +691,7 @@ test('P10 조용한 화면: 독립 끄기→완료 시점 처리→켜기·재�
       await page.evaluate(() => window.dispatchEvent(new Event('focus')))
       await add(page, '조용한 둘째 날')
       await complete(page, '조용한 둘째 날')
-      await expect(cheer(page)).toContainText('첫 한 가지')
+      await expect(cheer(page)).toContainText('첫 번째 일을')
       await expect(sentence(page)).toHaveText(ORIGINAL_GUIDANCE)
     },
   )
@@ -735,9 +737,9 @@ test('P11 확대·낮은 시력 관점: 200% 동등 reflow→긴 설정·오류 
     '내 문장 모드 차분한 격려, 성취 복원 후 키보드 초점/접근·재방문',
     async () => {
       await complete(page, '작업 확인')
-      await expect(cheer(page)).toContainText('첫 한 가지')
+      await expect(cheer(page)).toContainText('첫 번째 일을')
       await summary(page).click()
-      await page.getByRole('checkbox', { name: '작업 확인 미완료로 복원', exact: true }).click()
+      await page.getByRole('checkbox', { name: '작업 확인 완료 취소', exact: true }).click()
       await expect(summary(page)).toBeFocused()
       await page.keyboard.press('Enter')
       await expect(summary(page)).toBeFocused()
@@ -823,7 +825,9 @@ test('P12 보존: 설정/할 일 쓰기 실패→백업·실패 복원→재시�
       await page.getByRole('button', { name: '합치기 적용', exact: true }).click()
       expect(await tasks(page)).toEqual(original)
       await expect(summary(page)).toHaveText('오늘 마친 일 1개')
-      await expect(page.getByRole('alert').filter({ hasText: '복원 저장에 실패' })).toBeFocused()
+      await expect(
+        page.getByRole('alert').filter({ hasText: '복원한 내용을 저장하지 못했어요' }),
+      ).toBeFocused()
       await page.evaluate(() => Object.assign(window, { v14FailTask: false }))
       await page.getByRole('button', { name: '합치기 다시 시도', exact: true }).click()
       await page.getByRole('button', { name: '목록으로 돌아가기', exact: true }).click()
@@ -1033,7 +1037,7 @@ test('B07 검수 수정: 768px 전체폭 시트·재시도된 적용 설정과 �
     .locator('.storage-banner')
     .getByRole('button', { name: '설정 저장 재시도', exact: true })
     .click()
-  await expect(page.locator('.panel-feedback')).toContainText('편집 중인 초안은 별도로')
+  await expect(page.locator('.panel-feedback')).toContainText('지금 편집 중인 내용은')
   await expect(page.getByRole('radio', { name: '유머', exact: true })).toBeChecked()
   expect((await prefs(page))?.sentenceMode).toBe('calm')
   const feedbackBox = await page.locator('.panel-feedback').boundingBox()
@@ -1046,7 +1050,7 @@ test('B08 성취 행에 초점이 있을 때 날짜 변경으로 모두 사라�
   await seed(page, [make('날짜 변경 초점', { completedAt: stamp })])
   await page.goto('./')
   await summary(page).click()
-  await page.getByRole('checkbox', { name: '날짜 변경 초점 미완료로 복원', exact: true }).focus()
+  await page.getByRole('checkbox', { name: '날짜 변경 초점 완료 취소', exact: true }).focus()
   await page.clock.setSystemTime(new Date('2026-10-09T10:00:00+09:00'))
   await page.evaluate(() => window.dispatchEvent(new Event('focus')))
   await expect(summary(page)).toHaveText('오늘 마친 일 0개')
@@ -1060,6 +1064,6 @@ test('B09 접힌 성취의 숨은 행을 완료 후 초점 대상으로 선택�
   ])
   await page.goto('./')
   await complete(page, '마지막 미완료')
-  await expect(page.getByLabel('새 할 일 제목')).toBeFocused()
+  await expect(page.getByLabel('할 일 메모')).toBeFocused()
   await expect(summary(page)).toHaveText('오늘 마친 일 2개')
 })

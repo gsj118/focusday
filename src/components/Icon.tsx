@@ -22,6 +22,25 @@ const paths = {
   close: <path d="m6 6 12 12M6 18 18 6" />,
   arrow: <path d="m9 5 7 7-7 7" />,
   chevron: <path d="m6 9 6 6 6-6" />,
+  undo: (
+    <>
+      <path d="M9 5 4 10l5 5M4 10h9a6 6 0 0 1 0 12" />
+    </>
+  ),
+  sliders: (
+    <>
+      <path d="M4 7h16M4 17h16" />
+      <circle cx="9" cy="7" r="2" />
+      <circle cx="15" cy="17" r="2" />
+    </>
+  ),
+  calendar: (
+    <>
+      <rect x="3" y="5" width="18" height="16" rx="2" />
+      <path d="M7 3v4m10-4v4M3 11h18" />
+    </>
+  ),
+  spark: <path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4Z" />,
   more: (
     <>
       <circle cx="5" cy="12" r="1" />

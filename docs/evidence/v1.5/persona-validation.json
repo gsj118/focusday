@@ -1,0 +1,65 @@
+{
+  "checkedAt": "2026-11-20T02:43:14.943Z",
+  "status": "PASS; local review only; no push or deployment",
+  "sourceBaseline": "790e040429978eefa314fdfa8a4117bb81d3ed8c",
+  "branch": "codex/v1.5-automation-review",
+  "methodology": "One agent enacted four synthetic personas with CUA on isolated local origins; no human participants or subagents",
+  "personas": [
+    "professor reviewing the demo",
+    "student capturing a freeform memo",
+    "frequent replanner undoing mistakes",
+    "small-screen user recovering input"
+  ],
+  "observationSteps": {
+    "beforeFixes": 24,
+    "afterFixes": 4
+  },
+  "fixed": [
+    "supported action conjunction splitting with explicit shared-date guidance",
+    "keep recurrence date words in titles without creating a one-time due date",
+    "distinguish initial automatic planning from preserving an existing plan",
+    "append examples without replacing drafts or exceeding the input limit"
+  ],
+  "standardChecks": {
+    "typecheck": "PASS",
+    "eslint": "PASS",
+    "productionBuild": "PASS",
+    "unit": 108,
+    "dateZones": {
+      "Asia/Seoul": 84,
+      "America/New_York": 84
+    }
+  },
+  "browser": {
+    "startTime": "2026-11-20T02:38:18.600Z",
+    "duration": 191309.524,
+    "expected": 121,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "regressionAdded": {
+    "unit": 7,
+    "browser": 2
+  },
+  "manualViewports": ["1366x768", "390x620"],
+  "additionalEvidenceViewport": "390x1000 to show all four preview items and guidance together",
+  "sourceArtifacts": {
+    "index-DoDp6Vtm.js": "6a7ca28f0e2e52622c6019639a4b28223aaff2b23c9f1a0edda98b37702eb22f",
+    "index-e3UxMrYF.css": "628522dc250df9b6d9bc118abc8706b8a9017f631902c1aaf92e0b6bb9b41f06"
+  },
+  "screenshots": {
+    "persona-memo-before.jpg": "b86602a4ab87659998ab587128aa4dc6cb0dec85b0378afd24f4f3633652972c",
+    "persona-mobile-error.jpg": "12676ccd80fd9ee6febdce29ea85ea8787671c96c668f9fa101d73a407552096",
+    "persona-memo-after.jpg": "3a596890d67375d19572f5b7c877dd9420335b539b06f6973ee4382683c5b55f",
+    "persona-student-after.jpg": "7a5c0773cc6a8bf83210c59e1c3a991974bb5fdc373df20684f86abe45a235ec"
+  },
+  "notPerformed": [
+    "human usability study",
+    "physical phone or software keyboard",
+    "real OS IME",
+    "screen reader",
+    "new Pages-path suite",
+    "remote CI or deployment"
+  ]
+}

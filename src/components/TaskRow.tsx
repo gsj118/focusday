@@ -9,6 +9,7 @@ type Props = {
   onFocus: (task: Task) => void
   showCompletionTime?: boolean
   reason?: string
+  planned?: boolean
 }
 export function TaskRow({
   task,
@@ -18,9 +19,10 @@ export function TaskRow({
   onFocus,
   showCompletionTime,
   reason,
+  planned,
 }: Props) {
   const done = !!task.completedAt
-  const focused = task.focusDate === today
+  const focused = planned ?? task.focusDate === today
   return (
     <li className={`task-row ${done ? 'is-complete' : ''}`} data-task-id={task.id}>
       <label className="check-target">
@@ -28,7 +30,7 @@ export function TaskRow({
           type="checkbox"
           checked={done}
           onChange={() => onToggle(task)}
-          aria-label={`${task.title} ${done ? '미완료로 복원' : '완료'}`}
+          aria-label={`${task.title} ${done ? '완료 취소' : '완료'}`}
         />
         <span className="check-visual">
           <Icon name="check" size={15} />
@@ -64,7 +66,7 @@ export function TaskRow({
           {focused && !done && (
             <span className="focus-label">
               <Icon name="sun" size={13} />
-              오늘 집중
+              오늘 계획
             </span>
           )}
           {reason && <span className="selection-reason">{reason}</span>}
@@ -75,12 +77,12 @@ export function TaskRow({
         <button
           className={`focus-button ${focused ? 'is-focused' : ''}`}
           onClick={() => onFocus(task)}
-          aria-label={`${task.title} ${focused ? '집중 해제' : '집중하기'}`}
+          aria-label={`${task.title} ${focused ? '오늘에서 빼기' : '오늘에 넣기'}`}
           aria-pressed={focused}
-          title={focused ? '집중 해제' : '집중하기'}
+          title={focused ? '오늘에서 빼기' : '오늘에 넣기'}
         >
           <Icon name={focused ? 'sun' : 'plus'} size={18} />
-          <span>{focused ? '집중 해제' : '집중하기'}</span>
+          <span>{focused ? '오늘에서 빼기' : '오늘에 넣기'}</span>
         </button>
       )}
     </li>

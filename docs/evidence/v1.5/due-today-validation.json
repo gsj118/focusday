@@ -1,0 +1,71 @@
+{
+  "checkedAt": "2026-11-20T02:56:20.994Z",
+  "status": "PASS after user-reported bug fix; local only, not pushed or deployed",
+  "sourceBaseline": "790e040429978eefa314fdfa8a4117bb81d3ed8c",
+  "issue": "Newly entered tasks due today stayed outside the fixed plan; completion only checked the plan and falsely suggested finishing.",
+  "priorReviewCorrection": "The previous persona review and a regression test treated this behavior as correct. That expectation is explicitly corrected.",
+  "reproductionBeforeFix": {
+    "startTime": "2026-11-20T02:48:52.953Z",
+    "duration": 14520.516,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  },
+  "finalStandardChecks": {
+    "typecheck": "PASS",
+    "eslint": "PASS",
+    "productionBuild": "PASS",
+    "unit": 112,
+    "dateZones": {
+      "Asia/Seoul": 88,
+      "America/New_York": 88
+    }
+  },
+  "finalBrowser": {
+    "startTime": "2026-11-20T02:51:40.685Z",
+    "duration": 208669.47199999998,
+    "expected": 123,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "regressionAdded": {
+    "unit": 4,
+    "browser": 2
+  },
+  "coverage": [
+    "mixed today/tomorrow/next-week capture into an existing plan",
+    "due work before existing undated/future items",
+    "first capture with more due tasks than the quota",
+    "late capture after plan completion",
+    "undo of capture restores tasks and plan",
+    "reload preserves the new plan",
+    "manual or previous outside-plan due tasks block the finish message",
+    "manual recovery adds only current deadlines",
+    "undated/future captures do not refill a finished plan",
+    "manual mode and explicit include-all remain available"
+  ],
+  "manualUI": {
+    "tool": "CUA in-app browser",
+    "viewports": ["1366x768", "390x844"],
+    "artifact": "due-today-ui.json",
+    "isolatedDemo": true
+  },
+  "buildAssets": {
+    "index-C0APMevI.js": "4e7186f67482993c2838c499b26f84815eb2fc9d2f6462b40be7882b3f437f12",
+    "index-e3UxMrYF.css": "628522dc250df9b6d9bc118abc8706b8a9017f631902c1aaf92e0b6bb9b41f06"
+  },
+  "screenshots": {
+    "due-today-included.jpg": "4fdb398bc9b4c7281c6135fea474bbed41463002e113a8323ffd92250d606005",
+    "due-today-guard.jpg": "2b81883cfebd631c140091d5e53ec1743751dd9226f6146fc382a0dd68b153fe",
+    "due-today-guard-mobile.jpg": "f282c244ccd267ae2f9a7ee95b2caddad242057884555487ee1033d03b300b51"
+  },
+  "notPerformed": [
+    "production deployment",
+    "remote CI",
+    "new Pages-path suite",
+    "physical smartphone",
+    "human usability study"
+  ]
+}

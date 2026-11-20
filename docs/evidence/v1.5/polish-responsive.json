@@ -1,0 +1,1341 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\gsjtj\\AppData\\Local\\Programs\\REA\\node.exe",
+      "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/polish.spec.ts",
+      "tests/e2e/workspace.spec.ts",
+      "tests/e2e/mobile-accessibility.spec.ts",
+      "tests/e2e/v1.5.spec.ts"
+    ],
+    "configFile": "C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\playwright.config.ts",
+    "rootDir": "C:/Users/gsjtj/Documents/ChatGPT/Todolist/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/gsjtj/Documents/ChatGPT/Todolist/test-results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/gsjtj/Documents/ChatGPT/Todolist/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "command": "node node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 4173 --strictPort",
+      "url": "http://127.0.0.1:4173/",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "mobile-accessibility.spec.ts",
+      "file": "mobile-accessibility.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "모바일 터치·작은 가시 영역 편집·알림과 하단 탐색 분리",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1225,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:32:56.050Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4d7db8387fe06ad7ce43-74f1e8800936036a72c7",
+          "file": "mobile-accessibility.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "실제 렌더링 색·hover·포커스·접근 가능한 입력과 버튼 이름",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 779,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:32:57.495Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4d7db8387fe06ad7ce43-9b789b6a4209dada5fbd",
+          "file": "mobile-accessibility.spec.ts",
+          "line": 44,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "polish.spec.ts",
+      "file": "polish.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "메모 접근·긴 정리 결과·키보드 편집·탐색 복귀 1366×768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1047,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:32:58.300Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "12948a1c8bc2a97af126-1467363414a5246210e2",
+          "file": "polish.spec.ts",
+          "line": 9,
+          "column": 3
+        },
+        {
+          "title": "메모 접근·긴 정리 결과·키보드 편집·탐색 복귀 768×1024",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1456,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:32:59.364Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "12948a1c8bc2a97af126-1d4062c1386765a4f2be",
+          "file": "polish.spec.ts",
+          "line": 9,
+          "column": 3
+        },
+        {
+          "title": "메모 접근·긴 정리 결과·키보드 편집·탐색 복귀 390×844",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1435,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:00.844Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "12948a1c8bc2a97af126-73d7afa38918dfe2c3fe",
+          "file": "polish.spec.ts",
+          "line": 9,
+          "column": 3
+        },
+        {
+          "title": "메모 접근·긴 정리 결과·키보드 편집·탐색 복귀 320×568",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1450,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:02.303Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "12948a1c8bc2a97af126-9b61395a1862f3c9a269",
+          "file": "polish.spec.ts",
+          "line": 9,
+          "column": 3
+        },
+        {
+          "title": "완료와 남은 기한은 문구·아이콘·표면 색으로 구별한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1914,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:03.778Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "12948a1c8bc2a97af126-543c43d4ef0ea32bdbe2",
+          "file": "polish.spec.ts",
+          "line": 72,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "v1.5.spec.ts",
+      "file": "v1.5.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "한국어 메모 → 수정 가능한 미리보기 → 저장과 원문 되돌리기",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2044,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:05.744Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1777957a7a992d4e954b-9db3bfa18e5102c6cd9e",
+          "file": "v1.5.spec.ts",
+          "line": 60,
+          "column": 1
+        },
+        {
+          "title": "잘못된 여러 줄은 전체 보류·원문 유지·인식 끄기·Shift+Enter",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1222,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:07.809Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1777957a7a992d4e954b-1ecdfe1fbdb5276603bf",
+          "file": "v1.5.spec.ts",
+          "line": 101,
+          "column": 1
+        },
+        {
+          "title": "가상 학생의 자유 메모: 행동 분리·공유 날짜·반복 원문·첫 계획 안내",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1042,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:09.053Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1777957a7a992d4e954b-199d1239fac34e6b0cdd",
+          "file": "v1.5.spec.ts",
+          "line": 126,
+          "column": 1
+        },
+        {
+          "title": "예시 덧붙이기는 작성 중인 원문을 보존하고 최대 길이를 넘기지 않음",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1073,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:10.113Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1777957a7a992d4e954b-f8328c4664ea410bf3d5",
+          "file": "v1.5.spec.ts",
+          "line": 153,
+          "column": 1
+        },
+        {
+          "title": "정한 3개 완료 후 종료·무기한 입력이나 새로고침으로 채우지 않음·완료 되돌리기",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2025,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:11.204Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1777957a7a992d4e954b-17ad49607920904802d5",
+          "file": "v1.5.spec.ts",
+          "line": 175,
+          "column": 1
+        },
+        {
+          "title": "오늘·내일·다음 주 메모 중 오늘 일은 기존 계획에 자동 반영하고 완료 전에 종료하지 않음",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2389,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:13.252Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1777957a7a992d4e954b-75787c120576e7f35a15",
+          "file": "v1.5.spec.ts",
+          "line": 210,
+          "column": 1
+        },
+        {
+          "title": "이전 저장·수동 제외로 계획 밖에 오늘 기한이 남으면 종료 대신 확인·계획 복구를 제공",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1049,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:15.674Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1777957a7a992d4e954b-88509db82386410b8baa",
+          "file": "v1.5.spec.ts",
+          "line": 252,
+          "column": 1
+        },
+        {
+          "title": "분량 변경은 명시적 재계획·되돌리기·기한 밖 안내·원본 속성 유지",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1000,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:16.750Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1777957a7a992d4e954b-f8e94fef292acd95bf8d",
+          "file": "v1.5.spec.ts",
+          "line": 286,
+          "column": 1
+        },
+        {
+          "title": "나중에 하기와 다시 이어가기·되돌리기·다음 날 계획 초기화",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1258,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:17.773Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1777957a7a992d4e954b-e88ea31e2137b7aeead1",
+          "file": "v1.5.spec.ts",
+          "line": 306,
+          "column": 1
+        },
+        {
+          "title": "편집의 오늘 선택은 자동 계획과 일치·취소 불변·저장과 삭제도 되돌리기",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1791,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:19.052Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1777957a7a992d4e954b-242bfc900afbead35a83",
+          "file": "v1.5.spec.ts",
+          "line": 325,
+          "column": 1
+        },
+        {
+          "title": "자동 설정 손상 시 기존 할 일·문구 보존, 자동 설정만 명시적 초기화",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1090,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:20.867Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1777957a7a992d4e954b-b316d1bb83c848dac7b1",
+          "file": "v1.5.spec.ts",
+          "line": 351,
+          "column": 1
+        },
+        {
+          "title": "체험의 입력·완료·설정·백업/복원·초기화가 개인 저장소 세 개를 보존",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3064,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:21.985Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1777957a7a992d4e954b-fe07e9b2ff8e35d6ed3b",
+          "file": "v1.5.spec.ts",
+          "line": 365,
+          "column": 1
+        },
+        {
+          "title": "전체 복원 직후 오늘 계획에는 복원된 항목만 포함",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1426,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:25.074Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1777957a7a992d4e954b-222694c4af924e995103",
+          "file": "v1.5.spec.ts",
+          "line": 408,
+          "column": 1
+        },
+        {
+          "title": "브라우저 저장소 접근 자체가 차단되어도 체험은 사용 가능",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 816,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:26.532Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1777957a7a992d4e954b-e3097d056a5a787b7207",
+          "file": "v1.5.spec.ts",
+          "line": 425,
+          "column": 1
+        },
+        {
+          "title": "자동 설정 쓰기 실패는 경고·메모리 유지·재시도하고 할 일을 바꾸지 않음",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 952,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:27.370Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1777957a7a992d4e954b-763c5502541cca118bce",
+          "file": "v1.5.spec.ts",
+          "line": 443,
+          "column": 1
+        },
+        {
+          "title": "자동화 체험 반응형 1366×768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1593,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:28.350Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1777957a7a992d4e954b-2a1886e4e251e09a779b",
+          "file": "v1.5.spec.ts",
+          "line": 481,
+          "column": 3
+        },
+        {
+          "title": "자동화 체험 반응형 390×844",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1343,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:29.970Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1777957a7a992d4e954b-e3656a525292a6a2ef8b",
+          "file": "v1.5.spec.ts",
+          "line": 481,
+          "column": 3
+        },
+        {
+          "title": "자동화 체험 반응형 320×568",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1412,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:31.340Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1777957a7a992d4e954b-b1f9ff3991ebad8444a9",
+          "file": "v1.5.spec.ts",
+          "line": 481,
+          "column": 3
+        },
+        {
+          "title": "자동화 체험 반응형 768×1024",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1542,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:32.785Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1777957a7a992d4e954b-c9ee1eeb4e4fea370442",
+          "file": "v1.5.spec.ts",
+          "line": 481,
+          "column": 3
+        },
+        {
+          "title": "자동화 체험 반응형 720×450",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1701,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:34.359Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1777957a7a992d4e954b-27ff9429b350f29d61be",
+          "file": "v1.5.spec.ts",
+          "line": 481,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "title": "workspace.spec.ts",
+      "file": "workspace.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "사이드바 검색·직접 백업·초점 복귀와 목록 집중 상태/동작 분리",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1689,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:36.105Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b163ed09f68681248ada-bcbfbde3c53a28688764",
+          "file": "workspace.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "작업 UI 1440×900: 긴 정보·독립 조작 영역·내부 스크롤",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1556,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:37.815Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b163ed09f68681248ada-1a4b2476fac302d2af82",
+          "file": "workspace.spec.ts",
+          "line": 47,
+          "column": 3
+        },
+        {
+          "title": "작업 UI 1366×768: 긴 정보·독립 조작 영역·내부 스크롤",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1523,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:39.389Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b163ed09f68681248ada-0a86fd9e0b8daaf9e65b",
+          "file": "workspace.spec.ts",
+          "line": 47,
+          "column": 3
+        },
+        {
+          "title": "작업 UI 1024×768: 긴 정보·독립 조작 영역·내부 스크롤",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1573,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:40.934Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b163ed09f68681248ada-d06f8a9be9ce460cf692",
+          "file": "workspace.spec.ts",
+          "line": 47,
+          "column": 3
+        },
+        {
+          "title": "작업 UI 768×1024: 긴 정보·독립 조작 영역·내부 스크롤",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1567,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:42.529Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b163ed09f68681248ada-9375195605f1a3e4e4fb",
+          "file": "workspace.spec.ts",
+          "line": 47,
+          "column": 3
+        },
+        {
+          "title": "작업 UI 390×844: 긴 정보·독립 조작 영역·내부 스크롤",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1486,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:44.128Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b163ed09f68681248ada-644a1b6b8f8b9a865750",
+          "file": "workspace.spec.ts",
+          "line": 47,
+          "column": 3
+        },
+        {
+          "title": "작업 UI 320×568: 긴 정보·독립 조작 영역·내부 스크롤",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1479,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:45.636Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b163ed09f68681248ada-1ad5910dadf23a31205e",
+          "file": "workspace.spec.ts",
+          "line": 47,
+          "column": 3
+        },
+        {
+          "title": "작업 UI 720×450: 긴 정보·독립 조작 영역·내부 스크롤",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1532,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:47.140Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b163ed09f68681248ada-349c01c2fd6e9602a6ba",
+          "file": "workspace.spec.ts",
+          "line": 47,
+          "column": 3
+        },
+        {
+          "title": "필수 입력 경계·체크박스·집중 상태의 실제 대비",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 663,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T03:33:48.702Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b163ed09f68681248ada-0b243b90008990021919",
+          "file": "workspace.spec.ts",
+          "line": 91,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-20T03:32:55.062Z",
+    "duration": 55352.678,
+    "expected": 36,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

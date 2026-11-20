@@ -63,7 +63,7 @@ export function nextMidnightDelay(now: Date): number {
 }
 export function validateTitle(title: string): string | null {
   if (!title.trim()) return '할 일 제목을 입력해 주세요.'
-  if (title.trim().length > 200) return '제목은 200자까지 입력할 수 있습니다.'
+  if (title.trim().length > 200) return '제목은 200자까지 입력할 수 있어요.'
   return null
 }
 export function createTask(
@@ -130,7 +130,7 @@ export function selectCompleted(tasks: Task[], query = ''): Task[] {
 }
 export const planGroupLabels = {
   overdue: '기한 초과',
-  dueToday: '오늘 기한',
+  dueToday: '오늘까지',
   yesterday: '어제 선택한 일',
   high: '높은 우선순위',
 } as const
@@ -173,8 +173,7 @@ export function todaySummary(tasks: Task[], today: string) {
 export function updateTask(task: Task, draft: TaskDraft, now = new Date().toISOString()): Task {
   const error = validateTitle(draft.title)
   if (error) throw new Error(error)
-  if (draft.dueDate !== null && !isDate(draft.dueDate))
-    throw new Error('유효한 기한을 선택해 주세요.')
+  if (draft.dueDate !== null && !isDate(draft.dueDate)) throw new Error('기한을 확인해 주세요.')
   return {
     ...task,
     ...draft,
@@ -215,8 +214,8 @@ export function appendDemo(tasks: Task[], today: string): Task[] {
 }
 export function dueLabel(key: string, today: string): string {
   if (key < today) return `기한 초과 · ${daysBetween(key, today)}일 지남`
-  if (key === today) return '오늘 기한'
-  if (key === addDays(today, 1)) return '내일 기한'
+  if (key === today) return '오늘까지'
+  if (key === addDays(today, 1)) return '내일까지'
   const [y, m, d] = key.split('-').map(Number)
   return `${y !== Number(today.slice(0, 4)) ? `${y}년 ` : ''}${m}월 ${d}일 기한`
 }

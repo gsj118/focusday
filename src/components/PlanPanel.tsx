@@ -13,6 +13,7 @@ export function PlanPanel({
   onRetry,
   onClose,
   onAll,
+  plannedIds,
 }: {
   tasks: Task[]
   today: string
@@ -22,15 +23,16 @@ export function PlanPanel({
   onRetry: () => void
   onClose: () => void
   onAll: () => void
+  plannedIds?: string[]
 }) {
   const candidates = planCandidates(tasks, today)
   const [feedback, setFeedback] = useState<{ date: string; text: string } | null>(null)
   return (
     <PanelDialog title="오늘 계획하기" kind="plan" onClose={onClose}>
       <p className="panel-intro">
-        기한과 어제 선택한 일, 높은 우선순위를 살펴보고 오늘 집중할 일을 고르세요.
+        기한이 된 일과 지난번에 남긴 일을 보고 오늘 할 일을 골라 주세요.
       </p>
-      <p className="field-hint">{today} · 선택은 바로 적용됩니다. 기한은 바꾸지 않습니다.</p>
+      <p className="field-hint">선택하면 바로 적용돼요. 기한은 바뀌지 않아요.</p>
       <PanelStorageNotice guard={guard} saveError={saveError} onRetry={onRetry} />
       {feedback?.date === today && (
         <p className="panel-feedback" role="status">
@@ -39,8 +41,8 @@ export function PlanPanel({
       )}
       {candidates.length === 0 ? (
         <div className="panel-empty">
-          <h3>지금 살펴볼 계획 후보가 없습니다</h3>
-          <p>다른 할 일은 전체에서 집중 대상으로 고를 수 있습니다.</p>
+          <h3>지금 추천할 일이 없어요</h3>
+          <p>전체 목록에서 오늘 할 일을 직접 골라 주세요.</p>
           <button className="secondary-button" onClick={onAll}>
             전체 할 일 보기
           </button>
@@ -56,7 +58,9 @@ export function PlanPanel({
               </h3>
               <ul>
                 {rows.map(({ task, reasons }) => {
-                  const focused = task.focusDate === today
+                  const focused = plannedIds
+                    ? plannedIds.includes(task.id)
+                    : task.focusDate === today
                   return (
                     <li key={task.id} className="plan-row" data-task-id={task.id}>
                       <div className="plan-task">
@@ -71,25 +75,25 @@ export function PlanPanel({
                             .filter(Boolean)
                             .join(' · ')}
                         </p>
-                        {focused && <span className="plan-focused">오늘 집중 · 집중 중</span>}
+                        {focused && <span className="plan-focused">오늘 계획에 포함됨</span>}
                       </div>
                       <button
                         className={`secondary-button plan-focus ${focused ? 'is-focused' : ''}`}
-                        aria-label={`${task.title} ${focused ? '집중 해제' : '집중하기'}`}
+                        aria-label={`${task.title} ${focused ? '오늘에서 빼기' : '오늘에 넣기'}`}
                         aria-pressed={focused}
                         onClick={() => {
                           onFocus(task)
                           setFeedback({
                             date: today,
                             text: focused
-                              ? task.dueDate && task.dueDate <= today
-                                ? '집중은 해제했습니다. 기한 때문에 오늘에도 표시됩니다. 기한 편집은 오늘 목록에서 할 수 있습니다.'
-                                : '집중을 해제했습니다. 전체에는 남아 있습니다.'
-                              : '오늘 집중으로 선택했습니다. 오늘 목록에 바로 표시됩니다.',
+                              ? !plannedIds && task.dueDate && task.dueDate <= today
+                                ? '오늘 선택은 해제했어요. 기한이 오늘까지라 목록에는 남아 있어요. 목록으로 돌아가 제목을 누르면 기한을 바꿀 수 있어요.'
+                                : '오늘 계획에서 뺐어요. 전체 목록에는 그대로 남아 있어요.'
+                              : '오늘 할 일에 넣었어요. 오늘 목록에서 바로 확인할 수 있어요.',
                           })
                         }}
                       >
-                        {focused ? '집중 해제' : '집중하기'}
+                        {focused ? '오늘에서 빼기' : '오늘에 넣기'}
                       </button>
                     </li>
                   )
@@ -100,7 +104,7 @@ export function PlanPanel({
         })
       )}
       <div className="panel-bottom">
-        <p>후보 밖의 작업도 전체에서 선택할 수 있습니다.</p>
+        <p>다른 일도 전체 목록에서 고를 수 있어요.</p>
         {candidates.length > 0 && (
           <button className="text-button" onClick={onAll}>
             전체 할 일 보기

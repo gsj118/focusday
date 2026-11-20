@@ -7,7 +7,7 @@ test('B03/B05/B06/B07: 네 우선순위·날짜·분류 경계·Enter/Space 실�
     .getByRole('navigation', { name: '할 일 보기', exact: true })
     .getByRole('button', { name: /전체/ })
     .click()
-  await page.getByLabel('새 할 일 제목').fill('상세 경계')
+  await page.getByLabel('할 일 메모').fill('상세 경계')
   await page.keyboard.press('Enter')
   const read = () => page.evaluate(() => JSON.parse(localStorage.getItem('focusday:v1')!).tasks[0])
   const original = await read()

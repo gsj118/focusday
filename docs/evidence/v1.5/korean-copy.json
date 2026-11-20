@@ -1,0 +1,2746 @@
+{
+  "generatedBy": "scripts/audit-korean-copy.mjs",
+  "scope": "Korean string literals, templates and JSX text in src, plus index.html title/metadata; user-entered text is excluded",
+  "strings": [
+    {
+      "file": "src/App.tsx",
+      "line": 157,
+      "text": "최근 작업을 되돌렸어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 164,
+      "text": "날짜가 바뀌어 이전 계획은 되돌릴 수 없어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 184,
+      "text": "할 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 184,
+      "text": "개를 담았어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 184,
+      "text": "오늘까지 할 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 184,
+      "text": "개를 오늘 계획에 넣었어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 241,
+      "text": "할 일을 완료했어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 254,
+      "text": "완료한 일을 다시 할 일로 바꿨어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 265,
+      "text": "오늘 계획에서 뺐어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 265,
+      "text": "오늘 할 일에 넣었어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 287,
+      "text": "오늘 선택은 해제했어요. 기한이 오늘까지라 목록에는 남아 있어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 294,
+      "text": "오늘 계획에서 뺐어요. 전체 목록에는 그대로 남아 있어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 295,
+      "text": "오늘 계획에서 뺐어요. 전체 목록에는 그대로 남아 있어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 296,
+      "text": "기한은 그대로 두고 오늘 할 일에 넣었어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 303,
+      "text": "할 일을 수정했어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 323,
+      "text": "오늘 선택은 해제했어요. 기한이 오늘까지라 목록에는 남아 있어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 382,
+      "text": "할 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 382,
+      "text": "개를 담은 백업 파일 다운로드를 시작했어요. ("
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 385,
+      "text": "백업 파일을 만들지 못했어요. 다시 시도해 주세요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 392,
+      "text": "저장된 원본을 보호하고 있어요. 먼저 원본을 다시 읽거나 복구해 주세요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 400,
+      "text": "복원한 내용을 저장하지 못했어요. 기존 목록은 그대로예요. 다시 시도하거나 취소해 주세요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 410,
+      "text": "복원했어요. 전체 할 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 410,
+      "text": "개를 저장했어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 484,
+      "text": "모바일 보기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 484,
+      "text": "할 일 보기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 491,
+      "text": "전체 할 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 499,
+      "text": "오늘"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 499,
+      "text": "전체"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 499,
+      "text": "전체 할 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 504,
+      "text": "메모 입력"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 506,
+      "text": "메모"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 518,
+      "text": "설정 및 도움말"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 520,
+      "text": "설정 및 도움말"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 523,
+      "text": "먼저 써 보세요"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 524,
+      "text": "예시로 기능을 써 보세요. 내 할 일에는 영향을 주지 않아요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 526,
+      "text": "예시로 둘러보기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 534,
+      "text": "예시만 지웠어요. 직접 적은 할 일은 그대로예요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 537,
+      "text": "예시 할 일 지우기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 544,
+      "text": "백업·복원"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 551,
+      "text": "문구와 격려 설정"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 555,
+      "text": "문구 설정을 저장하지 못했어요. 문구와 격려 설정에서 다시 확인해 주세요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 561,
+      "text": "계정 없이 이 브라우저에 저장해요. 다른 기기에서도 쓰려면 백업 파일을 내려받아 가져와 주세요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 565,
+      "text": "N 새 입력 · / 검색"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 567,
+      "text": "글을 입력하는 동안에는 실행되지 않아요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 595,
+      "text": "기한을 확인해 주세요"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 609,
+      "text": "할 일 목록으로 이동"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 617,
+      "text": "정리는 자동으로"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 622,
+      "text": "검색"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 629,
+      "text": "검색"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 632,
+      "text": "나의 할 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 640,
+      "text": "백업·복원"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 645,
+      "text": "내 브라우저, 나의 할 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 653,
+      "text": "오늘"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 653,
+      "text": "전체 할 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 660,
+      "text": "체험 · 저장 안 됨"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 662,
+      "text": "저장 보호 중"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 664,
+      "text": "저장 실패"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 666,
+      "text": "저장됨"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 668,
+      "text": "저장된 할 일 불러옴"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 669,
+      "text": "이 브라우저에 저장"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 675,
+      "text": "오늘 할 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 675,
+      "text": "전체 할 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 687,
+      "text": "생각난 일은 담아두고, 오늘 할 일을 골라보세요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 693,
+      "text": "메모 담기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 700,
+      "text": "오늘 계획하기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 707,
+      "text": "최근 작업 되돌리기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 710,
+      "text": "되돌리기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 720,
+      "text": "계획 설정"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 722,
+      "text": "자동 계획 설정"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 731,
+      "text": "자동 계획을 켰어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 731,
+      "text": "수동 계획으로 바꿨어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 735,
+      "text": "자동 계획"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 739,
+      "text": "오늘 분량"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 741,
+      "text": "오늘 기본 분량"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 751,
+      "text": "오늘 분량을 다시 정했어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 755,
+      "text": "1개"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 756,
+      "text": "3개"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 757,
+      "text": "5개"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 761,
+      "text": "기한과 우선순위를 보고 골라요. 마친 자리에는 새 일을 채우지 않아요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 767,
+      "text": "오늘 계획하기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 775,
+      "text": "예시 체험 안내"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 777,
+      "text": "자동화 체험"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 778,
+      "text": "내 목록은 그대로 · 새로고침하면 체험 초기화"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 782,
+      "text": "처음부터 체험"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 785,
+      "text": "내 할 일 시작하기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 794,
+      "text": "오늘 계획 다시 저장"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 798,
+      "text": "자동 계획 설정 초기화…"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 799,
+      "text": "오늘 계획 설정만 처음 상태로 바꿔요. 할 일과 문구 설정은 그대로예요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 801,
+      "text": "자동 계획 설정만 초기화"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 808,
+      "text": "오늘 계획 요약"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 810,
+      "text": "오늘 계획"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 812,
+      "text": "직접 고른"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 812,
+      "text": "개"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 812,
+      "text": "· 기한으로 표시된"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 813,
+      "text": "개"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 817,
+      "text": "어제 마치지 못한 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 817,
+      "text": "개 · 계획에서 이어갈 일을 골라보세요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 828,
+      "text": "저장된 원본은 그대로 보관하고 있어요. 이 탭에서 바꾼 내용은 아직 저장되지 않았어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 833,
+      "text": "다시 읽기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 838,
+      "text": "원본 다운로드"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 841,
+      "text": "원본 초기화…"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 851,
+      "text": "변경 내용을 저장하지 못했어요. 새로고침하기 전에 저장을 다시 시도하거나 백업해 주세요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 854,
+      "text": "저장 재시도"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 859,
+      "text": "할 일 작업 영역"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 871,
+      "text": "기한 편집"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 876,
+      "text": "안내 닫기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 885,
+      "text": "검색 결과"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 885,
+      "text": "개"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 886,
+      "text": "현재"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 886,
+      "text": "오늘"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 886,
+      "text": "전체"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 886,
+      "text": "보기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 890,
+      "text": "오늘 자동 요약"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 892,
+      "text": "오늘 계획"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 892,
+      "text": "개"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 894,
+      "text": "완료"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 900,
+      "text": "오늘 계획 완료"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 910,
+      "text": "정한 분량은 마쳤지만, 오늘까지 할 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 910,
+      "text": "개가 남아 있어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 911,
+      "text": "정해 둔 분량을 모두 마쳤어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 912,
+      "text": "계획에 남은 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 912,
+      "text": "개 · 마치면 다음 일이 이어져요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 919,
+      "text": "오늘까지 해야 할 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 919,
+      "text": "개가 계획 밖에 있어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 921,
+      "text": "전체에서 확인"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 926,
+      "text": "지금 할 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 930,
+      "text": "지금 할 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 936,
+      "text": "편집"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 948,
+      "text": "까지"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 953,
+      "text": "우선순위"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 953,
+      "text": "높음"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 953,
+      "text": "보통"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 953,
+      "text": "낮음"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 964,
+      "text": "완료했어요"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 974,
+      "text": "이 일은 잠시 뒤로 미뤘어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 979,
+      "text": "나중에 하기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 982,
+      "text": "잘못 눌러도 최근 작업을 되돌릴 수 있어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 988,
+      "text": "오늘 기한 확인 안내"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 988,
+      "text": "오늘 계획 완료 안내"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 994,
+      "text": "오늘까지 할 일이 남아 있어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 994,
+      "text": "오늘 분량을 다 마쳤어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 998,
+      "text": "오늘이 기한이거나 기한이 지난 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 998,
+      "text": "개를 확인해 주세요. 오늘 계획에 넣고 이어서 할 수 있어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 999,
+      "text": "여기서 마무리해도 좋아요. 나머지 일은 전체 목록에 그대로 있어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1011,
+      "text": "오늘까지 해야 할 일을 오늘 계획에 넣었어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1016,
+      "text": "남은 일 오늘에 넣기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1020,
+      "text": "전체 할 일 보기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1032,
+      "text": "오늘 할 일을 하나 더 골랐어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1036,
+      "text": "하나 더 하기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1048,
+      "text": "남은 일을 모두 미뤄 두었어요. 준비되면 다시 이어가세요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1052,
+      "text": "미뤄 둔 일을 다시 이어가요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1055,
+      "text": "미뤄 둔 일 이어가기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1062,
+      "text": "할 일 목록"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1063,
+      "text": "제목을 눌러 편집"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1068,
+      "text": "제목·분류 검색"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1075,
+      "text": "제목·분류 검색"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1081,
+      "text": "검색 지우기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1101,
+      "text": "검색 결과가 없어요"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1103,
+      "text": "해야 할 일을 하나 적어보세요"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1106,
+      "text": "오늘"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1106,
+      "text": "개를 마쳤어요"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1107,
+      "text": "오늘 정한 일이 없어요"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1108,
+      "text": "남은 할 일이 없어요"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1112,
+      "text": "” 검색어를 지우거나 다른 말로 찾아보세요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1114,
+      "text": "생각난 일 하나부터. 계정 없이 가볍게 시작하세요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1116,
+      "text": "전체 할 일에서 오늘 할 일을 고르거나 새로 추가해 보세요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1117,
+      "text": "완료한 일은 아래에서 확인하고 완료를 취소할 수 있어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1122,
+      "text": "검색 지우기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1127,
+      "text": "첫 할 일 추가"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1127,
+      "text": "+ 새 할 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1131,
+      "text": "예시로 둘러보기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1136,
+      "text": "전체 할 일 보기"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1148,
+      "text": "기한 초과"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1153,
+      "text": "이어서 할 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1153,
+      "text": "오늘"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1158,
+      "text": "미완료 할 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1176,
+      "text": "오늘 마친 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1176,
+      "text": "개"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1179,
+      "text": "체험 중에"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1179,
+      "text": "직접 적은 할 일 중"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1179,
+      "text": "오늘 마친 일이에요. 완료를 취소하면 다시 할 일로 돌아가요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1185,
+      "text": "오늘 마친 일이 여기에 모여요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1197,
+      "text": "완료된 할 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1202,
+      "text": "검색어와 맞는 완료 항목이 없어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1223,
+      "text": "생각은 담고, 하나씩 끝내요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1278,
+      "text": "할 일을 삭제했어요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1318,
+      "text": "저장 원본을 초기화할까요?"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1320,
+      "text": "손상되거나 지원하지 않는 원본을 지우고 현재 탭의 할 일"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1320,
+      "text": "개를 저장해요. 원본은 되돌릴 수 없어요. 필요한 경우 먼저 내려받아 주세요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1325,
+      "text": "초기화하지 못했어요. 원본은 그대로예요. 브라우저 저장 권한을 확인하거나 다시 시도해 주세요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1331,
+      "text": "취소"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1341,
+      "text": "초기화하지 못했어요. 원본은 그대로예요. 다시 시도해 주세요."
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1344,
+      "text": "원본 삭제 후 현재 목록 저장"
+    },
+    {
+      "file": "src/automation.ts",
+      "line": 59,
+      "text": "오늘 계획을 불러오지 못해 수동 목록을 표시하고 있어요. 저장된 할 일은 그대로예요."
+    },
+    {
+      "file": "src/automation.ts",
+      "line": 68,
+      "text": "오늘 계획을 저장하지 못했어요. 이 탭에서는 사용할 수 있지만 새로고침하면 계획이 달라질 수 있어요."
+    },
+    {
+      "file": "src/automation.ts",
+      "line": 85,
+      "text": "기한 초과"
+    },
+    {
+      "file": "src/automation.ts",
+      "line": 86,
+      "text": "오늘까지 할 일"
+    },
+    {
+      "file": "src/automation.ts",
+      "line": 87,
+      "text": "오늘 하기로 고른 일"
+    },
+    {
+      "file": "src/automation.ts",
+      "line": 88,
+      "text": "지난번에 마치지 못한 일"
+    },
+    {
+      "file": "src/automation.ts",
+      "line": 89,
+      "text": "높은 우선순위"
+    },
+    {
+      "file": "src/automation.ts",
+      "line": 90,
+      "text": "다가오는 기한"
+    },
+    {
+      "file": "src/automation.ts",
+      "line": 91,
+      "text": "먼저 담아둔 일"
+    },
+    {
+      "file": "src/backup.ts",
+      "line": 23,
+      "text": "백업 파일이"
+    },
+    {
+      "file": "src/backup.ts",
+      "line": 23,
+      "text": "MiB로"
+    },
+    {
+      "file": "src/backup.ts",
+      "line": 23,
+      "text": "한도를 넘어요. 다운로드를 중단했고 목록은 그대로예요. 일부 할 일을 빼고 백업하지는 않아요."
+    },
+    {
+      "file": "src/backup.ts",
+      "line": 33,
+      "text": "이하의 백업 파일을 선택해 주세요."
+    },
+    {
+      "file": "src/backup.ts",
+      "line": 40,
+      "text": "백업 파일을 읽지 못했어요. Focusday에서 내려받은 파일을 다시 골라 주세요."
+    },
+    {
+      "file": "src/backup.ts",
+      "line": 44,
+      "text": "Focusday 백업 파일이 아니에요. 파일을 다시 골라 주세요."
+    },
+    {
+      "file": "src/backup.ts",
+      "line": 50,
+      "text": "Focusday 백업 파일이 아니에요. 복구용으로 내려받은 저장 원본은 여기서 가져올 수 없어요."
+    },
+    {
+      "file": "src/backup.ts",
+      "line": 53,
+      "text": "지원하지 않는 백업 버전이에요. 버전 1 백업 파일을 골라 주세요."
+    },
+    {
+      "file": "src/backup.ts",
+      "line": 58,
+      "text": "백업 내용이 올바르지 않아요. 날짜나 할 일 정보가 손상되었을 수 있어요. 다른 백업 파일을 골라 주세요."
+    },
+    {
+      "file": "src/capture.ts",
+      "line": 38,
+      "text": "오늘"
+    },
+    {
+      "file": "src/capture.ts",
+      "line": 40,
+      "text": "내일"
+    },
+    {
+      "file": "src/capture.ts",
+      "line": 42,
+      "text": "모레"
+    },
+    {
+      "file": "src/capture.ts",
+      "line": 46,
+      "text": "날짜를 확인해 주세요."
+    },
+    {
+      "file": "src/capture.ts",
+      "line": 51,
+      "text": "기한은 한 개만 지정해 주세요."
+    },
+    {
+      "file": "src/capture.ts",
+      "line": 60,
+      "text": "분류는 한 개만 지정해 주세요."
+    },
+    {
+      "file": "src/capture.ts",
+      "line": 65,
+      "text": "분류는 24자까지 입력할 수 있어요."
+    },
+    {
+      "file": "src/capture.ts",
+      "line": 70,
+      "text": "우선순위는 한 개만 지정해 주세요."
+    },
+    {
+      "file": "src/capture.ts",
+      "line": 86,
+      "text": "할 일 제목을 입력해 주세요."
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 18,
+      "text": "오늘은 빨래 돌리고 내일 과제 제출해야 돼. 다음 주 월요일 발표 준비도 해놔야 하고."
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 70,
+      "text": "번째 줄:"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 88,
+      "text": "날짜가 바뀌었어요. 정리한 기한을 확인한 뒤 담아 주세요."
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 92,
+      "text": "담을 할 일을 하나 이상 남겨 주세요."
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 98,
+      "text": "기한을 확인해 주세요."
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 100,
+      "text": "분류는 24자까지 입력할 수 있어요."
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 124,
+      "text": "메모로 할 일 담기"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 131,
+      "text": "생각난 일 담기"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 134,
+      "text": "평소 쓰는 말로 적으면 할 일로 정리해 드려요."
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 135,
+      "text": "한 줄에 하나씩 적으면 그대로 담아 드려요."
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 166,
+      "text": "할 일 메모"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 174,
+      "text": "내일 과제 제출하고 다음 주 월요일에는 발표 준비하기"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 194,
+      "text": "Enter 확인"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 194,
+      "text": "Enter 담기"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 194,
+      "text": "· Shift+Enter 줄바꿈"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 204,
+      "text": "메모가 길어 예시를 덧붙일 수 없어요. 현재 메모를 먼저 담아 주세요."
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 212,
+      "text": "예시 덧붙이기"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 212,
+      "text": "예시 넣기"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 226,
+      "text": "문장 자동 정리"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 228,
+      "text": "저장 전에 확인해요"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 228,
+      "text": "한 줄씩 그대로 담아요"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 231,
+      "text": "입력 인식 결과"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 234,
+      "text": "할 일"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 234,
+      "text": "개로 정리했어요"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 236,
+      "text": "제목과 기한을 확인한 뒤 목록에 담아 주세요."
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 241,
+      "text": "날짜가 바뀌었어요."
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 245,
+      "text": "에 정리한 기한과 수정한 내용은 그대로예요. 저장 전에 기한을 다시 확인해 주세요."
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 248,
+      "text": "오늘 날짜로 다시 정리하려면"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 250,
+      "text": "‘메모로 돌아가기’를 누르고 다시 정리해 주세요. 오늘·내일을 새 날짜로 해석해요."
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 262,
+      "text": "정리한 기한을 확인했어요"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 269,
+      "text": "정리한 할 일"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 272,
+      "text": "정리한 제목"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 280,
+      "text": "정리 결과에서 제외"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 292,
+      "text": "할 일"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 292,
+      "text": "기한·분류 수정"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 299,
+      "text": "기한 없음"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 304,
+      "text": "수정"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 309,
+      "text": "기한"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 312,
+      "text": "정리한 기한"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 318,
+      "text": "분류"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 320,
+      "text": "정리한 분류"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 322,
+      "text": "분류 없음"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 328,
+      "text": "우선순위"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 330,
+      "text": "정리한 우선순위"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 357,
+      "text": "모두 오늘 할 일에 넣기"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 361,
+      "text": "기한과 관계없이 모두 오늘 계획에 넣어요. 정해 둔 분량보다 많아질 수 있어요."
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 365,
+      "text": "오늘까지 할 일은 모두 포함하고, 나머지 할 일에서 기본 분량을 채워요."
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 366,
+      "text": "전체 목록에 담고, 이 중에서 오늘 할 분량을 자동으로 골라요."
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 368,
+      "text": "오늘까지 할 일"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 368,
+      "text": "개는 오늘 계획에 자동으로 넣어요. 나머지는 전체 목록에 담아요."
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 369,
+      "text": "전체 목록에 담아요. 이미 정한 오늘 분량은 바뀌지 않아요."
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 370,
+      "text": "전체 목록에 담아요. 오늘 할 일은 따로 고를 수 있어요."
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 386,
+      "text": "개 담기"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 388,
+      "text": "메모 정리하기"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 389,
+      "text": "그대로 담기"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 400,
+      "text": "메모로 돌아가기"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 406,
+      "text": "어떤 표현을 알아보나요?"
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 408,
+      "text": "오늘·내일·모레, 다음 주 월요일, 11월 23일처럼 날짜가 분명한 표현을 알아봐요. 여러 문장과 줄바꿈으로 적어도 돼요. ‘제출하고’, ‘정리하고’처럼 지원하는 행동 표현은 항목으로 나눠요. 한 항목에 여러 일이 남으면 줄을 나눠 주세요."
+    },
+    {
+      "file": "src/components/CaptureComposer.tsx",
+      "line": 413,
+      "text": "문맥에 따라 분류가 맞지 않을 수 있어요. 정리 결과에서 바꾸거나 자동 정리를 끄면 한 줄씩 원문 그대로 담을 수 있어요."
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 77,
+      "text": "이하의 백업 파일을 다시 선택해 주세요."
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 88,
+      "text": "파일을 읽지 못했어요. 백업 파일을 다시 선택해 주세요."
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 105,
+      "text": "백업 파일 다운로드"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 109,
+      "text": "백업·복원"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 111,
+      "text": "할 일을 파일로 보관하거나 다른 기기로 옮길 수 있어요. 문구 설정과 오늘 계획은 백업에 포함되지 않아요."
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 117,
+      "text": "지금 백업하면 이 탭에 보이는 목록만 담겨요. 보호 중인 저장 원본은 따로 내려받아 주세요."
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 130,
+      "text": "복원 완료"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 131,
+      "text": "백업 내용을 저장했어요. 현재 목록에는 할 일"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 131,
+      "text": "개가 있어요."
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 133,
+      "text": "목록으로 돌아가기"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 140,
+      "text": "전체 할 일 백업"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 142,
+      "text": "현재 탭의 전체"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 142,
+      "text": "개 · 미완료"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 142,
+      "text": "개 · 완료"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 143,
+      "text": "개"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 146,
+      "text": "완료한 일과 예시, 기한·분류도 함께 담아요. 아직 저장되지 않은 변경도 포함해요."
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 149,
+      "text": "최대"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 149,
+      "text": "까지 백업할 수 있어요. 용량을 넘으면 다운로드를 멈추고 목록은 그대로 둬요."
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 155,
+      "text": "백업 파일 가져오기"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 157,
+      "text": "Focusday 백업 파일(.json, 최대"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 157,
+      "text": ")을 골라 주세요. 내용을 확인한 뒤 복원해요."
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 161,
+      "text": "백업 파일 선택"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 171,
+      "text": "백업 파일을 확인하고 있어요…"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 186,
+      "text": "전체 교체 확인"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 186,
+      "text": "복원 미리보기"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 189,
+      "text": "백업 전체"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 189,
+      "text": "개 · 미완료"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 189,
+      "text": "개 · 완료"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 189,
+      "text": "개"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 192,
+      "text": "백업 시각:"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 200,
+      "text": "현재 목록"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 200,
+      "text": "개를 백업의"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 200,
+      "text": "개로 바꿔요. 현재 목록에만 있는 할 일은 사라져요. 교체하기 전에 백업을 보관해 주세요."
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 212,
+      "text": "교체 취소"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 215,
+      "text": "전체 교체 다시 시도"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 215,
+      "text": "확인 후 전체 교체"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 222,
+      "text": "복원 방식"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 233,
+      "text": "기존 데이터에 합치기"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 245,
+      "text": "백업으로 전체 교체"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 251,
+      "text": "추가"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 251,
+      "text": "개 · 기존 항목 유지"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 251,
+      "text": "개"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 253,
+      "text": "내용이 달라진 기존 항목"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 253,
+      "text": "개도 현재 내용을 유지해요."
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 255,
+      "text": "제목이 같아도 별도로 만든 할 일은 각각 남아요. 합치면 전체"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 256,
+      "text": "개가 돼요."
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 261,
+      "text": "현재"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 261,
+      "text": "개 → 교체 후"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 261,
+      "text": "개. 다음 단계에서 한 번 더 확인한 뒤 적용해요."
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 267,
+      "text": "복원 취소"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 275,
+      "text": "전체 교체 확인으로 이동"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 277,
+      "text": "합치기 다시 시도"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 278,
+      "text": "합치기 적용"
+    },
+    {
+      "file": "src/components/DataPanel.tsx",
+      "line": 284,
+      "text": "저장된 원본을 확인한 뒤에 백업을 가져올 수 있어요."
+    },
+    {
+      "file": "src/components/PanelDialog.tsx",
+      "line": 64,
+      "text": "오늘"
+    },
+    {
+      "file": "src/components/PanelDialog.tsx",
+      "line": 64,
+      "text": "데이터"
+    },
+    {
+      "file": "src/components/PanelDialog.tsx",
+      "line": 64,
+      "text": "설정"
+    },
+    {
+      "file": "src/components/PanelDialog.tsx",
+      "line": 71,
+      "text": "닫기"
+    },
+    {
+      "file": "src/components/PanelStorageNotice.tsx",
+      "line": 17,
+      "text": "저장된 원본을 보호하고 있어요. 이 탭에서 바꾼 내용은 아직 저장되지 않았어요. 창을 닫고 원본을 다시 읽거나 복구해 주세요."
+    },
+    {
+      "file": "src/components/PanelStorageNotice.tsx",
+      "line": 18,
+      "text": "아직 저장되지 않은 변경이 있어요. 이 탭의 내용을 백업 파일로 보관할 수 있어요."
+    },
+    {
+      "file": "src/components/PanelStorageNotice.tsx",
+      "line": 22,
+      "text": "저장 재시도"
+    },
+    {
+      "file": "src/components/PlanPanel.tsx",
+      "line": 31,
+      "text": "오늘 계획하기"
+    },
+    {
+      "file": "src/components/PlanPanel.tsx",
+      "line": 33,
+      "text": "기한이 된 일과 지난번에 남긴 일을 보고 오늘 할 일을 골라 주세요."
+    },
+    {
+      "file": "src/components/PlanPanel.tsx",
+      "line": 35,
+      "text": "선택하면 바로 적용돼요. 기한은 바뀌지 않아요."
+    },
+    {
+      "file": "src/components/PlanPanel.tsx",
+      "line": 44,
+      "text": "지금 추천할 일이 없어요"
+    },
+    {
+      "file": "src/components/PlanPanel.tsx",
+      "line": 45,
+      "text": "전체 목록에서 오늘 할 일을 직접 골라 주세요."
+    },
+    {
+      "file": "src/components/PlanPanel.tsx",
+      "line": 47,
+      "text": "전체 할 일 보기"
+    },
+    {
+      "file": "src/components/PlanPanel.tsx",
+      "line": 78,
+      "text": "오늘 계획에 포함됨"
+    },
+    {
+      "file": "src/components/PlanPanel.tsx",
+      "line": 82,
+      "text": "오늘에서 빼기"
+    },
+    {
+      "file": "src/components/PlanPanel.tsx",
+      "line": 82,
+      "text": "오늘에 넣기"
+    },
+    {
+      "file": "src/components/PlanPanel.tsx",
+      "line": 90,
+      "text": "오늘 선택은 해제했어요. 기한이 오늘까지라 목록에는 남아 있어요. 목록으로 돌아가 제목을 누르면 기한을 바꿀 수 있어요."
+    },
+    {
+      "file": "src/components/PlanPanel.tsx",
+      "line": 91,
+      "text": "오늘 계획에서 뺐어요. 전체 목록에는 그대로 남아 있어요."
+    },
+    {
+      "file": "src/components/PlanPanel.tsx",
+      "line": 92,
+      "text": "오늘 할 일에 넣었어요. 오늘 목록에서 바로 확인할 수 있어요."
+    },
+    {
+      "file": "src/components/PlanPanel.tsx",
+      "line": 96,
+      "text": "오늘에서 빼기"
+    },
+    {
+      "file": "src/components/PlanPanel.tsx",
+      "line": 96,
+      "text": "오늘에 넣기"
+    },
+    {
+      "file": "src/components/PlanPanel.tsx",
+      "line": 107,
+      "text": "다른 일도 전체 목록에서 고를 수 있어요."
+    },
+    {
+      "file": "src/components/PlanPanel.tsx",
+      "line": 110,
+      "text": "전체 할 일 보기"
+    },
+    {
+      "file": "src/components/PlanPanel.tsx",
+      "line": 114,
+      "text": "오늘 목록으로 돌아가기"
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 47,
+      "text": "문구와 격려 설정"
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 53,
+      "text": "취소"
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 56,
+      "text": "설정 저장 재시도"
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 56,
+      "text": "설정 저장"
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 61,
+      "text": "오늘 화면에 보일 문장과 완료했을 때의 격려를 골라 주세요."
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 63,
+      "text": "문구 설정과 내 문장은 이 브라우저에만 저장돼요. 할 일 백업에는 포함되지 않아요."
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 69,
+      "text": "설정 저장 재시도"
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 69,
+      "text": "설정 다시 읽기"
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 73,
+      "text": "설정만 초기화…"
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 81,
+      "text": "문구와 격려 설정을 처음 상태로 바꿔요. 할 일은 그대로예요. 이전 설정은 되돌릴 수 없어요."
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 84,
+      "text": "초기화 취소"
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 95,
+      "text": "저장된 설정을 초기화했어요. 지금 편집 중인 문장은 그대로 남겨 두었어요."
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 102,
+      "text": "설정 원본 초기화 확인"
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 127,
+      "text": "오늘의 한 문장"
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 130,
+      "text": "차분한 문구"
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 131,
+      "text": "유머"
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 132,
+      "text": "내 문장"
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 133,
+      "text": "끄기"
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 153,
+      "text": "내 문장 입력"
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 165,
+      "text": "/ 120자 · 앞뒤 빈칸은 빼고 저장해요."
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 178,
+      "text": "완료 순간의 격려"
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 181,
+      "text": "오늘 첫 번째와 세 번째 일을 마치면 짧은 격려를 보여 드려요. 오늘의 한 문장과 따로 켜고 끌 수 있어요."
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 192,
+      "text": "설정을 저장했어요."
+    },
+    {
+      "file": "src/components/PreferencesPanel.tsx",
+      "line": 196,
+      "text": "저장을 누르면 적용돼요. 취소하거나 닫으면 기존 설정을 유지해요."
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 107,
+      "text": "기한을 확인해 주세요."
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 125,
+      "text": "Focusday / 할 일"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 126,
+      "text": "할 일 편집"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 128,
+      "text": "편집 닫기"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 135,
+      "text": "날짜가 바뀌었어요. 오늘 계획 선택은 새 날짜 기준으로 표시해요. 작성 중인 제목과 기한은 그대로예요."
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 139,
+      "text": "제목"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 165,
+      "text": "오늘 계획"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 170,
+      "text": "오늘에서 빼기"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 170,
+      "text": "오늘에 넣기"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 176,
+      "text": "오늘에 포함"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 176,
+      "text": "선택 안 함"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 180,
+      "text": "오늘 계획에 넣거나 빼도 기한은 그대로예요."
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 182,
+      "text": "기한을 오늘이나 지난 날짜로 바꾸면 자동으로 포함돼요. 원하면 직접 뺄 수 있어요."
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 186,
+      "text": "기한이 되어 오늘 목록에 표시돼요. 필요하면 아래에서 기한을 바꿔 주세요."
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 191,
+      "text": "기한"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 206,
+      "text": "해제"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 210,
+      "text": "빠른 기한 선택"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 211,
+      "text": "오늘"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 211,
+      "text": "내일"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 211,
+      "text": "일주일 뒤"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 211,
+      "text": "기한 없음"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 228,
+      "text": "우선순위"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 244,
+      "text": "분류"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 244,
+      "text": "선택"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 249,
+      "text": "예: 개인, 업무, 생활"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 254,
+      "text": "분류는 하나만, 24자까지 입력할 수 있어요."
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 256,
+      "text": "저장을 누르면 변경 내용이 적용돼요."
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 261,
+      "text": "삭제"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 265,
+      "text": "취소"
+    },
+    {
+      "file": "src/components/TaskEditor.tsx",
+      "line": 268,
+      "text": "저장"
+    },
+    {
+      "file": "src/components/TaskRow.tsx",
+      "line": 33,
+      "text": "완료 취소"
+    },
+    {
+      "file": "src/components/TaskRow.tsx",
+      "line": 33,
+      "text": "완료"
+    },
+    {
+      "file": "src/components/TaskRow.tsx",
+      "line": 42,
+      "text": "편집"
+    },
+    {
+      "file": "src/components/TaskRow.tsx",
+      "line": 51,
+      "text": "완료"
+    },
+    {
+      "file": "src/components/TaskRow.tsx",
+      "line": 69,
+      "text": "오늘 계획"
+    },
+    {
+      "file": "src/components/TaskRow.tsx",
+      "line": 73,
+      "text": "예시"
+    },
+    {
+      "file": "src/components/TaskRow.tsx",
+      "line": 80,
+      "text": "오늘에서 빼기"
+    },
+    {
+      "file": "src/components/TaskRow.tsx",
+      "line": 80,
+      "text": "오늘에 넣기"
+    },
+    {
+      "file": "src/components/TaskRow.tsx",
+      "line": 82,
+      "text": "오늘에서 빼기"
+    },
+    {
+      "file": "src/components/TaskRow.tsx",
+      "line": 82,
+      "text": "오늘에 넣기"
+    },
+    {
+      "file": "src/components/TaskRow.tsx",
+      "line": 85,
+      "text": "오늘에서 빼기"
+    },
+    {
+      "file": "src/components/TaskRow.tsx",
+      "line": 85,
+      "text": "오늘에 넣기"
+    },
+    {
+      "file": "src/components/UndoToast.tsx",
+      "line": 66,
+      "text": "실행 취소"
+    },
+    {
+      "file": "src/components/UndoToast.tsx",
+      "line": 67,
+      "text": "완료 목록"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 18,
+      "text": "없음"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 19,
+      "text": "낮음"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 20,
+      "text": "보통"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 21,
+      "text": "높음"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 65,
+      "text": "할 일 제목을 입력해 주세요."
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 66,
+      "text": "제목은 200자까지 입력할 수 있어요."
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 132,
+      "text": "기한 초과"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 133,
+      "text": "오늘까지"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 134,
+      "text": "어제 선택한 일"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 135,
+      "text": "높은 우선순위"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 176,
+      "text": "기한을 확인해 주세요."
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 197,
+      "text": "택배 반품 접수"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 197,
+      "text": "개인"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 198,
+      "text": "발표 자료 최종 확인"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 198,
+      "text": "업무"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 199,
+      "text": "세탁소 방문"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 199,
+      "text": "개인"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 200,
+      "text": "카드 명세서 확인"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 200,
+      "text": "개인"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 201,
+      "text": "주말 장보기"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 201,
+      "text": "생활"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 216,
+      "text": "기한 초과 ·"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 216,
+      "text": "일 지남"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 217,
+      "text": "오늘까지"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 218,
+      "text": "내일까지"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 220,
+      "text": "년"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 220,
+      "text": "월"
+    },
+    {
+      "file": "src/domain.ts",
+      "line": 220,
+      "text": "일 기한"
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 6,
+      "text": "오늘 정한 일부터 하나씩 마쳐 보세요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 10,
+      "text": "오늘 할 수 있는 일 하나부터 시작해 보세요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 11,
+      "text": "작게 시작해도 한 걸음 나아간 거예요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 12,
+      "text": "지금 할 수 있는 만큼만 골라보세요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 13,
+      "text": "한 번에 하나씩 해도 괜찮아요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 14,
+      "text": "잠시 쉬어도 하던 일은 여기 있어요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 15,
+      "text": "오늘 할 만큼만 정해 보세요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 16,
+      "text": "막막한 일도 한 줄부터 적어 보세요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 17,
+      "text": "목록에 담아두면 잠깐 내려놓을 수 있어요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 18,
+      "text": "작은 일도 마쳤다면 오늘 해낸 일이에요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 19,
+      "text": "계획은 바뀌어도 괜찮아요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 20,
+      "text": "서두르지 말고 하나씩 마쳐 보세요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 21,
+      "text": "가장 신경 쓰이는 일부터 적어 보세요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 22,
+      "text": "머릿속으로만 기억하기엔 할 일이 좀 많죠."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 23,
+      "text": "머릿속 탭이 너무 많다면 여기 하나 옮겨 두세요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 24,
+      "text": "한 가지부터 해봐요. 시작이 반이라니까요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 25,
+      "text": "할 일 목록에도 쉬는 시간이 필요하죠."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 26,
+      "text": "미래의 나에게 보낼 메모, 여기 맡겨두세요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 27,
+      "text": "체크 하나만 해도 제법 뿌듯하죠."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 28,
+      "text": "거창한 계획도 일단 한 줄로 입장합니다."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 29,
+      "text": "커피가 식기 전에 제목 하나쯤. 식어도 괜찮고요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 30,
+      "text": "오늘의 목록은 무한 뷔페가 아니어도 돼요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 31,
+      "text": "계획 변경도 계획이 하는 일 중 하나죠."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 32,
+      "text": "미래의 나도 바쁠 테니, 작은 일 하나만 해둘까요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 33,
+      "text": "고민은 잠깐 쉬고, 작은 일부터 해봐요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 37,
+      "text": "오늘 첫 번째 일을 마쳤어요. 수고했어요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 38,
+      "text": "오늘 벌써 세 가지를 마쳤어요. 잠깐 쉬어 가도 좋아요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 41,
+      "text": "첫 체크 완료! 목록이 한 칸 가벼워졌네요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 42,
+      "text": "오늘 체크 세 칸. 목록이 조금 가벼워졌네요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 58,
+      "text": "내 문장을 입력해 주세요. 앞뒤 빈칸을 뺀 1~120자로 적을 수 있어요."
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 59,
+      "text": "내 문장은 120자까지 입력할 수 있어요. 현재"
+    },
+    {
+      "file": "src/encouragement.ts",
+      "line": 59,
+      "text": "자입니다."
+    },
+    {
+      "file": "src/history.ts",
+      "line": 26,
+      "text": "완료 취소"
+    },
+    {
+      "file": "src/history.ts",
+      "line": 27,
+      "text": "삭제 취소"
+    },
+    {
+      "file": "src/history.ts",
+      "line": 28,
+      "text": "추가 취소"
+    },
+    {
+      "file": "src/history.ts",
+      "line": 29,
+      "text": "변경 취소"
+    },
+    {
+      "file": "src/history.ts",
+      "line": 30,
+      "text": "계획 변경 취소"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 12,
+      "text": "(?:오늘|내일|모레|글피|(?:이번|다음|다다음)\\s*주\\s*[월화수목금토일]요일|[월화수목금토일]요일|\\d{4}-\\d{2}-\\d{2}|(?:\\d{4}년\\s*)?\\d{1,2}월\\s*\\d{1,2}일|\\d+일\\s*(?:뒤|후)|일주일\\s*(?:뒤|후)|이번\\s*주말|주말)"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 13,
+      "text": ")(?:까지|에는|에|은|는|쯤)?(?=\\s|$)"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 14,
+      "text": ")(?:까지|에는|에|은|는|쯤)?(?=\\s|$)"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 21,
+      "text": "학교"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 22,
+      "text": "업무"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 23,
+      "text": "생활"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 24,
+      "text": "건강"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 25,
+      "text": "개인"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 35,
+      "text": "일주일"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 44,
+      "text": "주말"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 44,
+      "text": "이번주말"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 47,
+      "text": "월화수목금토일"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 48,
+      "text": "다음주"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 48,
+      "text": "다다음주"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 59,
+      "text": "하기"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 60,
+      "text": "하기"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 61,
+      "text": "하기"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 62,
+      "text": "장보기"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 63,
+      "text": "하기"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 64,
+      "text": "하기"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 66,
+      "text": "$1기"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 77,
+      "text": "한 번에 100개까지 담을 수 있어요. 메모를 나눠 주세요."
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 124,
+      "text": "한 할 일에 날짜가 두 개 있어요. 줄을 나누거나 기한 하나만 남겨 주세요."
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 133,
+      "text": "날짜를 확인해 주세요. 달력에 없는 날짜이거나 지원 범위를 벗어났어요."
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 143,
+      "text": "한 문장에 이어 쓴 할 일에는 앞의 날짜를 함께 적용했어요. 저장 전에 확인해 주세요."
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 146,
+      "text": "기한 인식"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 157,
+      "text": "분류 제안"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 166,
+      "text": "우선순위 제안"
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 170,
+      "text": "반복 일정은 만들지 않아요. 날짜 표현을 제목에 남겼으니, 이번에 할 기한은 직접 골라 주세요."
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 173,
+      "text": "시간 표현은 제목에 남겨 두었어요. 시간 알림은 제공하지 않아요."
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 176,
+      "text": "날짜가 분명하지 않은 표현은 제목에 남겨 두었어요. 필요하면 기한을 직접 골라 주세요."
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 182,
+      "text": "생각난 할 일을 적어 주세요."
+    },
+    {
+      "file": "src/memo.ts",
+      "line": 186,
+      "text": "한 번에 100개까지 정리할 수 있어요. 메모를 나눠 주세요."
+    },
+    {
+      "file": "src/preferences.ts",
+      "line": 66,
+      "text": "이 문구 설정은 불러올 수 없는 형식이에요. 원본은 그대로 두고 이 탭에서는 기본 문구를 보여드려요."
+    },
+    {
+      "file": "src/preferences.ts",
+      "line": 74,
+      "text": "문구 설정이 손상되어 읽지 못했어요. 원본은 그대로 두고 이 탭에서는 기본 문구를 보여드려요."
+    },
+    {
+      "file": "src/preferences.ts",
+      "line": 79,
+      "text": "문구 설정을 불러오지 못했어요. 이 탭에서는 기본 문구를 보여드려요."
+    },
+    {
+      "file": "src/preferences.ts",
+      "line": 93,
+      "text": "설정을 저장하지 못했어요. 편집한 내용은 남아 있으니 다시 저장해 주세요."
+    },
+    {
+      "file": "src/session.ts",
+      "line": 12,
+      "text": "발표 자료 다듬기"
+    },
+    {
+      "file": "src/session.ts",
+      "line": 12,
+      "text": "학교"
+    },
+    {
+      "file": "src/session.ts",
+      "line": 13,
+      "text": "도서 반납하기"
+    },
+    {
+      "file": "src/session.ts",
+      "line": 13,
+      "text": "생활"
+    },
+    {
+      "file": "src/session.ts",
+      "line": 14,
+      "text": "지난 메모 정리하기"
+    },
+    {
+      "file": "src/session.ts",
+      "line": 14,
+      "text": "개인"
+    },
+    {
+      "file": "src/session.ts",
+      "line": 15,
+      "text": "주말 장보기 목록 적기"
+    },
+    {
+      "file": "src/session.ts",
+      "line": 15,
+      "text": "생활"
+    },
+    {
+      "file": "src/session.ts",
+      "line": 16,
+      "text": "친구에게 안부 보내기"
+    },
+    {
+      "file": "src/session.ts",
+      "line": 16,
+      "text": "개인"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 59,
+      "text": "저장된 할 일을 불러오지 못했어요. 기존 내용을 보호하려고 자동 저장을 잠시 멈췄어요."
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 70,
+      "text": "현재 앱에서 읽을 수 없는 저장 형식이에요."
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 78,
+      "text": "저장된 내용이 손상되어 할 일을 불러오지 못했어요."
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 94,
+      "text": "변경 내용을 저장하지 못했어요. 새로고침하기 전에 저장을 다시 시도하거나 백업해 주세요."
+    },
+    {
+      "file": "src/usePreferences.ts",
+      "line": 40,
+      "text": "저장된 설정을 보호하고 있어요. 먼저 설정을 다시 읽거나 초기화해 주세요."
+    },
+    {
+      "file": "src/usePreferences.ts",
+      "line": 60,
+      "text": "격려를 보여 드린 기록을 저장하지 못했어요. 새로고침하면 같은 격려가 다시 나올 수 있어요. 설정에서 저장을 다시 시도해 주세요."
+    },
+    {
+      "file": "src/usePreferences.ts",
+      "line": 73,
+      "text": "현재 설정과 격려 기록을 저장했어요. 지금 편집 중인 내용은 설정 저장을 눌러 적용해 주세요."
+    },
+    {
+      "file": "src/usePreferences.ts",
+      "line": 97,
+      "text": "설정을 다시 읽고 격려 기록을 저장했어요. 지금 편집 중인 내용은 설정 저장을 눌러 적용해 주세요."
+    },
+    {
+      "file": "src/usePreferences.ts",
+      "line": 103,
+      "text": "설정을 다시 읽었어요. 지금 편집 중인 내용은 저장을 눌러 적용해 주세요."
+    },
+    {
+      "file": "index.html",
+      "line": 12,
+      "text": "할 일은 적기만 하세요. 오늘 할 일과 다음 순서는 Focusday가 정리합니다. 설치·가입 없이 사용하는 개인용 할 일 관리 자동화 앱."
+    },
+    {
+      "file": "index.html",
+      "line": 15,
+      "text": "Focusday · 정리는 자동으로, 실행은 하나씩"
+    }
+  ]
+}

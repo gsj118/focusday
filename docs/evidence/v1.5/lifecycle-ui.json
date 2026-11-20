@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-20",
+  "method": "Same agent directly operated the local production build with CUA in an isolated IAB ?demo=1 tab. No human participants or subagents.",
+  "clock": "CDP Date override only in the temporary demo tab, plus focus/visibilitychange. Operating system time and user review tab untouched. Temporary viewport reset. Reload discarded the first mock; the final mock belongs only to the temporary tab that closes at turn end.",
+  "observations": [
+    {
+      "scenario": "Mixed memo with shared today date",
+      "observed": "Four recognized tasks; two due today; plan 3→5, future dates remained outside the existing plan."
+    },
+    {
+      "scenario": "Existing future deadline changed to today, before fix",
+      "observed": "The editor remained unchecked and the task remained outside today; outside-due banner showed 1."
+    },
+    {
+      "scenario": "Midnight during edited memo preview, after fix",
+      "observed": "Heading date 11/20→11/21, edited title and original deadlines preserved, save disabled until date confirmation. Checked and saved; plan 3→5. Mobile 390×844 kept warning and confirmation readable.",
+      "screenshots": ["lifecycle-midnight-review.jpg", "lifecycle-midnight-mobile.jpg"]
+    },
+    {
+      "scenario": "Capture undo and new-date reparsing",
+      "observed": "Added batch removed, plan 5→3, original memo restored. Reparsed original using 11/21; today deadline moved to 11/21 and tomorrow to 11/22."
+    },
+    {
+      "scenario": "Deadline editing and undo, after fix",
+      "observed": "Changed 11/22 deadline to today 11/21; today checkbox selected and saved plan 4→5. Undo restored original deadline and plan 5→4."
+    },
+    {
+      "scenario": "Next-day completion undo and finish guard",
+      "observed": "Completed book return on 11/21, moved to 11/22, undid completion. New 3-item plan preserved; restored overdue item appeared in outside-due warning. After 3/3, finish was blocked and corrective action offered.",
+      "screenshots": ["lifecycle-undo-guard.jpg"]
+    },
+    {
+      "scenario": "Plan-action undo expiry and deletion undo",
+      "observed": "Added remaining due item; next day 11/23 generated new plan, disabled previous-plan undo with explanation. Deleted a planned task: plan 3→2, total 5→4. Undo restored task and plan 2→3, total 4→5."
+    },
+    {
+      "scenario": "Open editor across day change",
+      "observed": "Fresh demo, limit 1, completed original book task, opened an excluded future task and edited its title. At 11/23 the inclusion checkbox followed the new plan and the draft title survived. Save kept it as the new today task, 0/1.",
+      "screenshots": ["lifecycle-editor-rollover.jpg"]
+    }
+  ],
+  "limits": [
+    "Synthetic dates and demo data",
+    "Browser viewport, not a physical phone",
+    "IME guarded with synthetic composition events in Playwright, not native OS keyboard testing"
+  ]
+}

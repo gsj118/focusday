@@ -37,7 +37,7 @@ export function usePreferences(getStorage: () => StoragePort) {
     if (guard !== 'ready')
       return {
         ok: false,
-        reason: '설정 원본 보호 중입니다. 다시 읽기 또는 설정만 초기화를 먼저 진행해 주세요.',
+        reason: '저장된 설정을 보호하고 있어요. 먼저 설정을 다시 읽거나 초기화해 주세요.',
       }
     return applySaved({ ...current.current, ...draft, customSentence: draft.customSentence.trim() })
   }
@@ -57,7 +57,7 @@ export function usePreferences(getStorage: () => StoragePort) {
       setError(
         result.ok
           ? ''
-          : '격려 처리 표시를 저장하지 못했습니다. 이번 세션에서는 중복을 막지만 새로고침 후에는 저장 상태에 따라 다시 표시될 수 있습니다. 설정에서 저장 재시도를 사용할 수 있습니다.',
+          : '격려를 보여 드린 기록을 저장하지 못했어요. 새로고침하면 같은 격려가 다시 나올 수 있어요. 설정에서 저장을 다시 시도해 주세요.',
       )
     }
     if (previous.encouragementEnabled)
@@ -70,7 +70,7 @@ export function usePreferences(getStorage: () => StoragePort) {
         ? {
             ok: true,
             reason:
-              '현재 적용된 설정과 격려 표시를 저장했습니다. 편집 중인 초안은 별도로 설정 저장을 눌러 적용해 주세요.',
+              '현재 설정과 격려 기록을 저장했어요. 지금 편집 중인 내용은 설정 저장을 눌러 적용해 주세요.',
           }
         : result
     }
@@ -94,11 +94,14 @@ export function usePreferences(getStorage: () => StoragePort) {
         ? {
             ok: true,
             reason:
-              '설정을 다시 읽고 이번 세션의 격려 표시를 저장했습니다. 편집 중인 초안은 별도로 저장해 주세요.',
+              '설정을 다시 읽고 격려 기록을 저장했어요. 지금 편집 중인 내용은 설정 저장을 눌러 적용해 주세요.',
           }
         : result
     }
-    return { ok: true, reason: '설정을 다시 읽었습니다. 초안을 저장하면 적용됩니다.' }
+    return {
+      ok: true,
+      reason: '설정을 다시 읽었어요. 지금 편집 중인 내용은 저장을 눌러 적용해 주세요.',
+    }
   }
   function reset() {
     return applySaved({

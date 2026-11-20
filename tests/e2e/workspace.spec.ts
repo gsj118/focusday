@@ -2,7 +2,7 @@ import { test, expect } from './manual-fixture'
 
 test('사이드바 검색·직접 백업·초점 복귀와 목록 집중 상태/동작 분리', async ({ page }) => {
   await page.goto('./')
-  const input = page.getByLabel('새 할 일 제목')
+  const input = page.getByLabel('할 일 메모')
   await input.fill('속성을 유지할 일')
   await input.press('Enter')
   await page.getByRole('button', { name: '속성을 유지할 일 편집', exact: true }).click()
@@ -13,9 +13,9 @@ test('사이드바 검색·직접 백업·초점 복귀와 목록 집중 상태/
   const row = page.locator('.task-row')
   await expect(row).toContainText('높음')
   await expect(row).toContainText('업무')
-  await expect(row.locator('.focus-label')).toHaveText('오늘 집중')
+  await expect(row.locator('.focus-label')).toHaveText('오늘 계획')
   await expect(row.locator('.focus-button')).toHaveAttribute('aria-pressed', 'true')
-  await page.getByRole('button', { name: '속성을 유지할 일 집중 해제', exact: true }).click()
+  await page.getByRole('button', { name: '속성을 유지할 일 오늘에서 빼기', exact: true }).click()
   await expect(page.getByRole('dialog')).toHaveCount(0)
   const nav = page.getByRole('navigation', { name: '할 일 보기', exact: true })
   await nav.getByRole('button', { name: /전체 할 일/ }).click()
@@ -47,7 +47,7 @@ for (const [width, height] of [
   test(`작업 UI ${width}×${height}: 긴 정보·독립 조작 영역·내부 스크롤`, async ({ page }) => {
     await page.setViewportSize({ width, height })
     await page.goto('./')
-    const input = page.getByLabel('새 할 일 제목')
+    const input = page.getByLabel('할 일 메모')
     const title = '공백없는한글English'.repeat(10)
     await input.fill(title)
     await input.press('Enter')
@@ -90,8 +90,8 @@ for (const [width, height] of [
 
 test('필수 입력 경계·체크박스·집중 상태의 실제 대비', async ({ page }) => {
   await page.goto('./')
-  await page.getByLabel('새 할 일 제목').fill('대비 확인')
-  await page.getByLabel('새 할 일 제목').press('Enter')
+  await page.getByLabel('할 일 메모').fill('대비 확인')
+  await page.getByLabel('할 일 메모').press('Enter')
   const pairs = await page.evaluate(() => {
     const css = getComputedStyle(document.documentElement)
     return [

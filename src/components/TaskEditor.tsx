@@ -13,11 +13,13 @@ import { Icon } from './Icon'
 type Props = {
   task: Task
   today: string
-  onSave: (draft: TaskDraft) => void
+  onSave: (draft: TaskDraft, includeToday: boolean) => void
   onClose: () => void
   onDelete: () => void
+  automatic?: boolean
+  planned?: boolean
 }
-export function TaskEditor({ task, today, onSave, onClose, onDelete }: Props) {
+export function TaskEditor({ task, today, onSave, onClose, onDelete, automatic, planned }: Props) {
   const dialog = useRef<HTMLDialogElement>(null)
   const titleInput = useRef<HTMLTextAreaElement>(null)
   const [draft, setDraft] = useState<TaskDraft>({
@@ -28,6 +30,10 @@ export function TaskEditor({ task, today, onSave, onClose, onDelete }: Props) {
     category: task.category,
   })
   const [error, setError] = useState('')
+  const [openedDay] = useState(today)
+  const [selection, setSelection] = useState<{ day: string; included: boolean } | null>(null)
+  const includeToday =
+    selection?.day === today ? selection.included : (planned ?? task.focusDate === today)
   const composing = useRef(false)
   const lastCompositionEnd = useRef(0)
   useLayoutEffect(() => {
@@ -37,6 +43,11 @@ export function TaskEditor({ task, today, onSave, onClose, onDelete }: Props) {
     return () => el.close()
   }, [])
   const dueForcesToday = draft.dueDate !== null && draft.dueDate <= today
+  function chooseDate(dueDate: string | null) {
+    setDraft({ ...draft, dueDate })
+    if (automatic && dueDate && dueDate <= today && dueDate !== draft.dueDate)
+      setSelection({ day: today, included: true })
+  }
   return (
     <dialog
       ref={dialog}
@@ -93,13 +104,19 @@ export function TaskEditor({ task, today, onSave, onClose, onDelete }: Props) {
           if (composing.current) return
           const invalid =
             validateTitle(draft.title) ||
-            (draft.dueDate !== null && !isDate(draft.dueDate) ? '유효한 기한을 선택해 주세요.' : '')
+            (draft.dueDate !== null && !isDate(draft.dueDate) ? '기한을 확인해 주세요.' : '')
           if (invalid) {
             setError(invalid)
             titleInput.current?.focus()
             return
           }
-          onSave(draft)
+          onSave(
+            {
+              ...draft,
+              focusDate: selection?.day === today ? (includeToday ? today : null) : task.focusDate,
+            },
+            includeToday,
+          )
         }}
       >
         <div className="sheet-handle" />
@@ -113,6 +130,12 @@ export function TaskEditor({ task, today, onSave, onClose, onDelete }: Props) {
           </button>
         </header>
         <div className="editor-fields">
+          {openedDay !== today && (
+            <p className="field-hint due-guidance" role="status">
+              날짜가 바뀌었어요. 오늘 계획 선택은 새 날짜 기준으로 표시해요. 작성 중인 제목과 기한은
+              그대로예요.
+            </p>
+          )}
           <label htmlFor="edit-title">제목</label>
           <textarea
             ref={titleInput}
@@ -139,24 +162,28 @@ export function TaskEditor({ task, today, onSave, onClose, onDelete }: Props) {
             <div className="property-row">
               <span className="property-label">
                 <Icon name="sun" size={16} />
-                오늘 집중
+                오늘 계획
               </span>
               <label className="focus-setting">
                 <input
                   type="checkbox"
-                  aria-label={draft.focusDate === today ? '집중 해제' : '집중하기'}
-                  checked={draft.focusDate === today}
-                  onChange={(e) =>
-                    setDraft({ ...draft, focusDate: e.target.checked ? today : null })
-                  }
+                  aria-label={includeToday ? '오늘에서 빼기' : '오늘에 넣기'}
+                  checked={includeToday}
+                  onChange={(e) => {
+                    setSelection({ day: today, included: e.target.checked })
+                  }}
                 />
-                <span>{draft.focusDate === today ? '집중 중' : '선택 안 함'}</span>
+                <span>{includeToday ? '오늘에 포함' : '선택 안 함'}</span>
               </label>
             </div>
-            <p className="field-hint property-hint">집중하기 / 집중 해제는 기한을 바꾸지 않아요.</p>
-            {draft.focusDate !== today && dueForcesToday && (
+            <p className="field-hint property-hint">
+              오늘 계획에 넣거나 빼도 기한은 그대로예요.
+              {automatic &&
+                ' 기한을 오늘이나 지난 날짜로 바꾸면 자동으로 포함돼요. 원하면 직접 뺄 수 있어요.'}
+            </p>
+            {!automatic && !includeToday && dueForcesToday && (
               <p className="field-hint due-guidance">
-                기한 때문에 오늘에도 표시됩니다. 아래에서 기한을 변경할 수 있습니다.
+                기한이 되어 오늘 목록에 표시돼요. 필요하면 아래에서 기한을 바꿔 주세요.
               </p>
             )}
             <div className="property-row">
@@ -168,13 +195,13 @@ export function TaskEditor({ task, today, onSave, onClose, onDelete }: Props) {
                   id="edit-due"
                   type="date"
                   value={draft.dueDate ?? ''}
-                  onChange={(e) => setDraft({ ...draft, dueDate: e.target.value || null })}
+                  onChange={(e) => chooseDate(e.target.value || null)}
                 />
                 <button
                   type="button"
                   className="text-button"
                   disabled={!draft.dueDate}
-                  onClick={() => setDraft({ ...draft, dueDate: null })}
+                  onClick={() => chooseDate(null)}
                 >
                   해제
                 </button>
@@ -189,7 +216,7 @@ export function TaskEditor({ task, today, onSave, onClose, onDelete }: Props) {
                     type="button"
                     className="secondary-button"
                     aria-pressed={draft.dueDate === value}
-                    onClick={() => setDraft({ ...draft, dueDate: value })}
+                    onClick={() => chooseDate(value)}
                   >
                     {label}
                   </button>
@@ -226,7 +253,7 @@ export function TaskEditor({ task, today, onSave, onClose, onDelete }: Props) {
             </div>
             <p className="field-hint property-hint">분류는 하나만, 24자까지 입력할 수 있어요.</p>
           </div>
-          <p className="editor-draft-note">변경한 내용은 저장을 눌러 적용합니다.</p>
+          <p className="editor-draft-note">저장을 누르면 변경 내용이 적용돼요.</p>
         </div>
         <footer className="editor-footer">
           <button type="button" className="delete-button" onClick={onDelete}>

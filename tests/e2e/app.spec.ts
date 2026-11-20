@@ -1,5 +1,5 @@
 import { legacyExamples } from './manual-fixture'
-import { test, expect, type Page } from './manual-fixture'
+import { test, expect, type Page, type Locator } from './manual-fixture'
 import { readFile } from 'node:fs/promises'
 import { createTask, type Task } from '../../src/domain'
 import { STORAGE_KEY } from '../../src/storage'
@@ -25,8 +25,8 @@ async function readTasks(page: Page): Promise<Task[]> {
   return page.evaluate((key) => JSON.parse(localStorage.getItem(key)!).tasks, STORAGE_KEY)
 }
 async function add(page: Page, title: string) {
-  await page.getByLabel('새 할 일 제목').fill(title)
-  await page.getByLabel('새 할 일 제목').press('Enter')
+  await page.getByLabel('할 일 메모').fill(title)
+  await page.getByLabel('할 일 메모').press('Enter')
 }
 async function all(page: Page) {
   await page
@@ -36,6 +36,13 @@ async function all(page: Page) {
 }
 async function demo(page: Page) {
   await legacyExamples(page)
+}
+async function tabTo(page: Page, target: Locator) {
+  for (let step = 0; step < 60; step++) {
+    if (await target.evaluate((element) => element === document.activeElement)) break
+    await page.keyboard.press('Tab')
+  }
+  await expect(target).toBeFocused()
 }
 test.beforeEach(async ({ page }) => {
   await page.clock.install({ time: new Date('2026-10-02T10:00:00+09:00') })
@@ -51,7 +58,7 @@ test('최초 빈 상태·오늘/전체 생성 기본값·연속 입력·키별 �
     ]),
   ).toEqual([null, null])
   await add(page, '  오늘의 테스트  ')
-  await expect(page.getByLabel('새 할 일 제목')).toHaveValue('')
+  await expect(page.getByLabel('할 일 메모')).toHaveValue('')
   await expect(page.getByText('저장됨', { exact: true })).toBeVisible()
   await all(page)
   await add(page, '전체 테스트')
@@ -77,7 +84,7 @@ test('속성 저장·새로고침 유지·미래 기한과 오늘 독립·기한
   await page.getByLabel('우선순위').selectOption('high')
   await page.getByLabel('분류 선택').fill('업무')
   await page.getByRole('button', { name: '저장', exact: true }).click()
-  await expect(page.getByText('내일 기한', { exact: true })).toBeVisible()
+  await expect(page.getByText('내일까지', { exact: true })).toBeVisible()
   await page.reload()
   expect((await readTasks(page))[0]).toMatchObject({
     dueDate: '2026-10-03',
@@ -85,17 +92,19 @@ test('속성 저장·새로고침 유지·미래 기한과 오늘 독립·기한
     priority: 'high',
     category: '업무',
   })
-  await page.getByRole('button', { name: '발표 준비 집중 해제', exact: true }).click()
+  await page.getByRole('button', { name: '발표 준비 오늘에서 빼기', exact: true }).click()
   await expect(page.getByRole('button', { name: '발표 준비 편집', exact: true })).toHaveCount(0)
   await all(page)
-  await page.getByRole('button', { name: '발표 준비 집중하기', exact: true }).click()
+  await page.getByRole('button', { name: '발표 준비 오늘에 넣기', exact: true }).click()
   expect((await readTasks(page))[0].dueDate).toBe('2026-10-03')
   await page.getByRole('button', { name: '발표 준비 편집', exact: true }).click()
   await page.getByLabel('기한', { exact: true }).fill(today)
   await page.getByRole('button', { name: '저장', exact: true }).click()
-  await page.getByRole('button', { name: '발표 준비 집중 해제', exact: true }).click()
+  await page.getByRole('button', { name: '발표 준비 오늘에서 빼기', exact: true }).click()
   await expect(
-    page.getByText('집중은 해제했습니다. 기한 때문에 오늘에도 표시됩니다.', { exact: true }),
+    page.getByText('오늘 선택은 해제했어요. 기한이 오늘까지라 목록에는 남아 있어요.', {
+      exact: true,
+    }),
   ).toBeVisible()
   await page.getByRole('button', { name: '기한 편집', exact: true }).click()
   await expect(page.getByRole('dialog')).toBeVisible()
@@ -106,8 +115,8 @@ test('속성 저장·새로고침 유지·미래 기한과 오늘 독립·기한
 test('빈 제목·200자 한글·공백 없는 제목·한글 IME 조합 이벤트', async ({ page }) => {
   await page.goto('./')
   await add(page, '   ')
-  await expect(page.getByText('할 일 제목을 입력해 주세요.', { exact: true })).toBeVisible()
-  const input = page.getByLabel('새 할 일 제목')
+  await expect(page.locator('#quick-error')).toContainText('할 일 제목을 입력해 주세요.')
+  const input = page.getByLabel('할 일 메모')
   await input.fill('한글')
   await input.dispatchEvent('compositionstart')
   await input.press('Enter')
@@ -132,7 +141,7 @@ test('빈 제목·200자 한글·공백 없는 제목·한글 IME 조합 이벤�
   await expect(page.getByRole('dialog')).toBeVisible()
   await expect(page.getByText('할 일 제목을 입력해 주세요.', { exact: true })).toBeVisible()
 })
-test('완료·실행 취소·다른 항목 편집 보존·완료 목록 복원', async ({ page }) => {
+test('최근 편집만 실행 취소·이전 완료 유지·완료 목록 복원', async ({ page }) => {
   await seed(page, [task('A', { focusDate: today }), task('B', { focusDate: today })])
   await page.goto('./')
   await page.getByRole('checkbox', { name: 'A 완료', exact: true }).click()
@@ -141,11 +150,12 @@ test('완료·실행 취소·다른 항목 편집 보존·완료 목록 복원',
   await page.getByLabel('제목', { exact: true }).fill('B 수정')
   await page.getByRole('button', { name: '저장', exact: true }).click()
   await page.getByRole('button', { name: '실행 취소', exact: true }).click()
-  expect((await readTasks(page)).map((t) => t.title)).toEqual(['A', 'B 수정'])
-  await page.getByRole('checkbox', { name: 'A 완료', exact: true }).click()
-  await page.getByRole('button', { name: '완료 목록', exact: true }).click()
-  await expect(page.getByRole('checkbox', { name: 'A 미완료로 복원', exact: true })).toBeVisible()
-  await page.getByRole('checkbox', { name: 'A 미완료로 복원', exact: true }).click()
+  expect((await readTasks(page)).map((t) => t.title)).toEqual(['A', 'B'])
+  expect((await readTasks(page)).find((t) => t.id === 'A')!.completedAt).not.toBeNull()
+  await all(page)
+  await page.locator('.completed-section > summary').click()
+  await expect(page.getByRole('checkbox', { name: 'A 완료 취소', exact: true })).toBeVisible()
+  await page.getByRole('checkbox', { name: 'A 완료 취소', exact: true }).click()
   expect((await readTasks(page)).find((t) => t.id === 'A')!.completedAt).toBeNull()
 })
 test('삭제 취소는 원래 id·날짜·우선순위·분류·완료·예시 상태를 복원', async ({ page }) => {
@@ -188,7 +198,7 @@ test('최근 행동만 실행 취소·이전 타이머 격리·hover/키보드�
   expect((await readTasks(page)).find((t) => t.id === 'A')!.completedAt).not.toBeNull()
   await page.getByRole('checkbox', { name: 'B 완료', exact: true }).click()
   await page.mouse.move(0, 0)
-  await page.getByLabel('새 할 일 제목').focus()
+  await page.getByLabel('할 일 메모').focus()
   await page.clock.runFor(8100)
   await expect(undo).toHaveCount(0)
 })
@@ -232,7 +242,7 @@ test('쓰기 실패 시 메모리 유지·지속 경고·실제 성공한 재시
   await expect(page.getByRole('button', { name: '메모리에 남음 편집', exact: true })).toBeVisible()
   await expect(page.getByText('저장됨', { exact: true })).toHaveCount(0)
   await expect(page.getByRole('alert')).toContainText(
-    '새로고침하면 변경 내용이 사라질 수 있습니다.',
+    '새로고침하기 전에 저장을 다시 시도하거나 백업해 주세요.',
   )
   await page.evaluate(() => {
     window.__failWrite = false
@@ -251,7 +261,7 @@ for (const raw of ['{broken', '{"version":2,"tasks":[]}', '{"version":1,"tasks":
     await page.goto('./')
     await add(page, '아직 저장 안 됨')
     expect(await page.evaluate((key) => localStorage.getItem(key), STORAGE_KEY)).toBe(raw)
-    await expect(page.getByRole('alert')).toContainText('원본은 자동으로 덮어쓰지 않습니다.')
+    await expect(page.getByRole('alert')).toContainText('저장된 원본은 그대로 보관하고 있어요.')
     const downloadPromise = page.waitForEvent('download')
     await page.getByRole('button', { name: '원본 다운로드', exact: true }).click()
     const download = await downloadPromise
@@ -270,7 +280,7 @@ for (const raw of ['{broken', '{"version":2,"tasks":[]}', '{"version":1,"tasks":
       }
     }, STORAGE_KEY)
     await page.getByRole('button', { name: '원본 삭제 후 현재 목록 저장' }).click()
-    await expect(page.getByRole('dialog').getByRole('alert')).toContainText('원본을 유지했습니다.')
+    await expect(page.getByRole('dialog').getByRole('alert')).toContainText('원본은 그대로예요.')
     expect(await page.evaluate((key) => localStorage.getItem(key), STORAGE_KEY)).toBe(raw)
     await page.evaluate(() => {
       window.__failWrite = false
@@ -290,7 +300,7 @@ test('읽기 실패는 쓰기를 보호하고 재시도 때 기존 항목과 메
   }, STORAGE_KEY)
   await page.goto('./')
   await add(page, '임시 항목')
-  await expect(page.getByRole('alert').filter({ hasText: '기존 데이터 보호' })).toBeVisible()
+  await expect(page.getByRole('alert').filter({ hasText: '저장된 원본은 그대로' })).toBeVisible()
   await page.evaluate(() => {
     window.__failRead = false
   })
@@ -309,9 +319,9 @@ test('localStorage 접근 자체 실패도 빈 값으로 덮어쓰지 않는다'
   )
   await page.goto('./')
   await add(page, '접근 실패 항목')
-  await expect(page.getByRole('alert').filter({ hasText: '기존 데이터 보호' })).toBeVisible()
+  await expect(page.getByRole('alert').filter({ hasText: '저장된 원본은 그대로' })).toBeVisible()
   await page.getByRole('button', { name: '다시 읽기', exact: true }).click()
-  await expect(page.getByRole('alert').filter({ hasText: '기존 데이터 보호' })).toBeVisible()
+  await expect(page.getByRole('alert').filter({ hasText: '저장된 원본은 그대로' })).toBeVisible()
 })
 test('이전 버전 예시·검색 현재 보기·완료 검색·예시 제거 사용자 보존', async ({ page }) => {
   await page.goto('./')
@@ -327,15 +337,15 @@ test('이전 버전 예시·검색 현재 보기·완료 검색·예시 제거 �
   await expect(page.getByText('검색 결과 1개', { exact: false })).toBeVisible()
   await page.getByRole('checkbox', { name: '주말 장보기 완료', exact: true }).click()
   await expect(
-    page.getByRole('checkbox', { name: '주말 장보기 미완료로 복원', exact: true }),
+    page.getByRole('checkbox', { name: '주말 장보기 완료 취소', exact: true }),
   ).toBeVisible()
   await page.getByRole('button', { name: '검색 지우기', exact: true }).first().click()
   await page.getByLabel('제목·분류 검색').fill('존재하지않음')
-  await expect(page.getByRole('heading', { name: '일치하는 할 일이 없습니다' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: '검색 결과가 없어요' })).toBeVisible()
   await page.locator('.sidebar .app-menu summary').click()
   await page
     .locator('.sidebar .app-menu')
-    .getByRole('button', { name: '예시 데이터 제거', exact: true })
+    .getByRole('button', { name: '예시 할 일 지우기', exact: true })
     .click()
   expect((await readTasks(page)).map((t) => t.title)).toEqual(['실제 사용자'])
 })
@@ -361,16 +371,10 @@ test('200개 기본 검색·편집·완료·스크롤', async ({ page }) => {
 test('키보드 추가→편집→저장→완료→실행 취소, dialog trap·Escape·포커스 복귀', async ({ page }) => {
   await page.goto('./')
   await page.keyboard.press('n')
-  await expect(page.getByLabel('새 할 일 제목')).toBeFocused()
+  await expect(page.getByLabel('할 일 메모')).toBeFocused()
   await page.keyboard.type('Keyboard task')
   await page.keyboard.press('Enter')
-  await page.keyboard.press('Tab')
-  await page.keyboard.press('Tab')
-  await page.keyboard.press('Tab')
-  await page.keyboard.press('Tab')
-  await expect(
-    page.getByRole('checkbox', { name: 'Keyboard task 완료', exact: true }),
-  ).toBeFocused()
+  await tabTo(page, page.getByRole('checkbox', { name: 'Keyboard task 완료', exact: true }))
   await page.keyboard.press('Tab')
   await page.keyboard.press('Enter')
   await expect(page.getByLabel('제목', { exact: true })).toBeFocused()
@@ -386,16 +390,9 @@ test('키보드 추가→편집→저장→완료→실행 취소, dialog trap·
   await expect(page.getByRole('button', { name: 'Keyboard task 편집', exact: true })).toBeFocused()
   await page.keyboard.press('Shift+Tab')
   await page.keyboard.press('Space')
-  await expect(page.getByLabel('새 할 일 제목')).toBeFocused()
-  await page.keyboard.press('Tab')
-  await page.keyboard.press('Tab')
-  await page.keyboard.press('Tab')
-  await page.keyboard.press('Tab')
-  await page.keyboard.press('Tab')
-  await page.keyboard.press('Tab')
-  await expect(page.locator('.achievements-section > summary')).toBeFocused()
-  await page.keyboard.press('Tab')
-  await expect(page.getByRole('button', { name: '실행 취소', exact: true })).toBeFocused()
+  await expect(page.getByLabel('할 일 메모')).toBeFocused()
+  await tabTo(page, page.locator('.achievements-section > summary'))
+  await tabTo(page, page.getByRole('button', { name: '실행 취소', exact: true }))
   await page.keyboard.press('Enter')
   await expect(page.getByRole('button', { name: 'Keyboard task 편집', exact: true })).toBeVisible()
 })
@@ -415,8 +412,7 @@ for (const [width, height] of [
     if (width < 900) {
       await expect(page.getByRole('navigation', { name: '모바일 보기' })).toBeVisible()
       expect(
-        (await page.getByRole('button', { name: '+ 할 일 추가', exact: true }).boundingBox())!
-          .height,
+        (await page.getByRole('button', { name: '메모 담기', exact: true }).boundingBox())!.height,
       ).toBeGreaterThanOrEqual(44)
     }
     await page.screenshot({
@@ -453,7 +449,7 @@ test('reduced-motion·실제 토큰 대비·production 자산 응답', async ({ 
   await demo(page)
   expect(
     await page
-      .getByRole('button', { name: '추가', exact: true })
+      .getByRole('button', { name: '그대로 담기', exact: true })
       .evaluate((el) => getComputedStyle(el).transitionDuration),
   ).toBe('0s')
   const pairs = await page.evaluate(() => {

@@ -58,9 +58,9 @@ export function PreferencesPanel({
         </div>
       }
     >
-      <p className="panel-intro">오늘의 한 문장과 완료 순간의 짧은 격려를 선택하세요.</p>
+      <p className="panel-intro">오늘 화면에 보일 문장과 완료했을 때의 격려를 골라 주세요.</p>
       <p className="field-hint">
-        저장한 설정과 내 문장은 이 브라우저에만 남고 전체 할 일 백업에는 포함되지 않습니다.
+        문구 설정과 내 문장은 이 브라우저에만 저장돼요. 할 일 백업에는 포함되지 않아요.
       </p>
       {storageError && (
         <div className="storage-banner" role="alert">
@@ -78,8 +78,7 @@ export function PreferencesPanel({
       {confirmReset && (
         <div className="preferences-reset">
           <p>
-            설정 원본만 기본값으로 바꿉니다. 할 일은 유지합니다. 손상 원본의 설정은 되돌릴 수
-            없습니다.
+            문구와 격려 설정을 처음 상태로 바꿔요. 할 일은 그대로예요. 이전 설정은 되돌릴 수 없어요.
           </p>
           <button className="secondary-button" onClick={() => setConfirmReset(false)}>
             초기화 취소
@@ -90,7 +89,11 @@ export function PreferencesPanel({
               const result = onReset()
               setFeedback(
                 result.ok
-                  ? { ok: true, reason: '설정만 초기화했습니다. 편집 중인 초안은 유지했습니다.' }
+                  ? {
+                      ok: true,
+                      reason:
+                        '저장된 설정을 초기화했어요. 지금 편집 중인 문장은 그대로 남겨 두었어요.',
+                    }
                   : result,
               )
               if (result.ok) setConfirmReset(false)
@@ -159,8 +162,7 @@ export function PreferencesPanel({
               }}
             />
             <p className="field-hint" id="custom-sentence-hint">
-              {sentenceLength(draft.customSentence)} / 120자 · 앞뒤 공백은 정리합니다. 글자로만
-              표시합니다.
+              {sentenceLength(draft.customSentence)} / 120자 · 앞뒤 빈칸은 빼고 저장해요.
             </p>
           </div>
         )}
@@ -176,8 +178,8 @@ export function PreferencesPanel({
           <span>완료 순간의 격려</span>
         </label>
         <p className="field-hint">
-          직접 만든 일을 오늘 처음, 세 번째 마쳤을 때 한 번씩 안내합니다. 문구 끄기와 별도로 선택할
-          수 있습니다. 차분한 문구와 유머는 Focusday 창작 문구입니다.
+          오늘 첫 번째와 세 번째 일을 마치면 짧은 격려를 보여 드려요. 오늘의 한 문장과 따로 켜고 끌
+          수 있어요.
         </p>
       </div>
       {feedback && (
@@ -187,11 +189,11 @@ export function PreferencesPanel({
           className={feedback.ok ? 'panel-feedback' : 'field-error'}
           role={feedback.ok ? 'status' : 'alert'}
         >
-          {feedback.ok ? feedback.reason || '설정을 저장했습니다.' : feedback.reason}
+          {feedback.ok ? feedback.reason || '설정을 저장했어요.' : feedback.reason}
         </p>
       )}
       <p className="editor-draft-note">
-        저장만 적용합니다. 취소·닫기·Escape는 저장하지 않은 초안을 버립니다.
+        저장을 누르면 적용돼요. 취소하거나 닫으면 기존 설정을 유지해요.
       </p>
     </PanelDialog>
   )

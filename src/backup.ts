@@ -20,7 +20,7 @@ export function serializeBackup(data: AppData, now = new Date().toISOString()) {
   if (byteSize > MAX_BACKUP_BYTES)
     return {
       ok: false as const,
-      reason: `전체 백업이 ${(byteSize / 1024 / 1024).toFixed(2)}MiB로 ${BACKUP_LIMIT_LABEL} 한도를 넘습니다. 다운로드하지 않았고 목록은 그대로 유지했습니다. 항목을 일부 빼서 백업하지 않습니다.`,
+      reason: `백업 파일이 ${(byteSize / 1024 / 1024).toFixed(2)}MiB로 ${BACKUP_LIMIT_LABEL} 한도를 넘어요. 다운로드를 중단했고 목록은 그대로예요. 일부 할 일을 빼고 백업하지는 않아요.`,
       byteSize,
     }
   return { ok: true as const, content, byteSize }
@@ -35,23 +35,27 @@ export function parseBackup(
   try {
     value = JSON.parse(text)
   } catch {
-    return { ok: false, reason: 'JSON을 읽을 수 없습니다. 올바른 백업 파일을 다시 선택해 주세요.' }
+    return {
+      ok: false,
+      reason: '백업 파일을 읽지 못했어요. Focusday에서 내려받은 파일을 다시 골라 주세요.',
+    }
   }
   if (!value || typeof value !== 'object')
-    return { ok: false, reason: 'Focusday 정식 백업 파일이 아닙니다. 파일을 다시 선택해 주세요.' }
+    return { ok: false, reason: 'Focusday 백업 파일이 아니에요. 파일을 다시 골라 주세요.' }
   const candidate = value as Record<string, unknown>
   if (candidate.format !== 'focusday-backup')
     return {
       ok: false,
-      reason: 'Focusday 정식 백업 파일이 아닙니다. 손상 원본 다운로드는 백업 형식이 아닙니다.',
+      reason:
+        'Focusday 백업 파일이 아니에요. 복구용으로 내려받은 저장 원본은 여기서 가져올 수 없어요.',
     }
   if (candidate.formatVersion !== 1)
-    return { ok: false, reason: '지원하지 않는 백업 버전입니다. 버전 1 백업을 선택해 주세요.' }
+    return { ok: false, reason: '지원하지 않는 백업 버전이에요. 버전 1 백업 파일을 골라 주세요.' }
   if (!isTimestamp(candidate.exportedAt) || !isAppData(candidate.data))
     return {
       ok: false,
       reason:
-        '백업 데이터가 올바르지 않습니다. 데이터 버전·필드·날짜·길이·중복 id를 확인해 주세요.',
+        '백업 내용이 올바르지 않아요. 날짜나 할 일 정보가 손상되었을 수 있어요. 다른 백업 파일을 골라 주세요.',
     }
   return { ok: true, backup: candidate as Backup }
 }

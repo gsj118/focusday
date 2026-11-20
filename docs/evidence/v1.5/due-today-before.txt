@@ -1,0 +1,94 @@
+[WebServer] (node:6400) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:20536) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\e2e\v1.5.spec.ts:210:1 › 오늘·내일·다음 주 메모 중 오늘 일은 기존 계획에 자동 반영하고 완료 전에 종료하지 않음 (5.8s)
+(node:6684) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 tests\e2e\v1.5.spec.ts:240:1 › 이전 저장·수동 제외로 계획 밖에 오늘 기한이 남으면 종료 대신 확인·계획 복구를 제공 (5.6s)
+
+
+  1) tests\e2e\v1.5.spec.ts:210:1 › 오늘·내일·다음 주 메모 중 오늘 일은 기존 계획에 자동 반영하고 완료 전에 종료하지 않음 ─────────────
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  getByRole('progressbar')
+    Expected: "4"
+    Received: "3"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" getByRole('progressbar') with timeout 5000ms
+      - waiting for getByRole('progressbar')
+        14 × locator resolved to <div aria-valuemin="0" aria-valuemax="3" aria-valuenow="0" role="progressbar" class="plan-progress" aria-label="오늘 계획 완료">…</div>
+           - unexpected value "3"
+
+
+      214 |   const raw = '오늘 새로 요청한 일\n내일 할 일\n다음 주 월요일 할 일'
+      215 |   await add(page, raw)
+    > 216 |   await expect(page.getByRole('progressbar')).toHaveAttribute('aria-valuemax', '4')
+          |                                               ^
+      217 |   await expect(card(page)).toContainText('새로 요청한 일')
+      218 |   await undo(page).click()
+      219 |   expect(await stored(page)).toEqual(original)
+        at C:\Users\gsjtj\Documents\ChatGPT\Todolist\tests\e2e\v1.5.spec.ts:216:47
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\artifacts\v1.5-오늘·내일·다음-주-메모-중-오늘-일은-기존-계획에-자동-반영하고-완료-전에-종료하지-않음\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\artifacts\v1.5-오늘·내일·다음-주-메모-중-오늘-일은-기존-계획에-자동-반영하고-완료-전에-종료하지-않음\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\artifacts\v1.5-오늘·내일·다음-주-메모-중-오늘-일은-기존-계획에-자동-반영하고-완료-전에-종료하지-않음\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\artifacts\v1.5-오늘·내일·다음-주-메모-중-오늘-일은-기존-계획에-자동-반영하고-완료-전에-종료하지-않음\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\e2e\v1.5.spec.ts:240:1 › 이전 저장·수동 제외로 계획 밖에 오늘 기한이 남으면 종료 대신 확인·계획 복구를 제공 ───────────────
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('heading', { name: '오늘 분량을 다 마쳤어요.', exact: true })
+    Expected: 0
+    Received: 1
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('heading', { name: '오늘 분량을 다 마쳤어요.', exact: true }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: '오늘 분량을 다 마쳤어요.', exact: true })
+        14 × locator resolved to 1 element
+           - unexpected value "1"
+
+
+      246 |   ], { ...defaultAutomation(day), planTaskIds: ['기존 완료'] })
+      247 |   await page.goto('./')
+    > 248 |   await expect(page.getByRole('heading', { name: '오늘 분량을 다 마쳤어요.', exact: true })).toHaveCount(0)
+          |                                                                                    ^
+      249 |   await expect(page.getByRole('heading', { name: '오늘까지 할 일이 남아 있어요.', exact: true })).toBeVisible()
+      250 |   await page.getByRole('button', { name: '남은 일 오늘에 넣기', exact: true }).click()
+      251 |   await expect(card(page)).toContainText('남은 지난 일')
+        at C:\Users\gsjtj\Documents\ChatGPT\Todolist\tests\e2e\v1.5.spec.ts:248:84
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\artifacts\v1.5-이전-저장·수동-제외로-계획-밖에-오늘-기한이-남으면-종료-대신-확인·계획-복구를-제공\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\artifacts\v1.5-이전-저장·수동-제외로-계획-밖에-오늘-기한이-남으면-종료-대신-확인·계획-복구를-제공\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\artifacts\v1.5-이전-저장·수동-제외로-계획-밖에-오늘-기한이-남으면-종료-대신-확인·계획-복구를-제공\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\artifacts\v1.5-이전-저장·수동-제외로-계획-밖에-오늘-기한이-남으면-종료-대신-확인·계획-복구를-제공\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests\e2e\v1.5.spec.ts:210:1 › 오늘·내일·다음 주 메모 중 오늘 일은 기존 계획에 자동 반영하고 완료 전에 종료하지 않음 ──────────────
+    tests\e2e\v1.5.spec.ts:240:1 › 이전 저장·수동 제외로 계획 밖에 오늘 기한이 남으면 종료 대신 확인·계획 복구를 제공 ────────────────

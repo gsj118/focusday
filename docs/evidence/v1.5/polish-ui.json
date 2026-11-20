@@ -1,0 +1,75 @@
+{
+  "date": "2026-11-20",
+  "environment": "Direct interactions in ChatGPT in-app browser on Windows; viewport overrides reset after review.",
+  "viewports": [
+    [
+      1366,
+      768
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      320,
+      568
+    ]
+  ],
+  "observations": [
+    "Desktop: neutral memo panel is wider; main action and secondary action are distinct. Measured memo input 311.2px before, 438.0px after; featured card 283.1px before, 256.6px after.",
+    "390px: bottom Memo focuses input; example memo shows 3 editable tasks with today/tomorrow/next Monday, save button visible below bounded list. Saving adds only the today-due task to the established plan.",
+    "Mobile editor: title, today selection, due date shortcuts, priority and category render without horizontal overflow; explanation uses full width; Save and Cancel remain at bottom.",
+    "Mobile preference and backup sheets: full Korean instructions inspected, controls and footer/close accessible. Cancel returns without applying draft.",
+    "320px: initially observed wrapped navigation and save status, plus action rows split for a few excess pixels. Final screenshot shows single-line nav, status and compact action rows after padding adjustments.",
+    "Completion guard: removed today-due demo task from plan, completed the other two. Amber deadline warning remained with add-to-plan action, not completion reassurance. Added the remaining task and completed it; green completion state appeared. Undo restored the featured today-due task and 2/3 progress.",
+    "Preview reset to initial demo; user-owned tab and personal storage were not reset. Review tab retained; temporary viewport override removed."
+  ],
+  "limits": [
+    "No physical phone or OS keyboard validation",
+    "No Safari/Firefox or screen reader run",
+    "No independent reviewer or human study",
+    "No new external token extraction this turn; prior measured reference retained and palette adapted"
+  ],
+  "screenshots": [
+    {
+      "file": "docs/screenshots/v1.5/polish-before-desktop.jpg",
+      "sha256": "9bf59f61d4bfb4661e37f1d9c5ff60dc11b3f5deffaa5c6beab4372dc667aff7"
+    },
+    {
+      "file": "docs/screenshots/v1.5/polish-desktop.jpg",
+      "sha256": "eb512b23ddae6391265ab26a2033426b52cb21fbf1dfb29215945c67ae3240ac"
+    },
+    {
+      "file": "docs/screenshots/v1.5/polish-mobile.jpg",
+      "sha256": "79722d56167e828d358d83736ff1be5abac0fdc01362e7d01629365814439e8c"
+    },
+    {
+      "file": "docs/screenshots/v1.5/polish-mobile-capture.jpg",
+      "sha256": "30364064e803ba990cd45dc20796fc5bfe85eab6a5159334f2bce393fce72fee"
+    },
+    {
+      "file": "docs/screenshots/v1.5/polish-mobile-editor.jpg",
+      "sha256": "930eaa3acc44d92a30c0eec84735023123b3e99a196c02e0a502a3baa67d96d7"
+    },
+    {
+      "file": "docs/screenshots/v1.5/polish-tablet.jpg",
+      "sha256": "a6847a9ac6ed323ebcaf01156a0309b43dcd147a4bcd0dc34d54424eb52fce12"
+    },
+    {
+      "file": "docs/screenshots/v1.5/polish-small-mobile.jpg",
+      "sha256": "bf2b5294e9b40c821acbe964b2029cfa4de63411a77906b82ce5851c040b8830"
+    },
+    {
+      "file": "docs/screenshots/v1.5/polish-complete.jpg",
+      "sha256": "f5efe58e4e0b0b64efaabf2203e6c20fe50d955bc4afc0b22b2bc8e63e7245da"
+    },
+    {
+      "file": "docs/screenshots/v1.5/polish-warning.jpg",
+      "sha256": "8fe1efdecea089a4a093665db8372d7422388858d230634cf5fbebbfc7b95456"
+    }
+  ]
+}

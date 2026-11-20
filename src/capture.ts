@@ -12,7 +12,12 @@ const priorities: Record<string, Priority> = { 높음: 'high', 보통: 'medium',
 const datePrefix = /^(오늘|내일|모레|\d{4}-\d{2}-\d{2})(?:\s+|$)/u
 
 /** Only explicit prefix/suffix syntax is consumed. No semantic guesses or partial commits. */
-export function parseCapture(input: string, today: string, recognize = true): CaptureResult {
+export function parseCapture(
+  input: string,
+  today: string,
+  recognize = true,
+  options: { dates?: boolean } = {},
+): CaptureResult {
   const result: CaptureResult = { tasks: [], errors: [] }
   input.split(/\r?\n/u).forEach((raw, index) => {
     let title = raw.trim()
@@ -26,7 +31,7 @@ export function parseCapture(input: string, today: string, recognize = true): Ca
     }
     const fail = (message: string) => result.errors.push({ line: index + 1, message })
     if (recognize) {
-      const date = title.match(datePrefix)
+      const date = options.dates === false ? null : title.match(datePrefix)
       if (date) {
         const word = date[1]
         task.dueDate =
@@ -38,7 +43,7 @@ export function parseCapture(input: string, today: string, recognize = true): Ca
                 ? addDays(today, 2)
                 : word
         if (!isDate(task.dueDate)) {
-          fail('유효한 날짜를 입력해 주세요.')
+          fail('날짜를 확인해 주세요.')
           return
         }
         title = title.slice(date[0].length).trim()
@@ -57,7 +62,7 @@ export function parseCapture(input: string, today: string, recognize = true): Ca
           }
           task.category = token.slice(1)
           if (task.category.length > 24) {
-            fail('분류는 24자 이내로 입력해 주세요.')
+            fail('분류는 24자까지 입력할 수 있어요.')
             return
           }
         } else {

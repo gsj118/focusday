@@ -14,8 +14,8 @@ test('모바일 터치·작은 가시 영역 편집·알림과 하단 탐색 분
   const page = await context.newPage()
   await useManualMode(context)
   await page.goto(baseURL!)
-  await page.getByLabel('새 할 일 제목').fill('터치 테스트')
-  await page.getByRole('button', { name: '+ 할 일 추가', exact: true }).tap()
+  await page.getByLabel('할 일 메모').fill('터치 테스트')
+  await page.getByRole('button', { name: '그대로 담기', exact: true }).tap()
   await page.getByRole('button', { name: '터치 테스트 편집', exact: true }).tap()
   await page.setViewportSize({ width: 390, height: 480 })
   await page.getByLabel('분류 선택').fill('모바일')
@@ -79,15 +79,19 @@ test('실제 렌더링 색·hover·포커스·접근 가능한 입력과 버튼 
   )
   for (const sample of samples)
     expect(contrast(sample.color, sample.background), sample.selector).toBeGreaterThanOrEqual(4.5)
-  const add = page.getByRole('button', { name: '추가', exact: true })
+  const add = page.getByRole('button', { name: '그대로 담기', exact: true })
   await add.hover()
   const hovered = await add.evaluate((el) => ({
     color: getComputedStyle(el).color,
     background: getComputedStyle(el).backgroundColor,
   }))
   expect(contrast(hovered.color, hovered.background)).toBeGreaterThanOrEqual(4.5)
-  await page.getByLabel('새 할 일 제목').focus()
-  await page.keyboard.press('Tab')
+  await page.getByLabel('할 일 메모').focus()
+  for (let step = 0; step < 12; step++) {
+    if (await add.evaluate((element) => element === document.activeElement)) break
+    await page.keyboard.press('Tab')
+  }
+  await expect(add).toBeFocused()
   const outline = await add.evaluate((el) => ({
     style: getComputedStyle(el).outlineStyle,
     width: getComputedStyle(el).outlineWidth,

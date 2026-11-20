@@ -1,0 +1,109 @@
+Five product regressions against the preceding production build, before this correction.
+
+Two initial harness errors (disappearing checkbox check(), contradictory sample dates) are excluded.
+
+L01 자정 전 정리한 메모는 수정한 기한을 보존하고 날짜 변경을 확인받는다
+Error: expect(locator).toBeVisible() failed
+
+Locator: getByRole('status').filter({ hasText: '날짜가 바뀌었어요' })
+Expected: visible
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeVisible" getByRole('status').filter({ hasText: '날짜가 바뀌었어요' }) with timeout 5000ms
+  - waiting for getByRole('status').filter({ hasText: '날짜가 바뀌었어요' })
+
+
+  54 |   await page.getByLabel('정리한 제목 1', { exact: true }).fill('수정한 제출 제목')
+  55 |   await moveDate(page, '2026-11-21T00:01:00+09:00')
+> 56 |   await expect(page.getByRole('status').filter({ hasText: '날짜가 바뀌었어요' })).toBeVisible()
+     |                                                                           ^
+  57 |   await expect(page.getByLabel('정리한 제목 1', { exact: true })).toHaveValue('수정한 제출 제목')
+  58 |   await expect(page.getByLabel('정리한 기한 1', { exact: true })).toHaveValue(day)
+  59 |   await expect(page.getByRole('button', { name: '2개 담기', exact: true })).toBeDisabled()
+    at C:\Users\gsjtj\Documents\ChatGPT\Todolist\tests\e2e\lifecycle.spec.ts:56:75
+
+L02 미리보기 제목·분류의 한글 조합 Enter가 묶음을 조기 저장하지 않는다
+Error: expect(received).toHaveLength(expected)
+
+Expected length: 0
+Received length: 1
+Received array:  [{"category": "학교", "completedAt": null, "createdAt": "2026-11-20T01:00:00.383Z", "dueDate": "2026-11-21", "focusDate": null, "id": "66f90723-b78d-4626-ae15-e3fa30c0fae2", "isDemo": false, "priority": "none", "title": "한글 수정 중", "updatedAt": "2026-11-20T01:00:00.383Z"}]
+
+  71 |   await title.dispatchEvent('compositionstart')
+  72 |   await title.press('Enter')
+> 73 |   expect(await tasks(page)).toHaveLength(0)
+     |                             ^
+  74 |   await title.dispatchEvent('compositionend')
+  75 |   await title.press('Enter')
+  76 |   expect(await tasks(page)).toHaveLength(0)
+    at C:\Users\gsjtj\Documents\ChatGPT\Todolist\tests\e2e\lifecycle.spec.ts:73:29
+
+L03 편집창을 연 채 날짜가 바뀌어도 새 오늘 계획을 오래된 체크 상태로 제거하지 않는다
+Error: expect(locator).toBeChecked() failed
+
+Locator: getByRole('checkbox', { name: '오늘에서 빼기', exact: true })
+Expected: checked
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeChecked" getByRole('checkbox', { name: '오늘에서 빼기', exact: true }) with timeout 5000ms
+  - waiting for getByRole('checkbox', { name: '오늘에서 빼기', exact: true })
+
+
+   97 |   await page.getByLabel('제목', { exact: true }).fill('수정 중인 제목')
+   98 |   await moveDate(page, '2026-11-21T00:01:00+09:00')
+>  99 |   await expect(page.getByRole('checkbox', { name: '오늘에서 빼기', exact: true })).toBeChecked()
+      |                                                                              ^
+  100 |   await expect(page.getByLabel('제목', { exact: true })).toHaveValue('수정 중인 제목')
+  101 |   await page.getByRole('button', { name: '저장', exact: true }).click()
+  102 |   await showToday(page)
+    at C:\Users\gsjtj\Documents\ChatGPT\Todolist\tests\e2e\lifecycle.spec.ts:99:78
+
+L04 지난 날짜의 순서 되돌리기는 새 계획에 무효인 성공 안내를 내지 않는다
+Error: expect(locator).toBeDisabled() failed
+
+Locator:  getByRole('button', { name: '최근 작업 되돌리기', exact: true })
+Expected: disabled
+Received: enabled
+Timeout:  5000ms
+
+Call log:
+  - Expect "toBeDisabled" getByRole('button', { name: '최근 작업 되돌리기', exact: true }) with timeout 5000ms
+  - waiting for getByRole('button', { name: '최근 작업 되돌리기', exact: true })
+    14 × locator resolved to <button aria-label="최근 작업 되돌리기" class="text-button history-button">…</button>
+       - unexpected value "enabled"
+
+
+  112 |   await moveDate(page, '2026-11-21T00:01:00+09:00')
+  113 |   await expect(card(page)).toContainText('남은 일')
+> 114 |   await expect(undo(page)).toBeDisabled()
+      |                            ^
+  115 |   await expect(page.getByText('날짜가 바뀌어 이전 계획의 되돌리기는 마감했어요.', { exact: true })).toBeVisible()
+  116 | })
+  117 |
+    at C:\Users\gsjtj\Documents\ChatGPT\Todolist\tests\e2e\lifecycle.spec.ts:114:28
+
+L05 전체 목록의 미래 기한을 오늘로 바꾸면 오늘에 반영·명시적 제외와 되돌리기 보존
+Error: expect(locator).toBeChecked() failed
+
+Locator: getByRole('checkbox', { name: '오늘에서 빼기', exact: true })
+Expected: checked
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeChecked" getByRole('checkbox', { name: '오늘에서 빼기', exact: true }) with timeout 5000ms
+  - waiting for getByRole('checkbox', { name: '오늘에서 빼기', exact: true })
+
+
+  124 |   await page.getByRole('button', { name: '미래 일 편집', exact: true }).click()
+  125 |   await page.locator('.date-shortcuts').getByRole('button', { name: '오늘', exact: true }).click()
+> 126 |   await expect(page.getByRole('checkbox', { name: '오늘에서 빼기', exact: true })).toBeChecked()
+      |                                                                              ^
+  127 |   await page.getByRole('button', { name: '저장', exact: true }).click()
+  128 |   await showToday(page)
+  129 |   await expect(card(page)).toContainText('미래 일')
+    at C:\Users\gsjtj\Documents\ChatGPT\Todolist\tests\e2e\lifecycle.spec.ts:126:78

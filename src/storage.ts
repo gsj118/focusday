@@ -56,8 +56,7 @@ export function loadData(getStorage: () => StoragePort = () => window.localStora
       data: empty(),
       state: 'unavailable',
       raw: null,
-      reason:
-        '브라우저의 저장 데이터를 읽을 수 없습니다. 기존 데이터 보호를 위해 자동 저장을 멈췄습니다.',
+      reason: '저장된 할 일을 불러오지 못했어요. 기존 내용을 보호하려고 자동 저장을 잠시 멈췄어요.',
     }
   }
   if (raw === null) return { data: empty(), state: 'ready', raw: null, reason: '' }
@@ -68,7 +67,7 @@ export function loadData(getStorage: () => StoragePort = () => window.localStora
         data: empty(),
         state: 'blocked',
         raw,
-        reason: '저장 데이터의 형식 또는 버전을 지원하지 않습니다.',
+        reason: '현재 앱에서 읽을 수 없는 저장 형식이에요.',
       }
     return { data: parsed, state: 'ready', raw, reason: '' }
   } catch {
@@ -76,7 +75,7 @@ export function loadData(getStorage: () => StoragePort = () => window.localStora
       data: empty(),
       state: 'blocked',
       raw,
-      reason: '저장 데이터를 읽는 중 JSON 손상을 발견했습니다.',
+      reason: '저장된 내용이 손상되어 할 일을 불러오지 못했어요.',
     }
   }
 }
@@ -92,7 +91,7 @@ export function saveData(
     return {
       ok: false,
       reason:
-        '변경 사항을 이 브라우저에 저장하지 못했습니다. 현재 탭에서는 사용할 수 있지만 새로고침하면 변경 내용이 사라질 수 있습니다.',
+        '변경 내용을 저장하지 못했어요. 새로고침하기 전에 저장을 다시 시도하거나 백업해 주세요.',
     }
   }
 }

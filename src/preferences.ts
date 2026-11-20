@@ -63,7 +63,7 @@ export function loadPreferences(
       data: defaultPreferences(),
       state: 'blocked',
       reason:
-        '설정 형식 또는 버전을 지원하지 않습니다. 원본을 유지하고 이번 탭에서는 기본 설정을 사용합니다.',
+        '이 문구 설정은 불러올 수 없는 형식이에요. 원본은 그대로 두고 이 탭에서는 기본 문구를 보여드려요.',
     }
   } catch (error) {
     return error instanceof SyntaxError
@@ -71,12 +71,12 @@ export function loadPreferences(
           data: defaultPreferences(),
           state: 'blocked',
           reason:
-            '설정 JSON이 손상되었습니다. 원본을 유지하고 이번 탭에서는 기본 설정을 사용합니다.',
+            '문구 설정이 손상되어 읽지 못했어요. 원본은 그대로 두고 이 탭에서는 기본 문구를 보여드려요.',
         }
       : {
           data: defaultPreferences(),
           state: 'unavailable',
-          reason: '설정을 읽을 수 없습니다. 이번 탭에서는 기본 설정을 사용합니다.',
+          reason: '문구 설정을 불러오지 못했어요. 이 탭에서는 기본 문구를 보여드려요.',
         }
   }
 }
@@ -90,7 +90,7 @@ export function savePreferences(
   } catch {
     return {
       ok: false,
-      reason: '설정 저장에 실패했습니다. 초안을 유지했습니다. 저장을 다시 시도해 주세요.',
+      reason: '설정을 저장하지 못했어요. 편집한 내용은 남아 있으니 다시 저장해 주세요.',
     }
   }
 }

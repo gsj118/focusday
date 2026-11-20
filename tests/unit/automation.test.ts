@@ -7,6 +7,11 @@ import {
   loadAutomation,
   nextCandidate,
   saveAutomation,
+  initializePlan,
+  dailyPlan,
+  resizePlan,
+  addToPlan,
+  planCapturedTasks,
   AUTO_STORAGE_KEY,
 } from '../../src/automation'
 import { createTask, type Task } from '../../src/domain'
@@ -85,7 +90,7 @@ describe('explicit capture, without guesses', () => {
   })
 })
 describe('automatic today is a projection, never a task mutation', () => {
-  it('retains ALL overdue/due/manual tasks even beyond the target', () => {
+  it('limits the fixed plan while preserving every task outside it', () => {
     const tasks = [
       task('future', { dueDate: '2027-01-03' }),
       task('manual', { focusDate: day }),
@@ -95,7 +100,7 @@ describe('automatic today is a projection, never a task mutation', () => {
     const before = JSON.stringify(tasks)
     expect(
       automaticToday(tasks, day, { ...defaultAutomation(day), limit: 1 }).map((t) => t.id),
-    ).toEqual(['late', 'due', 'manual'])
+    ).toEqual(['late'])
     expect(JSON.stringify(tasks)).toBe(before)
   })
   it('returns old unfinished focus, high priority, future due then oldest items', () => {
@@ -112,14 +117,19 @@ describe('automatic today is a projection, never a task mutation', () => {
       'future',
     ])
   })
-  it('keeps a started item when new urgent work arrives; then offers next after completion', () => {
-    const settings = { ...defaultAutomation(day), limit: 1 as const, currentTaskId: 'working' }
+  it('keeps a started item and finishes the fixed plan without replacing it with urgent work', () => {
     const tasks = [task('working'), task('urgent', { dueDate: day })]
+    const settings = initializePlan(tasks, day, {
+      ...defaultAutomation(day),
+      limit: 1 as const,
+      currentTaskId: 'working',
+    })
     const planned = automaticToday(tasks, day, settings)
-    expect(planned).toHaveLength(2)
+    expect(planned).toHaveLength(1)
     expect(nextCandidate(planned, day, settings)?.id).toBe('working')
     tasks[0].completedAt = '2026-12-31T01:00:00.000Z'
-    expect(nextCandidate(automaticToday(tasks, day, settings), day, settings)?.id).toBe('urgent')
+    expect(nextCandidate(automaticToday(tasks, day, settings), day, settings)).toBeNull()
+    expect(dailyPlan(tasks, day, settings).map((t) => t.id)).toEqual(['working'])
   })
   it('skipping never removes required work, and day rollover clears only daily state', () => {
     const settings = { ...defaultAutomation(day), skippedTaskIds: ['due'], currentTaskId: 'gone' }
@@ -138,6 +148,93 @@ describe('automatic today is a projection, never a task mutation', () => {
     const tasks = [task('z'), task('a')]
     expect(automaticToday(tasks, day, defaultAutomation(day)).map((t) => t.id)).toEqual(['a', 'z'])
     expect(tasks.map((t) => t.id)).toEqual(['z', 'a'])
+  })
+  it('does not expand a saved projection from raw data changes; explicit resize can be reversed', () => {
+    const original = [task('a'), task('b'), task('c'), task('d')]
+    const settings = initializePlan(original, day, defaultAutomation(day))
+    const changed = original
+      .filter((t) => t.id !== 'b')
+      .map((t) => (t.id === 'a' ? { ...t, completedAt: '2026-12-31T01:00:00.000Z' } : t))
+    changed.push(task('urgent', { dueDate: day }))
+    expect(automaticToday(changed, day, settings).map((t) => t.id)).toEqual(['c'])
+    const expanded = resizePlan(changed, day, settings, 5)
+    expect(dailyPlan(changed, day, expanded).map((t) => t.id)).toEqual(['a', 'urgent', 'c', 'd'])
+    expect(automaticToday(changed, day, settings).map((t) => t.id)).toEqual(['c'])
+    expect(addToPlan(settings, ['d', 'd']).planTaskIds).toEqual(['a', 'b', 'c', 'd'])
+  })
+  it('includes only newly captured due-today/overdue work in an existing plan and prioritizes it', () => {
+    const existing = [task('a'), task('b'), task('c')]
+    const state = initializePlan(existing, day, defaultAutomation(day))
+    const captured = [
+      task('today', { dueDate: day }),
+      task('tomorrow', { dueDate: '2027-01-01' }),
+      task('next-week', { dueDate: '2027-01-04' }),
+      task('undated'),
+      task('overdue', { dueDate: '2026-12-30' }),
+    ]
+    const before = JSON.stringify({ existing, captured, state })
+    const changed = planCapturedTasks(existing, captured, day, state, false)
+    expect(changed.planTaskIds).toEqual(['a', 'b', 'c', 'today', 'overdue'])
+    expect(automaticToday([...existing, ...captured], day, changed).map((t) => t.id)).toEqual([
+      'overdue',
+      'today',
+      'a',
+      'b',
+      'c',
+    ])
+    expect(JSON.stringify({ existing, captured, state })).toBe(before)
+    expect(dailyPlan([...existing, ...captured], day, state).map((t) => t.id)).toEqual([
+      'a',
+      'b',
+      'c',
+    ])
+  })
+  it('includes every newly entered current deadline even when the initial quota is smaller', () => {
+    const captured = ['a', 'b', 'c', 'd'].map((id) => task(id, { dueDate: day }))
+    captured.push(task('future', { dueDate: '2027-01-01' }))
+    const state = planCapturedTasks([], captured, day, defaultAutomation(day), false)
+    expect(state.limit).toBe(3)
+    expect(state.planTaskIds).toEqual(['a', 'b', 'c', 'd'])
+  })
+  it('reopens a completed plan for a new current deadline without filling it with future work', () => {
+    const existing = [task('done', { completedAt: '2026-12-31T01:00:00.000Z' })]
+    const state = { ...defaultAutomation(day), planTaskIds: ['done'] }
+    const captured = [task('today', { dueDate: day }), task('future', { dueDate: '2027-01-01' })]
+    const next = planCapturedTasks(existing, captured, day, state, false)
+    expect(next.planTaskIds).toEqual(['done', 'today'])
+    expect(automaticToday([...existing, ...captured], day, next).map((t) => t.id)).toEqual([
+      'today',
+    ])
+    expect(planCapturedTasks(existing, [captured[1]], day, state, false)).toBe(state)
+  })
+  it('keeps manual mode untouched and allows an explicit include-all action', () => {
+    const existing = [task('a')]
+    const captured = [task('future', { dueDate: '2027-01-01' }), task('undated')]
+    const state = initializePlan(existing, day, defaultAutomation(day))
+    expect(planCapturedTasks(existing, captured, day, state, true).planTaskIds).toEqual([
+      'a',
+      'future',
+      'undated',
+    ])
+    const manual = { ...state, enabled: false }
+    expect(planCapturedTasks(existing, captured, day, manual, true)).toBe(manual)
+  })
+  it('migrates v1 settings on read without overwriting them', () => {
+    let writes = 0
+    const { planTaskIds: _ids, ...old } = defaultAutomation(day)
+    void _ids
+    const loaded = loadAutomation(
+      () => ({
+        getItem: () => JSON.stringify({ ...old, version: 1, limit: 5 }),
+        setItem: () => {
+          writes++
+        },
+      }),
+      day,
+    )
+    expect(loaded.blocked).toBe(false)
+    expect(loaded.data).toMatchObject({ version: 2, limit: 5, planTaskIds: null })
+    expect(writes).toBe(0)
   })
 })
 describe('separate settings and demo storage', () => {

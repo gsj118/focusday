@@ -1,0 +1,122 @@
+{
+  "stats": {
+    "startTime": "2026-11-20T01:59:07.038Z",
+    "duration": 581038.073,
+    "expected": 97,
+    "skipped": 0,
+    "unexpected": 22,
+    "flaky": 0
+  },
+  "failures": [
+    {
+      "title": "빈 제목·200자 한글·공백 없는 제목·한글 IME 조합 이벤트",
+      "file": "app.spec.ts",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByText('할 일 제목을 입력해 주세요.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByText('할 일 제목을 입력해 주세요.', { exact: true }) with timeout 5000ms\n  - waiting for getByText('할 일 제목을 입력해 주세요.', { exact: true })\n\n\n  116 |   await page.goto('./')\n  117 |   await add(page, '   ')\n> 118 |   await expect(page.getByText('할 일 제목을 입력해 주세요.', { exact: true })).toBeVisible()\n      |                                                                     ^\n  119 |   const input = page.getByLabel('할 일 메모')\n  120 |   await input.fill('한글')\n  121 |   await input.dispatchEvent('compositionstart')\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\app.spec.ts:118:69"
+    },
+    {
+      "title": "쓰기 실패 시 메모리 유지·지속 경고·실제 성공한 재시도",
+      "file": "app.spec.ts",
+      "error": "Error: expect(locator).toContainText(expected) failed\n\nLocator: getByRole('alert')\nExpected substring: \"새로고침하면 변경 내용이 사라질 수 있습니다.\"\nReceived string:    \"변경 내용을 저장하지 못했어요. 새로고침하기 전에 저장을 다시 시도하거나 백업해 주세요.저장 재시도\"\nTimeout: 5000ms\n\nCall log:\n  - Expect \"toContainText\" getByRole('alert') with timeout 5000ms\n  - waiting for getByRole('alert')\n    14 × locator resolved to <section role=\"alert\" class=\"storage-banner\">…</section>\n       - unexpected value \"변경 내용을 저장하지 못했어요. 새로고침하기 전에 저장을 다시 시도하거나 백업해 주세요.저장 재시도\"\n\n\n  242 |   await expect(page.getByRole('button', { name: '메모리에 남음 편집', exact: true })).toBeVisible()\n  243 |   await expect(page.getByText('저장됨', { exact: true })).toHaveCount(0)\n> 244 |   await expect(page.getByRole('alert')).toContainText(\n      |                                         ^\n  245 |     '새로고침하면 변경 내용이 사라질 수 있습니다.',\n  246 |   )\n  247 |   await page.evaluate(() => {\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\app.spec.ts:244:41"
+    },
+    {
+      "title": "손상 원본 자동 덮어쓰기 차단: {broken",
+      "file": "app.spec.ts",
+      "error": "Error: expect(locator).toContainText(expected) failed\n\nLocator: getByRole('alert')\nExpected substring: \"원본은 자동으로 덮어쓰지 않습니다.\"\nReceived string:    \"저장된 내용이 손상되어 할 일을 불러오지 못했어요.저장된 원본은 그대로 보관하고 있어요. 이 탭에서 바꾼 내용은 아직 저장되지 않았어요.원본 다운로드원본 초기화…\"\nTimeout: 5000ms\n\nCall log:\n  - Expect \"toContainText\" getByRole('alert') with timeout 5000ms\n  - waiting for getByRole('alert')\n    13 × locator resolved to <section role=\"alert\" class=\"storage-banner\">…</section>\n       - unexpected value \"저장된 내용이 손상되어 할 일을 불러오지 못했어요.저장된 원본은 그대로 보관하고 있어요. 이 탭에서 바꾼 내용은 아직 저장되지 않았어요.원본 다운로드원본 초기화…\"\n\n\n  262 |     await add(page, '아직 저장 안 됨')\n  263 |     expect(await page.evaluate((key) => localStorage.getItem(key), STORAGE_KEY)).toBe(raw)\n> 264 |     await expect(page.getByRole('alert')).toContainText('원본은 자동으로 덮어쓰지 않습니다.')\n      |                                           ^\n  265 |     const downloadPromise = page.waitForEvent('download')\n  266 |     await page.getByRole('button', { name: '원본 다운로드', exact: true }).click()\n  267 |     const download = await downloadPromise\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\app.spec.ts:264:43"
+    },
+    {
+      "title": "손상 원본 자동 덮어쓰기 차단: {\"version\":2,\"tasks\":[]}",
+      "file": "app.spec.ts",
+      "error": "Error: expect(locator).toContainText(expected) failed\n\nLocator: getByRole('alert')\nExpected substring: \"원본은 자동으로 덮어쓰지 않습니다.\"\nReceived string:    \"현재 앱에서 읽을 수 없는 저장 형식이에요.저장된 원본은 그대로 보관하고 있어요. 이 탭에서 바꾼 내용은 아직 저장되지 않았어요.원본 다운로드원본 초기화…\"\nTimeout: 5000ms\n\nCall log:\n  - Expect \"toContainText\" getByRole('alert') with timeout 5000ms\n  - waiting for getByRole('alert')\n    13 × locator resolved to <section role=\"alert\" class=\"storage-banner\">…</section>\n       - unexpected value \"현재 앱에서 읽을 수 없는 저장 형식이에요.저장된 원본은 그대로 보관하고 있어요. 이 탭에서 바꾼 내용은 아직 저장되지 않았어요.원본 다운로드원본 초기화…\"\n\n\n  262 |     await add(page, '아직 저장 안 됨')\n  263 |     expect(await page.evaluate((key) => localStorage.getItem(key), STORAGE_KEY)).toBe(raw)\n> 264 |     await expect(page.getByRole('alert')).toContainText('원본은 자동으로 덮어쓰지 않습니다.')\n      |                                           ^\n  265 |     const downloadPromise = page.waitForEvent('download')\n  266 |     await page.getByRole('button', { name: '원본 다운로드', exact: true }).click()\n  267 |     const download = await downloadPromise\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\app.spec.ts:264:43"
+    },
+    {
+      "title": "손상 원본 자동 덮어쓰기 차단: {\"version\":1,\"tasks\":[{}]}",
+      "file": "app.spec.ts",
+      "error": "Error: expect(locator).toContainText(expected) failed\n\nLocator: getByRole('alert')\nExpected substring: \"원본은 자동으로 덮어쓰지 않습니다.\"\nReceived string:    \"현재 앱에서 읽을 수 없는 저장 형식이에요.저장된 원본은 그대로 보관하고 있어요. 이 탭에서 바꾼 내용은 아직 저장되지 않았어요.원본 다운로드원본 초기화…\"\nTimeout: 5000ms\n\nCall log:\n  - Expect \"toContainText\" getByRole('alert') with timeout 5000ms\n  - waiting for getByRole('alert')\n    13 × locator resolved to <section role=\"alert\" class=\"storage-banner\">…</section>\n       - unexpected value \"현재 앱에서 읽을 수 없는 저장 형식이에요.저장된 원본은 그대로 보관하고 있어요. 이 탭에서 바꾼 내용은 아직 저장되지 않았어요.원본 다운로드원본 초기화…\"\n\n\n  262 |     await add(page, '아직 저장 안 됨')\n  263 |     expect(await page.evaluate((key) => localStorage.getItem(key), STORAGE_KEY)).toBe(raw)\n> 264 |     await expect(page.getByRole('alert')).toContainText('원본은 자동으로 덮어쓰지 않습니다.')\n      |                                           ^\n  265 |     const downloadPromise = page.waitForEvent('download')\n  266 |     await page.getByRole('button', { name: '원본 다운로드', exact: true }).click()\n  267 |     const download = await downloadPromise\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\app.spec.ts:264:43"
+    },
+    {
+      "title": "읽기 실패는 쓰기를 보호하고 재시도 때 기존 항목과 메모리 항목 합침",
+      "file": "app.spec.ts",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('alert').filter({ hasText: '기존 데이터 보호' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('alert').filter({ hasText: '기존 데이터 보호' }) with timeout 5000ms\n  - waiting for getByRole('alert').filter({ hasText: '기존 데이터 보호' })\n\n\n  301 |   await page.goto('./')\n  302 |   await add(page, '임시 항목')\n> 303 |   await expect(page.getByRole('alert').filter({ hasText: '기존 데이터 보호' })).toBeVisible()\n      |                                                                          ^\n  304 |   await page.evaluate(() => {\n  305 |     window.__failRead = false\n  306 |   })\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\app.spec.ts:303:74"
+    },
+    {
+      "title": "localStorage 접근 자체 실패도 빈 값으로 덮어쓰지 않는다",
+      "file": "app.spec.ts",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('alert').filter({ hasText: '기존 데이터 보호' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('alert').filter({ hasText: '기존 데이터 보호' }) with timeout 5000ms\n  - waiting for getByRole('alert').filter({ hasText: '기존 데이터 보호' })\n\n\n  320 |   await page.goto('./')\n  321 |   await add(page, '접근 실패 항목')\n> 322 |   await expect(page.getByRole('alert').filter({ hasText: '기존 데이터 보호' })).toBeVisible()\n      |                                                                          ^\n  323 |   await page.getByRole('button', { name: '다시 읽기', exact: true }).click()\n  324 |   await expect(page.getByRole('alert').filter({ hasText: '기존 데이터 보호' })).toBeVisible()\n  325 | })\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\app.spec.ts:322:74"
+    },
+    {
+      "title": "화면 390×844·overflow·편집·스크린샷",
+      "file": "app.spec.ts",
+      "error": "Test timeout of 30000ms exceeded.\nError: locator.boundingBox: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: '+ 할 일 추가', exact: true })\n\n\n  413 |       await expect(page.getByRole('navigation', { name: '모바일 보기' })).toBeVisible()\n  414 |       expect(\n> 415 |         (await page.getByRole('button', { name: '+ 할 일 추가', exact: true }).boundingBox())!\n      |                                                                            ^\n  416 |           .height,\n  417 |       ).toBeGreaterThanOrEqual(44)\n  418 |     }\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\app.spec.ts:415:76"
+    },
+    {
+      "title": "화면 320×740·overflow·편집·스크린샷",
+      "file": "app.spec.ts",
+      "error": "Test timeout of 30000ms exceeded.\nError: locator.boundingBox: Test timeout of 30000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: '+ 할 일 추가', exact: true })\n\n\n  413 |       await expect(page.getByRole('navigation', { name: '모바일 보기' })).toBeVisible()\n  414 |       expect(\n> 415 |         (await page.getByRole('button', { name: '+ 할 일 추가', exact: true }).boundingBox())!\n      |                                                                            ^\n  416 |           .height,\n  417 |       ).toBeGreaterThanOrEqual(44)\n  418 |     }\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\app.spec.ts:415:76"
+    },
+    {
+      "title": "모바일 터치·작은 가시 영역 편집·알림과 하단 탐색 분리",
+      "file": "mobile-accessibility.spec.ts",
+      "error": "Test timeout of 30000ms exceeded.\nError: locator.tap: Test ended.\nCall log:\n  - waiting for getByRole('button', { name: '+ 할 일 추가', exact: true })\n\n\n  16 |   await page.goto(baseURL!)\n  17 |   await page.getByLabel('할 일 메모').fill('터치 테스트')\n> 18 |   await page.getByRole('button', { name: '메모 담기', exact: true }).tap()\n     |                                                                     ^\n  19 |   await page.getByRole('button', { name: '터치 테스트 편집', exact: true }).tap()\n  20 |   await page.setViewportSize({ width: 390, height: 480 })\n  21 |   await page.getByLabel('분류 선택').fill('모바일')\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\mobile-accessibility.spec.ts:18:69"
+    },
+    {
+      "title": "실제 렌더링 색·hover·포커스·접근 가능한 입력과 버튼 이름",
+      "file": "mobile-accessibility.spec.ts",
+      "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"solid\"\nReceived: \"none\"\n\n  94 |     color: getComputedStyle(el).outlineColor,\n  95 |   }))\n> 96 |   expect(outline.style).toBe('solid')\n     |                         ^\n  97 |   expect(parseFloat(outline.width)).toBeGreaterThanOrEqual(3)\n  98 |   expect(contrast(outline.color, 'rgb(255, 255, 255)')).toBeGreaterThanOrEqual(3)\n  99 |   await page.getByRole('button', { name: '발표 자료 최종 확인 편집', exact: true }).click()\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\mobile-accessibility.spec.ts:96:25"
+    },
+    {
+      "title": "P01 처음 사용: 빈 안내→Enter→편집·취소→완료 복구",
+      "file": "synthetic-beta.spec.ts",
+      "error": "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator: getByLabel('할 일 메모')\nTimeout: 5000ms\n- Expected  - 1\n+ Received  + 2\n\n- 할 일을 적어보세요\n+ 내일 과제 제출하고\n+ 다음 주 월요일에는 발표 준비하기\n\nCall log:\n  - Expect \"toHaveAttribute\" getByLabel('할 일 메모') with timeout 5000ms\n  - waiting for getByLabel('할 일 메모')\n    14 × locator resolved to <textarea rows=\"4\" id=\"quick-title\" maxlength=\"24000\" autocomplete=\"off\" aria-invalid=\"false\" aria-describedby=\"quick-hint\" placeholder=\"내일 과제 제출하고↵다음 주 월요일에는 발표 준비하기\"></textarea>\n       - unexpected value \"내일 과제 제출하고\n다음 주 월요일에는 발표 준비하기\"\n\n\n  166 |         page.getByRole('heading', { name: '해야 할 일을 하나 적어보세요' }),\n  167 |       ).toBeVisible()\n> 168 |       await expect(page.getByLabel('할 일 메모')).toHaveAttribute(\n      |                                               ^\n  169 |         'placeholder',\n  170 |         '할 일을 적어보세요',\n  171 |       )\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts:168:47\n    at check (C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts:125:5)\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts:157:3"
+    },
+    {
+      "title": "P03 키보드: 입력→Tab 편집→textarea Enter→취소→계획·백업",
+      "file": "synthetic-beta.spec.ts",
+      "error": "Error: expect(locator).toBeFocused() failed\n\nLocator: getByLabel('제목', { exact: true })\nExpected: focused\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeFocused\" getByLabel('제목', { exact: true }) with timeout 5000ms\n  - waiting for getByLabel('제목', { exact: true })\n\n\n  289 |       await page.keyboard.press('Tab')\n  290 |       await page.keyboard.press('Enter')\n> 291 |       await expect(page.getByLabel('제목', { exact: true })).toBeFocused()\n      |                                                            ^\n  292 |       await page.keyboard.press('End')\n  293 |       await page.keyboard.press('Enter')\n  294 |       await page.keyboard.type('second')\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts:291:60\n    at check (C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts:125:5)\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts:274:3"
+    },
+    {
+      "title": "P09 실수 복구: 삭제 취소→완료/편집→이전 예시 제거",
+      "file": "synthetic-beta.spec.ts",
+      "error": "Error: expect(received).toMatchObject(expected)\n\n- Expected  - 2\n+ Received  + 2\n\n  Object {\n-   \"completedAt\": null,\n+   \"completedAt\": \"2026-10-02T01:00:01.923Z\",\n    \"id\": \"4483ba21-9757-48cd-976e-0cb3dfe12850\",\n-   \"title\": \"수정 보존\",\n+   \"title\": \"원본 사용자\",\n  }\n\n  618 |       await page.getByRole('button', { name: '저장', exact: true }).click()\n  619 |       await page.getByRole('button', { name: '실행 취소', exact: true }).click()\n> 620 |       expect((await stored(page))[0]).toMatchObject({\n      |                                       ^\n  621 |         title: '수정 보존',\n  622 |         completedAt: null,\n  623 |         id: before[0].id,\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts:620:39\n    at check (C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts:125:5)\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\synthetic-beta.spec.ts:600:3"
+    },
+    {
+      "title": "저장 실패 중 메모리 전체 백업·저장 원본 불변",
+      "file": "v1.1.spec.ts",
+      "error": "Error: expect(locator).toContainText(expected) failed\n\nLocator: getByRole('dialog').getByRole('alert')\nExpected substring: \"아직 브라우저에 저장되지 않은 변경\"\nReceived string:    \"아직 저장되지 않은 변경이 있어요. 이 탭의 내용을 백업 파일로 보관할 수 있어요.\"\nTimeout: 5000ms\n\nCall log:\n  - Expect \"toContainText\" getByRole('dialog').getByRole('alert') with timeout 5000ms\n  - waiting for getByRole('dialog').getByRole('alert')\n    14 × locator resolved to <div role=\"alert\" class=\"storage-banner\">…</div>\n       - unexpected value \"아직 저장되지 않은 변경이 있어요. 이 탭의 내용을 백업 파일로 보관할 수 있어요.\"\n\n\n  256 |   await page.getByLabel('할 일 메모').press('Enter')\n  257 |   await manage(page)\n> 258 |   await expect(page.getByRole('dialog').getByRole('alert')).toContainText(\n      |                                                             ^\n  259 |     '아직 브라우저에 저장되지 않은 변경',\n  260 |   )\n  261 |   expect((await download(page)).data.tasks.map((t: Task) => t.title)).toEqual([\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts:258:61"
+    },
+    {
+      "title": "복원 merge 쓰기 실패 원본/메모리/상태 유지·재시도·오래된 실행 취소 정리",
+      "file": "v1.1.spec.ts",
+      "error": "Error: expect(locator).toContainText(expected) failed\n\nLocator: getByRole('dialog').getByRole('alert')\nExpected substring: \"적용 전 목록과 저장 원본을 유지했습니다\"\nReceived string:    \"복원한 내용을 저장하지 못했어요. 기존 목록은 그대로예요. 다시 시도하거나 취소해 주세요.\"\nTimeout: 5000ms\n\nCall log:\n  - Expect \"toContainText\" getByRole('dialog').getByRole('alert') with timeout 5000ms\n  - waiting for getByRole('dialog').getByRole('alert')\n    14 × locator resolved to <p role=\"alert\" tabindex=\"-1\" class=\"field-error\">복원한 내용을 저장하지 못했어요. 기존 목록은 그대로예요. 다시 시도하거나 취소해 주세요.</p>\n       - unexpected value \"복원한 내용을 저장하지 못했어요. 기존 목록은 그대로예요. 다시 시도하거나 취소해 주세요.\"\n\n\n  433 |       })\n  434 |       .click()\n> 435 |     await expect(page.getByRole('dialog').getByRole('alert')).toContainText(\n      |                                                               ^\n  436 |       '적용 전 목록과 저장 원본은 그대로예요',\n  437 |     )\n  438 |     await expect(page.getByRole('dialog').getByRole('alert')).toBeFocused()\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts:435:63"
+    },
+    {
+      "title": "복원 replace 쓰기 실패 원본/메모리/상태 유지·재시도·오래된 실행 취소 정리",
+      "file": "v1.1.spec.ts",
+      "error": "Error: expect(locator).toContainText(expected) failed\n\nLocator: getByRole('dialog').getByRole('alert')\nExpected substring: \"적용 전 목록과 저장 원본을 유지했습니다\"\nReceived string:    \"복원한 내용을 저장하지 못했어요. 기존 목록은 그대로예요. 다시 시도하거나 취소해 주세요.\"\nTimeout: 5000ms\n\nCall log:\n  - Expect \"toContainText\" getByRole('dialog').getByRole('alert') with timeout 5000ms\n  - waiting for getByRole('dialog').getByRole('alert')\n    14 × locator resolved to <p role=\"alert\" tabindex=\"-1\" class=\"field-error\">복원한 내용을 저장하지 못했어요. 기존 목록은 그대로예요. 다시 시도하거나 취소해 주세요.</p>\n       - unexpected value \"복원한 내용을 저장하지 못했어요. 기존 목록은 그대로예요. 다시 시도하거나 취소해 주세요.\"\n\n\n  433 |       })\n  434 |       .click()\n> 435 |     await expect(page.getByRole('dialog').getByRole('alert')).toContainText(\n      |                                                               ^\n  436 |       '적용 전 목록과 저장 원본은 그대로예요',\n  437 |     )\n  438 |     await expect(page.getByRole('dialog').getByRole('alert')).toBeFocused()\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.1.spec.ts:435:63"
+    },
+    {
+      "title": "P01 처음 사용: 빈 화면→입력→계획→완료 복구→설정·백업→재방문",
+      "file": "v1.4.spec.ts",
+      "error": "Error: expect(locator).toContainText(expected) failed\n\nLocator: locator('.encouragement')\nExpected substring: \"첫 한 가지\"\nReceived string:    \"첫 번째 일을 마쳤어요. 하나 해냈네요.\"\nTimeout: 5000ms\n\nCall log:\n  - Expect \"toContainText\" locator('.encouragement') with timeout 5000ms\n  - waiting for locator('.encouragement')\n    14 × locator resolved to <span class=\"encouragement\">첫 번째 일을 마쳤어요. 하나 해냈네요.</span>\n       - unexpected value \"첫 번째 일을 마쳤어요. 하나 해냈네요.\"\n\n\n  168 |     async () => {\n  169 |       await complete(page, '첫 번째 할 일')\n> 170 |       await expect(cheer(page)).toContainText('첫 한 가지')\n      |                                 ^\n  171 |       await expect(summary(page)).toHaveText('오늘 마친 일 1개')\n  172 |       await page.getByRole('button', { name: '실행 취소', exact: true }).click()\n  173 |       await expect(summary(page)).toHaveText('오늘 마친 일 0개')\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.4.spec.ts:170:33\n    at check (C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.4.spec.ts:94:5)\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.4.spec.ts:163:3"
+    },
+    {
+      "title": "P03 한글 입력: 합성 조합→연속 입력·편집→내 문장 경계·HTML→재방문",
+      "file": "v1.4.spec.ts",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('alert').filter({ hasText: '1–120' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('alert').filter({ hasText: '1–120' }) with timeout 5000ms\n  - waiting for getByRole('alert').filter({ hasText: '1–120' })\n\n\n  291 |       await page.getByLabel('내 문장 입력').fill('   ')\n  292 |       await page.getByRole('button', { name: '설정 저장', exact: true }).click()\n> 293 |       await expect(page.getByRole('alert').filter({ hasText: '1–120' })).toBeVisible()\n      |                                                                          ^\n  294 |       await page.getByLabel('내 문장 입력').fill('가'.repeat(121))\n  295 |       await page\n  296 |         .locator('.editor-footer')\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.4.spec.ts:293:74\n    at check (C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.4.spec.ts:94:5)\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.4.spec.ts:283:3"
+    },
+    {
+      "title": "P10 조용한 화면: 독립 끄기→완료 시점 처리→켜기·재완료→설정 취소·재방문",
+      "file": "v1.4.spec.ts",
+      "error": "Error: expect(locator).toContainText(expected) failed\n\nLocator: locator('.encouragement')\nExpected substring: \"첫 한 가지\"\nReceived string:    \"첫 번째 일을 마쳤어요. 하나 해냈네요.\"\nTimeout: 5000ms\n\nCall log:\n  - Expect \"toContainText\" locator('.encouragement') with timeout 5000ms\n  - waiting for locator('.encouragement')\n    13 × locator resolved to <span class=\"encouragement\">첫 번째 일을 마쳤어요. 하나 해냈네요.</span>\n       - unexpected value \"첫 번째 일을 마쳤어요. 하나 해냈네요.\"\n\n\n  692 |       await add(page, '조용한 둘째 날')\n  693 |       await complete(page, '조용한 둘째 날')\n> 694 |       await expect(cheer(page)).toContainText('첫 한 가지')\n      |                                 ^\n  695 |       await expect(sentence(page)).toHaveText(ORIGINAL_GUIDANCE)\n  696 |     },\n  697 |   )\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.4.spec.ts:694:33\n    at check (C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.4.spec.ts:94:5)\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.4.spec.ts:679:3"
+    },
+    {
+      "title": "P11 확대·낮은 시력 관점: 200% 동등 reflow→긴 설정·오류 초점→성취 복구",
+      "file": "v1.4.spec.ts",
+      "error": "Error: expect(locator).toContainText(expected) failed\n\nLocator: locator('.encouragement')\nExpected substring: \"첫 한 가지\"\nReceived string:    \"첫 번째 일을 마쳤어요. 하나 해냈네요.\"\nTimeout: 5000ms\n\nCall log:\n  - Expect \"toContainText\" locator('.encouragement') with timeout 5000ms\n  - waiting for locator('.encouragement')\n    14 × locator resolved to <span class=\"encouragement\">첫 번째 일을 마쳤어요. 하나 해냈네요.</span>\n       - unexpected value \"첫 번째 일을 마쳤어요. 하나 해냈네요.\"\n\n\n  738 |     async () => {\n  739 |       await complete(page, '작업 확인')\n> 740 |       await expect(cheer(page)).toContainText('첫 한 가지')\n      |                                 ^\n  741 |       await summary(page).click()\n  742 |       await page.getByRole('checkbox', { name: '작업 확인 미완료로 복원', exact: true }).click()\n  743 |       await expect(summary(page)).toBeFocused()\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.4.spec.ts:740:33\n    at check (C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.4.spec.ts:94:5)\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.4.spec.ts:733:3"
+    },
+    {
+      "title": "P12 보존: 설정/할 일 쓰기 실패→백업·실패 복원→재시도→정상 복원·재방문",
+      "file": "v1.4.spec.ts",
+      "error": "Error: expect(locator).toBeFocused() failed\n\nLocator: getByRole('alert').filter({ hasText: '복원 저장에 실패' })\nExpected: focused\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeFocused\" getByRole('alert').filter({ hasText: '복원 저장에 실패' }) with timeout 5000ms\n  - waiting for getByRole('alert').filter({ hasText: '복원 저장에 실패' })\n\n\n  826 |       expect(await tasks(page)).toEqual(original)\n  827 |       await expect(summary(page)).toHaveText('오늘 마친 일 1개')\n> 828 |       await expect(page.getByRole('alert').filter({ hasText: '복원 저장에 실패' })).toBeFocused()\n      |                                                                              ^\n  829 |       await page.evaluate(() => Object.assign(window, { v14FailTask: false }))\n  830 |       await page.getByRole('button', { name: '합치기 다시 시도', exact: true }).click()\n  831 |       await page.getByRole('button', { name: '목록으로 돌아가기', exact: true }).click()\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.4.spec.ts:828:78\n    at check (C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.4.spec.ts:94:5)\n    at C:\\Users\\gsjtj\\Documents\\ChatGPT\\Todolist\\tests\\e2e\\v1.4.spec.ts:814:3"
+    }
+  ]
+}

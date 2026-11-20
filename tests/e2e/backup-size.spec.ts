@@ -25,7 +25,7 @@ test('P10 E11: 6000개 자체 다운로드→같은 파일 UI 미리보기 (quot
     .getByRole('button', { name: '백업·복원', exact: true })
     .click()
   const pending = page.waitForEvent('download')
-  await page.getByRole('button', { name: 'JSON 백업 다운로드', exact: true }).click()
+  await page.getByRole('button', { name: '백업 파일 다운로드', exact: true }).click()
   const download = await pending,
     text = await readFile((await download.path())!, 'utf8')
   await download.delete()
@@ -114,10 +114,8 @@ test('E11: 초과 자체 백업은 다운로드 성공으로 표시하지 않음
     .click()
   let downloads = 0
   page.on('download', () => downloads++)
-  await page.getByRole('button', { name: 'JSON 백업 다운로드', exact: true }).click()
-  await expect(page.getByRole('alert')).toContainText(
-    '다운로드하지 않았고 목록은 그대로 유지했습니다',
-  )
+  await page.getByRole('button', { name: '백업 파일 다운로드', exact: true }).click()
+  await expect(page.getByRole('alert')).toContainText('다운로드를 중단했고 목록은 그대로예요')
   expect(downloads).toBe(0)
   expect(await page.evaluate(() => localStorage.getItem('focusday:v1'))).toBe(raw)
 })

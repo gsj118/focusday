@@ -33,7 +33,7 @@ describe('계획과 어제 이어가기', () => {
     expect(candidates[0].reasons).toEqual(['기한 초과', '어제 선택한 일', '높은 우선순위'])
     expect(input[0].id).toBe('high')
   })
-  it('그룹 안 기존 날짜/우선순위/생성/id 정렬과 집중 중 후보', () => {
+  it('그룹 안 기존 날짜/우선순위/생성/id 정렬과 오늘에 포함 후보', () => {
     const input = [
       task('late', { dueDate: '2026-10-01', priority: 'high' }),
       task('old-low', { dueDate: '2026-09-30', priority: 'low' }),

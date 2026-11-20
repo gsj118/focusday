@@ -1,0 +1,73 @@
+{
+  "checkedAt": "2026-11-20T02:23:12.147Z",
+  "status": "local review ready; not committed, pushed or deployed",
+  "branch": "codex/v1.5-automation-review",
+  "sourceBaseline": "790e040429978eefa314fdfa8a4117bb81d3ed8c",
+  "standardChecks": {
+    "typecheck": "PASS",
+    "eslint": "PASS",
+    "build": "PASS",
+    "unit": 101,
+    "dateZones": {
+      "Asia/Seoul": 77,
+      "America/New_York": 77
+    }
+  },
+  "rootBrowser": {
+    "startTime": "2026-11-20T02:09:34.493Z",
+    "duration": 386579.969,
+    "expected": 119,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "finalPagesBrowser": {
+    "passed": 18,
+    "failed": 0,
+    "skipped": 0,
+    "base": "http://127.0.0.1:4174/focusday/",
+    "scope": "16 new automation flows plus 2 mobile/accessibility tests on final files"
+  },
+  "sequence": "Full 119-test root suite passed before final mobile preview scrolling, shorter demo copy and same-value CSS token aliases; final files passed standard checks and 18 Pages-path tests, with CUA visual checks.",
+  "koreanCopy": {
+    "extractedItems": 517,
+    "scope": "Korean string literals, templates and JSX text in src, plus index.html title/metadata; user-entered text is excluded",
+    "reviewedInSourceAndRenderedContext": true,
+    "countIsNotCompleteSentences": true
+  },
+  "submission": {
+    "repository": "ai-practice",
+    "project": "개인용 할 일 관리 애플리케이션",
+    "standardChecks": "PASS: typecheck, eslint, 101 unit, 77 Seoul, 77 New York, production build",
+    "sourceByteComparison": "PASS except README adapted for collection paths; .github excluded",
+    "handwritingFilesUnchanged": 26,
+    "published": false
+  },
+  "manualUI": {
+    "tool": "CUA in-app browser",
+    "viewports": ["1366x768", "390x844"],
+    "flows": [
+      "Korean memo to three editable tasks",
+      "edit metadata and batch save",
+      "undo added tasks and restore original memo",
+      "complete fixed three-task plan",
+      "undo completion returns to 2/3",
+      "mobile preview shows all three titles and save control",
+      "reset demo for user review"
+    ]
+  },
+  "screenshots": {
+    "review-desktop.jpg": "f59d6f703d6e56ad2bd81b66b79e1fdc7ad35acf32c185b7efcead95306daecb",
+    "review-mobile.jpg": "214d7e12f7ee9a77fc38212a5af7d1dd4247ef0a237b8d148b30764ef87a8fb1",
+    "review-memo-mobile.jpg": "07d79df30792b8ea87eaa02017ecbf57003fdff6756211eb44ebf93daba2fd37",
+    "review-finished.jpg": "4eaadf1dfe3be54c4650a45f54b689c31e0c5ab10a55c729e0a32ec3c15ac906"
+  },
+  "notPerformed": [
+    "production deployment",
+    "remote GitHub CI",
+    "physical smartphone",
+    "real OS Korean IME",
+    "screen reader",
+    "human usability study"
+  ]
+}

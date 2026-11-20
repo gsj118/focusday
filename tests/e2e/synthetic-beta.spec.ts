@@ -79,7 +79,7 @@ async function manage(page: Page) {
 }
 async function exported(page: Page) {
   const pending = page.waitForEvent('download')
-  await page.getByRole('button', { name: 'JSON 백업 다운로드', exact: true }).click()
+  await page.getByRole('button', { name: '백업 파일 다운로드', exact: true }).click()
   const file = await pending
   const text = await readFile((await file.path())!, 'utf8')
   expect(file.suggestedFilename()).toBe(`focusday-backup-${day}.json`)
@@ -165,11 +165,11 @@ test('P01 처음 사용: 빈 안내→Enter→편집·취소→완료 복구', a
       await expect(
         page.getByRole('heading', { name: '해야 할 일을 하나 적어보세요' }),
       ).toBeVisible()
-      await expect(page.getByLabel('새 할 일 제목')).toHaveAttribute(
+      await expect(page.getByLabel('할 일 메모')).toHaveAttribute(
         'placeholder',
-        '할 일을 적어보세요',
+        '내일 과제 제출하고\n다음 주 월요일에는 발표 준비하기',
       )
-      await page.getByLabel('새 할 일 제목').fill('자료구조 과제 제출')
+      await page.getByLabel('할 일 메모').fill('자료구조 과제 제출')
       await page.keyboard.press('Enter')
       expect(await stored(page)).toMatchObject([
         { title: '자료구조 과제 제출', focusDate: day, dueDate: null },
@@ -206,7 +206,7 @@ test('P01 처음 사용: 빈 안내→Enter→편집·취소→완료 복구', a
 test('P02 빠른 기록: 전체 5개→버튼 비교→빈/길이/중복 복구', async ({ page }, info) => {
   await page.goto('./')
   await all(page)
-  const input = page.getByLabel('새 할 일 제목')
+  const input = page.getByLabel('할 일 메모')
   await check(
     page,
     info,
@@ -222,7 +222,7 @@ test('P02 빠른 기록: 전체 5개→버튼 비교→빈/길이/중복 복구'
         await expect(input).toBeFocused()
       }
       await input.fill('버튼 기록')
-      await page.getByRole('button', { name: '추가', exact: true }).click()
+      await page.getByRole('button', { name: '그대로 담기', exact: true }).click()
       const tasks = await stored(page)
       expect(tasks).toHaveLength(6)
       for (const task of tasks)
@@ -248,7 +248,7 @@ test('P02 빠른 기록: 전체 5개→버튼 비교→빈/길이/중복 복구'
     async () => {
       await input.fill('   ')
       await page.keyboard.press('Enter')
-      await page.getByRole('button', { name: '추가', exact: true }).click()
+      await page.getByRole('button', { name: '그대로 담기', exact: true }).click()
       expect(await stored(page)).toHaveLength(6)
       await expect(page.getByRole('alert')).toContainText('제목')
       for (const length of [199, 200, 201]) {
@@ -279,14 +279,10 @@ test('P03 키보드: 입력→Tab 편집→textarea Enter→취소→계획·백
     'N 입력→Enter, Tab으로 편집, textarea Enter와 Escape, 계획/데이터 trap',
     'textarea Enter 줄바꿈만; Tab/ShiftTab/Escape 의미와 호출 focus 유지',
     async () => {
-      await tabTo(page, page.getByLabel('새 할 일 제목'))
+      await tabTo(page, page.getByLabel('할 일 메모'))
       await page.keyboard.type('Keyboard beta')
       await page.keyboard.press('Enter')
-      await page.keyboard.press('Tab')
-      await page.keyboard.press('Tab')
-      await page.keyboard.press('Tab')
-      await page.keyboard.press('Tab')
-      await page.keyboard.press('Tab')
+      await tabTo(page, page.getByRole('button', { name: 'Keyboard beta 편집', exact: true }))
       await page.keyboard.press('Enter')
       await expect(page.getByLabel('제목', { exact: true })).toBeFocused()
       await page.keyboard.press('End')
@@ -367,8 +363,8 @@ test('P04 모바일 touch: 입력 Enter→편집→완료 영역 복원→계획
       '터치 입력, Enter→상세 저장→완료→전체 검색/완료 복원',
       '1개 기본값, 44px 목표, 검색 중 완료/복원 일치',
       async () => {
-        await page.getByLabel('새 할 일 제목').tap()
-        await page.getByLabel('새 할 일 제목').fill('모바일 확인')
+        await page.getByLabel('할 일 메모').tap()
+        await page.getByLabel('할 일 메모').fill('모바일 확인')
         await page.keyboard.press('Enter')
         await page.getByRole('button', { name: '모바일 확인 편집', exact: true }).tap()
         await page.getByLabel('분류 선택').fill('휴대폰')
@@ -379,9 +375,9 @@ test('P04 모바일 touch: 입력 Enter→편집→완료 영역 복원→계획
         await page.getByRole('checkbox', { name: '모바일 확인 완료', exact: true }).tap()
         await all(page)
         await page.getByLabel('제목·분류 검색').fill('휴대폰')
-        await page.getByRole('checkbox', { name: '모바일 확인 미완료로 복원', exact: true }).tap()
+        await page.getByRole('checkbox', { name: '모바일 확인 완료 취소', exact: true }).tap()
         expect((await stored(page))[0].completedAt).toBeNull()
-        await expect(page.getByLabel('새 할 일 제목')).toBeFocused()
+        await expect(page.getByLabel('할 일 메모')).toBeFocused()
         await page.getByLabel('제목·분류 검색').fill('')
         await page
           .getByRole('navigation', { name: '모바일 보기' })
@@ -428,7 +424,7 @@ test('P05 320px: 긴 제목·분류 저장→계획/복원→취소', async ({ p
     '긴 제목 추가→네 우선순위/분류 경계→저장→긴 파일명 미리보기',
     'maxLength24/trim/null, 모든 컨트롤 접근/가로 넘침 없음',
     async () => {
-      await page.getByLabel('새 할 일 제목').fill('긴'.repeat(200))
+      await page.getByLabel('할 일 메모').fill('긴'.repeat(200))
       await page.keyboard.press('Enter')
       await page.locator('.task-body').click()
       for (const priority of ['low', 'medium', 'none', 'high'])
@@ -481,7 +477,7 @@ test('P06 가시 영역 390×480: 입력→상세→복원 오류·재선택', a
     '입력→상세 분류 저장→손상 파일 오류→정상 미리보기',
     '입력/저장/오류/적용에 스크롤로 접근, 원본 무변경',
     async () => {
-      await page.getByLabel('새 할 일 제목').fill('가시 영역')
+      await page.getByLabel('할 일 메모').fill('가시 영역')
       await page.keyboard.press('Enter')
       await page.locator('.task-body').click()
       await page.getByLabel('분류 선택').fill('작은 화면')
@@ -506,7 +502,7 @@ test('P06 가시 영역 390×480: 입력→상세→복원 오류·재선택', a
     },
   )
 })
-test('P07 기한/집중: 어제→이어가기→집중 해제→미래 기한', async ({ page }, info) => {
+test('P07 기한/집중: 어제→이어가기→오늘에서 빼기→미래 기한', async ({ page }, info) => {
   const tasks = [
     make('겹침', { dueDate: day, focusDate: '2026-10-01' }),
     make('미래', { dueDate: '2026-10-03', focusDate: '2026-10-01' }),
@@ -528,25 +524,27 @@ test('P07 기한/집중: 어제→이어가기→집중 해제→미래 기한',
       await page.getByRole('button', { name: '오늘 계획하기', exact: true }).click()
       await page
         .getByRole('dialog')
-        .getByRole('button', { name: '겹침 집중하기', exact: true })
+        .getByRole('button', { name: '겹침 오늘에 넣기', exact: true })
         .click()
       await page
         .getByRole('dialog')
-        .getByRole('button', { name: '겹침 집중 해제', exact: true })
+        .getByRole('button', { name: '겹침 오늘에서 빼기', exact: true })
         .click()
       await page.keyboard.press('Escape')
       await expect(
-        page.getByText('집중은 해제했습니다. 기한 때문에 오늘에도 표시됩니다.', { exact: true }),
+        page.getByText('오늘 선택은 해제했어요. 기한이 오늘까지라 목록에는 남아 있어요.', {
+          exact: true,
+        }),
       ).toBeVisible()
       await expect(page.getByRole('button', { name: '기한 편집', exact: true })).toBeVisible()
       await page.getByRole('button', { name: '오늘 계획하기', exact: true }).click()
-      await page.getByRole('button', { name: '미래 집중하기', exact: true }).click()
+      await page.getByRole('button', { name: '미래 오늘에 넣기', exact: true }).click()
       await page.keyboard.press('Escape')
       const chosen = (await stored(page)).find((t) => t.id === '미래')!
       expect(chosen).toMatchObject({ ...tasks[1], focusDate: day, updatedAt: expect.any(String) })
-      await page.getByRole('button', { name: '미래 집중 해제', exact: true }).click()
+      await page.getByRole('button', { name: '미래 오늘에서 빼기', exact: true }).click()
       await expect(page.getByRole('button', { name: '미래 편집', exact: true })).toHaveCount(0)
-      await expect(page.getByRole('region', { name: '오늘 집중 요약' })).toContainText(
+      await expect(page.getByRole('region', { name: '오늘 계획 요약' })).toContainText(
         '0개 · 기한으로 표시된 1개',
       )
       await all(page)
@@ -575,10 +573,10 @@ test('P08 많은 일: 50→검색/후보→오늘, 후보 없음 복구', async 
       await page.getByLabel('제목·분류 검색').fill('불일치')
       await page.getByRole('button', { name: '오늘 계획하기', exact: true }).click()
       await expect(page.locator('.plan-row')).toHaveCount(1)
-      await page.getByRole('button', { name: '업무-49 집중하기', exact: true }).click()
+      await page.getByRole('button', { name: '업무-49 오늘에 넣기', exact: true }).click()
       await page.keyboard.press('Escape')
       await expect(page.getByLabel('제목·분류 검색')).toHaveValue('불일치')
-      await expect(page.getByRole('heading', { name: '일치하는 할 일이 없습니다' })).toBeVisible()
+      await expect(page.getByRole('heading', { name: '검색 결과가 없어요' })).toBeVisible()
       await page.getByRole('button', { name: '검색 지우기', exact: true }).first().click()
       await expect(page.locator('.task-row')).toHaveCount(1)
       await all(page)
@@ -593,7 +591,7 @@ test('P08 많은 일: 50→검색/후보→오늘, 후보 없음 복구', async 
 })
 test('P09 실수 복구: 삭제 취소→완료/편집→이전 예시 제거', async ({ page }, info) => {
   await page.goto('./')
-  await page.getByLabel('새 할 일 제목').fill('원본 사용자')
+  await page.getByLabel('할 일 메모').fill('원본 사용자')
   await page.keyboard.press('Enter')
   await check(
     page,
@@ -601,7 +599,7 @@ test('P09 실수 복구: 삭제 취소→완료/편집→이전 예시 제거', 
     ['D03', 'D05', 'D06'],
     'UI user task mixed with optional demos',
     '삭제/undo→완료→다른 제목 편집→undo→이전 예시 제거',
-    '삭제 전체 복원, 완료 undo 다른 속성 유지, 이전 예시 제거/사용자 보존',
+    '삭제 전체 복원, 최근 편집 undo는 이전 완료 유지, 이전 예시 제거/사용자 보존',
     async () => {
       const before = await stored(page)
       await page.locator('.task-body').click()
@@ -616,15 +614,15 @@ test('P09 실수 복구: 삭제 취소→완료/편집→이전 예시 제거', 
       await page.getByRole('button', { name: '저장', exact: true }).click()
       await page.getByRole('button', { name: '실행 취소', exact: true }).click()
       expect((await stored(page))[0]).toMatchObject({
-        title: '수정 보존',
-        completedAt: null,
+        title: '원본 사용자',
         id: before[0].id,
       })
+      expect((await stored(page))[0].completedAt).not.toBeNull()
       await legacyExamples(page)
       const menu = page.locator('.sidebar .app-menu')
       await menu.locator('summary').click()
       expect(await stored(page)).toHaveLength(6)
-      await menu.getByRole('button', { name: '예시 데이터 제거', exact: true }).click()
+      await menu.getByRole('button', { name: '예시 할 일 지우기', exact: true }).click()
       expect(await stored(page)).toHaveLength(1)
       expect((await stored(page))[0].isDemo).toBe(false)
     },
@@ -636,7 +634,7 @@ test('P10 보존: 다운로드→빈 context 복원→재백업→교체 취소'
   baseURL,
 }, info) => {
   await page.goto('./')
-  await page.getByLabel('새 할 일 제목').fill('한글 English 😀')
+  await page.getByLabel('할 일 메모').fill('한글 English 😀')
   await page.keyboard.press('Enter')
   await page.locator('.task-body').click()
   await page.getByLabel('기한', { exact: true }).fill('2026-10-03')
@@ -706,14 +704,14 @@ test('P11 시각/확대: 200% reflow 동등 조건→reduced motion→오류 복
       '축소 layout에서 빈 오류→입력→편집 focus/이름/텍스트 상태→취소',
       '가로 넘침 없음, 오류 연결과 focus ring, motion 제거, 상태 텍스트 존재',
       async () => {
-        const input = page.getByLabel('새 할 일 제목')
+        const input = page.getByLabel('할 일 메모')
         await input.fill(' ')
         await page.keyboard.press('Enter')
         await expect(input).toHaveAttribute('aria-describedby', 'quick-error')
         await expect(page.getByRole('alert')).toBeVisible()
         await input.fill('확대 확인')
         await page.keyboard.press('Enter')
-        await expect(page.locator('.task-row .focus-label')).toHaveText('오늘 집중')
+        await expect(page.locator('.task-row .focus-label')).toHaveText('오늘 계획')
         await page.locator('.task-body').focus()
         expect(
           await page.locator('.task-body').evaluate((el) => getComputedStyle(el).outlineStyle),
@@ -756,7 +754,7 @@ test('P12 경계 입력: 공백·조합→편집 조합 Enter→검색', async (
     '앞뒤 공백 제목, quick 조합 Enter, 완료 후 제출, 입력 N / Escape와 검색 Enter',
     'trim/내부 문자 보존, 조합 중 생성0, 검색 Enter 생성 없음',
     async () => {
-      const input = page.getByLabel('새 할 일 제목')
+      const input = page.getByLabel('할 일 메모')
       await input.fill('  한글 English 😀 / N  ')
       await input.dispatchEvent('compositionstart')
       await page.keyboard.press('Enter')

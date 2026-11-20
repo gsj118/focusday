@@ -1,0 +1,25 @@
+
+Running 18 tests using 1 worker
+
+(node:18136) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\e2e\mobile-accessibility.spec.ts:5:1 › 모바일 터치·작은 가시 영역 편집·알림과 하단 탐색 분리 (2.4s)
+  ok  2 tests\e2e\mobile-accessibility.spec.ts:44:1 › 실제 렌더링 색·hover·포커스·접근 가능한 입력과 버튼 이름 (2.3s)
+  ok  3 tests\e2e\v1.5.spec.ts:60:1 › 한국어 메모 → 수정 가능한 미리보기 → 저장과 원문 되돌리기 (3.9s)
+  ok  4 tests\e2e\v1.5.spec.ts:101:1 › 잘못된 여러 줄은 전체 보류·원문 유지·인식 끄기·Shift+Enter (2.4s)
+  ok  5 tests\e2e\v1.5.spec.ts:126:1 › 정한 3개 완료 후 종료·새 입력이나 새로고침으로 채우지 않음·완료 되돌리기 (3.1s)
+  ok  6 tests\e2e\v1.5.spec.ts:161:1 › 분량 변경은 명시적 재계획·되돌리기·기한 밖 안내·원본 속성 유지 (2.1s)
+  ok  7 tests\e2e\v1.5.spec.ts:181:1 › 나중에 하기와 다시 이어가기·되돌리기·다음 날 계획 초기화 (2.5s)
+  ok  8 tests\e2e\v1.5.spec.ts:200:1 › 편집의 오늘 선택은 자동 계획과 일치·취소 불변·저장과 삭제도 되돌리기 (4.1s)
+  ok  9 tests\e2e\v1.5.spec.ts:226:1 › 자동 설정 손상 시 기존 할 일·문구 보존, 자동 설정만 명시적 초기화 (1.7s)
+  ok 10 tests\e2e\v1.5.spec.ts:240:1 › 체험의 입력·완료·설정·백업/복원·초기화가 개인 저장소 세 개를 보존 (5.9s)
+  ok 11 tests\e2e\v1.5.spec.ts:283:1 › 전체 복원 직후 오늘 계획에는 복원된 항목만 포함 (1.9s)
+  ok 12 tests\e2e\v1.5.spec.ts:300:1 › 브라우저 저장소 접근 자체가 차단되어도 체험은 사용 가능 (1.8s)
+  ok 13 tests\e2e\v1.5.spec.ts:318:1 › 자동 설정 쓰기 실패는 경고·메모리 유지·재시도하고 할 일을 바꾸지 않음 (1.7s)
+  ok 14 tests\e2e\v1.5.spec.ts:356:3 › 자동화 체험 반응형 1366×768 (3.0s)
+  ok 15 tests\e2e\v1.5.spec.ts:356:3 › 자동화 체험 반응형 390×844 (3.0s)
+  ok 16 tests\e2e\v1.5.spec.ts:356:3 › 자동화 체험 반응형 320×568 (3.1s)
+  ok 17 tests\e2e\v1.5.spec.ts:356:3 › 자동화 체험 반응형 768×1024 (3.3s)
+  ok 18 tests\e2e\v1.5.spec.ts:356:3 › 자동화 체험 반응형 720×450 (3.5s)
+
+  18 passed (55.8s)

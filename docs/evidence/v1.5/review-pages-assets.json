@@ -1,0 +1,39 @@
+{
+  "appVersion": "1.5.0",
+  "url": "http://127.0.0.1:4174/focusday/",
+  "checkedAt": "2026-11-20T02:15:22.882Z",
+  "sourceCommit": null,
+  "scope": "HTTP, content types, version marker, optional exact dist asset hashes; no browser UI claims",
+  "assets": [
+    {
+      "url": "http://127.0.0.1:4174/focusday/",
+      "status": 200,
+      "sha256": "5129151be73341fa1f4745cc970aaf4d9c4e8afd0de891ac241ac46c05b68170"
+    },
+    {
+      "url": "http://127.0.0.1:4174/focusday/favicon.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "bytes": 269,
+      "sha256": "b77cd4bf6b9ff2af3857ad409795e117daea14c673bfc1ed94fdd5ac62f58e2c",
+      "matchesLocalBuild": true
+    },
+    {
+      "url": "http://127.0.0.1:4174/focusday/assets/index-BkTyUrUo.js",
+      "status": 200,
+      "contentType": "text/javascript",
+      "bytes": 306804,
+      "sha256": "98d67f357b9302adffc9e235c174af01d42be118abbe4dd2b510fdcd2f29d8e4",
+      "matchesLocalBuild": true
+    },
+    {
+      "url": "http://127.0.0.1:4174/focusday/assets/index-e3UxMrYF.css",
+      "status": 200,
+      "contentType": "text/css",
+      "bytes": 41487,
+      "sha256": "628522dc250df9b6d9bc118abc8706b8a9017f631902c1aaf92e0b6bb9b41f06",
+      "matchesLocalBuild": true
+    }
+  ],
+  "status": "PASS"
+}

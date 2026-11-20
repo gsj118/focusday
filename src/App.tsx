@@ -1,6 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import {
-  applyUndo,
   calendarDate,
   createTask,
   isOverdue,
@@ -14,12 +13,23 @@ import {
   type AppData,
   type Task,
   type TaskDraft,
-  type UndoAction,
   type View,
 } from './domain'
 import { loadData, saveData, type LoadResult } from './storage'
-import { parseCapture } from './capture'
-import { automaticToday, nextCandidate, selectionReason } from './automation'
+import {
+  automaticToday,
+  nextCandidate,
+  selectionReason,
+  dailyPlan,
+  resizePlan,
+  addToPlan,
+  rankedTasks,
+  planCapturedTasks,
+  type AutoState,
+} from './automation'
+import { undoTasks, undoLabel, type RecentAction } from './history'
+import { CaptureComposer } from './components/CaptureComposer'
+import type { MemoTask } from './memo'
 import { useAutomation } from './useAutomation'
 import type { AppSession } from './session'
 import { serializeBackup, prepareRestore, type RestoreMode } from './backup'
@@ -47,12 +57,11 @@ export default function App({ session }: { session: AppSession }) {
   const [saveStatus, setSaveStatus] = useState<'initial' | 'saved' | 'error'>('initial')
   const [view, setView] = useState<View>('today')
   const [title, setTitle] = useState('')
-  const [recognize, setRecognize] = useState(true)
-  const [inputError, setInputError] = useState('')
   const [query, setQuery] = useState('')
   const [editing, setEditing] = useState<Task | null>(null)
   const [panel, setPanel] = useState<'plan' | 'data' | 'preferences' | null>(null)
-  const [undo, setUndo] = useState<UndoAction | null>(null)
+  const [undo, setUndo] = useState<RecentAction | null>(null)
+  const [toastVisible, setToastVisible] = useState(false)
   const undoToken = useRef(0)
   const [completedOpen, setCompletedOpen] = useState(false)
   const [achievementsOpen, setAchievementsOpen] = useState(false)
@@ -67,18 +76,29 @@ export default function App({ session }: { session: AppSession }) {
   const input = useRef<HTMLTextAreaElement>(null)
   const search = useRef<HTMLInputElement>(null)
   const composer = useRef<HTMLFormElement>(null)
-  const composing = useRef(false)
-  const lastCompositionEnd = useRef(0)
   const returnFocus = useRef<HTMLElement | null>(null)
-  const pendingFocus = useRef<HTMLElement | 'input' | 'completed' | 'achievements' | null>(null)
+  const pendingFocus = useRef<HTMLElement | 'input' | 'completed' | 'achievements' | 'next' | null>(
+    null,
+  )
+  const nextButton = useRef<HTMLButtonElement>(null)
+  const finishHeading = useRef<HTMLHeadingElement>(null)
   const completedSummary = useRef<HTMLElement>(null)
   const achievementsSummary = useRef<HTMLElement>(null)
   const achievementFocus = useRef(false)
   const resetDialog = useRef<HTMLDialogElement>(null)
   const today = useToday()
   const ui = usePreferences(getStorage)
-  const auto = useAutomation(getStorage, today)
-  const captured = parseCapture(title, today, recognize)
+  const auto = useAutomation(getStorage, today, data.tasks)
+  const dayPlan = dailyPlan(data.tasks, today, auto.state)
+  const planCompleted = dayPlan.filter((task) => task.completedAt).length
+  const planFinished = dayPlan.length > 0 && dayPlan.length === planCompleted
+  const outsideDue = data.tasks.filter(
+    (task) =>
+      !task.completedAt &&
+      task.dueDate &&
+      task.dueDate <= today &&
+      !dayPlan.some((planned) => planned.id === task.id),
+  )
   const planned = auto.state.enabled
     ? automaticToday(data.tasks, today, auto.state)
     : data.tasks.filter((t) => isToday(t, today))
@@ -113,9 +133,67 @@ export default function App({ session }: { session: AppSession }) {
     setData(next)
     if (guard === 'ready') persist(next)
   }
+  function remember(action: RecentAction) {
+    setUndo(action)
+    setToastVisible(true)
+    setNotice(null)
+  }
+  function actionContext(message: string) {
+    return { token: ++undoToken.current, day: today, message, autoBefore: auto.state }
+  }
+  function changePlan(patch: Partial<Omit<AutoState, 'version' | 'day'>>, message: string) {
+    remember({ ...actionContext(message), kind: 'automation' })
+    auto.update(patch)
+  }
+  function revert() {
+    if (!undo) return
+    if (undo.kind === 'automation' && undo.day !== today) return
+    if (undo.kind !== 'automation') change((tasks) => undoTasks(tasks, undo))
+    auto.restore(undo.autoBefore)
+    if (undo.kind === 'capture' && !title.trim()) setTitle(undo.raw)
+    setUndo(null)
+    setToastVisible(false)
+    setEncouragement(null)
+    setNotice({ text: '최근 작업을 되돌렸어요.' })
+    pendingFocus.current = undo.kind === 'capture' ? 'input' : 'next'
+  }
+  useEffect(() => {
+    if (undo?.kind !== 'automation' || undo.day === today) return
+    setUndo(null)
+    setToastVisible(false)
+    setNotice({ text: '날짜가 바뀌어 이전 계획은 되돌릴 수 없어요.' })
+  }, [today, undo])
+  function captureTasks(items: MemoTask[], raw: string, includeToday: boolean) {
+    const additions = items.map((item) => ({
+      ...createTask(item.title, includeToday ? 'today' : 'all', today),
+      dueDate: item.dueDate,
+      category: item.category,
+      priority: item.priority,
+    }))
+    const dueCount = additions.filter((task) => task.dueDate && task.dueDate <= today).length
+    const nextTasks = [...current.current.tasks, ...additions]
+    const nextPlan = planCapturedTasks(
+      current.current.tasks,
+      additions,
+      today,
+      auto.state,
+      includeToday,
+    )
+    remember({
+      ...actionContext(
+        `할 일 ${additions.length}개를 담았어요.${auto.state.enabled && dueCount && !includeToday ? ` 오늘까지 할 일 ${dueCount}개를 오늘 계획에 넣었어요.` : ''}`,
+      ),
+      kind: 'capture',
+      tasks: additions,
+      raw,
+    })
+    change(() => nextTasks)
+    if (nextPlan !== auto.state) auto.update(nextPlan, nextTasks)
+    setTitle('')
+  }
   function focusInput() {
-    input.current?.focus()
-    composer.current?.scrollIntoView({ block: 'nearest' })
+    input.current?.focus({ preventScroll: true })
+    input.current?.scrollIntoView({ block: 'center' })
   }
   function openEditor(task: Task, origin: HTMLElement) {
     returnFocus.current = origin
@@ -149,14 +227,22 @@ export default function App({ session }: { session: AppSession }) {
         ? { ...t, completedAt: t.completedAt ? null : stamp, updatedAt: stamp }
         : t,
     )
-    focusAfterRemoval(task)
+    if (featured?.id === task.id) pendingFocus.current = 'next'
+    else focusAfterRemoval(task)
     const before = selectAchievements(current.current.tasks, actionDay, demo).length
     change(() => next)
     if (auto.state.currentTaskId === actual.id) auto.update({ currentTaskId: null })
     setEncouragement(null)
     if (!actual.completedAt) {
       const token = ++undoToken.current
-      setUndo({ token, kind: 'complete', task: actual })
+      remember({
+        token,
+        day: today,
+        message: '할 일을 완료했어요.',
+        autoBefore: auto.state,
+        kind: 'complete',
+        task: actual,
+      })
       const count = selectAchievements(next, actionDay, demo).length
       const milestone = actual.isDemo && !demo ? null : completionMilestone(before, count)
       if (milestone) {
@@ -164,12 +250,22 @@ export default function App({ session }: { session: AppSession }) {
         if (text) setEncouragement({ token, day: actionDay, count, text })
       }
     } else {
-      if (undo?.kind === 'complete' && undo.task.id === actual.id) setUndo(null)
-      setNotice({ text: '미완료로 복원했습니다.' })
+      remember({
+        ...actionContext('완료한 일을 다시 할 일로 바꿨어요.'),
+        kind: 'edit',
+        task: actual,
+      })
     }
   }
   function toggleFocus(task: Task, fromPlan = false) {
-    const removing = task.focusDate === today
+    const removing = auto.state.enabled
+      ? (auto.state.planTaskIds || []).includes(task.id)
+      : task.focusDate === today
+    remember({
+      ...actionContext(removing ? '오늘 계획에서 뺐어요.' : '오늘 할 일에 넣었어요.'),
+      kind: 'edit',
+      task,
+    })
     change((tasks) =>
       tasks.map((t) =>
         t.id === task.id
@@ -177,29 +273,56 @@ export default function App({ session }: { session: AppSession }) {
           : t,
       ),
     )
-    if (removing && task.dueDate && task.dueDate <= today)
-      setNotice({ text: '집중은 해제했습니다. 기한 때문에 오늘에도 표시됩니다.', taskId: task.id })
+    if (auto.state.enabled)
+      auto.update(
+        removing
+          ? {
+              planTaskIds: (auto.state.planTaskIds || []).filter((id) => id !== task.id),
+              currentTaskId: auto.state.currentTaskId === task.id ? null : auto.state.currentTaskId,
+            }
+          : addToPlan(auto.state, [task.id]),
+      )
+    if (removing && !auto.state.enabled && task.dueDate && task.dueDate <= today)
+      setNotice({
+        text: '오늘 선택은 해제했어요. 기한이 오늘까지라 목록에는 남아 있어요.',
+        taskId: task.id,
+      })
     else {
       setNotice({
         text: removing
           ? auto.state.enabled
-            ? '직접 선택한 집중을 해제했습니다. 자동 계획에서 다시 추천될 수 있습니다.'
-            : '집중을 해제했습니다. 전체에는 남아 있습니다.'
-          : '기한을 바꾸지 않고 오늘 집중으로 선택했습니다.',
+            ? '오늘 계획에서 뺐어요. 전체 목록에는 그대로 남아 있어요.'
+            : '오늘 계획에서 뺐어요. 전체 목록에는 그대로 남아 있어요.'
+          : '기한은 그대로 두고 오늘 할 일에 넣었어요.',
       })
       if (removing && view === 'today' && !fromPlan) focusAfterRemoval(task)
     }
   }
-  function saveEditor(draft: TaskDraft) {
+  function saveEditor(draft: TaskDraft, includeToday: boolean) {
     const task = editing!
+    remember({ ...actionContext('할 일을 수정했어요.'), kind: 'edit', task })
     change((tasks) => tasks.map((t) => (t.id === task.id ? updateTask(t, draft) : t)))
+    if (auto.state.enabled && dayPlan.some((planned) => planned.id === task.id) !== includeToday) {
+      auto.update(
+        includeToday
+          ? addToPlan(auto.state, [task.id])
+          : {
+              planTaskIds: (auto.state.planTaskIds || []).filter((id) => id !== task.id),
+              currentTaskId: auto.state.currentTaskId === task.id ? null : auto.state.currentTaskId,
+            },
+      )
+    }
     if (
+      !auto.state.enabled &&
       task.focusDate === today &&
       draft.focusDate !== today &&
       draft.dueDate &&
       draft.dueDate <= today
     )
-      setNotice({ text: '집중은 해제했습니다. 기한 때문에 오늘에도 표시됩니다.', taskId: task.id })
+      setNotice({
+        text: '오늘 선택은 해제했어요. 기한이 오늘까지라 목록에는 남아 있어요.',
+        taskId: task.id,
+      })
     closeEditor()
   }
   function retry() {
@@ -256,33 +379,35 @@ export default function App({ session }: { session: AppSession }) {
       downloadJSON(serialized.content, `focusday-${demo ? 'demo-' : ''}backup-${today}.json`)
       return {
         ok: true,
-        reason: `전체 ${current.current.tasks.length}개 백업 파일 다운로드를 시작했습니다. (${(serialized.byteSize / 1024 / 1024).toFixed(2)}MiB)`,
+        reason: `할 일 ${current.current.tasks.length}개를 담은 백업 파일 다운로드를 시작했어요. (${(serialized.byteSize / 1024 / 1024).toFixed(2)}MiB)`,
       }
     } catch {
-      return { ok: false, reason: '백업 파일을 만들지 못했습니다. 다시 시도해 주세요.' }
+      return { ok: false, reason: '백업 파일을 만들지 못했어요. 다시 시도해 주세요.' }
     }
   }
   function restoreBackup(incoming: AppData, mode: RestoreMode) {
     if (guard !== 'ready')
-      return { ok: false, reason: '저장 보호 중입니다. 기존 원본 복구 절차를 먼저 진행해 주세요.' }
+      return {
+        ok: false,
+        reason: '저장된 원본을 보호하고 있어요. 먼저 원본을 다시 읽거나 복구해 주세요.',
+      }
     const next = prepareRestore(current.current, incoming, mode).data
     const result = saveData(next, getStorage)
     if (!result.ok)
       return {
         ok: false,
         reason:
-          '복원 저장에 실패했습니다. 적용 전 목록과 저장 원본을 유지했습니다. 다시 시도하거나 취소해 주세요.',
+          '복원한 내용을 저장하지 못했어요. 기존 목록은 그대로예요. 다시 시도하거나 취소해 주세요.',
       }
     current.current = next
     setData(next)
-    auto.update({ currentTaskId: null, skippedTaskIds: [] })
+    auto.update({ currentTaskId: null, skippedTaskIds: [], planTaskIds: null }, next.tasks)
     setSaveStatus('saved')
     setUndo(null)
     setEditing(null)
     setQuery('')
-    setInputError('')
     setCompletedOpen(false)
-    setNotice({ text: `복원 완료: 전체 ${next.tasks.length}개를 저장했습니다.` })
+    setNotice({ text: `복원했어요. 전체 할 일 ${next.tasks.length}개를 저장했어요.` })
     return { ok: true, reason: '' }
   }
   useEffect(() => {
@@ -300,6 +425,12 @@ export default function App({ session }: { session: AppSession }) {
       return
     }
     pendingFocus.current = null
+    if (target === 'next') {
+      if (nextButton.current) nextButton.current.focus()
+      else if (finishHeading.current) finishHeading.current.focus()
+      else focusInput()
+      return
+    }
     if (target === 'completed') {
       completedSummary.current?.focus()
       completedSummary.current?.scrollIntoView({ block: 'nearest' })
@@ -324,7 +455,6 @@ export default function App({ session }: { session: AppSession }) {
       const target = e.target as HTMLElement
       if (
         e.isComposing ||
-        composing.current ||
         e.ctrlKey ||
         e.altKey ||
         e.metaKey ||
@@ -358,16 +488,24 @@ export default function App({ session }: { session: AppSession }) {
           key={item}
           className={view === item ? 'active' : ''}
           aria-current={view === item ? 'page' : undefined}
+          aria-label={mobile && item === 'all' ? `전체 할 일 ${allCount}` : undefined}
           onClick={() => {
             setView(item)
             setNotice(null)
+            if (mobile) window.scrollTo({ top: 0 })
           }}
         >
           <Icon name={item === 'today' ? 'sun' : 'list'} />
-          <span>{item === 'today' ? '오늘' : '전체 할 일'}</span>
+          <span>{item === 'today' ? '오늘' : mobile ? '전체' : '전체 할 일'}</span>
           <span className="nav-count">{item === 'today' ? todayCount : allCount}</span>
         </button>
       ))}
+      {mobile && (
+        <button className="mobile-capture" aria-label="메모 입력" onClick={focusInput}>
+          <Icon name="plus" />
+          <span>메모</span>
+        </button>
+      )}
     </nav>
   )
   const menu = (
@@ -377,13 +515,13 @@ export default function App({ session }: { session: AppSession }) {
         if (e.key === 'Escape') e.currentTarget.open = false
       }}
     >
-      <summary aria-label="예시 및 앱 정보">
+      <summary aria-label="설정 및 도움말">
         <Icon name="more" />
-        <span>예시 및 앱 정보</span>
+        <span>설정 및 도움말</span>
       </summary>
       <div className="menu-content">
-        <strong>가볍게 시작해 보세요</strong>
-        <p>예시 체험은 개인 목록과 분리됩니다. 변경은 체험 화면에만 적용됩니다.</p>
+        <strong>먼저 써 보세요</strong>
+        <p>예시로 기능을 써 보세요. 내 할 일에는 영향을 주지 않아요.</p>
         <button className="secondary-button" onClick={addExamples}>
           예시로 둘러보기
         </button>
@@ -393,10 +531,10 @@ export default function App({ session }: { session: AppSession }) {
           onClick={() => {
             change((tasks) => tasks.filter((t) => !t.isDemo))
             setUndo(null)
-            setNotice({ text: '예시만 제거했습니다. 직접 만든 할 일은 유지됩니다.' })
+            setNotice({ text: '예시만 지웠어요. 직접 적은 할 일은 그대로예요.' })
           }}
         >
-          예시 데이터 제거
+          예시 할 일 지우기
         </button>
         <hr />
         <button
@@ -414,19 +552,19 @@ export default function App({ session }: { session: AppSession }) {
         </button>
         {ui.error && (
           <p className="field-hint">
-            설정 저장 확인이 필요합니다. 문구와 격려 설정에서 복구할 수 있습니다.
+            문구 설정을 저장하지 못했어요. 문구와 격려 설정에서 다시 확인해 주세요.
           </p>
         )}
         <hr />
         <strong>Focusday 1.5.0</strong>
         <p>
-          계정 없이 이 브라우저에 저장합니다. JSON 파일로 직접 백업할 수 있습니다. 자동 서버
-          백업·기기 간 동기화는 제공하지 않습니다.
+          계정 없이 이 브라우저에 저장해요. 다른 기기에서도 쓰려면 백업 파일을 내려받아 가져와
+          주세요.
         </p>
         <p className="field-hint">
           N 새 입력 · / 검색
           <br />
-          입력 중에는 단축키가 실행되지 않습니다.
+          글을 입력하는 동안에는 실행되지 않아요.
         </p>
       </div>
     </details>
@@ -440,6 +578,7 @@ export default function App({ session }: { session: AppSession }) {
       onFocus={toggleFocus}
       onEdit={openEditor}
       showCompletionTime={showCompletionTime}
+      planned={auto.state.enabled ? dayPlan.some((planned) => planned.id === task.id) : undefined}
       reason={
         auto.state.enabled && view === 'today' && !task.completedAt
           ? selectionReason(task, today)
@@ -475,7 +614,7 @@ export default function App({ session }: { session: AppSession }) {
             <Icon name="check" size={18} />
           </span>
           <span>
-            Focusday<span className="brand-tagline">정리는 자동으로, 실행은 하나씩</span>
+            Focusday<span className="brand-tagline">정리는 자동으로</span>
           </span>
         </a>
         <button
@@ -518,7 +657,7 @@ export default function App({ session }: { session: AppSession }) {
               className={`status-dot ${saveStatus === 'saved' && guard === 'ready' ? 'saved' : ''}`}
             />
             {demo
-              ? '체험 중 · 저장되지 않음'
+              ? '체험 · 저장 안 됨'
               : guard !== 'ready'
                 ? '저장 보호 중'
                 : saveStatus === 'error'
@@ -526,14 +665,14 @@ export default function App({ session }: { session: AppSession }) {
                   : saveStatus === 'saved'
                     ? '저장됨'
                     : initial.raw
-                      ? '로컬 데이터 불러옴'
+                      ? '저장된 할 일 불러옴'
                       : '이 브라우저에 저장'}
           </div>
         </div>
         <header className="page-header">
           <div className="page-heading">
             <div className="page-title">
-              <h1>{view === 'today' ? '오늘' : '전체 할 일'}</h1>
+              <h1>{view === 'today' ? '오늘 할 일' : '전체 할 일'}</h1>
               <span className="header-date">
                 {new Intl.DateTimeFormat('ko-KR', {
                   month: 'long',
@@ -548,66 +687,116 @@ export default function App({ session }: { session: AppSession }) {
                 : '생각난 일은 담아두고, 오늘 할 일을 골라보세요.'}
             </p>
           </div>
+          <div className="page-actions">
+            <button className="text-button history-button" onClick={focusInput}>
+              <Icon name="plus" size={17} />
+              메모 담기
+            </button>
+            {!auto.state.enabled && (
+              <button
+                className="text-button"
+                onClick={(event) => openPanel('plan', event.currentTarget)}
+              >
+                오늘 계획하기
+              </button>
+            )}
+            <button
+              className="text-button history-button"
+              disabled={!undo}
+              onClick={revert}
+              aria-label="최근 작업 되돌리기"
+            >
+              <Icon name="undo" size={17} />
+              <span>{undo ? undoLabel(undo) : '되돌리기'}</span>
+            </button>
+            <details
+              className="plan-options"
+              onKeyDown={(event) => {
+                if (event.key === 'Escape') event.currentTarget.open = false
+              }}
+            >
+              <summary>
+                <Icon name="sliders" size={17} />
+                계획 설정
+              </summary>
+              <section className="automation-controls" aria-label="자동 계획 설정">
+                <label className="automation-toggle">
+                  <input
+                    type="checkbox"
+                    checked={auto.state.enabled}
+                    disabled={auto.blocked}
+                    onChange={(e) =>
+                      changePlan(
+                        { enabled: e.target.checked, currentTaskId: null, skippedTaskIds: [] },
+                        e.target.checked ? '자동 계획을 켰어요.' : '수동 계획으로 바꿨어요.',
+                      )
+                    }
+                  />
+                  자동 계획
+                </label>
+                {auto.state.enabled && (
+                  <label className="daily-limit">
+                    오늘 분량
+                    <select
+                      aria-label="오늘 기본 분량"
+                      value={auto.state.limit}
+                      onChange={(e) =>
+                        changePlan(
+                          resizePlan(
+                            data.tasks,
+                            today,
+                            auto.state,
+                            Number(e.target.value) as 1 | 3 | 5,
+                          ),
+                          '오늘 분량을 다시 정했어요.',
+                        )
+                      }
+                    >
+                      <option value={1}>1개</option>
+                      <option value={3}>3개</option>
+                      <option value={5}>5개</option>
+                    </select>
+                  </label>
+                )}
+                <p>기한과 우선순위를 보고 골라요. 마친 자리에는 새 일을 채우지 않아요.</p>
+                {auto.state.enabled && (
+                  <button
+                    className="secondary-button"
+                    onClick={(event) => openPanel('plan', event.currentTarget)}
+                  >
+                    오늘 계획하기
+                  </button>
+                )}
+              </section>
+            </details>
+          </div>
         </header>
         {demo && (
           <section className="demo-banner" aria-label="예시 체험 안내">
             <div>
               <strong>자동화 체험</strong>
-              <span>개인 목록은 그대로 · 새로고침하면 체험 초기화</span>
+              <span>내 목록은 그대로 · 새로고침하면 체험 초기화</span>
             </div>
             <div className="demo-actions">
               <button className="text-button" onClick={() => window.location.reload()}>
                 처음부터 체험
               </button>
               <button className="secondary-button" onClick={leaveDemo}>
-                내 할 일 사용하기
+                내 할 일 시작하기
               </button>
             </div>
           </section>
         )}
-        <section className="automation-controls" aria-label="자동 계획 설정">
-          <label className="automation-toggle">
-            <input
-              type="checkbox"
-              checked={auto.state.enabled}
-              disabled={auto.blocked}
-              onChange={(e) =>
-                auto.update({ enabled: e.target.checked, currentTaskId: null, skippedTaskIds: [] })
-              }
-            />
-            자동 계획
-          </label>
-          {auto.state.enabled && (
-            <label className="daily-limit">
-              기본 분량{' '}
-              <select
-                aria-label="오늘 기본 분량"
-                value={auto.state.limit}
-                onChange={(e) => auto.update({ limit: Number(e.target.value) as 1 | 3 | 5 })}
-              >
-                <option value={1}>1개</option>
-                <option value={3}>3개</option>
-                <option value={5}>5개</option>
-              </select>
-            </label>
-          )}
-          <button
-            className="text-button"
-            onClick={(event) => openPanel('plan', event.currentTarget)}
-          >
-            오늘 계획하기
-          </button>
-        </section>
         {auto.error && (
           <section className="storage-banner" role="alert">
             <p>{auto.error}</p>
             <button className="secondary-button" onClick={auto.retry}>
-              자동 계획 설정 다시 읽기·저장
+              오늘 계획 다시 저장
             </button>
             {auto.blocked && (
               <details>
                 <summary>자동 계획 설정 초기화…</summary>
-                <p>자동 계획 설정만 기본값으로 바꿉니다. 할 일과 문구 설정은 유지합니다.</p>
+                <p>오늘 계획 설정만 처음 상태로 바꿔요. 할 일과 문구 설정은 그대로예요.</p>
                 <button className="secondary-button" onClick={auto.reset}>
                   자동 계획 설정만 초기화
                 </button>
@@ -616,11 +805,11 @@ export default function App({ session }: { session: AppSession }) {
           </section>
         )}
         {view === 'today' && !auto.state.enabled && (
-          <section className="today-planning" aria-label="오늘 집중 요약">
+          <section className="today-planning" aria-label="오늘 계획 요약">
             <div className="planning-copy">
-              <h2>오늘 집중</h2>
+              <h2>오늘 계획</h2>
               <p>
-                직접 집중으로 고른 <strong>{summary.focused}개</strong> · 기한으로 표시된{' '}
+                직접 고른 <strong>{summary.focused}개</strong> · 기한으로 표시된{' '}
                 <strong>{summary.dueOnly}개</strong>
               </p>
               {yesterdayCount > 0 && (
@@ -636,7 +825,7 @@ export default function App({ session }: { session: AppSession }) {
           <section className="storage-banner" role="alert">
             <strong>{loadReason}</strong>
             <p>
-              원본은 자동으로 덮어쓰지 않습니다. 현재 탭에서 만든 할 일은 아직 저장되지 않습니다.
+              저장된 원본은 그대로 보관하고 있어요. 이 탭에서 바꾼 내용은 아직 저장되지 않았어요.
             </p>
             <div>
               {guard === 'unavailable' ? (
@@ -659,404 +848,379 @@ export default function App({ session }: { session: AppSession }) {
         {guard === 'ready' && saveStatus === 'error' && (
           <section className="storage-banner" role="alert">
             <p>
-              변경 사항을 이 브라우저에 저장하지 못했습니다. 현재 탭에서는 사용할 수 있지만
-              새로고침하면 변경 내용이 사라질 수 있습니다.
+              변경 내용을 저장하지 못했어요. 새로고침하기 전에 저장을 다시 시도하거나 백업해 주세요.
             </p>
             <button className="secondary-button" onClick={retry}>
               저장 재시도
             </button>
           </section>
         )}
-        <div className="list-toolbar">
-          <div className="list-label">
-            <Icon name="list" size={17} />
-            <span>할 일 목록</span>
-            <span className="list-hint">제목을 눌러 편집</span>
-          </div>
-          <div className="search-field">
-            <Icon name="search" size={17} />
-            <label className="sr-only" htmlFor="search">
-              제목·분류 검색
-            </label>
-            <input
-              ref={search}
-              id="search"
-              type="search"
-              value={query}
-              placeholder="제목·분류 검색"
-              onChange={(e) => setQuery(e.target.value)}
-            />
-            {query && (
-              <button
-                className="icon-button"
-                aria-label="검색 지우기"
-                onClick={() => {
-                  setQuery('')
-                  search.current?.focus()
-                }}
-              >
-                <Icon name="close" size={17} />
-              </button>
-            )}
-          </div>
-        </div>
-        <form
-          ref={composer}
-          className="quick-add"
-          noValidate
-          onSubmit={(e) => {
-            e.preventDefault()
-            if (composing.current) return
-            const parsed = parseCapture(title, localDate(), recognize)
-            if (parsed.errors.length) {
-              setInputError(
-                parsed.errors
-                  .map((error) =>
-                    title.includes('\n') ? `${error.line}행: ${error.message}` : error.message,
-                  )
-                  .join(' '),
-              )
-              input.current?.focus()
-              return
-            }
-            const additions = parsed.tasks.map((item) => ({
-              ...createTask(item.title, auto.state.enabled ? 'all' : view, localDate()),
-              dueDate: item.dueDate,
-              category: item.category,
-              priority: item.priority,
-            }))
-            change((tasks) => [...tasks, ...additions])
-            setTitle('')
-            setInputError('')
-            focusInput()
-          }}
-        >
-          <span className="add-icon">
-            <Icon name="plus" size={22} />
-          </span>
-          <label className="sr-only" htmlFor="quick-title">
-            새 할 일 제목
-          </label>
-          <textarea
-            rows={Math.min(4, Math.max(1, title.split('\n').length))}
-            ref={input}
-            id="quick-title"
-            value={title}
-            maxLength={24000}
-            placeholder="할 일을 적어보세요"
-            autoComplete="off"
-            onChange={(e) => {
-              setTitle(e.target.value)
-              setInputError('')
-            }}
-            onCompositionStart={() => {
-              composing.current = true
-            }}
-            onCompositionEnd={() => {
-              composing.current = false
-              lastCompositionEnd.current = Date.now()
-            }}
-            onKeyDown={(e) => {
-              if (
-                e.key === 'Enter' &&
-                (composing.current ||
-                  e.nativeEvent.isComposing ||
-                  e.keyCode === 229 ||
-                  Date.now() - lastCompositionEnd.current < 80)
-              ) {
-                e.preventDefault()
-                return
-              }
-              if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault()
-                composer.current?.requestSubmit()
-              }
-            }}
-            aria-invalid={!!inputError}
-            aria-describedby={inputError ? 'quick-error' : 'quick-hint'}
-          />
-          <button className="primary-button add-submit" type="submit">
-            <span className="desktop-add">추가</span>
-            <span className="mobile-add">+ 할 일 추가</span>
-          </button>
-        </form>
-        <div className="composer-caption">
-          <span id="quick-hint">
-            {auto.state.enabled
-              ? '전체에 담고, 오늘 할 일은 자동으로 고릅니다'
-              : view === 'today'
-                ? '새 할 일은 오늘에 담깁니다'
-                : '먼저 담고, 필요할 때 집중하기로 골라보세요'}
-          </span>
-          <span className="enter-hint">Enter 추가 · Shift+Enter 줄바꿈</span>
-        </div>
-        <div className="capture-options">
-          <label>
-            <input
-              type="checkbox"
-              checked={recognize}
-              onChange={(e) => {
-                setRecognize(e.target.checked)
-                setInputError('')
-              }}
-            />
-            날짜·분류 자동 인식
-          </label>
-          <details>
-            <summary>입력 예시</summary>
-            <p>
-              오늘 / 내일 / 모레 / YYYY-MM-DD를 맨 앞에, #분류와 !높음·!보통·!낮음을 맨 뒤에
-              적으세요. 한 줄에 한 가지씩 등록합니다.
-            </p>
-            <button
-              className="text-button"
-              onClick={() => {
-                setTitle('내일 발표 자료 제출 #학교 !높음')
-                focusInput()
-              }}
-            >
-              예시 문장 넣기
-            </button>
-          </details>
-        </div>
-        {title.trim() && (
-          <div className="capture-preview" aria-label="입력 인식 결과">
-            {captured.tasks.slice(0, 5).map((item) => (
-              <p key={item.line}>
-                <strong>{item.title}</strong>
-                {item.dueDate && <span>기한 {item.dueDate}</span>}
-                {item.category && <span>분류 {item.category}</span>}
-                {item.priority !== 'none' && (
-                  <span>
-                    우선순위 {{ high: '높음', medium: '보통', low: '낮음' }[item.priority]}
-                  </span>
-                )}
-              </p>
-            ))}
-            {captured.tasks.length > 5 && (
-              <p>
-                외 {captured.tasks.length - 5}개 · 전체 {captured.tasks.length}개를 함께 등록합니다.
-              </p>
-            )}
-            {captured.errors.map((error) => (
-              <p className="field-error" key={error.line}>
-                {error.line}행: {error.message}
-              </p>
-            ))}
-          </div>
-        )}
-        {inputError && (
-          <p className="field-error" id="quick-error" role="alert">
-            {inputError}
-          </p>
-        )}
-        {notice && (
-          <div className="inline-notice">
-            <span role="status">{notice.text}</span>
-            {notice.taskId && (
-              <button
-                className="text-button"
-                onClick={(e) => {
-                  const task = data.tasks.find((t) => t.id === notice.taskId)
-                  if (task) openEditor(task, e.currentTarget)
-                }}
-              >
-                기한 편집
-              </button>
-            )}
-            <button className="icon-button" aria-label="안내 닫기" onClick={() => setNotice(null)}>
-              <Icon name="close" size={16} />
-            </button>
-          </div>
-        )}
-        {query.trim() && (
-          <p className="search-results" role="status">
-            검색 결과 {searchCount}개 <span>현재 {view === 'today' ? '오늘' : '전체'} 보기</span>
-          </p>
-        )}
-        {view === 'today' && auto.state.enabled && !query.trim() && data.tasks.length > 0 && (
-          <section className="day-overview" aria-label="오늘 자동 요약">
-            <span>
-              오늘 남은 일 <strong>{planned.length}개</strong>
-            </span>
-            <span>
-              오늘 마친 일 <strong>{achievements.length}개</strong>
-            </span>
-            <span>
-              기한 초과 <strong>{data.tasks.filter((t) => isOverdue(t, today)).length}개</strong>
-            </span>
-            {planned.length > auto.state.limit && (
-              <span className="field-hint">
-                기한이 된 일과 직접 고른 일은 기본 분량을 넘어도 유지합니다.
-              </span>
-            )}
-          </section>
-        )}
-        {featured && (
-          <section className="next-task" aria-label="지금 할 하나">
-            <div className="next-heading">
-              <h2>{auto.state.currentTaskId === featured.id ? '지금 하는 일' : '지금 할 하나'}</h2>
-              <span>{selectionReason(featured, today)}</span>
-            </div>
-            <ul className="task-list">{row(featured)}</ul>
-            <div className="next-actions">
-              {auto.state.currentTaskId === featured.id ? (
-                <button className="primary-button" onClick={() => toggle(featured)}>
-                  이 일 완료하기
-                </button>
-              ) : (
-                <button
-                  className="primary-button"
-                  onClick={() => auto.update({ currentTaskId: featured.id })}
-                >
-                  이것부터 시작
-                </button>
-              )}
-              <button
-                className="text-button"
-                onClick={() => {
-                  auto.update({
-                    currentTaskId: null,
-                    skippedTaskIds: [...new Set([...auto.state.skippedTaskIds, featured.id])],
-                  })
-                  pendingFocus.current = 'input'
-                }}
-              >
-                다른 일 보기
-              </button>
-              <span>완료하면 다음 후보가 준비됩니다.</span>
-            </div>
-          </section>
-        )}
-        {view === 'today' &&
-          auto.state.enabled &&
-          !query.trim() &&
-          planned.length > 0 &&
-          !candidate && (
-            <section className="candidate-empty">
-              <p>오늘 후보를 모두 살펴봤어요. 목록에서 직접 완료하거나 다시 골라보세요.</p>
-              <button
-                className="secondary-button"
-                onClick={() => auto.update({ skippedTaskIds: [] })}
-              >
-                추천 다시 보기
-              </button>
-            </section>
-          )}
-        {active.length === 0 && (!query.trim() || searchCount === 0) && (
-          <section className="empty-state">
-            <div className="empty-icon">
-              <Icon name={query.trim() ? 'search' : 'sun'} size={32} />
-            </div>
-            <h2>
-              {query.trim()
-                ? '일치하는 할 일이 없습니다'
-                : data.tasks.length === 0
-                  ? '해야 할 일을 하나 적어보세요'
-                  : view === 'today'
-                    ? achievements.length
-                      ? `오늘 ${achievements.length}개를 마쳤어요`
-                      : '오늘은 비어 있습니다'
-                    : '미완료 할 일이 없습니다'}
-            </h2>
-            <p>
-              {query.trim()
-                ? `“${query}” 검색어를 지우거나 다른 말로 찾아보세요.`
-                : data.tasks.length === 0
-                  ? '생각난 일 하나부터. 계정 없이 가볍게 시작하세요.'
-                  : view === 'today'
-                    ? '전체 할 일에서 오늘 할 일을 고르거나 새로 추가해 보세요.'
-                    : '완료한 일은 아래에서 다시 확인하고 복원할 수 있어요.'}
-            </p>
-            <div>
-              {query.trim() ? (
-                <button className="secondary-button" onClick={() => setQuery('')}>
-                  검색 지우기
-                </button>
-              ) : (
-                <>
-                  <button className="primary-button" onClick={focusInput}>
-                    {data.tasks.length === 0 ? '첫 할 일 추가' : '+ 새 할 일'}
+        <div className="workspace-grid">
+          <section className="work-column" aria-label="할 일 작업 영역">
+            {notice && (
+              <div className="inline-notice">
+                <span role="status">{notice.text}</span>
+                {notice.taskId && (
+                  <button
+                    className="text-button"
+                    onClick={(e) => {
+                      const task = data.tasks.find((t) => t.id === notice.taskId)
+                      if (task) openEditor(task, e.currentTarget)
+                    }}
+                  >
+                    기한 편집
                   </button>
-                  {data.tasks.length === 0 ? (
-                    <button className="text-button" onClick={addExamples}>
-                      예시로 둘러보기
-                    </button>
-                  ) : (
-                    view === 'today' && (
-                      <button className="text-button" onClick={() => setView('all')}>
-                        전체 할 일 보기
-                      </button>
-                    )
+                )}
+                <button
+                  className="icon-button"
+                  aria-label="안내 닫기"
+                  onClick={() => setNotice(null)}
+                >
+                  <Icon name="close" size={16} />
+                </button>
+              </div>
+            )}
+            {query.trim() && (
+              <p className="search-results" role="status">
+                검색 결과 {searchCount}개{' '}
+                <span>현재 {view === 'today' ? '오늘' : '전체'} 보기</span>
+              </p>
+            )}
+            {view === 'today' && auto.state.enabled && dayPlan.length > 0 && !query.trim() && (
+              <section className="day-overview" aria-label="오늘 자동 요약">
+                <div className="plan-progress-label">
+                  <strong>오늘 계획 {dayPlan.length}개</strong>
+                  <span aria-live="polite">
+                    {planCompleted} / {dayPlan.length} 완료
+                  </span>
+                </div>
+                <div
+                  className="plan-progress"
+                  role="progressbar"
+                  aria-label="오늘 계획 완료"
+                  aria-valuemin={0}
+                  aria-valuemax={dayPlan.length}
+                  aria-valuenow={planCompleted}
+                >
+                  <span style={{ width: (planCompleted / dayPlan.length) * 100 + '%' }} />
+                </div>
+                <p>
+                  {planFinished
+                    ? outsideDue.length
+                      ? `정한 분량은 마쳤지만, 오늘까지 할 일 ${outsideDue.length}개가 남아 있어요.`
+                      : '정해 둔 분량을 모두 마쳤어요.'
+                    : '계획에 남은 일 ' + planned.length + '개 · 마치면 다음 일이 이어져요.'}
+                </p>
+              </section>
+            )}
+            {view === 'today' && auto.state.enabled && outsideDue.length > 0 && !planFinished && (
+              <div className="outside-due">
+                <Icon name="calendar" size={16} />
+                <span>오늘까지 해야 할 일 {outsideDue.length}개가 계획 밖에 있어요.</span>
+                <button className="text-button" onClick={() => setView('all')}>
+                  전체에서 확인
+                </button>
+              </div>
+            )}
+            {featured && (
+              <section className="next-task" aria-label="지금 할 일">
+                <div className="next-heading">
+                  <h2>
+                    <Icon name="spark" size={17} />
+                    지금 할 일
+                  </h2>
+                  <span>{selectionReason(featured, today)}</span>
+                </div>
+                <button
+                  className="featured-title"
+                  aria-label={featured.title + ' 편집'}
+                  onClick={(event) => openEditor(featured, event.currentTarget)}
+                >
+                  {featured.title}
+                </button>
+                <div className="featured-meta">
+                  {featured.category && <span>{featured.category}</span>}
+                  {featured.dueDate && (
+                    <span>
+                      {new Intl.DateTimeFormat('ko-KR', { month: 'long', day: 'numeric' }).format(
+                        calendarDate(featured.dueDate),
+                      )}
+                      까지
+                    </span>
                   )}
-                </>
+                  {featured.priority !== 'none' && (
+                    <span>
+                      우선순위 {{ high: '높음', medium: '보통', low: '낮음' }[featured.priority]}
+                    </span>
+                  )}
+                </div>
+                <div className="next-actions">
+                  <button
+                    ref={nextButton}
+                    className="primary-button"
+                    onClick={() => toggle(featured)}
+                  >
+                    <Icon name="check" size={18} />
+                    완료했어요
+                  </button>
+                  <button
+                    className="text-button"
+                    onClick={() => {
+                      changePlan(
+                        {
+                          currentTaskId: null,
+                          skippedTaskIds: [...new Set([...auto.state.skippedTaskIds, featured.id])],
+                        },
+                        '이 일은 잠시 뒤로 미뤘어요.',
+                      )
+                      pendingFocus.current = 'next'
+                    }}
+                  >
+                    나중에 하기
+                  </button>
+                </div>
+                <p className="next-reassurance">잘못 눌러도 최근 작업을 되돌릴 수 있어요.</p>
+              </section>
+            )}
+            {view === 'today' && auto.state.enabled && planFinished && !query.trim() && (
+              <section
+                className={`day-finished ${outsideDue.length ? 'needs-attention' : 'is-complete'}`}
+                aria-label={outsideDue.length ? '오늘 기한 확인 안내' : '오늘 계획 완료 안내'}
+              >
+                <span className="finish-mark">
+                  <Icon name={outsideDue.length ? 'calendar' : 'check'} size={24} />
+                </span>
+                <h2 ref={finishHeading} tabIndex={-1}>
+                  {outsideDue.length ? '오늘까지 할 일이 남아 있어요.' : '오늘 분량을 다 마쳤어요.'}
+                </h2>
+                <p>
+                  {outsideDue.length
+                    ? `오늘이 기한이거나 기한이 지난 일 ${outsideDue.length}개를 확인해 주세요. 오늘 계획에 넣고 이어서 할 수 있어요.`
+                    : '여기서 마무리해도 좋아요. 나머지 일은 전체 목록에 그대로 있어요.'}
+                </p>
+                <div>
+                  {outsideDue.length > 0 && (
+                    <button
+                      className="primary-button"
+                      onClick={() => {
+                        changePlan(
+                          addToPlan(
+                            auto.state,
+                            outsideDue.map((task) => task.id),
+                          ),
+                          '오늘까지 해야 할 일을 오늘 계획에 넣었어요.',
+                        )
+                        pendingFocus.current = 'next'
+                      }}
+                    >
+                      남은 일 오늘에 넣기
+                    </button>
+                  )}
+                  <button className="secondary-button" onClick={() => setView('all')}>
+                    전체 할 일 보기
+                  </button>
+                  {!outsideDue.length && rankedTasks(data.tasks, today).length > 0 && (
+                    <button
+                      className="text-button"
+                      onClick={() => {
+                        const next = rankedTasks(data.tasks, today).find(
+                          (task) => !dayPlan.some((p) => p.id === task.id),
+                        )
+                        if (next)
+                          changePlan(
+                            addToPlan(auto.state, [next.id]),
+                            '오늘 할 일을 하나 더 골랐어요.',
+                          )
+                      }}
+                    >
+                      하나 더 하기
+                    </button>
+                  )}
+                </div>
+              </section>
+            )}
+            {view === 'today' &&
+              auto.state.enabled &&
+              !query.trim() &&
+              planned.length > 0 &&
+              !candidate && (
+                <section className="candidate-empty">
+                  <p>남은 일을 모두 미뤄 두었어요. 준비되면 다시 이어가세요.</p>
+                  <button
+                    className="secondary-button"
+                    onClick={() =>
+                      changePlan({ skippedTaskIds: [] }, '미뤄 둔 일을 다시 이어가요.')
+                    }
+                  >
+                    미뤄 둔 일 이어가기
+                  </button>
+                </section>
               )}
+            <div className="list-toolbar">
+              <div className="list-label">
+                <Icon name="list" size={17} />
+                <span>할 일 목록</span>
+                <span className="list-hint">제목을 눌러 편집</span>
+              </div>
+              <div className="search-field">
+                <Icon name="search" size={17} />
+                <label className="sr-only" htmlFor="search">
+                  제목·분류 검색
+                </label>
+                <input
+                  ref={search}
+                  id="search"
+                  type="search"
+                  value={query}
+                  placeholder="제목·분류 검색"
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+                {query && (
+                  <button
+                    className="icon-button"
+                    aria-label="검색 지우기"
+                    onClick={() => {
+                      setQuery('')
+                      search.current?.focus()
+                    }}
+                  >
+                    <Icon name="close" size={17} />
+                  </button>
+                )}
+              </div>
             </div>
+            {active.length === 0 &&
+              (!query.trim() || searchCount === 0) &&
+              !(view === 'today' && auto.state.enabled && planFinished) && (
+                <section className="empty-state">
+                  <div className="empty-icon">
+                    <Icon name={query.trim() ? 'search' : 'sun'} size={32} />
+                  </div>
+                  <h2>
+                    {query.trim()
+                      ? '검색 결과가 없어요'
+                      : data.tasks.length === 0
+                        ? '해야 할 일을 하나 적어보세요'
+                        : view === 'today'
+                          ? achievements.length
+                            ? `오늘 ${achievements.length}개를 마쳤어요`
+                            : '오늘 정한 일이 없어요'
+                          : '남은 할 일이 없어요'}
+                  </h2>
+                  <p>
+                    {query.trim()
+                      ? `“${query}” 검색어를 지우거나 다른 말로 찾아보세요.`
+                      : data.tasks.length === 0
+                        ? '생각난 일 하나부터. 계정 없이 가볍게 시작하세요.'
+                        : view === 'today'
+                          ? '전체 할 일에서 오늘 할 일을 고르거나 새로 추가해 보세요.'
+                          : '완료한 일은 아래에서 확인하고 완료를 취소할 수 있어요.'}
+                  </p>
+                  <div>
+                    {query.trim() ? (
+                      <button className="secondary-button" onClick={() => setQuery('')}>
+                        검색 지우기
+                      </button>
+                    ) : (
+                      <>
+                        <button className="primary-button" onClick={focusInput}>
+                          {data.tasks.length === 0 ? '첫 할 일 추가' : '+ 새 할 일'}
+                        </button>
+                        {data.tasks.length === 0 ? (
+                          <button className="text-button" onClick={addExamples}>
+                            예시로 둘러보기
+                          </button>
+                        ) : (
+                          view === 'today' && (
+                            <button className="text-button" onClick={() => setView('all')}>
+                              전체 할 일 보기
+                            </button>
+                          )
+                        )}
+                      </>
+                    )}
+                  </div>
+                </section>
+              )}
+            {view === 'today' ? (
+              <>
+                {section(
+                  '기한 초과',
+                  listed.filter((t) => isOverdue(t, today)),
+                  true,
+                )}
+                {section(
+                  featured ? '이어서 할 일' : '오늘',
+                  listed.filter((t) => !isOverdue(t, today)),
+                )}
+              </>
+            ) : (
+              section('미완료 할 일', active)
+            )}
+            {view === 'today' && (
+              <details
+                className="completed-section achievements-section"
+                open={achievementsOpen}
+                onToggle={(event) => {
+                  setAchievementsOpen(event.currentTarget.open)
+                  if (
+                    !event.currentTarget.open &&
+                    event.currentTarget.contains(document.activeElement) &&
+                    document.activeElement !== achievementsSummary.current
+                  )
+                    achievementsSummary.current?.focus()
+                }}
+              >
+                <summary ref={achievementsSummary}>
+                  <Icon name="chevron" size={18} />
+                  오늘 마친 일 {achievements.length}개
+                </summary>
+                <p className="field-hint">
+                  {demo ? '체험 중에' : '직접 적은 할 일 중'} 오늘 마친 일이에요. 완료를 취소하면
+                  다시 할 일로 돌아가요.
+                </p>
+                {achievements.length ? (
+                  <ul className="task-list">{achievements.map((task) => row(task, true))}</ul>
+                ) : (
+                  <p className="achievement-empty">오늘 마친 일이 여기에 모여요.</p>
+                )}
+              </details>
+            )}
+            {view === 'all' && data.tasks.some((t) => t.completedAt) && (
+              <details
+                className="completed-section"
+                open={completedOpen || !!query.trim()}
+                onToggle={(e) => setCompletedOpen(e.currentTarget.open)}
+              >
+                <summary ref={completedSummary}>
+                  <Icon name="chevron" size={18} />
+                  완료된 할 일 <span>{completed.length}</span>
+                </summary>
+                {completed.length ? (
+                  <ul className="task-list">{completed.map((task) => row(task))}</ul>
+                ) : (
+                  <p className="field-hint">검색어와 맞는 완료 항목이 없어요.</p>
+                )}
+              </details>
+            )}
           </section>
-        )}
-        {view === 'today' ? (
-          <>
-            {section(
-              '기한 초과',
-              listed.filter((t) => isOverdue(t, today)),
-              true,
-            )}
-            {section(
-              featured ? '이어서 할 일' : '오늘',
-              listed.filter((t) => !isOverdue(t, today)),
-            )}
-          </>
-        ) : (
-          section('미완료 할 일', active)
-        )}
-        {view === 'today' && (
-          <details
-            className="completed-section achievements-section"
-            open={achievementsOpen}
-            onToggle={(event) => {
-              setAchievementsOpen(event.currentTarget.open)
-              if (
-                !event.currentTarget.open &&
-                event.currentTarget.contains(document.activeElement) &&
-                document.activeElement !== achievementsSummary.current
-              )
-                achievementsSummary.current?.focus()
-            }}
-          >
-            <summary ref={achievementsSummary}>
-              <Icon name="chevron" size={18} />
-              오늘 마친 일 {achievements.length}개
-            </summary>
-            <p className="field-hint">
-              {demo ? '이 체험 목록에서' : '현재 목록에 남아 있는 직접 만든 일 중'} 오늘 완료한
-              항목입니다. 검색과 무관하며 완료 취소·삭제·복원에 따라 바뀝니다.
-            </p>
-            {achievements.length ? (
-              <ul className="task-list">{achievements.map((task) => row(task, true))}</ul>
-            ) : (
-              <p className="achievement-empty">오늘 마친 일이 여기에 모입니다.</p>
-            )}
-          </details>
-        )}
-        {view === 'all' && data.tasks.some((t) => t.completedAt) && (
-          <details
-            className="completed-section"
-            open={completedOpen || !!query.trim()}
-            onToggle={(e) => setCompletedOpen(e.currentTarget.open)}
-          >
-            <summary ref={completedSummary}>
-              <Icon name="chevron" size={18} />
-              완료된 할 일 <span>{completed.length}</span>
-            </summary>
-            {completed.length ? (
-              <ul className="task-list">{completed.map((task) => row(task))}</ul>
-            ) : (
-              <p className="field-hint">검색어와 일치하는 완료 항목이 없습니다.</p>
-            )}
-          </details>
-        )}
+          <aside className="capture-column">
+            <CaptureComposer
+              key={`${view}-${auto.state.enabled}`}
+              today={today}
+              value={title}
+              onChange={setTitle}
+              inputRef={input}
+              formRef={composer}
+              onSave={captureTasks}
+              automatic={auto.state.enabled}
+              awaitingFirstPlan={auto.state.planTaskIds === null}
+              defaultToday={!auto.state.enabled && view === 'today'}
+            />
+          </aside>
+        </div>
         <footer className="page-footer">
-          <span>정리는 자동으로, 실행은 하나씩.</span>
+          <span>생각은 담고, 하나씩 끝내요.</span>
           <span>Focusday</span>
         </footer>
       </main>
@@ -1064,6 +1228,7 @@ export default function App({ session }: { session: AppSession }) {
       {panel === 'plan' && (
         <PlanPanel
           tasks={data.tasks}
+          plannedIds={auto.state.enabled ? auto.state.planTaskIds || [] : undefined}
           today={today}
           guard={guard}
           saveError={saveStatus === 'error'}
@@ -1101,6 +1266,8 @@ export default function App({ session }: { session: AppSession }) {
         <TaskEditor
           key={editing.id}
           task={editing}
+          automatic={auto.state.enabled}
+          planned={auto.state.enabled ? dayPlan.some((task) => task.id === editing.id) : undefined}
           today={today}
           onClose={closeEditor}
           onSave={saveEditor}
@@ -1108,12 +1275,12 @@ export default function App({ session }: { session: AppSession }) {
             const task = editing
             change((tasks) => tasks.filter((t) => t.id !== task.id))
             if (auto.state.currentTaskId === task.id) auto.update({ currentTaskId: null })
-            setUndo({ token: ++undoToken.current, kind: 'delete', task })
+            remember({ ...actionContext('할 일을 삭제했어요.'), kind: 'delete', task })
             closeEditor()
           }}
         />
       )}
-      {undo && (
+      {undo && toastVisible && (
         <UndoToast
           key={undo.token}
           undo={undo}
@@ -1121,17 +1288,15 @@ export default function App({ session }: { session: AppSession }) {
             encouragement?.token === undo.token &&
             encouragement.day === today &&
             encouragement.count === achievements.length &&
+            undo.kind === 'complete' &&
             data.tasks.some((task) => task.id === undo.task.id && task.completedAt)
               ? encouragement.text
               : undefined
           }
-          onUndo={() => {
-            change((tasks) => applyUndo(tasks, undo))
-            setUndo(null)
-            setNotice({ text: '실행을 취소했습니다.' })
-            focusInput()
+          onUndo={revert}
+          onExpire={(token) => {
+            if (undo?.token === token) setToastVisible(false)
           }}
-          onExpire={(token) => setUndo((previous) => (previous?.token === token ? null : previous))}
           onCompleted={() => {
             pendingFocus.current = 'completed'
             setQuery('')
@@ -1152,13 +1317,13 @@ export default function App({ session }: { session: AppSession }) {
         >
           <h2 id="reset-heading">저장 원본을 초기화할까요?</h2>
           <p>
-            손상되거나 지원하지 않는 원본을 지우고 현재 탭의 할 일 {data.tasks.length}개를
-            저장합니다. 원본은 되돌릴 수 없습니다. 필요한 경우 먼저 다운로드해 주세요.
+            손상되거나 지원하지 않는 원본을 지우고 현재 탭의 할 일 {data.tasks.length}개를 저장해요.
+            원본은 되돌릴 수 없어요. 필요한 경우 먼저 내려받아 주세요.
           </p>
           {saveStatus === 'error' && (
             <p className="field-error" role="alert">
-              초기화에 실패했습니다. 원본을 유지했습니다. 브라우저 저장 권한을 확인하거나 다시
-              시도해 주세요.
+              초기화하지 못했어요. 원본은 그대로예요. 브라우저 저장 권한을 확인하거나 다시 시도해
+              주세요.
             </p>
           )}
           <div>
@@ -1173,8 +1338,7 @@ export default function App({ session }: { session: AppSession }) {
                   setRaw(null)
                   setLoadReason('')
                   setConfirmReset(false)
-                } else
-                  setLoadReason('초기화에 실패했습니다. 원본을 유지했습니다. 다시 시도해 주세요.')
+                } else setLoadReason('초기화하지 못했어요. 원본은 그대로예요. 다시 시도해 주세요.')
               }}
             >
               원본 삭제 후 현재 목록 저장
