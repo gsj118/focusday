@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect } from './manual-fixture'
 
 test('B03/B05/B06/B07: 네 우선순위·날짜·분류 경계·Enter/Space 실제 저장', async ({ page }) => {
   await page.clock.install({ time: new Date('2026-10-02T10:00:00+09:00') })

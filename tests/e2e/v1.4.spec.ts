@@ -1,4 +1,5 @@
-import { test, expect, type Page, type TestInfo } from '@playwright/test'
+import { useManualMode } from './manual-fixture'
+import { test, expect, type Page, type TestInfo } from './manual-fixture'
 import { readFile } from 'node:fs/promises'
 import { createTask, type Task } from '../../src/domain'
 import { defaultPreferences, UI_STORAGE_KEY, type UIPreferences } from '../../src/preferences'
@@ -8,7 +9,7 @@ import { createBackup } from '../../src/backup'
 const day = '2026-10-08'
 const stamp = '2026-10-08T01:00:00.000Z'
 const phase = process.env.V14_PHASE || 'final'
-const shots = process.env.V14_SHOTS || `docs/screenshots/v1.4/beta-${phase}`
+const shots = process.env.V14_SHOTS || `test-results/screenshots/manual/beta-${phase}`
 const observations = new Map<string, Record<string, unknown>[]>()
 test.use({ actionTimeout: 5000 })
 const make = (id: string, extra: Partial<Task> = {}): Task => ({
@@ -142,7 +143,12 @@ test('P01 처음 사용: 빈 화면→입력→계획→완료 복구→설정·
     'P01-01',
     '읽기만 수행, 기본 차분한 문구, 접힌 0개/빈 상태, 첫 입력 포커스',
     async () => {
-      expect(await page.evaluate(() => localStorage.length)).toBe(0)
+      expect(
+        await page.evaluate(() => [
+          localStorage.getItem('focusday:v1'),
+          localStorage.getItem('focusday:ui:v1'),
+        ]),
+      ).toEqual([null, null])
       await expect(sentence(page)).toHaveText(dailySentence(day, 'calm'))
       await expect(summary(page)).toHaveText('오늘 마친 일 0개')
       expect(await page.locator('.achievements-section').getAttribute('open')).toBeNull()
@@ -320,6 +326,7 @@ test('P04 모바일 터치390: 입력→계획→설정→완료·undo→sheet �
     locale: 'ko-KR',
   })
   const page = await context.newPage()
+  await useManualMode(context)
   await page.clock.install({ time: new Date(stamp) })
   await page.goto('./')
   await check(page, info, 'P04-01', '390px 조작·설정 sheet/footer44px·취소 초점', async () => {
@@ -606,6 +613,7 @@ test('P09 격려 선호: 문구 왕복→완료→refresh/reopen·offline→자�
       await expect(cheer(page)).toHaveCount(0)
       await expect(sentence(page)).toHaveText(humor!)
       const revisit = await context.newPage()
+      await useManualMode(context)
       await revisit.clock.install({ time: new Date(stamp) })
       await revisit.goto('./')
       await expect(sentence(revisit)).toHaveText(humor!)
@@ -869,6 +877,7 @@ for (const zone of ['Asia/Seoul', 'America/New_York']) {
   test(`B02 완료 timestamp 로컬 자정 경계·다른 시간대 ${zone}`, async ({ browser }) => {
     const context = await browser.newContext({ timezoneId: zone, locale: 'ko-KR' })
     const page = await context.newPage()
+    await useManualMode(context)
     const now = zone === 'Asia/Seoul' ? '2026-10-07T15:10:00.000Z' : '2026-10-09T03:10:00.000Z'
     await page.clock.install({ time: new Date(now) })
     await seed(page, [

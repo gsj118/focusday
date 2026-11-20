@@ -1,3 +1,4 @@
+import type { StoragePort } from './storage'
 import { useRef, useState } from 'react'
 import { encouragements, validateSentence, type Milestone } from './encouragement'
 import {
@@ -9,8 +10,8 @@ import {
   type ProcessedDays,
 } from './preferences'
 
-export function usePreferences() {
-  const [initial] = useState(() => loadPreferences())
+export function usePreferences(getStorage: () => StoragePort) {
+  const [initial] = useState(() => loadPreferences(getStorage))
   const [preferences, setPreferences] = useState(initial.data)
   const current = useRef(initial.data)
   const sessionProcessed = useRef<ProcessedDays>({})
@@ -18,7 +19,7 @@ export function usePreferences() {
   const [error, setError] = useState(initial.reason)
 
   function applySaved(next: typeof preferences) {
-    const result = savePreferences(next)
+    const result = savePreferences(next, getStorage)
     if (result.ok) {
       current.current = next
       setPreferences(next)
@@ -52,7 +53,7 @@ export function usePreferences() {
     current.current = next
     setPreferences(next)
     if (guard === 'ready') {
-      const result = savePreferences(next)
+      const result = savePreferences(next, getStorage)
       setError(
         result.ok
           ? ''
@@ -73,7 +74,7 @@ export function usePreferences() {
           }
         : result
     }
-    const loaded = loadPreferences()
+    const loaded = loadPreferences(getStorage)
     if (loaded.state !== 'ready') {
       setGuard(loaded.state)
       setError(loaded.reason)

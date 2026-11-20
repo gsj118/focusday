@@ -1,4 +1,5 @@
-import { test, expect, type Page } from '@playwright/test'
+import { useManualMode } from './manual-fixture'
+import { test, expect, type Page } from './manual-fixture'
 import { readFile } from 'node:fs/promises'
 import { createBackup, MAX_BACKUP_BYTES } from '../../src/backup'
 import { createTask, type AppData, type Task } from '../../src/domain'
@@ -474,18 +475,11 @@ for (const state of ['blocked', 'unavailable'])
     expect(await page.evaluate((key) => localStorage.getItem(key), STORAGE_KEY)).toBe(raw)
   })
 
-test('정확한 예시 재추가 피드백·중복 때 저장 없음·사용자 보존', async ({ page }) => {
-  await seed(page, rawData([task('사용자')]))
+test('이전 버전의 예시 제거는 사용자 기록을 보존', async ({ page }) => {
+  await seed(page, rawData([task('사용자'), task('예전 예시', { isDemo: true })]))
   await page.goto('./')
   const menu = page.locator('.sidebar .app-menu')
   await menu.locator('summary').click()
-  await menu.getByRole('button', { name: '예시로 둘러보기', exact: true }).click()
-  await expect(page.getByText('예시 5개를 추가했습니다.', { exact: true })).toBeVisible()
-  const count = await page.evaluate(() => window.__restoreWrites)
-  await menu.getByRole('button', { name: '예시로 둘러보기', exact: true }).click()
-  await expect(page.getByText('예시가 이미 추가되어 있습니다.', { exact: true })).toBeVisible()
-  expect(await page.evaluate(() => window.__restoreWrites)).toBe(count)
-  expect(await readTasks(page)).toHaveLength(6)
   await menu.getByRole('button', { name: '예시 데이터 제거', exact: true }).click()
   expect((await readTasks(page)).map((t) => t.id)).toEqual(['사용자'])
 })
@@ -568,6 +562,7 @@ test('새 모바일 패널 touch·작아진 가시 영역·복원 조작', async
   })
   try {
     const page = await context.newPage()
+    await useManualMode(context)
     await page.clock.install({ time: new Date('2026-10-02T10:00:00+09:00') })
     await seed(page, rawData(displayTasks))
     await page.goto(test.info().project.use.baseURL!)
@@ -618,7 +613,7 @@ for (const [width, height] of [
         .evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),
     ).toBeGreaterThanOrEqual(13)
     await page.screenshot({
-      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.4/regression'}/today-${label}.png`,
+      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'test-results/screenshots/manual/regression'}/today-${label}.png`,
       fullPage: false,
     })
     await page.getByRole('button', { name: '오늘 계획하기', exact: true }).click()
@@ -632,7 +627,7 @@ for (const [width, height] of [
     }
     await assertBounds()
     await page.screenshot({
-      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.4/regression'}/plan-${label}.png`,
+      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'test-results/screenshots/manual/regression'}/plan-${label}.png`,
       fullPage: false,
     })
     await dialog
@@ -656,7 +651,7 @@ for (const [width, height] of [
     await assertBounds()
     await page.getByRole('button', { name: '합치기 적용', exact: true }).scrollIntoViewIfNeeded()
     await page.screenshot({
-      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.4/regression'}/restore-${label}.png`,
+      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'test-results/screenshots/manual/regression'}/restore-${label}.png`,
       fullPage: false,
     })
     const target = (await page

@@ -1,7 +1,9 @@
 import { expect, it } from 'vitest'
-import { writeFileSync } from 'node:fs'
+import { mkdirSync, writeFileSync } from 'node:fs'
 import { createBackup, parseBackup, serializeBackup, MAX_BACKUP_BYTES } from '../../src/backup'
 import { createTask, type AppData } from '../../src/domain'
+
+mkdirSync('test-results/unit', { recursive: true })
 
 it('SB-01: 6000개 200자 한글 자체 백업의 재가져오기', () => {
   const data: AppData = {
@@ -16,7 +18,7 @@ it('SB-01: 6000개 200자 한글 자체 백업의 재가져오기', () => {
   const compactResult = parseBackup(compact)
   if (process.env.BETA_PHASE === 'before')
     writeFileSync(
-      'docs/evidence/v1.4/backup-boundary-before.json',
+      'test-results/unit/backup-boundary-before.json',
       JSON.stringify(
         {
           caseId: 'E11',
@@ -42,7 +44,7 @@ it('SB-01: 6000개 200자 한글 자체 백업의 재가져오기', () => {
   if (compactResult.ok) expect(compactResult.backup.data).toEqual(data)
   if (process.env.BETA_PHASE !== 'before')
     writeFileSync(
-      'docs/evidence/v1.4/backup-boundary-after.json',
+      'test-results/unit/backup-boundary-after.json',
       JSON.stringify(
         {
           caseId: 'E11',

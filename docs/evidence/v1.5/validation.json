@@ -1,0 +1,19 @@
+{
+  "version": "1.5.0",
+  "localRoot": {
+    "startTime": "2026-11-20T00:47:41.506Z",
+    "duration": 140102.92299999998,
+    "expected": 117,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "platform": "Windows-11-10.0.26200-SP0",
+  "node": "v24.19.0",
+  "unit": 79,
+  "dateTests": {
+    "Asia/Seoul": 55,
+    "America/New_York": 55
+  },
+  "scope": "Automated tests; not real participant research or physical-device/OS IME testing"
+}

@@ -59,10 +59,13 @@ export function validateSentence(value: string) {
   if (length > 120) return `내 문장은 120자까지 입력할 수 있습니다. 현재 ${length}자입니다.`
   return ''
 }
-export function selectAchievements(tasks: Task[], day: string): Task[] {
+export function selectAchievements(tasks: Task[], day: string, includeDemo = false): Task[] {
   return tasks
     .filter(
-      (task) => !task.isDemo && task.completedAt && localDate(new Date(task.completedAt)) === day,
+      (task) =>
+        (includeDemo || !task.isDemo) &&
+        task.completedAt &&
+        localDate(new Date(task.completedAt)) === day,
     )
     .sort(
       (a, b) => Date.parse(b.completedAt!) - Date.parse(a.completedAt!) || a.id.localeCompare(b.id),

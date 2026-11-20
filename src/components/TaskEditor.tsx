@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import {
   isDate,
+  addDays,
   priorityLabels,
   validateTitle,
   type Task,
@@ -178,6 +179,22 @@ export function TaskEditor({ task, today, onSave, onClose, onDelete }: Props) {
                   해제
                 </button>
               </div>
+            </div>
+            <div className="date-shortcuts" aria-label="빠른 기한 선택">
+              {(['오늘', '내일', '일주일 뒤', '기한 없음'] as const).map((label, index) => {
+                const value = index === 3 ? null : addDays(today, [0, 1, 7][index])
+                return (
+                  <button
+                    key={label}
+                    type="button"
+                    className="secondary-button"
+                    aria-pressed={draft.dueDate === value}
+                    onClick={() => setDraft({ ...draft, dueDate: value })}
+                  >
+                    {label}
+                  </button>
+                )
+              })}
             </div>
             <div className="property-row">
               <label htmlFor="edit-priority" className="property-label">

@@ -1,0 +1,47 @@
+$ pnpm typecheck && pnpm lint && pnpm test && pnpm test:dates && pnpm build
+$ tsc --noEmit
+$ eslint .
+$ vitest run
+
+ RUN  v5.0.3 C:/Users/gsjtj/Documents/ChatGPT/Todolist
+
+
+ Test Files  7 passed (7)
+      Tests  79 passed (79)
+   Start at  09:47:35
+   Duration  677ms (import 50%, tests 30%, transform 17%, worker 2%)
+
+$ node scripts/test-date-zones.mjs
+
+Calendar tests in Asia/Seoul
+
+ RUN  v5.0.3 C:/Users/gsjtj/Documents/ChatGPT/Todolist
+
+
+ Test Files  4 passed (4)
+      Tests  55 passed (55)
+   Start at  09:47:36
+   Duration  428ms (import 59%, transform 25%, tests 14%, worker 2%)
+
+
+Calendar tests in America/New_York
+
+ RUN  v5.0.3 C:/Users/gsjtj/Documents/ChatGPT/Todolist
+
+
+ Test Files  4 passed (4)
+      Tests  55 passed (55)
+   Start at  19:47:37
+   Duration  371ms (import 53%, transform 28%, tests 16%, worker 3%)
+
+$ tsc --noEmit && vite build
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 38 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.85 kB │ gzip:  0.56 kB
+dist/assets/index-CpHxisKT.css   34.01 kB │ gzip:  6.41 kB
+dist/assets/index-z4bnu52j.js   291.74 kB │ gzip: 89.28 kB
+
+✓ built in 147ms

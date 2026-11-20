@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect } from './manual-fixture'
 
 test('사이드바 검색·직접 백업·초점 복귀와 목록 집중 상태/동작 분리', async ({ page }) => {
   await page.goto('./')

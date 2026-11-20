@@ -1,4 +1,6 @@
-import { test, expect, type Page, type TestInfo, type Locator } from '@playwright/test'
+import { legacyExamples } from './manual-fixture'
+import { useManualMode } from './manual-fixture'
+import { test, expect, type Page, type TestInfo, type Locator } from './manual-fixture'
 import { readFile } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
 import { createBackup } from '../../src/backup'
@@ -6,7 +8,8 @@ import { createTask, type Task } from '../../src/domain'
 
 const day = '2026-10-02'
 const phase = process.env.BETA_PHASE || 'after'
-const shotDir = process.env.FOCUSDAY_SCREENSHOTS || `docs/screenshots/v1.4/regression/${phase}`
+const shotDir =
+  process.env.FOCUSDAY_SCREENSHOTS || `test-results/screenshots/manual/regression/${phase}`
 type CaseResult = Record<string, unknown>
 const results = new Map<string, CaseResult[]>()
 const make = (id: string, extra: Partial<Task> = {}) => ({
@@ -164,7 +167,7 @@ test('P01 처음 사용: 빈 안내→Enter→편집·취소→완료 복구', a
       ).toBeVisible()
       await expect(page.getByLabel('새 할 일 제목')).toHaveAttribute(
         'placeholder',
-        '무엇을 해야 하나요?',
+        '할 일을 적어보세요',
       )
       await page.getByLabel('새 할 일 제목').fill('자료구조 과제 제출')
       await page.keyboard.press('Enter')
@@ -241,7 +244,7 @@ test('P02 빠른 기록: 전체 5개→버튼 비교→빈/길이/중복 복구'
     ['A06', 'A08', 'A09'],
     'six UI tasks',
     '빈/공백 Enter·추가, 199/200/201자, 빠른 연속 Enter와 의도적 같은 제목',
-    '빈 항목 없음, maxLength200, 의도적 같은 제목 id 다름',
+    '빈 항목 없음, 200자까지 저장, 201자 보류, 의도적 같은 제목 id 다름',
     async () => {
       await input.fill('   ')
       await page.keyboard.press('Enter')
@@ -250,13 +253,14 @@ test('P02 빠른 기록: 전체 5개→버튼 비교→빈/길이/중복 복구'
       await expect(page.getByRole('alert')).toContainText('제목')
       for (const length of [199, 200, 201]) {
         await input.fill('가'.repeat(length))
-        expect((await input.inputValue()).length).toBe(Math.min(length, 200))
+        expect((await input.inputValue()).length).toBe(length)
         await page.keyboard.press('Enter')
+        if (length === 201) await expect(page.locator('#quick-error')).toContainText('200자')
       }
       await input.fill('같은 제목')
       await page.keyboard.press('Enter')
       await page.keyboard.press('Enter')
-      expect(await stored(page)).toHaveLength(10)
+      expect(await stored(page)).toHaveLength(9)
       await input.fill('같은 제목')
       await page.keyboard.press('Enter')
       const same = (await stored(page)).filter((t) => t.title === '같은 제목')
@@ -278,6 +282,8 @@ test('P03 키보드: 입력→Tab 편집→textarea Enter→취소→계획·백
       await tabTo(page, page.getByLabel('새 할 일 제목'))
       await page.keyboard.type('Keyboard beta')
       await page.keyboard.press('Enter')
+      await page.keyboard.press('Tab')
+      await page.keyboard.press('Tab')
       await page.keyboard.press('Tab')
       await page.keyboard.press('Tab')
       await page.keyboard.press('Tab')
@@ -349,6 +355,7 @@ test('P04 모바일 touch: 입력 Enter→편집→완료 영역 복원→계획
     timezoneId: 'Asia/Seoul',
   })
   const page = await context.newPage()
+  await useManualMode(context)
   await page.clock.install({ time: new Date('2026-10-02T10:00:00+09:00') })
   await page.goto(baseURL!)
   try {
@@ -584,7 +591,7 @@ test('P08 많은 일: 50→검색/후보→오늘, 후보 없음 복구', async 
     },
   )
 })
-test('P09 실수 복구: 삭제 취소→완료/편집→예시 재추가/제거', async ({ page }, info) => {
+test('P09 실수 복구: 삭제 취소→완료/편집→이전 예시 제거', async ({ page }, info) => {
   await page.goto('./')
   await page.getByLabel('새 할 일 제목').fill('원본 사용자')
   await page.keyboard.press('Enter')
@@ -593,8 +600,8 @@ test('P09 실수 복구: 삭제 취소→완료/편집→예시 재추가/제거
     info,
     ['D03', 'D05', 'D06'],
     'UI user task mixed with optional demos',
-    '삭제/undo→완료→다른 제목 편집→undo→예시 재추가/제거',
-    '삭제 전체 복원, 완료 undo 다른 속성 유지, 예시 중복/사용자 보존',
+    '삭제/undo→완료→다른 제목 편집→undo→이전 예시 제거',
+    '삭제 전체 복원, 완료 undo 다른 속성 유지, 이전 예시 제거/사용자 보존',
     async () => {
       const before = await stored(page)
       await page.locator('.task-body').click()
@@ -613,12 +620,10 @@ test('P09 실수 복구: 삭제 취소→완료/편집→예시 재추가/제거
         completedAt: null,
         id: before[0].id,
       })
+      await legacyExamples(page)
       const menu = page.locator('.sidebar .app-menu')
       await menu.locator('summary').click()
-      await menu.getByRole('button', { name: '예시로 둘러보기', exact: true }).click()
       expect(await stored(page)).toHaveLength(6)
-      await menu.getByRole('button', { name: '예시로 둘러보기', exact: true }).click()
-      await expect(page.getByText('예시가 이미 추가되어 있습니다.', { exact: true })).toBeVisible()
       await menu.getByRole('button', { name: '예시 데이터 제거', exact: true }).click()
       expect(await stored(page)).toHaveLength(1)
       expect((await stored(page))[0].isDemo).toBe(false)
@@ -651,6 +656,7 @@ test('P10 보존: 다운로드→빈 context 복원→재백업→교체 취소'
       expect(first.data.tasks).toEqual(before)
       const context = await browser.newContext({ timezoneId: 'Asia/Seoul', locale: 'ko-KR' })
       const other = await context.newPage()
+      await useManualMode(context)
       try {
         await other.clock.install({ time: new Date('2026-10-02T10:00:00+09:00') })
         await other.goto(baseURL!)
@@ -688,6 +694,7 @@ test('P11 시각/확대: 200% reflow 동등 조건→reduced motion→오류 복
     timezoneId: 'Asia/Seoul',
   })
   const page = await context.newPage()
+  await useManualMode(context)
   await page.clock.install({ time: new Date('2026-10-02T10:00:00+09:00') })
   await page.goto(baseURL!)
   try {

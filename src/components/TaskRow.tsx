@@ -8,8 +8,17 @@ type Props = {
   onEdit: (task: Task, origin: HTMLElement) => void
   onFocus: (task: Task) => void
   showCompletionTime?: boolean
+  reason?: string
 }
-export function TaskRow({ task, today, onToggle, onEdit, onFocus, showCompletionTime }: Props) {
+export function TaskRow({
+  task,
+  today,
+  onToggle,
+  onEdit,
+  onFocus,
+  showCompletionTime,
+  reason,
+}: Props) {
   const done = !!task.completedAt
   const focused = task.focusDate === today
   return (
@@ -58,6 +67,7 @@ export function TaskRow({ task, today, onToggle, onEdit, onFocus, showCompletion
               오늘 집중
             </span>
           )}
+          {reason && <span className="selection-reason">{reason}</span>}
           {task.isDemo && <span className="demo-label">예시</span>}
         </span>
       </button>

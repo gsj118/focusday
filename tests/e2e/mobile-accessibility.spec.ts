@@ -1,4 +1,6 @@
-import { test, expect } from '@playwright/test'
+import { legacyExamples } from './manual-fixture'
+import { useManualMode } from './manual-fixture'
+import { test, expect } from './manual-fixture'
 
 test('모바일 터치·작은 가시 영역 편집·알림과 하단 탐색 분리', async ({ browser, baseURL }) => {
   const context = await browser.newContext({
@@ -10,6 +12,7 @@ test('모바일 터치·작은 가시 영역 편집·알림과 하단 탐색 분
     locale: 'ko-KR',
   })
   const page = await context.newPage()
+  await useManualMode(context)
   await page.goto(baseURL!)
   await page.getByLabel('새 할 일 제목').fill('터치 테스트')
   await page.getByRole('button', { name: '+ 할 일 추가', exact: true }).tap()
@@ -40,7 +43,7 @@ test('모바일 터치·작은 가시 영역 편집·알림과 하단 탐색 분
 
 test('실제 렌더링 색·hover·포커스·접근 가능한 입력과 버튼 이름', async ({ page }) => {
   await page.goto('./')
-  await page.getByRole('button', { name: '예시로 둘러보기', exact: true }).last().click()
+  await legacyExamples(page)
   const luminance = (rgb: string) =>
     rgb
       .match(/[\d.]+/g)!

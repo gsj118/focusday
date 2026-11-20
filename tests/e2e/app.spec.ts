@@ -1,4 +1,5 @@
-import { test, expect, type Page } from '@playwright/test'
+import { legacyExamples } from './manual-fixture'
+import { test, expect, type Page } from './manual-fixture'
 import { readFile } from 'node:fs/promises'
 import { createTask, type Task } from '../../src/domain'
 import { STORAGE_KEY } from '../../src/storage'
@@ -34,7 +35,7 @@ async function all(page: Page) {
     .click()
 }
 async function demo(page: Page) {
-  await page.getByRole('button', { name: '예시로 둘러보기', exact: true }).last().click()
+  await legacyExamples(page)
 }
 test.beforeEach(async ({ page }) => {
   await page.clock.install({ time: new Date('2026-10-02T10:00:00+09:00') })
@@ -43,15 +44,20 @@ test.beforeEach(async ({ page }) => {
 test('최초 빈 상태·오늘/전체 생성 기본값·연속 입력·키별 저장', async ({ page }) => {
   await page.goto('./')
   await expect(page.getByRole('heading', { name: '해야 할 일을 하나 적어보세요' })).toBeVisible()
-  expect(await page.evaluate(() => localStorage.length)).toBe(0)
-  await add(page, '  오늘 테스트  ')
+  expect(
+    await page.evaluate(() => [
+      localStorage.getItem('focusday:v1'),
+      localStorage.getItem('focusday:ui:v1'),
+    ]),
+  ).toEqual([null, null])
+  await add(page, '  오늘의 테스트  ')
   await expect(page.getByLabel('새 할 일 제목')).toHaveValue('')
   await expect(page.getByText('저장됨', { exact: true })).toBeVisible()
   await all(page)
   await add(page, '전체 테스트')
   const tasks = await readTasks(page)
   expect(tasks[0]).toMatchObject({
-    title: '오늘 테스트',
+    title: '오늘의 테스트',
     focusDate: today,
     dueDate: null,
     isDemo: false,
@@ -65,8 +71,8 @@ test('최초 빈 상태·오늘/전체 생성 기본값·연속 입력·키별 �
 })
 test('속성 저장·새로고침 유지·미래 기한과 오늘 독립·기한에 의한 잔류 안내', async ({ page }) => {
   await page.goto('./')
-  await add(page, '내일 발표')
-  await page.getByRole('button', { name: '내일 발표 편집', exact: true }).click()
+  await add(page, '발표 준비')
+  await page.getByRole('button', { name: '발표 준비 편집', exact: true }).click()
   await page.getByLabel('기한', { exact: true }).fill('2026-10-03')
   await page.getByLabel('우선순위').selectOption('high')
   await page.getByLabel('분류 선택').fill('업무')
@@ -79,15 +85,15 @@ test('속성 저장·새로고침 유지·미래 기한과 오늘 독립·기한
     priority: 'high',
     category: '업무',
   })
-  await page.getByRole('button', { name: '내일 발표 집중 해제', exact: true }).click()
-  await expect(page.getByRole('button', { name: '내일 발표 편집', exact: true })).toHaveCount(0)
+  await page.getByRole('button', { name: '발표 준비 집중 해제', exact: true }).click()
+  await expect(page.getByRole('button', { name: '발표 준비 편집', exact: true })).toHaveCount(0)
   await all(page)
-  await page.getByRole('button', { name: '내일 발표 집중하기', exact: true }).click()
+  await page.getByRole('button', { name: '발표 준비 집중하기', exact: true }).click()
   expect((await readTasks(page))[0].dueDate).toBe('2026-10-03')
-  await page.getByRole('button', { name: '내일 발표 편집', exact: true }).click()
+  await page.getByRole('button', { name: '발표 준비 편집', exact: true }).click()
   await page.getByLabel('기한', { exact: true }).fill(today)
   await page.getByRole('button', { name: '저장', exact: true }).click()
-  await page.getByRole('button', { name: '내일 발표 집중 해제', exact: true }).click()
+  await page.getByRole('button', { name: '발표 준비 집중 해제', exact: true }).click()
   await expect(
     page.getByText('집중은 해제했습니다. 기한 때문에 오늘에도 표시됩니다.', { exact: true }),
   ).toBeVisible()
@@ -115,7 +121,10 @@ test('빈 제목·200자 한글·공백 없는 제목·한글 IME 조합 이벤�
   await add(page, '가'.repeat(200))
   expect((await readTasks(page))[1].title).toHaveLength(200)
   await input.fill('a'.repeat(201))
-  await expect(input).toHaveValue('a'.repeat(200))
+  await input.press('Enter')
+  await expect(page.locator('#quick-error')).toContainText('200자')
+  expect(await readTasks(page)).toHaveLength(2)
+  await input.fill('')
   await page.getByRole('button', { name: `${'가'.repeat(200)} 편집`, exact: true }).click()
   await expect(page.getByLabel('제목', { exact: true })).toHaveValue('가'.repeat(200))
   await page.getByLabel('제목', { exact: true }).fill('   ')
@@ -281,12 +290,12 @@ test('읽기 실패는 쓰기를 보호하고 재시도 때 기존 항목과 메
   }, STORAGE_KEY)
   await page.goto('./')
   await add(page, '임시 항목')
-  await expect(page.getByRole('alert')).toContainText('기존 데이터 보호')
+  await expect(page.getByRole('alert').filter({ hasText: '기존 데이터 보호' })).toBeVisible()
   await page.evaluate(() => {
     window.__failRead = false
   })
   expect(await readTasks(page)).toHaveLength(1)
-  await page.getByRole('button', { name: '다시 읽기' }).click()
+  await page.getByRole('button', { name: '다시 읽기', exact: true }).click()
   expect((await readTasks(page)).map((t) => t.title)).toEqual(['기존 사용자', '임시 항목'])
 })
 test('localStorage 접근 자체 실패도 빈 값으로 덮어쓰지 않는다', async ({ page }) => {
@@ -300,23 +309,17 @@ test('localStorage 접근 자체 실패도 빈 값으로 덮어쓰지 않는다'
   )
   await page.goto('./')
   await add(page, '접근 실패 항목')
-  await expect(page.getByRole('alert')).toContainText('기존 데이터 보호')
-  await page.getByRole('button', { name: '다시 읽기' }).click()
-  await expect(page.getByRole('alert')).toBeVisible()
+  await expect(page.getByRole('alert').filter({ hasText: '기존 데이터 보호' })).toBeVisible()
+  await page.getByRole('button', { name: '다시 읽기', exact: true }).click()
+  await expect(page.getByRole('alert').filter({ hasText: '기존 데이터 보호' })).toBeVisible()
 })
-test('예시 선택·중복 방지·검색 현재 보기·완료 검색·예시 제거 사용자 보존', async ({ page }) => {
+test('이전 버전 예시·검색 현재 보기·완료 검색·예시 제거 사용자 보존', async ({ page }) => {
   await page.goto('./')
   await add(page, '실제 사용자')
   await page.locator('.sidebar .app-menu summary').click()
-  await page
-    .locator('.sidebar .app-menu')
-    .getByRole('button', { name: '예시로 둘러보기', exact: true })
-    .click()
+  await legacyExamples(page)
   expect(await readTasks(page)).toHaveLength(6)
-  await page
-    .locator('.sidebar .app-menu')
-    .getByRole('button', { name: '예시로 둘러보기', exact: true })
-    .click()
+  await legacyExamples(page)
   expect(await readTasks(page)).toHaveLength(6)
   await page.getByLabel('제목·분류 검색').fill('주말')
   await expect(page.getByText('검색 결과 0개', { exact: false })).toBeVisible()
@@ -329,6 +332,7 @@ test('예시 선택·중복 방지·검색 현재 보기·완료 검색·예시 
   await page.getByRole('button', { name: '검색 지우기', exact: true }).first().click()
   await page.getByLabel('제목·분류 검색').fill('존재하지않음')
   await expect(page.getByRole('heading', { name: '일치하는 할 일이 없습니다' })).toBeVisible()
+  await page.locator('.sidebar .app-menu summary').click()
   await page
     .locator('.sidebar .app-menu')
     .getByRole('button', { name: '예시 데이터 제거', exact: true })
@@ -362,6 +366,8 @@ test('키보드 추가→편집→저장→완료→실행 취소, dialog trap·
   await page.keyboard.press('Enter')
   await page.keyboard.press('Tab')
   await page.keyboard.press('Tab')
+  await page.keyboard.press('Tab')
+  await page.keyboard.press('Tab')
   await expect(
     page.getByRole('checkbox', { name: 'Keyboard task 완료', exact: true }),
   ).toBeFocused()
@@ -381,6 +387,8 @@ test('키보드 추가→편집→저장→완료→실행 취소, dialog trap·
   await page.keyboard.press('Shift+Tab')
   await page.keyboard.press('Space')
   await expect(page.getByLabel('새 할 일 제목')).toBeFocused()
+  await page.keyboard.press('Tab')
+  await page.keyboard.press('Tab')
   await page.keyboard.press('Tab')
   await page.keyboard.press('Tab')
   await page.keyboard.press('Tab')
@@ -412,7 +420,7 @@ for (const [width, height] of [
       ).toBeGreaterThanOrEqual(44)
     }
     await page.screenshot({
-      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.4/regression'}/${width === 1440 ? 'desktop' : width === 390 ? 'mobile' : `layout-${width}`}.png`,
+      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'test-results/screenshots/manual/regression'}/${width === 1440 ? 'desktop' : width === 390 ? 'mobile' : `layout-${width}`}.png`,
       fullPage: true,
     })
     await page.getByRole('button', { name: '발표 자료 최종 확인 편집', exact: true }).click()
@@ -424,7 +432,7 @@ for (const [width, height] of [
     expect(box.x).toBeGreaterThanOrEqual(0)
     expect(box.x + box.width).toBeLessThanOrEqual(width)
     await page.screenshot({
-      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'docs/screenshots/v1.4/regression'}/${width === 1440 ? 'desktop-editor' : width === 390 ? 'mobile-editor' : `editor-${width}`}.png`,
+      path: `${process.env.FOCUSDAY_SCREENSHOTS || 'test-results/screenshots/manual/regression'}/${width === 1440 ? 'desktop-editor' : width === 390 ? 'mobile-editor' : `editor-${width}`}.png`,
       fullPage: true,
     })
     await page.getByLabel('제목', { exact: true }).fill('긴한글제목'.repeat(40))

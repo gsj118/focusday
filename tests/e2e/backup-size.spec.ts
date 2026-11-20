@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect } from './manual-fixture'
 import { readFile } from 'node:fs/promises'
 import { createTask } from '../../src/domain'
 import { createBackup, MAX_BACKUP_BYTES } from '../../src/backup'
@@ -37,7 +37,7 @@ test('P10 E11: 6000개 자체 다운로드→같은 파일 UI 미리보기 (quot
   })
   const phase = process.env.BETA_PHASE || 'after'
   await page.screenshot({
-    path: `${process.env.FOCUSDAY_SCREENSHOTS || `docs/screenshots/v1.4/regression/${phase}`}/backup-6000.png`,
+    path: `${process.env.FOCUSDAY_SCREENSHOTS || `test-results/screenshots/manual/regression/${phase}`}/backup-6000.png`,
   })
   await info.attach('backup-size', {
     body: Buffer.from(

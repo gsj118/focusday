@@ -1,6 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import {
-  appendDemo,
   applyUndo,
   calendarDate,
   createTask,
@@ -12,7 +11,6 @@ import {
   todaySummary,
   yesterdayTasks,
   updateTask,
-  validateTitle,
   type AppData,
   type Task,
   type TaskDraft,
@@ -20,6 +18,10 @@ import {
   type View,
 } from './domain'
 import { loadData, saveData, type LoadResult } from './storage'
+import { parseCapture } from './capture'
+import { automaticToday, nextCandidate, selectionReason } from './automation'
+import { useAutomation } from './useAutomation'
+import type { AppSession } from './session'
 import { serializeBackup, prepareRestore, type RestoreMode } from './backup'
 import { downloadJSON } from './download'
 import { useToday } from './useToday'
@@ -34,8 +36,9 @@ import { PreferencesPanel } from './components/PreferencesPanel'
 import { dailySentence, selectAchievements, completionMilestone } from './encouragement'
 import { usePreferences } from './usePreferences'
 
-export default function App() {
-  const [initial] = useState(() => loadData())
+export default function App({ session }: { session: AppSession }) {
+  const { demo, getStorage } = session
+  const [initial] = useState(() => loadData(getStorage))
   const [data, setData] = useState<AppData>(initial.data)
   const current = useRef(data)
   const [guard, setGuard] = useState<LoadResult['state']>(initial.state)
@@ -44,6 +47,7 @@ export default function App() {
   const [saveStatus, setSaveStatus] = useState<'initial' | 'saved' | 'error'>('initial')
   const [view, setView] = useState<View>('today')
   const [title, setTitle] = useState('')
+  const [recognize, setRecognize] = useState(true)
   const [inputError, setInputError] = useState('')
   const [query, setQuery] = useState('')
   const [editing, setEditing] = useState<Task | null>(null)
@@ -60,7 +64,7 @@ export default function App() {
   } | null>(null)
   const [notice, setNotice] = useState<{ text: string; taskId?: string } | null>(null)
   const [confirmReset, setConfirmReset] = useState(false)
-  const input = useRef<HTMLInputElement>(null)
+  const input = useRef<HTMLTextAreaElement>(null)
   const search = useRef<HTMLInputElement>(null)
   const composer = useRef<HTMLFormElement>(null)
   const composing = useRef(false)
@@ -72,19 +76,34 @@ export default function App() {
   const achievementFocus = useRef(false)
   const resetDialog = useRef<HTMLDialogElement>(null)
   const today = useToday()
-  const ui = usePreferences()
+  const ui = usePreferences(getStorage)
+  const auto = useAutomation(getStorage, today)
+  const captured = parseCapture(title, today, recognize)
+  const planned = auto.state.enabled
+    ? automaticToday(data.tasks, today, auto.state)
+    : data.tasks.filter((t) => isToday(t, today))
+  const candidate = auto.state.enabled ? nextCandidate(planned, today, auto.state) : null
+  const featured = view === 'today' && !query.trim() ? candidate : null
   useVisualViewport()
-  const active = selectTasks(data.tasks, view, today, query)
+  const active =
+    auto.state.enabled && view === 'today'
+      ? planned.filter((t) =>
+          `${t.title} ${t.category ?? ''}`
+            .toLocaleLowerCase()
+            .includes(query.trim().toLocaleLowerCase()),
+        )
+      : selectTasks(data.tasks, view, today, query)
+  const listed = featured ? active.filter((t) => t.id !== featured.id) : active
   const completed = selectCompleted(data.tasks, query)
-  const achievements = selectAchievements(data.tasks, today)
-  const todayCount = data.tasks.filter((t) => isToday(t, today)).length
+  const achievements = selectAchievements(data.tasks, today, demo)
+  const todayCount = planned.length
   const summary = todaySummary(data.tasks, today)
   const yesterdayCount = yesterdayTasks(data.tasks, today).length
   const allCount = data.tasks.filter((t) => !t.completedAt).length
   const searchCount = active.length + (view === 'all' ? completed.length : 0)
 
   function persist(next: AppData) {
-    const result = saveData(next)
+    const result = saveData(next, getStorage)
     setSaveStatus(result.ok ? 'saved' : 'error')
     return result.ok
   }
@@ -131,14 +150,15 @@ export default function App() {
         : t,
     )
     focusAfterRemoval(task)
-    const before = selectAchievements(current.current.tasks, actionDay).length
+    const before = selectAchievements(current.current.tasks, actionDay, demo).length
     change(() => next)
+    if (auto.state.currentTaskId === actual.id) auto.update({ currentTaskId: null })
     setEncouragement(null)
     if (!actual.completedAt) {
       const token = ++undoToken.current
       setUndo({ token, kind: 'complete', task: actual })
-      const count = selectAchievements(next, actionDay).length
-      const milestone = actual.isDemo ? null : completionMilestone(before, count)
+      const count = selectAchievements(next, actionDay, demo).length
+      const milestone = actual.isDemo && !demo ? null : completionMilestone(before, count)
       if (milestone) {
         const text = ui.processMilestone(actionDay, milestone)
         if (text) setEncouragement({ token, day: actionDay, count, text })
@@ -162,7 +182,9 @@ export default function App() {
     else {
       setNotice({
         text: removing
-          ? '집중을 해제했습니다. 전체에는 남아 있습니다.'
+          ? auto.state.enabled
+            ? '직접 선택한 집중을 해제했습니다. 자동 계획에서 다시 추천될 수 있습니다.'
+            : '집중을 해제했습니다. 전체에는 남아 있습니다.'
           : '기한을 바꾸지 않고 오늘 집중으로 선택했습니다.',
       })
       if (removing && view === 'today' && !fromPlan) focusAfterRemoval(task)
@@ -185,7 +207,7 @@ export default function App() {
       persist(current.current)
       return
     }
-    const loaded = loadData()
+    const loaded = loadData(getStorage)
     if (loaded.state !== 'ready') {
       setGuard(loaded.state)
       setRaw(loaded.raw)
@@ -218,19 +240,20 @@ export default function App() {
     setPanel(null)
   }
   function addExamples() {
-    const next = appendDemo(current.current.tasks, today)
-    if (next === current.current.tasks) {
-      setNotice({ text: '예시가 이미 추가되어 있습니다.' })
-      return
-    }
-    change(() => next)
-    setNotice({ text: '예시 5개를 추가했습니다.' })
+    const url = new URL(window.location.href)
+    url.searchParams.set('demo', '1')
+    window.location.assign(url.href)
+  }
+  function leaveDemo() {
+    const url = new URL(window.location.href)
+    url.searchParams.delete('demo')
+    window.location.assign(url.href)
   }
   function exportBackup() {
     try {
       const serialized = serializeBackup(current.current)
       if (!serialized.ok) return serialized
-      downloadJSON(serialized.content, `focusday-backup-${today}.json`)
+      downloadJSON(serialized.content, `focusday-${demo ? 'demo-' : ''}backup-${today}.json`)
       return {
         ok: true,
         reason: `전체 ${current.current.tasks.length}개 백업 파일 다운로드를 시작했습니다. (${(serialized.byteSize / 1024 / 1024).toFixed(2)}MiB)`,
@@ -243,7 +266,7 @@ export default function App() {
     if (guard !== 'ready')
       return { ok: false, reason: '저장 보호 중입니다. 기존 원본 복구 절차를 먼저 진행해 주세요.' }
     const next = prepareRestore(current.current, incoming, mode).data
-    const result = saveData(next)
+    const result = saveData(next, getStorage)
     if (!result.ok)
       return {
         ok: false,
@@ -252,6 +275,7 @@ export default function App() {
       }
     current.current = next
     setData(next)
+    auto.update({ currentTaskId: null, skippedTaskIds: [] })
     setSaveStatus('saved')
     setUndo(null)
     setEditing(null)
@@ -294,7 +318,7 @@ export default function App() {
     )
       target.focus()
     else focusInput()
-  }, [editing, panel, data, view, completedOpen, today, achievementsOpen])
+  }, [editing, panel, data, view, completedOpen, today, achievementsOpen, auto.state])
   useEffect(() => {
     const keyboard = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement
@@ -359,7 +383,7 @@ export default function App() {
       </summary>
       <div className="menu-content">
         <strong>가볍게 시작해 보세요</strong>
-        <p>예시는 직접 선택할 때만 추가됩니다.</p>
+        <p>예시 체험은 개인 목록과 분리됩니다. 변경은 체험 화면에만 적용됩니다.</p>
         <button className="secondary-button" onClick={addExamples}>
           예시로 둘러보기
         </button>
@@ -394,7 +418,7 @@ export default function App() {
           </p>
         )}
         <hr />
-        <strong>Focusday 1.4.0</strong>
+        <strong>Focusday 1.5.0</strong>
         <p>
           계정 없이 이 브라우저에 저장합니다. JSON 파일로 직접 백업할 수 있습니다. 자동 서버
           백업·기기 간 동기화는 제공하지 않습니다.
@@ -416,6 +440,11 @@ export default function App() {
       onFocus={toggleFocus}
       onEdit={openEditor}
       showCompletionTime={showCompletionTime}
+      reason={
+        auto.state.enabled && view === 'today' && !task.completedAt
+          ? selectionReason(task, today)
+          : undefined
+      }
     />
   )
   const section = (label: string, tasks: Task[], overdue = false) =>
@@ -432,7 +461,7 @@ export default function App() {
 
   return (
     <div
-      className="app-shell"
+      className={`app-shell ${auto.state.enabled ? 'automation-on' : ''}`}
       onFocusCapture={(event) => {
         achievementFocus.current = !!(event.target as HTMLElement).closest('.achievements-section')
       }}
@@ -446,7 +475,7 @@ export default function App() {
             <Icon name="check" size={18} />
           </span>
           <span>
-            Focusday<span className="brand-tagline">개인 작업 공간</span>
+            Focusday<span className="brand-tagline">정리는 자동으로, 실행은 하나씩</span>
           </span>
         </a>
         <button
@@ -488,22 +517,21 @@ export default function App() {
             <span
               className={`status-dot ${saveStatus === 'saved' && guard === 'ready' ? 'saved' : ''}`}
             />
-            {guard !== 'ready'
-              ? '저장 보호 중'
-              : saveStatus === 'error'
-                ? '저장 실패'
-                : saveStatus === 'saved'
-                  ? '저장됨'
-                  : initial.raw
-                    ? '로컬 데이터 불러옴'
-                    : '이 브라우저에 저장'}
+            {demo
+              ? '체험 중 · 저장되지 않음'
+              : guard !== 'ready'
+                ? '저장 보호 중'
+                : saveStatus === 'error'
+                  ? '저장 실패'
+                  : saveStatus === 'saved'
+                    ? '저장됨'
+                    : initial.raw
+                      ? '로컬 데이터 불러옴'
+                      : '이 브라우저에 저장'}
           </div>
         </div>
         <header className="page-header">
           <div className="page-heading">
-            <div className="page-icon">
-              <Icon name={view === 'today' ? 'sun' : 'list'} size={32} />
-            </div>
             <div className="page-title">
               <h1>{view === 'today' ? '오늘' : '전체 할 일'}</h1>
               <span className="header-date">
@@ -521,9 +549,74 @@ export default function App() {
             </p>
           </div>
         </header>
-        {view === 'today' && (
+        {demo && (
+          <section className="demo-banner" aria-label="예시 체험 안내">
+            <div>
+              <strong>자동화 체험</strong>
+              <span>개인 목록은 그대로 · 새로고침하면 체험 초기화</span>
+            </div>
+            <div className="demo-actions">
+              <button className="text-button" onClick={() => window.location.reload()}>
+                처음부터 체험
+              </button>
+              <button className="secondary-button" onClick={leaveDemo}>
+                내 할 일 사용하기
+              </button>
+            </div>
+          </section>
+        )}
+        <section className="automation-controls" aria-label="자동 계획 설정">
+          <label className="automation-toggle">
+            <input
+              type="checkbox"
+              checked={auto.state.enabled}
+              disabled={auto.blocked}
+              onChange={(e) =>
+                auto.update({ enabled: e.target.checked, currentTaskId: null, skippedTaskIds: [] })
+              }
+            />
+            자동 계획
+          </label>
+          {auto.state.enabled && (
+            <label className="daily-limit">
+              기본 분량{' '}
+              <select
+                aria-label="오늘 기본 분량"
+                value={auto.state.limit}
+                onChange={(e) => auto.update({ limit: Number(e.target.value) as 1 | 3 | 5 })}
+              >
+                <option value={1}>1개</option>
+                <option value={3}>3개</option>
+                <option value={5}>5개</option>
+              </select>
+            </label>
+          )}
+          <button
+            className="text-button"
+            onClick={(event) => openPanel('plan', event.currentTarget)}
+          >
+            오늘 계획하기
+          </button>
+        </section>
+        {auto.error && (
+          <section className="storage-banner" role="alert">
+            <p>{auto.error}</p>
+            <button className="secondary-button" onClick={auto.retry}>
+              자동 계획 설정 다시 읽기·저장
+            </button>
+            {auto.blocked && (
+              <details>
+                <summary>자동 계획 설정 초기화…</summary>
+                <p>자동 계획 설정만 기본값으로 바꿉니다. 할 일과 문구 설정은 유지합니다.</p>
+                <button className="secondary-button" onClick={auto.reset}>
+                  자동 계획 설정만 초기화
+                </button>
+              </details>
+            )}
+          </section>
+        )}
+        {view === 'today' && !auto.state.enabled && (
           <section className="today-planning" aria-label="오늘 집중 요약">
-            <Icon name="sun" size={20} />
             <div className="planning-copy">
               <h2>오늘 집중</h2>
               <p>
@@ -536,13 +629,6 @@ export default function App() {
                 </p>
               )}
             </div>
-            <button
-              className="secondary-button"
-              onClick={(event) => openPanel('plan', event.currentTarget)}
-            >
-              <Icon name="sun" size={18} />
-              오늘 계획하기
-            </button>
           </section>
         )}
         <div className="mobile-menu">{menu}</div>
@@ -621,13 +707,25 @@ export default function App() {
           onSubmit={(e) => {
             e.preventDefault()
             if (composing.current) return
-            const error = validateTitle(title)
-            if (error) {
-              setInputError(error)
+            const parsed = parseCapture(title, localDate(), recognize)
+            if (parsed.errors.length) {
+              setInputError(
+                parsed.errors
+                  .map((error) =>
+                    title.includes('\n') ? `${error.line}행: ${error.message}` : error.message,
+                  )
+                  .join(' '),
+              )
               input.current?.focus()
               return
             }
-            change((tasks) => [...tasks, createTask(title, view, today)])
+            const additions = parsed.tasks.map((item) => ({
+              ...createTask(item.title, auto.state.enabled ? 'all' : view, localDate()),
+              dueDate: item.dueDate,
+              category: item.category,
+              priority: item.priority,
+            }))
+            change((tasks) => [...tasks, ...additions])
             setTitle('')
             setInputError('')
             focusInput()
@@ -639,12 +737,13 @@ export default function App() {
           <label className="sr-only" htmlFor="quick-title">
             새 할 일 제목
           </label>
-          <input
+          <textarea
+            rows={Math.min(4, Math.max(1, title.split('\n').length))}
             ref={input}
             id="quick-title"
             value={title}
-            maxLength={200}
-            placeholder="무엇을 해야 하나요?"
+            maxLength={24000}
+            placeholder="할 일을 적어보세요"
             autoComplete="off"
             onChange={(e) => {
               setTitle(e.target.value)
@@ -664,8 +763,14 @@ export default function App() {
                   e.nativeEvent.isComposing ||
                   e.keyCode === 229 ||
                   Date.now() - lastCompositionEnd.current < 80)
-              )
+              ) {
                 e.preventDefault()
+                return
+              }
+              if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault()
+                composer.current?.requestSubmit()
+              }
             }}
             aria-invalid={!!inputError}
             aria-describedby={inputError ? 'quick-error' : 'quick-hint'}
@@ -677,14 +782,69 @@ export default function App() {
         </form>
         <div className="composer-caption">
           <span id="quick-hint">
-            {view === 'today'
-              ? '새 할 일은 오늘에 담깁니다'
-              : '먼저 담고, 필요할 때 집중하기로 골라보세요'}
+            {auto.state.enabled
+              ? '전체에 담고, 오늘 할 일은 자동으로 고릅니다'
+              : view === 'today'
+                ? '새 할 일은 오늘에 담깁니다'
+                : '먼저 담고, 필요할 때 집중하기로 골라보세요'}
           </span>
-          <span className="enter-hint">
-            Enter로 추가 <kbd>↵</kbd>
-          </span>
+          <span className="enter-hint">Enter 추가 · Shift+Enter 줄바꿈</span>
         </div>
+        <div className="capture-options">
+          <label>
+            <input
+              type="checkbox"
+              checked={recognize}
+              onChange={(e) => {
+                setRecognize(e.target.checked)
+                setInputError('')
+              }}
+            />
+            날짜·분류 자동 인식
+          </label>
+          <details>
+            <summary>입력 예시</summary>
+            <p>
+              오늘 / 내일 / 모레 / YYYY-MM-DD를 맨 앞에, #분류와 !높음·!보통·!낮음을 맨 뒤에
+              적으세요. 한 줄에 한 가지씩 등록합니다.
+            </p>
+            <button
+              className="text-button"
+              onClick={() => {
+                setTitle('내일 발표 자료 제출 #학교 !높음')
+                focusInput()
+              }}
+            >
+              예시 문장 넣기
+            </button>
+          </details>
+        </div>
+        {title.trim() && (
+          <div className="capture-preview" aria-label="입력 인식 결과">
+            {captured.tasks.slice(0, 5).map((item) => (
+              <p key={item.line}>
+                <strong>{item.title}</strong>
+                {item.dueDate && <span>기한 {item.dueDate}</span>}
+                {item.category && <span>분류 {item.category}</span>}
+                {item.priority !== 'none' && (
+                  <span>
+                    우선순위 {{ high: '높음', medium: '보통', low: '낮음' }[item.priority]}
+                  </span>
+                )}
+              </p>
+            ))}
+            {captured.tasks.length > 5 && (
+              <p>
+                외 {captured.tasks.length - 5}개 · 전체 {captured.tasks.length}개를 함께 등록합니다.
+              </p>
+            )}
+            {captured.errors.map((error) => (
+              <p className="field-error" key={error.line}>
+                {error.line}행: {error.message}
+              </p>
+            ))}
+          </div>
+        )}
         {inputError && (
           <p className="field-error" id="quick-error" role="alert">
             {inputError}
@@ -714,6 +874,75 @@ export default function App() {
             검색 결과 {searchCount}개 <span>현재 {view === 'today' ? '오늘' : '전체'} 보기</span>
           </p>
         )}
+        {view === 'today' && auto.state.enabled && !query.trim() && data.tasks.length > 0 && (
+          <section className="day-overview" aria-label="오늘 자동 요약">
+            <span>
+              오늘 남은 일 <strong>{planned.length}개</strong>
+            </span>
+            <span>
+              오늘 마친 일 <strong>{achievements.length}개</strong>
+            </span>
+            <span>
+              기한 초과 <strong>{data.tasks.filter((t) => isOverdue(t, today)).length}개</strong>
+            </span>
+            {planned.length > auto.state.limit && (
+              <span className="field-hint">
+                기한이 된 일과 직접 고른 일은 기본 분량을 넘어도 유지합니다.
+              </span>
+            )}
+          </section>
+        )}
+        {featured && (
+          <section className="next-task" aria-label="지금 할 하나">
+            <div className="next-heading">
+              <h2>{auto.state.currentTaskId === featured.id ? '지금 하는 일' : '지금 할 하나'}</h2>
+              <span>{selectionReason(featured, today)}</span>
+            </div>
+            <ul className="task-list">{row(featured)}</ul>
+            <div className="next-actions">
+              {auto.state.currentTaskId === featured.id ? (
+                <button className="primary-button" onClick={() => toggle(featured)}>
+                  이 일 완료하기
+                </button>
+              ) : (
+                <button
+                  className="primary-button"
+                  onClick={() => auto.update({ currentTaskId: featured.id })}
+                >
+                  이것부터 시작
+                </button>
+              )}
+              <button
+                className="text-button"
+                onClick={() => {
+                  auto.update({
+                    currentTaskId: null,
+                    skippedTaskIds: [...new Set([...auto.state.skippedTaskIds, featured.id])],
+                  })
+                  pendingFocus.current = 'input'
+                }}
+              >
+                다른 일 보기
+              </button>
+              <span>완료하면 다음 후보가 준비됩니다.</span>
+            </div>
+          </section>
+        )}
+        {view === 'today' &&
+          auto.state.enabled &&
+          !query.trim() &&
+          planned.length > 0 &&
+          !candidate && (
+            <section className="candidate-empty">
+              <p>오늘 후보를 모두 살펴봤어요. 목록에서 직접 완료하거나 다시 골라보세요.</p>
+              <button
+                className="secondary-button"
+                onClick={() => auto.update({ skippedTaskIds: [] })}
+              >
+                추천 다시 보기
+              </button>
+            </section>
+          )}
         {active.length === 0 && (!query.trim() || searchCount === 0) && (
           <section className="empty-state">
             <div className="empty-icon">
@@ -725,7 +954,9 @@ export default function App() {
                 : data.tasks.length === 0
                   ? '해야 할 일을 하나 적어보세요'
                   : view === 'today'
-                    ? '오늘은 비어 있습니다'
+                    ? achievements.length
+                      ? `오늘 ${achievements.length}개를 마쳤어요`
+                      : '오늘은 비어 있습니다'
                     : '미완료 할 일이 없습니다'}
             </h2>
             <p>
@@ -749,12 +980,12 @@ export default function App() {
                   </button>
                   {data.tasks.length === 0 ? (
                     <button className="text-button" onClick={addExamples}>
-                      예시로 둘러보기 <Icon name="arrow" size={15} />
+                      예시로 둘러보기
                     </button>
                   ) : (
                     view === 'today' && (
                       <button className="text-button" onClick={() => setView('all')}>
-                        전체 할 일 보기 <Icon name="arrow" size={15} />
+                        전체 할 일 보기
                       </button>
                     )
                   )}
@@ -767,12 +998,12 @@ export default function App() {
           <>
             {section(
               '기한 초과',
-              active.filter((t) => isOverdue(t, today)),
+              listed.filter((t) => isOverdue(t, today)),
               true,
             )}
             {section(
-              '오늘',
-              active.filter((t) => !isOverdue(t, today)),
+              featured ? '이어서 할 일' : '오늘',
+              listed.filter((t) => !isOverdue(t, today)),
             )}
           </>
         ) : (
@@ -797,8 +1028,8 @@ export default function App() {
               오늘 마친 일 {achievements.length}개
             </summary>
             <p className="field-hint">
-              현재 목록에 남아 있는 직접 만든 일 중 오늘 완료한 항목입니다. 검색과 무관하며 완료
-              취소·삭제·복원에 따라 바뀝니다.
+              {demo ? '이 체험 목록에서' : '현재 목록에 남아 있는 직접 만든 일 중'} 오늘 완료한
+              항목입니다. 검색과 무관하며 완료 취소·삭제·복원에 따라 바뀝니다.
             </p>
             {achievements.length ? (
               <ul className="task-list">{achievements.map((task) => row(task, true))}</ul>
@@ -825,7 +1056,7 @@ export default function App() {
           </details>
         )}
         <footer className="page-footer">
-          <span>생각난 일은 빠르게 담고, 오늘 할 일만 선명하게.</span>
+          <span>정리는 자동으로, 실행은 하나씩.</span>
           <span>Focusday</span>
         </footer>
       </main>
@@ -876,6 +1107,7 @@ export default function App() {
           onDelete={() => {
             const task = editing
             change((tasks) => tasks.filter((t) => t.id !== task.id))
+            if (auto.state.currentTaskId === task.id) auto.update({ currentTaskId: null })
             setUndo({ token: ++undoToken.current, kind: 'delete', task })
             closeEditor()
           }}
