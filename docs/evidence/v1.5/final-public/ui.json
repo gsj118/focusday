@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-11-20 03:46:58 UTC",
+  "url": "https://gsj118.github.io/focusday/?demo=1",
+  "sourceCommit": "df490229f6933a0f13affde65f03f4a66e185e0f",
+  "environment": "Windows ChatGPT in-app browser; desktop 1366×768 and mobile viewport 390×844",
+  "observations": [
+    "Deployed desktop shows approved Today heading, gray memo panel and blue primary actions.",
+    "Example memo parsed into laundry today (Nov 20), assignment tomorrow (Nov 21), and presentation next Monday (Nov 23), with editable titles/properties.",
+    "Saving three tasks increased total 5→8 and today's fixed plan 3→4, adding the today-due item only.",
+    "On mobile, completing the book-return item advanced progress 0/4→1/4 and featured the new today-due laundry task.",
+    "Recent undo restored book return, progress 0/4 and all 8 tasks.",
+    "Bottom Memo focused quick-title; document width stayed within viewport.",
+    "Reloading reset demo to 5 total tasks / 3 planned / 0 completed.",
+    "Saved public desktop/mobile screenshots and reset viewport override; left public demo as deliverable."
+  ],
+  "limits": [
+    "No physical smartphone, OS keyboard or screen reader testing in this deployment check",
+    "No direct personal storage mutations; all actions performed in isolated demo mode"
+  ],
+  "screenshots": [
+    "docs/screenshots/v1.5/final-desktop.jpg",
+    "docs/screenshots/v1.5/final-mobile.jpg"
+  ]
+}

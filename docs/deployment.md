@@ -1,8 +1,18 @@
 # Focusday 배포 기록
 
-## v1.5 최종 개편 · 승인 후 배포 진행
+## v1.5 최종 개편 · 공개 배포 완료
 
-2026-11-20 KST. 사용자가 UI·한국어 검토본을 승인하고 사이트 배포와 두 GitHub 저장소 반영을 요청했다. 승인된 앱 코드의 SHA-256 13개를 마지막 검수 기록과 대조해 모두 일치함을 확인했다. 기존 `main`과 수동 `pages.yml`을 사용하며, 공개 자산과 화면을 확인한 뒤 아래에 실제 소스·실행 링크를 기록한다. 기존 v1.5.0 태그와 최초 공개 이력은 이동하거나 덮어쓰지 않는다.
+2026-11-20 KST. 사용자가 UI·한국어 검토본을 승인한 뒤 기존 GitHub Pages에 배포했다. 승인본과 앱 코드 SHA-256 13개가 일치하는 것을 확인했으며 기존 저장소·공개 주소·환경 보호 설정을 유지했다.
+
+- **[자동화 체험](https://gsj118.github.io/focusday/?demo=1)** · **[개인용 앱](https://gsj118.github.io/focusday/)**
+- 배포 소스: [`df49022`](https://github.com/gsj118/focusday/commit/df490229f6933a0f13affde65f03f4a66e185e0f).
+- [CI 실행](https://github.com/gsj118/focusday/actions/runs/44669438049)과 [Pages 빌드·배포](https://github.com/gsj118/focusday/actions/runs/44669438778)가 모두 성공했다. 각각 단위 112개·서울/뉴욕 각 88개·브라우저 144개를 통과했다.
+- 공개 HTML·JS·CSS·favicon HTTP 200. JS·CSS·favicon SHA-256이 승인된 소스의 Pages 경로 빌드와 일치했다.
+- 공개 주소에서 PC·모바일 크기의 실제 브라우저로 메모 정리·오늘 기한 반영·완료·되돌리기·체험 초기화를 확인했다. 확인 시각과 범위는 [공개 검수](evidence/v1.5/final-public/ui.json)에 기록했다.
+
+[원격 검사·배포 근거](evidence/v1.5/final-public/github-actions.json) · [공개 파일 대조](evidence/v1.5/final-public/assets.json) · [PC 화면](screenshots/v1.5/final-desktop.jpg) · [모바일 화면](screenshots/v1.5/final-mobile.jpg).
+
+후속 커밋은 README·공개 검증 기록·화면을 보완한 문서 변경이다. 배포 소스와 앱 코드·빌드 설정·의존성은 동일하다. 기존 `v1.5.0` 태그는 최초 공개 이력으로 유지하고 이동하지 않았다. ai-practice 사본에는 최종 문서까지 반영하며 손글씨 파일은 변경하지 않는다.
 
 ## v1.5.0 최초 공개 배포 · 2026-11-20 KST
 

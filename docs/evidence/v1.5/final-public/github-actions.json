@@ -1,0 +1,243 @@
+{
+  "checkedAt": "2026-11-20 03:46:58 UTC",
+  "repository": "gsj118/focusday",
+  "method": "GitHub connector workflow job states and decoded logs; GitHub CLI used to dispatch the existing manual Pages workflow.",
+  "runs": [
+    {
+      "id": 44669438049,
+      "name": "Verify Focusday",
+      "headSha": "df490229f6933a0f13affde65f03f4a66e185e0f",
+      "conclusion": "success",
+      "url": "https://github.com/gsj118/focusday/actions/runs/44669438049",
+      "jobs": [
+        {
+          "id": 136066597696,
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "success",
+          "run_id": 44669438049,
+          "logs_url": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1
+            },
+            {
+              "name": "Run actions/checkout@v7",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2
+            },
+            {
+              "name": "Run actions/setup-node@v7",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3
+            },
+            {
+              "name": "Run pnpm/action-setup@v6",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4
+            },
+            {
+              "name": "Run pnpm install --frozen-lockfile",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5
+            },
+            {
+              "name": "Run pnpm check",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 6
+            },
+            {
+              "name": "Run pnpm exec playwright install --with-deps chromium",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 7
+            },
+            {
+              "name": "Run pnpm test:e2e",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8
+            },
+            {
+              "name": "Post Run pnpm/action-setup@v6",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 14
+            },
+            {
+              "name": "Post Run actions/setup-node@v7",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 15
+            },
+            {
+              "name": "Post Run actions/checkout@v7",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 16
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 17
+            }
+          ]
+        }
+      ],
+      "testSummary": [
+        "2026-11-20T03:42:00.8005408Z       Tests  112 passed (112)",
+        "2026-11-20T03:42:01.7899658Z       Tests  88 passed (88)",
+        "2026-11-20T03:42:02.3728083Z       Tests  88 passed (88)",
+        "2026-11-20T03:42:05.2991010Z ✓ built in 117ms",
+        "2026-11-20T03:44:41.5144797Z   144 passed (2.1m)"
+      ]
+    },
+    {
+      "id": 44669438778,
+      "name": "Publish Focusday to Pages",
+      "headSha": "df490229f6933a0f13affde65f03f4a66e185e0f",
+      "conclusion": "success",
+      "url": "https://github.com/gsj118/focusday/actions/runs/44669438778",
+      "jobs": [
+        {
+          "id": 136066605103,
+          "name": "build",
+          "status": "completed",
+          "conclusion": "success",
+          "run_id": 44669438778,
+          "logs_url": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1
+            },
+            {
+              "name": "Run actions/checkout@v7",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2
+            },
+            {
+              "name": "Run actions/setup-node@v7",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3
+            },
+            {
+              "name": "Run pnpm/action-setup@v6",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4
+            },
+            {
+              "name": "Run pnpm install --frozen-lockfile",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5
+            },
+            {
+              "name": "Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 6
+            },
+            {
+              "name": "Run pnpm check",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 7
+            },
+            {
+              "name": "Run pnpm exec playwright install --with-deps chromium",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8
+            },
+            {
+              "name": "Run pnpm test:e2e",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9
+            },
+            {
+              "name": "Run actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10
+            },
+            {
+              "name": "Post Run pnpm/action-setup@v6",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 18
+            },
+            {
+              "name": "Post Run actions/setup-node@v7",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 19
+            },
+            {
+              "name": "Post Run actions/checkout@v7",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 20
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 21
+            }
+          ]
+        },
+        {
+          "id": 136067914257,
+          "name": "deploy",
+          "status": "completed",
+          "conclusion": "success",
+          "run_id": 44669438778,
+          "logs_url": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1
+            },
+            {
+              "name": "Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3
+            }
+          ]
+        }
+      ],
+      "testSummary": [
+        "2026-11-20T03:42:04.2321408Z       Tests  112 passed (112)",
+        "2026-11-20T03:42:05.5282964Z       Tests  88 passed (88)",
+        "2026-11-20T03:42:06.3371033Z       Tests  88 passed (88)",
+        "2026-11-20T03:42:10.9026191Z ✓ built in 155ms",
+        "2026-11-20T03:45:16.0490850Z   144 passed (2.7m)"
+      ]
+    }
+  ]
+}

@@ -7,7 +7,7 @@
 > **[30초 자동화 체험](https://gsj118.github.io/focusday/?demo=1)** · **[내 할 일 시작하기](https://gsj118.github.io/focusday/)**
 > 설치·가입 없이 브라우저에서 바로 사용합니다. 먼저 예시 메모를 정리하고, 하나를 완료한 뒤 되돌려 보세요.
 
-![Focusday 실제 화면: 왼쪽 오늘 실행, 오른쪽 메모 정리](docs/screenshots/v1.5/polish-desktop.jpg)
+![Focusday 실제 화면: 왼쪽 오늘 실행, 오른쪽 메모 정리](docs/screenshots/v1.5/final-desktop.jpg)
 
 설치·회원가입·API 키 없이 사용하는 웹 앱입니다. 체험은 예시 5개로 시작하며 개인 목록과 분리됩니다. 새로고침하면 체험만 처음 상태로 돌아갑니다.
 
@@ -62,7 +62,7 @@
 
 참조 화면에서 실제 색·글자·입력·버튼 스타일을 측정하고, 공통 기준을 `src/tokens.css`로 모았습니다. 측정한 자료는 제3자의 Notion 분석 화면이며 공식 앱에서 추출한 토큰으로 소개하지 않습니다. 공식 작업 화면은 목록·속성 배치를 시각적으로 비교하는 데 사용했습니다. [참조 → 토큰 → 컴포넌트 적용 근거](DESIGN.md)
 
-<img src="docs/screenshots/v1.5/polish-mobile.jpg" alt="Focusday 모바일 실제 화면" width="300" />
+<img src="docs/screenshots/v1.5/final-mobile.jpg" alt="Focusday 모바일 실제 화면" width="300" />
 
 ## 데이터와 자동화의 범위
 
