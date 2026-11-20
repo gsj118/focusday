@@ -31,3 +31,9 @@ duration은 자동화된 과업의 실행 시간이며 앱 성능 벤치마크�
 [before/after](v1.3/after-visual.json) geometry와 [18개 상태](v1.3/ui-states.json)는 실제 Chrome 합성 데이터의 촬영 기록이다. [백업 경계](v1.3/backup-boundary-after.json)와 최신 원격/공개 실행은 [검증](../validation.md)·[배포](../deployment.md)에 연결한다. 현재 공개 검사 도구는 v1.3 경로에만 저장해 기존 버전 자료를 유지한다.
 
 [v1.3 GitHub Actions](v1.3/github-actions.json)는 실제ec67a2c CI/Pages 성공 상태/job/고정pnpm11.19.0/단위46·시간대각22·Chromium80의 로그다. [공개 검증](v1.3/live-deployment.json)은 같은 소스의 버전1.3.0·desktop/mobile·자산200·핵심/계획/복원·6000개 전체 다운로드/재선택 미리보기 PASS다. 재배포 후 반복 실행은 `test-results/release-smoke/`에 분리한다.
+
+## v1.5 자동화 검증
+
+[기본 검사](v1.5/check.txt) · [루트 E2E 117개](v1.5/e2e-root.txt) · [Pages 경로 E2E 117개](v1.5/e2e-pages.txt) · [결과 요약](v1.5/validation.json) · [실제 Actions job과 로그](v1.5/github-actions.json) · [공개 자산 해시](v1.5/public/assets.json) · [공개 UI 조작](v1.5/public/ui.json).
+
+기존 수동 모드 103개와 새 기본 자동 모드 14개를 구분한다. 공개 UI는 인앱 브라우저 조작이며 HTTP 성공과 분리한다. README 화면은 실제 공개 체험이다. 과거 v1.0~v1.4 자료를 현재 결과로 재사용하거나 덮어쓰지 않는다.

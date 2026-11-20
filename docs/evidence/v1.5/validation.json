@@ -15,5 +15,15 @@
     "Asia/Seoul": 55,
     "America/New_York": 55
   },
-  "scope": "Automated tests; not real participant research or physical-device/OS IME testing"
+  "scope": "Automated tests; not real participant research or physical-device/OS IME testing",
+  "localPages": {
+    "startTime": "2026-11-20T00:51:25.918Z",
+    "duration": 308676.912,
+    "expected": 117,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "localPagesURL": "http://127.0.0.1:4180/focusday/",
+  "sourceCommit": "77334d5c9f863c450aa9b750b81dc0440f1631a9"
 }

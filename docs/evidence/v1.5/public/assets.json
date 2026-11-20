@@ -1,0 +1,39 @@
+{
+  "appVersion": "1.5.0",
+  "url": "https://gsj118.github.io/focusday/",
+  "checkedAt": "2026-11-20T00:55:45.285Z",
+  "sourceCommit": "77334d5c9f863c450aa9b750b81dc0440f1631a9",
+  "scope": "HTTP, content types, version marker, optional exact dist asset hashes; no browser UI claims",
+  "assets": [
+    {
+      "url": "https://gsj118.github.io/focusday/",
+      "status": 200,
+      "sha256": "a532c7152f148b0d0ea06b59799277b4d93f16f4804e4f3faeeb674d00d3131c"
+    },
+    {
+      "url": "https://gsj118.github.io/focusday/favicon.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "bytes": 269,
+      "sha256": "b77cd4bf6b9ff2af3857ad409795e117daea14c673bfc1ed94fdd5ac62f58e2c",
+      "matchesLocalBuild": true
+    },
+    {
+      "url": "https://gsj118.github.io/focusday/assets/index-z4bnu52j.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 291746,
+      "sha256": "18545092895e4e51c0eccdba226fe0b77077bc5369c06ab7b36ddfc811be50f0",
+      "matchesLocalBuild": true
+    },
+    {
+      "url": "https://gsj118.github.io/focusday/assets/index-CpHxisKT.css",
+      "status": 200,
+      "contentType": "text/css; charset=utf-8",
+      "bytes": 34019,
+      "sha256": "d34b8236c93aa8a67cd5c370d3837f06d2ed74d9e862d996e03ee054e18e0c65",
+      "matchesLocalBuild": true
+    }
+  ],
+  "status": "PASS"
+}

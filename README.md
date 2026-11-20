@@ -1,62 +1,111 @@
-# Focusday
+# Focusday · 개인용 할 일 관리 자동화
 
-**생각난 일은 빠르게 담고, 오늘 할 일만 선명하게.** 계정 없이 이 브라우저에서 사용하는 개인 작업 앱입니다.
+**할 일은 적기만 하세요. 오늘 할 일과 다음 순서는 Focusday가 정리합니다.**
 
-**[Focusday 사용하기](https://gsj118.github.io/focusday/)** · [GitHub](https://github.com/gsj118/focusday). v1.4.0은 노션 작업 UI에 오늘의 한 문장, 완료 순간의 작은 격려, 오늘 마친 일을 더한 최종 제출 버전입니다. [정확한 동작·전후·수정](docs/V1_4_FINAL_UPDATE.md) · [검증](docs/validation.md) · [배포 상태](docs/deployment.md).
+할 일 관리는 하고 싶지만, 매번 날짜를 지정하고 목록을 정리하는 과정이 번거로운 사람을 위한 웹 앱입니다. 입력 → 오늘 목록 → 다음 행동을 연결해 관리에 필요한 선택을 줄였습니다.
 
-![v1.4 실제 앱 — 격리 fixture](docs/screenshots/v1.4/features-second/today-1440x900.png)
+### [▶ 자동화 바로 체험하기](https://gsj118.github.io/focusday/?demo=1)
 
-## 현재 기능
+**설치·회원가입·API 키 없이 바로 열립니다.** 예시 5개로 시작하며, 개인 목록을 건드리지 않습니다. 새로고침하면 체험이 초기화됩니다.
 
-- **빠른 입력과 오늘 집중.** 제목 Enter로 추가하고 제목을 눌러 속성을 편집합니다. 미래 기한도 오늘 집중으로 고르고 오늘/지난 기한은 집중 해제 뒤에도 오늘에 남습니다. 어제 일은 계획에서 직접 이어갑니다.
-- **오늘의 한 문장.** 기본 차분한 문구, 창작 유머, 내 문장, 끄기. 앱 정보의 **문구와 격려 설정**에서 초안을 저장하거나 취소합니다. 같은 로컬 날짜/모드에서는 재방문해도 같은 문구입니다.
-- **완료 순간의 격려.** 직접 만든 일을 오늘 처음/세 번째 완료할 때 기존 실행 취소 안내에 한 문장을 더합니다. 각 시점은 하루 한 번 처리하며 격려를 끌 수 있습니다.
-- **오늘 마친 일.** 오늘 목록 아래 기본 접힌 영역에서 개수·제목·완료 시각·속성을 확인하고 미완료로 복원합니다. 예시는 제외하고 검색과 무관합니다. 현재 목록 기준이므로 삭제·취소·복원에 따라 바뀝니다.
-- **전체 할 일 백업과 복구.** JSON에 완료·예시·모든 속성을 보존합니다. id 합치기/확인 후 교체, 완료·삭제 undo, 손상 원본 보호와 쓰기 실패 재시도를 제공합니다.
+[내 할 일로 사용하기](https://gsj118.github.io/focusday/) · **v1.5.0** · [변경 기록](CHANGELOG.md)
 
-| 문구·격려 설정                                                                                                  | 오늘 성취                                                                                                            |
-| --------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| <img src="docs/screenshots/v1.4/features-second/settings-390x844.png" alt="실제390px 설정 sheet" width="300" /> | <img src="docs/screenshots/v1.4/features-second/achievements-390x844.png" alt="실제390px 성취와 undo" width="300" /> |
+![Focusday v1.5 실제 공개 화면: 자동 계획과 지금 할 하나](docs/screenshots/v1.5/public-desktop.jpg)
 
-실제 앱의 합성 fixture이며 생성 이미지/목업이 아닙니다. 모바일은 Chrome 에뮬레이션입니다. [320px](docs/screenshots/v1.4/features-second/settings-320x568.png) · [격려/undo](docs/screenshots/v1.4/features-second/encouragement-1440x900.png) · [v1.3와 비교](docs/V1_4_FINAL_UPDATE.md).
+공개 사이트의 실제 체험 화면입니다. 예시 데이터이며, 생성한 UI 목업이 아닙니다.
+
+## 먼저 이렇게 체험해 보세요
+
+1. **지금 할 하나**에서 추천 이유를 확인하고 **이것부터 시작**을 누릅니다.
+2. **이 일 완료하기**를 누르면 오늘 마친 일이 늘고 다음 후보가 준비됩니다.
+3. 아래 문장을 입력해 날짜·분류·우선순위 미리보기를 확인합니다. Enter로 등록한 뒤 **전체 할 일**에서 새 항목을 확인할 수 있습니다.
+
+```text
+내일 발표 자료 제출 #학교 !높음
+```
+
+내 목록을 시작하려면 **내 할 일 사용하기**를 누르세요. 체험 내용은 개인 목록에 복사되지 않습니다.
+
+## 무엇을 자동화했나요?
+
+| 번거로운 작업                              | Focusday의 동작                                                                           |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| 제목을 적고 날짜·분류·우선순위를 따로 설정 | 명시적인 입력 표현을 읽어 속성으로 채웁니다. 등록 전에 결과를 보여줍니다.                 |
+| 여러 할 일을 하나씩 등록                   | 여러 줄을 한 번에 붙여 넣습니다. 한 줄에 한 가지씩, 오류가 있으면 전체 등록을 보류합니다. |
+| 쌓인 목록에서 오늘 할 일을 다시 선택       | 기한·직접 선택·과거 미완료·우선순위에 따라 오늘 목록을 구성합니다.                        |
+| 하나를 마친 뒤 다시 실행 순서를 고민       | **지금 할 하나**에서 다음 후보를 제시합니다. 시작은 사용자가 결정합니다.                  |
+| 지난번에 고른 미완료 작업을 다시 옮김      | 이전에 선택했던 미완료 항목을 재추천합니다. 항목을 복제하거나 기한을 바꾸지 않습니다.     |
+
+핵심은 **입력에서 실행까지 이어지는 자동화**입니다. 모든 속성을 먼저 채우거나 매일 목록을 다시 만드는 대신, 할 일을 담아두고 추천된 하나부터 시작할 수 있습니다.
+
+## 자동으로 정리해도, 결정권은 사용자에게
+
+- 자동 계획의 기본 추천량은 **3개**이며 **1·3·5개**로 바꿀 수 있습니다. 완료하면 빈자리를 다음 후보로 채우므로 하루 작업 상한을 뜻하지 않습니다.
+- **기한 초과·오늘 기한·직접 고른 일**은 추천량을 넘어도 표시합니다. 시작한 일은 새 급한 일이 추가돼도 유지합니다.
+- **다른 일 보기**는 추천 후보만 건너뜁니다. 완료 처리하거나 날짜를 미루지 않습니다.
+- **자동 계획을 끄면 수동 모드**를 사용합니다. **날짜·분류 자동 인식**도 끌 수 있습니다.
+- 입력은 맨 앞의 `오늘`·`내일`·`모레`·`YYYY-MM-DD`, 맨 뒤의 `#분류`·`!높음`·`!보통`·`!낮음`만 읽습니다. 임의의 자연어를 이해한다고 가정하지 않습니다.
+
+<img src="docs/screenshots/v1.5/public-mobile.jpg" alt="Focusday v1.5 모바일 체험: 첫 화면에서 시작 버튼 확인" width="300" />
+
+노션 작업 화면에서 참고한 사이드바·속성 목록·얇은 구분선에 Focusday의 자동 실행 흐름을 더했습니다. 기존 CSS 토큰을 점검하고 본문·보조 글자와 상단 간격을 조정했습니다. 노션의 공식 토큰을 자동 추출한 결과는 아닙니다. [토큰과 UI 설계](DESIGN.md)
+
+## 기존 관리 기능도 유지합니다
+
+- 제목·기한·우선순위·분류 편집, 오늘/내일/일주일 뒤 빠른 날짜 선택, 제목·분류 검색.
+- 완료·미완료 복원, 완료·삭제 직후 최근 한 건 실행 취소, 오늘 마친 일 확인.
+- 오늘의 한 문장과 선택 가능한 격려. 필요하면 각각 끌 수 있습니다.
+- 전체 할 일 JSON 백업, 복원 미리보기, id 기준 합치기와 확인 후 전체 교체.
+- 저장 실패 안내·재시도, 손상된 원본을 자동으로 덮어쓰지 않는 복구 절차.
+
+## 데이터는 어디에 저장되나요?
+
+개인 모드는 **현재 브라우저의 localStorage**에 저장합니다. 로그인·서버 전송·클라우드 동기화·자동 백업은 없습니다. 다른 기기로 옮기거나 브라우저 데이터를 지우기 전에는 **백업·복원 → JSON 백업 다운로드**를 사용하세요.
+
+체험 모드는 별도의 메모리 저장소를 사용하므로 개인 할 일·문구·자동화 설정을 읽거나 쓰지 않습니다. 체험 변경은 새로고침 때 사라집니다.
+
+백업은 완료·예시·모든 할 일 속성을 포함하며 문구·자동화 설정은 제외합니다. 한도는 UTF-8 **10MiB**이고, 초과하면 부분 파일을 만들지 않고 안내합니다. 완료·삭제의 즉시 실행 취소는 최근 한 건에 대해 기본 8초이며, 이후에도 완료 항목은 전체 목록에서 복원할 수 있습니다. [정확한 저장·복원 규칙](docs/product-spec.md)
+
+## AI를 어떻게 활용했나요?
+
+이 프로젝트는 「인공지능활용실습」 과제로, AI 코딩 도구를 요구사항 정리, 자동화 규칙 설계, 구현, 테스트 작성, 오류 분석과 문서화에 활용했습니다. [AI 활용 과정](docs/ai-workflow.md)
+
+**앱의 자동화는 브라우저에서 실행되는 규칙 기반 로직입니다.** 생성형 AI API를 호출하지 않습니다. 추천 기준을 코드에서 확인할 수 있고 API 비용·키 설정 없이 체험할 수 있습니다.
 
 ## 실행과 검증
 
-Node.js24 / 프로젝트 고정 pnpm11.19.0, React19.3.0 + TypeScript5.9.3 + Vite8.3.2 + 일반 CSS입니다. 기존 lockfile과 의존성을 유지합니다.
+사이트 이용에는 설치가 필요 없습니다. 아래는 코드를 수정하거나 검증할 때만 사용하는 개발 환경 안내입니다.
 
-```sh
+Node.js 24 이상, 프로젝트 지정 pnpm 11.19.0. React 19.3.0·TypeScript 5.9.3·Vite 8.3.2와 일반 CSS를 사용하며 기존 lockfile과 의존성을 유지했습니다.
+
+```powershell
+git clone https://github.com/gsj118/focusday.git
+cd focusday
 pnpm install --frozen-lockfile
 pnpm dev
-pnpm check       # 타입/lint/단위/서울·뉴욕 날짜/production build
-pnpm test:e2e   # production preview 자동 시작 또는 기존 서버 재사용
 ```
 
-production은 `pnpm build` → `pnpm preview` → [127.0.0.1:4173](http://127.0.0.1:4173). E2E 기본 브라우저는 설치 Chrome이며 없으면 `pnpm exec playwright install chromium` 후 `PW_CHANNEL=chromium`을 지정합니다. Pages 검증은 `VITE_BASE_PATH=/focusday/` build와 실제 하위 경로 preview를 사용합니다. [환경·명령·원본 결과](docs/validation.md).
+```powershell
+pnpm check         # 타입·lint·단위·시간대·production build
+pnpm test:e2e      # production 화면의 브라우저 회귀 검사
+node scripts/check-deployment.mjs https://gsj118.github.io/focusday/
+```
 
-이번 작업은 기존80개 baseline을 새로 실행하고12개 관점/26개 연결 단계와 추가 경계를 실제 브라우저에서 검사했습니다. 첫 신규 실행15 PASS/2 FAIL, 첫 전체100 PASS/2 FAIL과 후속 포커스 재현 FAIL을 보존했습니다. 태블릿 sheet 폭·재시도 안내·숨은 성취 행 초점3건을 수정했습니다. 최종 로컬/원격의 정확한 결과는 [검증 기록](docs/validation.md)과 [배포 기록](docs/deployment.md)에 있습니다. 테스트를 삭제/skip하거나 기준을 내려 통과시키지 않았습니다.
+E2E는 기본적으로 설치된 Chrome을 사용합니다. Chrome이 없다면 `pnpm exec playwright install chromium` 후 PowerShell에서 `$env:PW_CHANNEL='chromium'`을 지정합니다. 공개 주소 검사 스크립트는 HTTP·자산 유형·버전 표식을 검사하며 화면 조작 검사와 구분합니다.
 
-최종 타입/lint/build·단위60·서울/뉴욕각36, 로컬 root/Pages와 GitHub CI/Pages E2E각103개가 모두 통과했습니다. 수동 Pages 배포 후 공개 desktop/mobile의 세 기능·기존 조작·백업도 PASS입니다. [실제 원격 근거](docs/evidence/v1.4/github-actions.json) · [공개 근거](docs/evidence/v1.4/live-deployment.json) · [공개 모바일 격려/undo](docs/screenshots/v1.4/live-mobile-encouragement.png).
+**검증 완료:** 단위 테스트 79개, 서울·뉴욕 시간대 각각 55개, 루트·Pages 경로 브라우저 검사 각각 117개를 통과했습니다. GitHub CI·Pages 검사도 각각 117개 통과 후 실제 공개 화면을 확인했습니다.
 
-## 데이터와 제한
+검증 결과와 공개 배포 근거는 [검증 기록](docs/validation.md) · [배포 기록](docs/deployment.md)에 정리했습니다. 과거 v1.0~v1.4의 화면·증거는 당시 기록으로 보존합니다.
 
-앱1.4.0, 기존 할 일 key `focusday:v1` / AppData version1 / backup formatVersion1을 유지합니다. 전체 할 일 JSON 백업은 compact UTF-8 최대10MiB이며 초과하면 일부를 빼지 않고 다운로드를 중단합니다. 과거 v1 백업을 그대로 읽습니다.
+## 코드와 설계 살펴보기
 
-문구/내 문장/격려 여부/날짜별1·3 처리 표지는 별도 `focusday:ui:v1` / UI version1입니다. **설정과 내 문장은 전체 할 일 백업에서 제외**되며 이 브라우저에만 저장합니다. merge/replace는 UI 설정/표지를 유지합니다. 손상 설정은 자동 덮어쓰지 않습니다.
+| 파일                                             | 역할                                           |
+| ------------------------------------------------ | ---------------------------------------------- |
+| [src/capture.ts](src/capture.ts)                 | 명시적 입력 인식과 여러 줄 검증                |
+| [src/automation.ts](src/automation.ts)           | 오늘 목록과 다음 후보를 계산하는 규칙          |
+| [src/session.ts](src/session.ts)                 | 개인 저장소와 체험 메모리 저장소 분리          |
+| [src/App.tsx](src/App.tsx)                       | 입력·추천·완료를 연결하는 화면                 |
+| [tests/e2e/v1.5.spec.ts](tests/e2e/v1.5.spec.ts) | 새 방문 기본 모드·자동화·체험 분리·반응형 검증 |
+| [docs/product-spec.md](docs/product-spec.md)     | 데이터·동작·예외의 상세 기준                   |
 
-격려 표지 저장 실패에도 완료/undo와 세션 중복 억제는 동작하지만 새로고침 후 중복 방지는 저장 성공에 의존합니다. 일반 task 쓰기 실패는 메모리 변경을 남기고 복원 실패는 적용 전 메모리/원본을 유지합니다. undo는 최근 한 건8초, hover/키보드 포커스 중 멈춥니다.
-
-서버/로그인/동기화·다중 탭 동시 쓰기 해결·기기 간 설정 이동·PWA는 제공하지 않습니다. 로컬 문구는 열린 앱에서 네트워크 없이 표시됩니다. 물리폰/OS 가상 키보드/OS IME/native 확대/스크린 리더/Safari·Firefox/사람 사용자 연구·만족도/과업 시간은 NOT_RUN이며 Chrome 에뮬레이션·합성 composition·동등 reflow와 구분합니다.
-
-## 제출 문서와 개발 기록
-
-[제품 명세](docs/product-spec.md) · [DESIGN](DESIGN.md) · [결정](docs/decisions.md) · [콘텐츠24개](docs/content-v1.4.md) · [12관점/실제 세션](docs/SYNTHETIC_BETA_V1_4.md) · [Case 기대/실제/상태/증거](docs/SYNTHETIC_BETA_CASES_V1_4.md) · [AI 활용](docs/ai-workflow.md) · [3분 시연](docs/demo-script.md) · [명세 원문](docs/ai-prompts/10-v1.4-final-implementation.md).
-
-baseline/설계 → 세 기능 → 첫 평가/수정 → 전체 회귀의 포커스 수정 → 최종 검증/문서 → 원격/공개 확인을 실제 완료 단위로 커밋합니다. [실제 발견 기록](docs/evidence/v1.4/findings.md). CI는 main push/PR, Pages는 **main 수동 workflow**이며 push만으로 배포됐다고 보고하지 않습니다.
-
-| 버전                                                     | 실제 개발 결과와 보존                                                                                 |
-| -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| [v1.0.0](https://github.com/gsj118/focusday/tree/v1.0.0) | 입력·오늘/전체·저장 보호·undo. [보존](docs/versions/v1.0.0/index.md)                                  |
-| [v1.1.0](https://github.com/gsj118/focusday/tree/v1.1.0) | 계획·어제 이어가기·backup/restore. [기록](docs/V1_1_UPDATE.md)                                        |
-| [v1.2.0](https://github.com/gsj118/focusday/tree/v1.2.0) | Synthetic Beta의 백업/IME 보완. [기록](docs/V1_2_UPDATE.md)                                           |
-| [v1.3.0](https://github.com/gsj118/focusday/tree/v1.3.0) | 노션 작업 UI. [기록](docs/V1_3_UI_REDESIGN.md) · [당시 문서](docs/versions/v1.3.0/README.snapshot.md) |
-| [v1.4.0](https://github.com/gsj118/focusday/tree/v1.4.0) | 세 기능과 실제 Beta/수정/최종 제출. [기록](docs/V1_4_FINAL_UPDATE.md)                                 |
+현재 제출 버전은 **v1.5.0**입니다. 이전 버전은 [CHANGELOG](CHANGELOG.md)와 [원본 저장소의 태그](https://github.com/gsj118/focusday/tags)에서 확인할 수 있습니다.

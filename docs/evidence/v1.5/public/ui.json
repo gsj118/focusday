@@ -1,0 +1,34 @@
+{
+  "checkedAt": "2026-11-20T00:57:46.110Z",
+  "url": "https://gsj118.github.io/focusday/?demo=1",
+  "sourceCommit": "77334d5c9f863c450aa9b750b81dc0440f1631a9",
+  "browser": "Codex in-app browser",
+  "viewports": [
+    {
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "scope": "CUA interaction; desktop and emulated mobile, not a physical phone",
+  "observed": [
+    "Focusday 1.5.0 in app information",
+    "demo starts with five examples and three recommendations",
+    "start changes card to current task",
+    "complete increases achievement count and presents next candidate",
+    "explicit date/category/priority preview",
+    "submitted task appears in all tasks with correct parsed attributes",
+    "editor week shortcut changes due date to 2026-11-27 after save",
+    "mobile start and completion",
+    "demo reset restores five examples and zero achievements"
+  ],
+  "capturedConsoleWarningsAndErrors": [],
+  "screenshots": [
+    "docs/screenshots/v1.5/public-desktop.jpg",
+    "docs/screenshots/v1.5/public-mobile.jpg"
+  ],
+  "status": "PASS"
+}
